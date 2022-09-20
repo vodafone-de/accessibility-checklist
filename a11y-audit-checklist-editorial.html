@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Accessibility Audit Checklist</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <noscript>
+    To use this Checklist with all features it is needed to activate JavaScript.
+    </noscript> 
+    <link rel="stylesheet" href="css/a11y-checklist.css">
+    <link rel="stylesheet" href="css/a11y-checklist-dark.css">
+</head>
+
+<body>
+  <div class="mode"> 
+    <b>Dark mode:</b><button class="dark-mode-switcher ws10-alt-button" tabindex="0" role="button" aria-pressed="false">OFF</button> 
+</div>
+<div id="content-wrapper">
+  <img src="data:image/png;base64,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" width="50px" alt="Vodafone Logo">
+  <h1>Accessibility Audit Checklist</h1>
+  <h2>Self assessment</h2>
+ <!-- <button class="reset-form">Reset checkboxes</button> --> 
+  <form class="contact-form" action="" method="post" id="a11y-checklist" accept-charset="UTF-8">
+    <div class="checklist-table">
+      <table cellspacing="0" id="a11y-report" class="ws10-card--shadow-wide ws10-card ws10-card--background-white">
+       <thead>
+          <tr>
+           <!-- <td contenteditable="true" colspan="2"><div id="projectname"><h3>Add your project title here ...</h3></div></td> --> 
+<td><div class="dropdown">
+  <button class="dropbtn" tabindex="0">Choose category<svg class="ws10-accordion-item__chevron--drop" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+                        <polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/></svg></button> 
+                        <div class="dropdown-content"> 
+                            <a href="a11y-audit-checklist-design-concept.html">Design concept phase</a> 
+                            <a href="a11y-audit-checklist-design-ui-spec.html">UI Specification</a>
+                            <a href="a11y-audit-checklist-editorial.html">Build a page the CMS</a> 
+                            
+                        </div> 
+</div></td>
+          
+            
+          </tr>
+        </thead> 
+        <tbody>
+         <!-- <tr>
+            <td contenteditable="true" colspan="2"><h3>Project info:</h3>
+              <span>Checked by:</span> <span class="highlight-input">Your name</span><br />
+              <span>Team:</span> <span class="highlight-input">Team name</span><br />
+              <span>Dipo:</span> <span class="highlight-input">Dipo number</span><br />
+              <span>Checked on:</span> <span class="highlight-input" id="Date"></span><br />
+              <span>URL:</span> <span class="highlight-input">https://...</span>
+            </td>
+          </tr> //-->
+          <tr>
+            <td colspan="3" class="heading">
+              <h2>Build a page the CMS</h2>
+              <div class="subheading">Our goal is to offer the most accessible experience for all of our customers. This list should help online editors to follow the most important rules for an accessible website. Check the following things while building a webpage in the CMS (OpenText). If a rule is not relevant (i.e. you don't have any images in your design, mark the rule as <strong>"not relevant"</strong>.</div>
+            </td>
+            </tr>
+        <tr id="content">
+            <td colspan="3" class="heading">
+                <h3>Content</h3>
+                <span class="subheading">Content is the most important part of your site.</span>
+            </td>
+          </tr>
+          <tr id="use-plain-language-and-avoid-figures-of-speech-idioms-and-complicated-metaphors">
+            <td colspan="3" id="a11y-rule-01-01" class="list-checkbox acc">
+                <div class="grid-container">
+                    <div class="grid_item_checkbox">
+                        <input type="checkbox" id="a11y-rule-01-01" name="r-plain-language" data-ruledis="r-plain-language" data-disenable="a11y-rule-01-01" value="checked" class="rel-check ws10-form-selection-control__input" />
+                        <label class="rule-description" id="a11y-rule-01-01" data-acc="a11y-rule-01-01-acc" data-ruledis="r-plain-language">Use plain language and avoid figures of speech, idioms, and complicated metaphors.</label>
+                    </div>
+                     <div class="grid_item_text">
+                        <input type="checkbox" data-dis="relevant" name="r-plain-language" data-ruletog="r-plain-language" data-target="a11y-rule-01-01" class="check-not-rel" value="not-relevant">
+                        <label for="dn" class="lbl">not relevant</label>
+                    </div>
+                    <div class="toggle-link" data-div-id="a11y-rule-01-01-content" data-label-id="a11y-rule-01-01-acc" tabindex="0" role="button" aria-pressed="false">
+                        <div class="accord-header grid_item_text-2" id="a11y-rule-01-01"><svg class="ws10-accordion-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+                        <polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/></svg>
+                        </div>
+                    </div>
+                <div class="accord-content" id="a11y-rule-01-01-content">
+                    <p>Plain language benefits everyone on your site, including people with cognitive disabilities and non-native language speakers. Plain language speeds up comprehension, helps people find what they’re looking for and do what they came to do.</p> 
+                    <a href="#use-plain-language-and-avoid-figures-of-speech-idioms-and-complicated-metaphors">Share link</a>
+                  </div>
+                </div>
+            </td>
+          </tr>
+          <tr id="make-sure-that-button-a-and-label-element-text-is-unique-and-descriptive">
+            <td colspan="3" class="list-checkbox acc acc-last">
+                <div class="grid-container">
+                    <div class="grid_item_checkbox">
+                        <input type="checkbox" id="a11y-rule-01-02" name="r-link-descriptive" data-ruledis="r-link-descriptive" data-disenable='a11y-rule-01-02' value="checked" class="rel-check ws10-form-selection-control__input" />
+                        <label class="rule-description" id="a11y-rule-01-02" data-acc="a11y-rule-01-02-acc">Make sure that button, a, and label element text is unique and descriptive.</label>
+                    </div>
+                     <div class="grid_item_text">
+                        <input type="checkbox" name="r-link-descriptive" data-dis="relevant" data-ruletog="r-link-descriptive" data-target='a11y-rule-01-02' class="check-not-rel" value="not-relevant">
+                        <label for="dn" class="lbl">not relevant</label>
+                    </div>
+                    <div class="toggle-link" data-div-id="a11y-rule-01-02-content" data-label-id="a11y-rule-01-02-acc" tabindex="0" role="button" aria-pressed="false">
+                        <div class="accord-header grid_item_text-2" id="a11y-rule-01-02"><svg class="ws10-accordion-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+                        <polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/></svg>
+                        </div>
+                    </div>
+                <div class="accord-content" id="a11y-rule-01-02-content">
+                    <p>Terms like “click here” and “read more” don’t provide any context. Screen readers can give visitors an overview of all the links on a page.</p>
+                    <a href="#make-sure-that-button-a-and-label-element-text-is-unique-and-descriptive">Share link</a>
+                  </div>
+                </div>
+            </td>
+          </tr>
+          <tr id="page-structure">
+            <td colspan="2" class="heading">
+                <div class="space-150"></div>
+                <h3>Page structure</h3><span class="subheading">Ensure a useful and clear structure</span></td>
+          </tr>
+          <tr id="use-heading-elements-to-introduce-content">
+            <td colspan="3" class="list-checkbox acc">
+                <div class="grid-container">
+                    <div class="grid_item_checkbox">
+                        <input type="checkbox" id="a11y-rule-02-01" name="r-headline-intro" data-ruledis="r-headline-intro" data-disenable='a11y-rule-02-01' value="checked" class="rel-check ws10-form-selection-control__input" />
+                        <label class="rule-description" id="a11y-rule-02-01" data-acc="a11y-rule-02-01-acc">Use heading elements to introduce content.</label>
+                    </div>
+                     <div class="grid_item_text">
+                        <input type="checkbox" id="relevant" data-dis="relevant" name="r-headline-intro" data-ruletog="r-headline-intro" data-target='a11y-rule-02-01' class="check-not-rel" value="not-relevant">
+                        <label for="dn" class="lbl">not relevant</label>
+                    </div>
+                    <div class="toggle-link" data-div-id="a11y-rule-02-01-content" data-label-id="a11y-rule-02-01-acc" tabindex="0" role="button" aria-pressed="false">
+                        <div class="accord-header grid_item_text-2" id="a11y-rule-02-01"><svg class="ws10-accordion-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+                        <polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/></svg>
+                        </div>
+                    </div>
+                <div class="accord-content" id="a11y-rule-02-01-content">
+                    <p>Heading elements construct a document outline, and should not be used for purely visual design.</p>
+                    <a href="#use-heading-elements-to-introduce-content">Share link</a></div>
+                </div>
+            </td>
+          </tr>
+          <tr id="use-only-one-h1-element-per-page-or-view">
+            <td colspan="3" class="list-checkbox acc">
+                <div class="grid-container">
+                    <div class="grid_item_checkbox">
+                        <input type="checkbox" id="a11y-rule-02-02" name="r-only-one-h1" data-ruledis="r-only-one-h1" data-disenable='a11y-rule-02-02' value="checked" class="rel-check ws10-form-selection-control__input" />
+                        <label class="rule-description" id="a11y-rule-02-02" data-acc="a11y-rule-02-02-acc">Use only one h1 element per page or view.</label>
+                    </div>
+                     <div class="grid_item_text">
+                        <input type="checkbox" data-dis="relevant" name="r-only-one-h1" data-ruletog="r-only-one-h1" data-target='a11y-rule-02-02' class="check-not-rel" value="not-relevant">
+                        <label for="dn" class="lbl">not relevant</label>
+                    </div>
+                    <div class="toggle-link" data-div-id="a11y-rule-02-02-content" data-label-id="a11y-rule-02-02-acc" tabindex="0" role="button" aria-pressed="false">
+                        <div class="accord-header grid_item_text-2" id="a11y-rule-02-02"><svg class="ws10-accordion-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+                        <polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/></svg>
+                        </div>
+                    </div>
+                <div class="accord-content" id="a11y-rule-02-02-content">
+                  <p> The h1 element should be used to communicate the high-level purpose of the page or view. Do not use the h1 element for a heading that does not change between pages or views (for example, the site's name).</p>
+                  <a href="#use-only-one-h1-element-per-page-or-view">Share link</a>
+                </div>
+                </div>
+            </td>
+          </tr>
+          <tr id="heading-elements-should-be-written-in-a-logical-sequence">
+            <td colspan="3" class="list-checkbox acc">
+                <div class="grid-container">
+                    <div class="grid_item_checkbox">
+                        <input type="checkbox" id="a11y-rule-02-03" name="r-headline-locical-sequence" data-ruledis="r-headline-locical-sequence" data-disenable='a11y-rule-02-03' value="checked" class="rel-check ws10-form-selection-control__input" />
+                        <label class="rule-description" id="a11y-rule-02-03" data-acc="a11y-rule-02-03-acc">Heading elements should be written in a logical sequence.</label>
+                      </div>
+                     <div class="grid_item_text">
+                        <input type="checkbox" data-dis="relevant" name="r-headline-locical-sequence" data-ruletog="r-headline-locical-sequence" data-target='a11y-rule-02-03' class="check-not-rel" value="not-relevant">
+                        <label for="dn" class="lbl">not relevant</label>
+                    </div>
+                    <div class="toggle-link" data-div-id="a11y-rule-02-03-content" data-label-id="a11y-rule-02-03-acc" tabindex="0" role="button" aria-pressed="false">
+                        <div class="accord-header grid_item_text-2" id="a11y-rule-02-03"><svg class="ws10-accordion-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+                        <polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/></svg>
+                        </div>
+                    </div>
+                <div class="accord-content" id="a11y-rule-02-03-content">
+                  <p>The order of heading elements should descend, based on the “depth” of the content. For example, a h4 element should not appear on a page before the first h3 element declaration. A tool such as headingsMap can help you evaluate this.</p> 
+                  <a href="#heading-elements-should-be-written-in-a-logical-sequence">Share link</a>
+                  </div>
+                </div>
+            </td>
+          </tr>
+          <tr id="dont-skip-heading-levels">
+            <td colspan="3" class="list-checkbox acc acc-last">
+                <div class="grid-container">
+                    <div class="grid_item_checkbox">
+                        <input type="checkbox" id="a11y-rule-02-04" name="r-dont-skip-heading-levels" data-ruledis="r-dont-skip-heading-levels" data-disenable='a11y-rule-02-04' value="checked" class="rel-check ws10-form-selection-control__input" />
+                        <label class="rule-description" id="a11y-rule-02-04" data-acc="a11y-rule-02-04-acc">Don't skip heading levels.</label>
+                    </div>
+                     <div class="grid_item_text">
+                        <input type="checkbox" data-dis="relevant" name="r-dont-skip-heading-levels" data-ruletog="r-dont-skip-heading-levels" data-target='a11y-rule-02-04' class="check-not-rel" value="not-relevant">
+                        <label for="dn" class="lbl">not relevant</label>
+                    </div>
+                    <div class="toggle-link" data-div-id="a11y-rule-02-04-content" data-label-id="a11y-rule-02-04-acc" tabindex="0" role="button" aria-pressed="false">
+                        <div class="accord-header grid_item_text-2" id="a11y-rule-02-04"><svg class="ws10-accordion-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+                        <polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/></svg>
+                        </div>
+                    </div>
+                <div class="accord-content" id="a11y-rule-02-04-content">
+                    <p>For example, don't jump from a h2 to a h4, skipping a h3 element. If heading levels are being skipped for a specific visual treatment, use CSS classes instead.</p>
+                    <a href="#dont-skip-heading-levels">Share link</a>
+                  </div>
+                </div>
+            </td>
+          </tr>
+          
+          <tr id="appearance">
+            <td colspan="2" class="heading">
+                <div class="space-150"></div>
+                <h3>Appearance</h3>
+                <span class="subheading">How your website app content looks in any given situation.</span>
+            </td>
+          </tr>
+          <tr id="check-that-good-proximity-between-content-is-maintained">
+            <td colspan="3" class="list-checkbox acc">
+                <div class="grid-container">
+                    <div class="grid_item_checkbox">
+                        <input type="checkbox" id="a11y-rule-03-01" name="r-proximity-between-content" data-ruledis="r-proximity-between-content" data-disenable='a11y-rule-03-01' value="checked" class="rel-check ws10-form-selection-control__input" />
+                        <label class="rule-description" id="a11y-rule-03-01" data-acc="a11y-rule-03-01-acc">Check that good proximity between content is maintained.</label>
+                    </div>
+                     <div class="grid_item_text">
+                        <input type="checkbox" data-dis="relevant" name="r-proximity-between-content" data-ruletog="r-proximity-between-content" data-target='a11y-rule-03-01' class="check-not-rel" value="not-relevant">
+                        <label for="dn" class="lbl">not relevant</label>
+                    </div>
+                    <div class="toggle-link" data-div-id="a11y-rule-03-01-content" data-label-id="a11y-rule-03-01-acc" tabindex="0" role="button" aria-pressed="false">
+                        <div class="accord-header grid_item_text-2" id="a11y-rule-03-01"><svg class="ws10-accordion-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+                        <polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/></svg>
+                        </div>
+                    </div>
+                <div class="accord-content" id="a11y-rule-03-01-content">
+                    <p>Use the straw test to ensure people who depend on screen zoom software can still easily discover all content.</p>
+                    <a href="#check-that-good-proximity-between-content-is-maintained">Share link</a>
+                    </div>
+                </div>
+            </td>
+          </tr>
+          <tr id="make-sure-color-isnt-the-only-way-information-is-conveyed">
+            <td colspan="3" class="list-checkbox acc">
+                <div class="grid-container">
+                    <div class="grid_item_checkbox">
+                        <input type="checkbox" id="a11y-rule-03-02" name="r-color-not-the-only-way" data-ruledis="r-color-not-the-only-way" data-disenable='a11y-rule-03-02' value="checked" class="rel-check ws10-form-selection-control__input" />
+                        <label class="rule-description" id="a11y-rule-03-02" data-acc="a11y-rule-03-02-acc">Make sure color isn't the only way information is conveyed.</label>
+                    </div>
+                     <div class="grid_item_text">
+                        <input type="checkbox" data-dis="relevant" name="r-color-not-the-only-way" data-ruletog="r-color-not-the-only-way" data-target='a11y-rule-03-02' class="check-not-rel" value="not-relevant">
+                        <label for="dn" class="lbl">not relevant</label>
+                    </div>
+                    <div class="toggle-link" data-div-id="a11y-rule-03-02-content" data-label-id="a11y-rule-03-02-acc" tabindex="0" role="button" aria-pressed="false">
+                        <div class="accord-header grid_item_text-2" id="a11y-rule-03-02"><svg class="ws10-accordion-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+                        <polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/></svg>
+                        </div>
+                    </div>
+                <div class="accord-content" id="a11y-rule-03-02-content">
+                    <p>Can you still see where links are among body content if everything is grayscale?</p>
+                    <a href="#make-sure-color-isnt-the-only-way-information-is-conveyed">Share link</a>
+                    </div>
+                </div>
+            </td>
+          </tr>
+          <tr id="make-sure-instructions-are-not-visual-or-audio-only">
+            <td colspan="3" class="list-checkbox acc acc-last">
+                <div class="grid-container">
+                    <div class="grid_item_checkbox">
+                        <input type="checkbox" id="a11y-rule-03-03" name="r-instructions-not-visual-only" data-ruledis="r-instructions-not-visual-only" data-disenable='a11y-rule-03-03' value="checked" class="rel-check ws10-form-selection-control__input" />
+                        <label class="rule-description" id="a11y-rule-03-03" data-acc="a11y-rule-03-03-acc">Make sure instructions are not visual or audio-only.</label>
+                    </div>
+                     <div class="grid_item_text">
+                        <input type="checkbox" data-dis="relevant" name="r-instructions-not-visual-only" data-ruletog="r-instructions-not-visual-only" data-target='a11y-rule-03-03' class="check-not-rel" value="not-relevant">
+                        <label for="dn" class="lbl">not relevant</label>
+                    </div>
+                    <div class="toggle-link" data-div-id="a11y-rule-03-03-content" data-label-id="a11y-rule-03-03-acc" tabindex="0" role="button" aria-pressed="false">
+                        <div class="accord-header grid_item_text-2" id="a11y-rule-03-03"><svg class="ws10-accordion-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+                        <polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/></svg>
+                        </div>
+                    </div>
+                <div class="accord-content" id="a11y-rule-03-03-content">
+                    <p>Use a combination of characteristics to write cues, particularly the actual names of sections and elements, rather than just descriptions like location (“on the right”) or audio (“after the tone”).</p>
+                    <a href="#make-sure-instructions-are-not-visual-or-audio-only">Share link</a>
+                  </div>
+                </div>
+            </td>
+          </tr>
+          <tr id="controls">
+            <td colspan="2" class="heading">
+                <div class="space-150"></div>
+                <h3>Controls</h3>
+                <span class="subheading">Controls are interactive elements such as links and buttons that let a person navigate to a destination or perform an action.</span>
+            </td>
+          </tr>
+          <tr id="ensure-that-links-are-recognizable-as-links">
+            <td colspan="3" class="list-checkbox acc">
+                <div class="grid-container">
+                    <div class="grid_item_checkbox">
+                        <input type="checkbox" id="a11y-rule-07-01" name="r-links-recognizable" data-ruledis="r-links-recognizable" data-disenable='a11y-rule-07-01' value="checked" class="rel-check ws10-form-selection-control__input" />
+                        <label class="rule-description" id="a11y-rule-07-01" data-acc="a11y-rule-07-01-acc">Ensure that links are recognizable as links.</label>
+                    </div>
+                     <div class="grid_item_text">
+                        <input type="checkbox" data-dis="relevant" name="r-links-recognizable" data-ruletog="r-links-recognizable" data-target='a11y-rule-07-01' class="check-not-rel" value="not-relevant">
+                        <label for="dn" class="lbl">not relevant</label>
+                    </div>
+                    <div class="toggle-link" data-div-id="a11y-rule-07-01-content" data-label-id="a11y-rule-07-01-acc" tabindex="0" role="button" aria-pressed="false">
+                        <div class="accord-header grid_item_text-2" id="a11y-rule-07-01"><svg class="ws10-accordion-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+                        <polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/></svg>
+                        </div>
+                    </div>
+                <div class="accord-content" id="a11y-rule-07-01-content">
+                    <p>Color alone is not sufficient to indicate the presence of a link. Use our link defined link styling in the <a href="https://www.vodafone.de/simplicity/pattern-library-ws10/?p=viewall-styles-text" target="_blank">Brix Pattern Library</a> (opens in new tab).</p>
+                    <a href="#ensure-that-links-are-recognizable-as-links">Share link</a>
+                    </div>
+                </div>
+            </td>
+          </tr>
+          <tr id="identify-links-that-open-in-a-new-tab-or-window">
+            <td colspan="3" class="list-checkbox acc acc-last">
+                <div class="grid-container">
+                    <div class="grid_item_checkbox">
+                        <input type="checkbox" id="a11y-rule-07-05" name="r-links-new-window" data-ruledis="r-links-new-window" data-disenable='a11y-rule-07-05' value="checked" class="rel-check ws10-form-selection-control__input" />
+                        <label class="rule-description" id="a11y-rule-07-05" data-acc="a11y-rule-07-05-acc">Identify links that open in a new tab or window.</label>
+                    </div>
+                     <div class="grid_item_text">
+                        <input type="checkbox" data-dis="relevant" name="r-links-new-window" data-ruletog="r-links-new-window" data-target='a11y-rule-07-05' class="check-not-rel" value="not-relevant">
+                        <label for="dn" class="lbl">not relevant</label>
+                    </div>
+                    <div class="toggle-link" data-div-id="a11y-rule-07-05-content" data-label-id="a11y-rule-07-05-acc" tabindex="0" role="button" aria-pressed="false">
+                        <div class="accord-header grid_item_text-2" id="a11y-rule-07-05"><svg class="ws10-accordion-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+                        <polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/></svg>
+                        </div>
+                    </div>
+                <div class="accord-content" id="a11y-rule-07-05-content">
+                    <p>Ideally, avoid links that open in a new tab or window. At the moment we don't have a specific icon. If possible mention it as text directly after the link. In some cases (i.e. suppliers) we lead our customer to a new tab. If a link does, ensure the link's behavior will be communicated in a way that is apparent to all users. Doing this will help people understand what will happen before activating the link. While this technique is technically not required for compliance, it is an often-cited area of frustration for many different kinds of assistive technology users.</p>
+                    <a href="#identify-links-that-open-in-a-new-tab-or-window">Share link</a>
+                    </div>
+                </div>
+            </td>
+          </tr>
+          <tr id="images">
+            <td colspan="2" class="heading">
+                <div class="space-150"></div>
+                <h3>Images</h3>
+                <span class="subheading">Images are a very common part of most websites. Help make sure they can be enjoyed by all.</span>
+            </td>
+          </tr>
+          <tr id="make-sure-that-decorative-images-use-null-alt-empty-attribute-values">
+            <td colspan="3" class="list-checkbox acc">
+                <div class="grid-container">
+                    <div class="grid_item_checkbox">
+                        <input type="checkbox" id="a11y-rule-09-01" name="r-alt-text-decorative-images-null" data-ruledis="r-alt-text-decorative-images-null" data-disenable='a11y-rule-09-01' value="checked" class="rel-check ws10-form-selection-control__input" />
+                        <label class="rule-description" id="a11y-rule-09-01" data-acc="a11y-rule-09-01-acc">Make sure that decorative images use null alt (empty) attribute values.</label>
+                    </div>
+                     <div class="grid_item_text">
+                        <input type="checkbox" data-dis="relevant" name="r-alt-text-decorative-images-null" data-ruletog="r-alt-text-decorative-images-null" data-target='a11y-rule-09-01' class="check-not-rel" value="not-relevant">
+                        <label for="dn" class="lbl">not relevant</label>
+                    </div>
+                    <div class="toggle-link" data-div-id="a11y-rule-09-01-content" data-label-id="a11y-rule-09-01-acc" tabindex="0" role="button" aria-pressed="false">
+                        <div class="accord-header grid_item_text-2" id="a11y-rule-09-01"><svg class="ws10-accordion-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+                        <polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/></svg>
+                        </div>
+                    </div>
+                <div class="accord-content" id="a11y-rule-09-01-content">
+                   <p>Here is a little help in making a decision:</p>
+                   <img src="https://www.vodafone.de/brix/img/general/accessibility/alttagflowchart-path.svg">
+                   <p>You will find an extended guideline in the Brix accessibility guideline <a href="https://www.vodafone.de/brix/docs/general/accessibility-alttags" target="_blank">How to use alt tags</a> (opens in a new tab)</p>
+                   <p>Please consider our <a href="https://confluence.wf-de.vodafone.com/display/BBSQ/Guidelines?preview=%2F156882812%2F156882814%2FCorporate+Language+Guideline_11-21.pdf" target="_blank">Corporate Language guidelines</a> (Confluence - opens in new tab) and get in contact with Corporate Language (CL) about the right communication</p>
+                  <p> <a href="#make-sure-that-decorative-images-use-null-alt-empty-attribute-values">Share link</a></p>
+
+            </div>
+                </div>
+            </td>
+          </tr>
+          <tr id="provide-a-text-alternative-for-icons-and-complex-images-such-as-charts-graphs-and-maps">
+            <td colspan="3" class="list-checkbox acc">
+                <div class="grid-container">
+                    <div class="grid_item_checkbox">
+                        <input type="checkbox" id="a11y-rule-09-02" name="r-alt-text-icons-complex-images" data-ruledis="r-alt-text-icons-complex-images" data-disenable='a11y-rule-09-02' value="checked" class="rel-check ws10-form-selection-control__input" />
+                        <label class="rule-description" id="a11y-rule-09-02" data-acc="a11y-rule-09-02-acc">Provide a text alternative for icons and complex images such as charts, graphs, and maps.</label>
+                    </div>
+                     <div class="grid_item_text">
+                        <input type="checkbox" data-dis="relevant" name="r-alt-text-icons-complex-images" data-ruletog="r-alt-text-icons-complex-images" data-target='a11y-rule-09-02' class="check-not-rel" value="not-relevant">
+                        <label for="dn" class="lbl">not relevant</label>
+                    </div>
+                    <div class="toggle-link" data-div-id="a11y-rule-09-02-content" data-label-id="a11y-rule-09-02-acc" tabindex="0" role="button" aria-pressed="false">
+                        <div class="accord-header grid_item_text-2" id="a11y-rule-09-02"><svg class="ws10-accordion-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+                        <polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/></svg>
+                        </div>
+                    </div>
+                <div class="accord-content" id="a11y-rule-09-02-content">
+                   <p>Is there a plain text which lists points on the map or sections of a flowchart? Describe all visible information. This includes graph axes, data points and labels, and the overall point the graphic is communicating.</p> 
+                   <p>Here is a little help in making a decision:</p>
+                   <img src="https://www.vodafone.de/brix/img/general/accessibility/alttagflowchart-path.svg">
+                   <p>Please consider our <a href="https://confluence.wf-de.vodafone.com/display/BBSQ/Guidelines?preview=%2F156882812%2F156882814%2FCorporate+Language+Guideline_11-21.pdf" target="_blank">Corporate Language guidelines</a> (Confluence - opens in new tab) and get in contact with Corporate Language (CL) about the right communication</p>
+                  <p> <a href="#provide-a-text-alternative-for-icons-and-complex-images-such-as-charts-graphs-and-maps">Share link</a></p>
+
+            </div>
+                </div>
+            </td>
+          </tr>
+          <tr id="for-images-containing-text-make-sure-the-alt-description-includes-the-images-text">
+            <td colspan="3" class="list-checkbox acc acc-last">
+                <div class="grid-container">
+                        <div class="grid_item_checkbox">
+                        <input type="checkbox" id="a11y-rule-09-03" name="r-alt-text-images-with-text" data-ruledis="r-alt-text-images-with-text" data-disenable='a11y-rule-09-03' value="checked" class="rel-check ws10-form-selection-control__input" />
+                        <label class="rule-description" id="a11y-rule-09-03" data-acc="a11y-rule-09-03-acc">For images containing text, make sure the alt description includes the image's text.</label>
+                    </div>
+                     <div class="grid_item_text">
+                        <input type="checkbox" data-dis="relevant" name="r-alt-text-images-with-text" data-ruletog="r-alt-text-images-with-text" data-target='a11y-rule-09-03' class="check-not-rel" value="not-relevant">
+                        <label for="dn" class="lbl">not relevant</label>
+                    </div>
+                    <div class="toggle-link" data-div-id="a11y-rule-09-03-content" data-label-id="a11y-rule-09-03-acc" tabindex="0" role="button" aria-pressed="false">
+                        <div class="accord-header grid_item_text-2" id="a11y-rule-09-03"><svg class="ws10-accordion-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+                        <polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/></svg>
+                        </div>
+                    </div>
+                <div class="accord-content" id="a11y-rule-09-03-content">
+                    <p>For example, if the image contains a special offer: </p>
+                    <pre><code>&lt;img src="mobile-kip-10rabatt.png" alt="Mobilfunk + Festnetz monatlich -10€ Rabatt" /&gt;</code></pre>
+                    <img src="img/mobile-kip-10rabatt.png" alt="Mobilfunk + Festnetz monatlich -10€ Rabatt" width="50%" />
+                    <p>Please consider our <a href="https://confluence.wf-de.vodafone.com/display/BBSQ/Guidelines?preview=%2F156882812%2F156882814%2FCorporate+Language+Guideline_11-21.pdf" target="_blank">Corporate Language guidelines</a> (Confluence - opens in new tab) and get in contact with Corporate Language (CL) about the right communication</p>
+                    <p><a href="#for-images-containing-text-make-sure-the-alt-description-includes-the-images-text">Share link</a></p>
+                    </div>
+                </div>
+            </td>
+          </tr>
+          <tr id="lists">
+            <td colspan="2" class="heading">
+                <div class="space-150"></div>
+                <h3>Lists</h3>
+                <span class="subheading">Identifies a collection of related items, if they are sequential, and how many items are present in the list grouping.</span>
+            </td>
+          </tr>
+          <tr id="use-list-elements-ol-ul-and-dl-elements-for-list-content">
+            <td colspan="3" class="list-checkbox acc acc-last">
+                <div class="grid-container">
+                    <div class="grid_item_checkbox">
+                        <input type="checkbox" id="a11y-rule-11-01" name="r-semantic-lists" data-ruledis="r-semantic-lists" data-disenable='a11y-rule-11-01' value="checked" class="rel-check ws10-form-selection-control__input" />
+                        <label class="rule-description" id="a11y-rule-11-01" data-acc="a11y-rule-11-01-acc">Use list elements (<code>ol</code>, <code>ul</code>, and <code>dl</code> elements) for list content.</label>
+                    </div>
+                     <div class="grid_item_text">
+                        <input type="checkbox" data-dis="relevant" name="r-semantic-lists" data-ruletog="r-semantic-lists" data-target='a11y-rule-11-01' class="check-not-rel" value="not-relevant">
+                        <label for="dn" class="lbl">not relevant</label>
+                    </div>
+                    <div class="toggle-link" data-div-id="a11y-rule-11-01-content" data-label-id="a11y-rule-11-01-acc" tabindex="0" role="button" aria-pressed="false">
+                        <div class="accord-header grid_item_text-2" id="a11y-rule-11-01"><svg class="ws10-accordion-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+                        <polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/></svg>
+                        </div>
+                    </div>
+                <div class="accord-content" id="a11y-rule-11-01-content">
+                    <p>Use semantic lists. When you have a list of several similar elements like cards or bullets, make sure they’re always contained in a list, either a semantic unordered list <code>&lt;ul&gt;</code> or an ordered list <code>&lt;ol&gt;</code>. When screen readers come to a semantic list, they’ll notify the user that there’s a list and how many items it has.</p>
+                    <a href="#use-list-elements-ol-ul-and-dl-elements-for-list-content">Share link</a>
+                    </div>
+                </div>
+            </td>
+          </tr>
+          <tr id="media">
+            <td colspan="2" class="heading">
+                <div class="space-150"></div>
+                <h3>Media</h3>
+                <span class="subheading">Media includes content such as pre-recorded and live audio and video.</span>
+            </td>
+          </tr>
+          <tr id="make-sure-that-media-does-not-autoplay">
+            <td colspan="3" class="list-checkbox acc acc-last">
+                <div class="grid-container">
+                    <div class="grid_item_checkbox">
+                        <input type="checkbox" id="a11y-rule-12-01" name="r-media-not-autoplay" data-ruledis="r-media-not-autoplay" data-disenable='a11y-rule-12-01' value="checked" class="rel-check ws10-form-selection-control__input" />
+                        <label class="rule-description" id="a11y-rule-12-01" data-acc="a11y-rule-12-01-acc">Make sure that media does not autoplay.</label>
+                    </div>
+                     <div class="grid_item_text">
+                        <input type="checkbox" data-dis="relevant" name="r-media-not-autoplay" data-ruletog="r-media-not-autoplay" data-target='a11y-rule-12-01' class="check-not-rel" value="not-relevant">
+                        <label for="dn" class="lbl">not relevant</label>
+                    </div>
+                    <div class="toggle-link" data-div-id="a11y-rule-12-01-content" data-label-id="a11y-rule-12-01-acc" tabindex="0" role="button" aria-pressed="false">
+                        <div class="accord-header grid_item_text-2" id="a11y-rule-12-01"><svg class="ws10-accordion-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+                        <polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/></svg>
+                        </div>
+                    </div>
+                <div class="accord-content" id="a11y-rule-12-01-content">
+                    <p>Unexpected video and audio can be distracting and disruptive, especially for certain kinds of cognitive disability such as ADHD. Certain kinds of autoplaying video and animation can be a trigger for vestibular and seizure disorders.</p>
+                    <a href="#make-sure-that-media-does-not-autoplay">Share link</a>
+                    </div>
+                </div>
+            </td>
+          </tr>
+          <tr id="Tables">
+            <td colspan="2" class="heading">
+                <div class="space-150"></div>
+                <h3>Tables</h3>
+                <span class="subheading">Tables are a structured set of data that help people understand the relationships between different types of information.</span>
+            </td>
+          </tr>
+          <tr id="use-the-table-element-to-describe-tabular-data">
+            <td colspan="3" class="list-checkbox acc">
+                <div class="grid-container">
+                    <div class="grid_item_checkbox">
+                        <input type="checkbox" id="a11y-rule-13-01" name="r-table-element" data-ruledis="r-table-element" data-disenable='a11y-rule-13-01' value="checked" class="rel-check ws10-form-selection-control__input" />
+                        <label class="rule-description" id="a11y-rule-13-01" data-acc="a11y-rule-13-01-acc">Use the <code>table</code> element to describe tabular data.</label>
+                    </div>
+                     <div class="grid_item_text">
+                        <input type="checkbox" data-dis="relevant" name="r-table-element" data-ruletog="r-table-element" data-target='a11y-rule-13-01' class="check-not-rel" value="not-relevant">
+                        <label for="dn" class="lbl">not relevant</label>
+                    </div>
+                    <div class="toggle-link" data-div-id="a11y-rule-13-01-content" data-label-id="a11y-rule-13-01-acc" tabindex="0" role="button" aria-pressed="false">
+                        <div class="accord-header grid_item_text-2" id="a11y-rule-13-01"><svg class="ws10-accordion-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+                        <polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/></svg>
+                        </div>
+                    </div>
+                <div class="accord-content" id="a11y-rule-13-01-content">
+                    <p>Do you need to display data in rows and columns? Use the table element.</p>
+                    <a href="#use-the-table-element-to-describe-tabular-data">Share link</a>
+                    </div>
+                </div>
+            </td>
+          </tr>
+          <tr id="use-the-th-element-for-table-headers-with-appropriate-scope-attributes">
+            <td colspan="3" class="list-checkbox acc">
+                <div class="grid-container">
+                    <div class="grid_item_checkbox">
+                        <input type="checkbox" id="a11y-rule-13-02" name="r-table-scope-attribute" data-ruledis="r-table-scope-attribute" data-disenable='a11y-rule-13-02' value="checked" class="rel-check ws10-form-selection-control__input" />
+                        <label class="rule-description" id="a11y-rule-13-02" data-acc="a11y-rule-13-02-acc">Use the <code>th</code> element for table headers (with appropriate <code>scope</code> attributes).</label>
+                    </div>
+                     <div class="grid_item_text">
+                        <input type="checkbox" data-dis="relevant" name="r-table-scope-attribute" data-ruletog="r-table-scope-attribute" data-target='a11y-rule-13-02' class="check-not-rel" value="not-relevant">
+                        <label for="dn" class="lbl">not relevant</label>
+                    </div>
+                    <div class="toggle-link" data-div-id="a11y-rule-13-02-content" data-label-id="a11y-rule-13-02-acc" tabindex="0" role="button" aria-pressed="false">
+                        <div class="accord-header grid_item_text-2" id="a11y-rule-13-02"><svg class="ws10-accordion-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+                        <polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/></svg>
+                        </div>
+                    </div>
+                <div class="accord-content" id="a11y-rule-13-02-content">
+                    <p>Depending on how complex your table is (learn more about the structure of a table in the <a href="https://www.w3.org/WAI/tutorials/tables/" target="_blank">tables tutorial</a>(new tab)), you may also consider using <code>scope="col"</code> for column headers, and <code>scope="row"</code> for row headers. Many different kinds of assistive technology still use the scope attribute to help them understand and describe the structure of a table.</p>
+                    <a href="#use-the-th-element-for-table-headers-with-appropriate-scope-attributes">Share link</a>
+                    </div>
+                </div>
+            </td>
+          </tr>
+          <tr id="use-the-caption-element-to-provide-a-title-for-the-table">
+            <td colspan="3" class="list-checkbox acc acc-last">
+                <div class="grid-container">
+                    <div class="grid_item_checkbox">
+                        <input type="checkbox" id="a11y-rule-13-03" name="r-table-caption-element" data-ruledis="r-table-caption-element" data-disenable='a11y-rule-13-03' value="checked" class="rel-check ws10-form-selection-control__input" />
+                        <label class="rule-description" id="a11y-rule-13-03" data-acc="a11y-rule-13-03-acc">Use the <code>caption</code> element to provide a title for the table.</label>
+                    </div>
+                     <div class="grid_item_text">
+                        <input type="checkbox" data-dis="relevant" name="r-table-caption-element" data-ruletog="r-table-caption-element" data-target='a11y-rule-13-03' class="check-not-rel" value="not-relevant">
+                        <label for="dn" class="lbl">not relevant</label>
+                    </div>
+                    <div class="toggle-link" data-div-id="a11y-rule-13-03-content" data-label-id="a11y-rule-13-03-acc" tabindex="0" role="button" aria-pressed="false">
+                        <div class="accord-header grid_item_text-2" id="a11y-rule-13-03"><svg class="ws10-accordion-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+                        <polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/></svg>
+                        </div>
+                    </div>
+                <div class="accord-content" id="a11y-rule-13-03-content">
+                    <p>The table's caption should describe what kind of information the table contains.</p>
+                    <a href="#use-the-caption-element-to-provide-a-title-for-the-table">Share link</a>
+                    </div>
+                </div>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+              <td colspan="3">
+              </td>
+          </tr>
+      </tfoot>
+      </table>
+      <div class="count-checkboxes-wrapper" style="font-size: 18px;">
+        <span id="count-checked-checkboxes" class="digit">0</span> of
+        <span id="count-total-checkboxes" class="digit">0</span> checked | 
+         <span id="count-disabled-checkboxes">0</span> not relevant
+    <div class="space-150"></div>
+        <div class="progress">
+          <span class="progress-bar bg-success" id="CheckProgress" role="progressbar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></span>
+        </div>
+        <span id="percentage-checked-checkboxes" class="percentage-checked-checkboxes">0</span> % conformance <sup>1</sup><span class="progress100p">&#127881;</span>
+       <!-- <button class="contact-form__button" type="submit">Save as JSON</button> --> 
+        </div>
+    </div>
+  </form>
+  <table>
+  <tr>
+    <td>
+      <div id="disclaimer">
+        <span>Contact: <a href="mailto:jonas.fuchs@vodafone.com?subject=Accessibility%20Audit%20Checklist%20-%20Design">Jonas Fuchs</a> | COE UX | Vodafone GmbH | version 1.2.1</span>
+       <!--  <div class="results">
+            <h2 class="results__heading">Saved Data</h2>
+            <pre class="results__display-wrapper"><code id="JsonCompiled" class="results__display"></code></pre>
+          </div> //-->
+        </div>
+    </td>
+  </tr>
+</table>
+
+<h4>1 Does the checklist guarantee my site is accessible?</h4>
+<p>Addressing the tasks in this checklist will make your site more accessible, but they don’t guarantee that your site will be fully accessible for all. This checklist is derived from WCAG 2.1 AA, but isn’t all-encompassing of those guidelines.
+</p>
+</div>
+<script src="js/a11y-checklist.js"></script>
+</body>
+</html>
