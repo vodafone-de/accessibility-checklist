@@ -405,16 +405,3 @@ $(document).keyup(function(e) {
       
     });
 
-
-    if ($('#a11y-checklist h3').length > 0) {
-      $('#a11y-checklist').prepend('<nav class="toc"><h4 class="title">Table of Contents</h4><ul></ul></nav>');
-    }
-    
-    $('#a11y-checklist').find('h1').each(function() {
-      var $item = $(this);
-      var $id = $(this).attr('id');
-      var li = $('<li/>');
-      var a = $('<a/>', {text: $item.text(), href: '#' + $id, title: $item.text()});
-      a.appendTo(li);
-      $('#a11y-checklist .toc ul').append(li);
-    });
