@@ -33,8 +33,24 @@ var updateStatus = function(){
         * 100
       )
     );
+    $('#result-percentage').text(
+      Math.round(
+        numberOfCheckedRelevantCheckboxes / 
+        numberOfRelevantCheckboxes 
+        * 100
+      )
+    );
+    $('#result-percentage-rest').text(
+      Math.round(
+        (-numberOfCheckedRelevantCheckboxes 
+         / numberOfRelevantCheckboxes 
+        * 100) + 100
+      )
+    );
     $('#count-disabled-checkboxes').text(numberOfUnrelevantCheckboxes);
     $('.progress-bar').css('width', Math.round(numberOfCheckedRelevantCheckboxes / numberOfRelevantCheckboxes * 100)+'%').attr('aria-valuenow', numberOfCheckedRelevantCheckboxes);
+    $('.progress-bar-result').css('width', Math.round(numberOfCheckedRelevantCheckboxes / numberOfRelevantCheckboxes * 100)+'%').attr('aria-valuenow', numberOfCheckedRelevantCheckboxes);
+
 
     if ($('.progress-bar').prop("style")["width"] !== '100%') { 
       
@@ -43,6 +59,8 @@ var updateStatus = function(){
       
     }
 
+
+    
 };
 
 
@@ -52,6 +70,7 @@ var $checkboxes = $('input:checkbox');
 
       if('relevant' !== $(this).attr('data-dis')){
         numberOfRelevantCheckboxes += 1;
+        
       }
     });
 
@@ -107,7 +126,7 @@ var $checkboxes = $('input:checkbox');
 
           var ruletog = $(this).data('ruletog');
           $("[data-ruledis='" + ruletog + "']").attr("disabled", "disabled");
-          
+         
         }
 
         // ist nicht relavant und nicht gecheckt (Dann weißt Du auch, dass die mal gecheckt war)
@@ -405,3 +424,53 @@ $(document).keyup(function(e) {
       
     });
 
+
+
+    $(".result").on("click", function() {
+
+      var rule = $('[name="a11y-rule"]');
+
+      var chtml = "<h4>Passed</h4><ul class='checkmark'>";
+      var uchtml = "<h4>Failed</h4><ul class='fail'>";
+      var dchtml = "<h4>Disabled</h4><ul class='fail'>";
+
+      $.each(rule, function() {
+        var $this = $(this);
+
+        if($this.is(":checked")) {
+          $("#resultchecked").show();
+          chtml += "<li>"+$this.val()+" </li>";
+        $("#resultchecked").html(chtml);
+        }
+        
+        else if (!$this.is(":checked"))  {
+          $("#resultchecked").hide();
+          uchtml += "<li class='error-circle'><span class='ect'>" + $this.val() + " </span></li>";
+          $("#resultunchecked").html(uchtml);
+  
+        }
+
+        else if ($this.prop('disabled'))  {
+          
+          dchtml += "<li class='error-circle'><span class='ect'>" + $this.val() + " </span></li>";
+          $("#resultdchecked").html(dchtml);
+  
+        }
+        
+
+
+      });	
+
+      chtml += "</ul>";
+
+
+    });
+
+
+
+
+
+  
+
+
+   
