@@ -426,42 +426,40 @@ $(document).keyup(function(e) {
 
 
 
-    $(".result").on("click", function() {
+    $(".result").click(function() {
 
-      var rule = $('[name="a11y-rule"]');
-
+      var rule = $('input[name="a11y-rule"]');
       var chtml = "<h4>Passed</h4><ul class='checkmark'>";
       var uchtml = "<h4>Failed</h4><ul class='fail'>";
-      var dchtml = "<h4>Disabled</h4><ul class='fail'>";
+      var dischtml = "<h4>Not relevant</h4><ul class='fail'>";
 
       $.each(rule, function() {
         var $this = $(this);
 
-        if($this.is(":checked")) {
-          $("#resultchecked").show();
+        if ($this.is(":checked") && !$($this).prop('disabled')) {
+          
           chtml += "<li>"+$this.val()+" </li>";
         $("#resultchecked").html(chtml);
+        
         }
         
-        else if (!$this.is(":checked"))  {
-          $("#resultchecked").hide();
+        if (!$this.is(":checked") && !$($this).prop('disabled')) {
+         
           uchtml += "<li class='error-circle'><span class='ect'>" + $this.val() + " </span></li>";
           $("#resultunchecked").html(uchtml);
-  
-        }
-
-        else if ($this.prop('disabled'))  {
           
-          dchtml += "<li class='error-circle'><span class='ect'>" + $this.val() + " </span></li>";
-          $("#resultdchecked").html(dchtml);
-  
         }
-        
+
+        if (!$this.is(":checked") && $($this).prop('disabled')) {
+        dischtml += "<li class='disable-circle'><span class='ect'>" + $this.val() + " </span></li>";
+          $("#rulesdisabled").html(dischtml);
+        }
+  
+});
 
 
-      });	
 
-      chtml += "</ul>";
+    chtml += "</ul>";
 
 
     });
@@ -469,8 +467,6 @@ $(document).keyup(function(e) {
 
 
 
-
-  
 
 
    
