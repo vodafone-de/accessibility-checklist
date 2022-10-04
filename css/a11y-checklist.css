@@ -704,7 +704,7 @@ cursor: pointer;
 
     .percentage-checked-checkboxes-result {
       position: absolute;
-      margin-left: 16px;
+      margin-left: 32px;
       font-weight: bold;
       font-size: 16px;
     }
@@ -718,7 +718,7 @@ cursor: pointer;
 
     .percentage-checked-checkboxes-result-rest {
       position: absolute;
-      right: 54px;
+      right: 70px;
       font-weight: bold;
       font-size: 16px;
     }
@@ -844,7 +844,7 @@ li.disable-circle::after,li.disable-circle::before {
 .error-circle-progress {
   width: 20px;
   position: absolute;
-  right: 95px;
+  right: 45px;
   height: 20px;
   background: transparent;
   border-radius: 50%;
@@ -863,4 +863,45 @@ li.disable-circle::after,li.disable-circle::before {
 .error-circle-progress::before{
     
     transform: rotate(45deg);
+}
+
+
+.checkmark-progress {
+  font-size: 16px;
+  list-style-type: none;
+  margin-bottom: 8px;
+  padding: 0.25em 0 0 2.5em;
+  position: relative;
+}
+
+
+.checkmark-progress :before {
+  content: " ";
+  display: block;
+  border: solid 10px #008A00;
+  border-radius: 10px;
+  height: 0;
+  width: 0;
+  position: absolute;
+  left: 0.5em;
+  top: 48%;
+  margin-top: -0.5em;
+}
+
+
+.checkmark-progress:after {
+  content: " ";
+  display: block;
+  width: 6px;
+  height: 11px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  position: absolute;
+  left: 15px;
+  top: 40%;
+  margin-top: -0.2em;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
