@@ -152,9 +152,9 @@ var $checkboxes = $('input:checkbox');
     $(".result").click(function() {
 
       var rule = $('input[name="a11y-rule"]');
-      var chtml = "<h4>Considered</h4><ul class='checkmark'>";
-      var uchtml = "<h4>Needs to be improved</h4><ul class='fail'>";
-      var dischtml = "<h4>Not relevant</h4><ul class='fail'>";
+      var chtml = "<h4>Considered (" + numberOfCheckedRelevantCheckboxes + ")</h4><ul class='checkmark'>";
+      var uchtml = "<h4>Needs to be improved (" + (numberOfRelevantCheckboxes-numberOfCheckedRelevantCheckboxes) + ")</h4><ul class='fail'>";
+      var dischtml = "<h4>Not relevant (" + numberOfUnrelevantCheckboxes + ")</h4><ul class='fail'>";
     
       $.each(rule, function() {
         var $this = $(this);
@@ -184,8 +184,9 @@ var $checkboxes = $('input:checkbox');
     
     chtml += "</ul>";
     
+
     
-     $("#resultchecked").html(chtml);
+    $("#resultchecked").html(chtml);
      $("#resultunchecked").html(uchtml);
      $("#rulesdisabled").html(dischtml);
     
