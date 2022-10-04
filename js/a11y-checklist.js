@@ -151,6 +151,8 @@ var $checkboxes = $('input:checkbox');
 
     $(".result").click(function() {
 
+      $("#overlay").fadeIn();　
+
       var rule = $('input[name="a11y-rule"]');
       var chtml = "<h4>Considered (" + numberOfCheckedRelevantCheckboxes + ")</h4><ul class='checkmark'>";
       var uchtml = "<h4>Needs to be improved (" + (numberOfRelevantCheckboxes-numberOfCheckedRelevantCheckboxes) + ")</h4><ul class='fail'>";
@@ -194,7 +196,9 @@ var $checkboxes = $('input:checkbox');
     });
     
     
-
+    $(".close").click(function() {
+      $("#overlay").fadeOut();
+    });
  
 
 var monthNames = [ "January", "February", "March", "April", "May", "June",

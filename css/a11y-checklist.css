@@ -905,3 +905,26 @@ li.disable-circle::after,li.disable-circle::before {
   -o-transform: rotate(45deg);
   transform: rotate(45deg);
 }
+
+
+#overlay{
+  position: fixed;
+  top: 0;
+  z-index: 100;
+  width: 100vw;
+  height:100vh;
+  display: none;
+  background: rgba(0,0,0,0.6);
+}
+.flex{
+  width: 100%;
+  height:100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+.overlay-inner{
+  padding:10px 60px;
+  background-color:#FFF;
+  text-align:center;
+}
