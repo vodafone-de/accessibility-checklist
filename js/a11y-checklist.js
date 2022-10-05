@@ -2,7 +2,7 @@ const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-schem
 $(function() {
 if (prefersDark) {
   $('body').addClass('dark');
-  $('.dark-mode-switcher').text('ON');
+  $('.dark-mode-switcher').text('Dark mode ON');
 }
 $('.dark-mode-switcher').on('click', function(e) {
   $('body').toggleClass('dark');
