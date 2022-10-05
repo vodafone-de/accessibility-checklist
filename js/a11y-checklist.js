@@ -8,9 +8,9 @@ $('.dark-mode-switcher').on('click', function(e) {
   $('body').toggleClass('dark');
 
 if ($('body').hasClass('dark')) {
-    $('.dark-mode-switcher').text('ON'); }
+    $('.dark-mode-switcher').text('Dark mode ON'); }
     else {
-        $('.dark-mode-switcher').text('OFF');
+        $('.dark-mode-switcher').text('Dark mode OFF');
     }
   e.preventDefault();
 });
@@ -192,6 +192,7 @@ var $checkboxes = $('input:checkbox');
      $("#resultunchecked").html(uchtml);
      $("#rulesdisabled").html(dischtml);
     
+     return false;
     
     });
     
@@ -224,7 +225,7 @@ $('#Date').html(newDate.getDate() + ' ' + monthNames[newDate.getMonth()] + ' ' +
  if(key == 13)  // the enter key code
   {
     var linkId = $(this).attr('data-div-id');
-   var linkId2 = $(this).attr('data-label-id')
+    var linkId2 = $(this).attr('data-label-id')
     $('#' + linkId).slideToggle();
     $(this).toggleClass("ws10-accordion-item__checked");
     $(".rule-description" + "[data-acc='" + linkId2 + "']").toggleClass("rule-description-highlight");
@@ -261,7 +262,7 @@ $('.dropbtn').keypress(function (e) {
             $(".ws10-accordion-item__chevron--drop").removeClass("ws10-accordion-item__chevron--drop-key");
         }
     }
-
+    return false; 
 });
 
 
