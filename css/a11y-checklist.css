@@ -973,7 +973,7 @@ li.disable-circle::after,li.disable-circle::before {
 
 .overlay_container {
   position: absolute;
-  overflow: hidden;
+  overflow: scroll;
   z-index: 2;
   transition: transform 0.5s cubic-bezier(0.47, 0, 0.745, 0.715);
   transform: translateX(0) translateY(0);

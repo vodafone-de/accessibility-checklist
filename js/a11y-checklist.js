@@ -151,7 +151,10 @@ var $checkboxes = $('input:checkbox');
 
     $(".result").click(function() {
 
-      $("#overlay").fadeIn();　
+      $("#overlay").fadeIn();
+      $(".overlay_container").css({top:1000,position:'absolute'}).animate({top: '50%'}, 800, function() {
+          //callback
+      });
 
       var rule = $('input[name="a11y-rule"]');
       var chtml = "<h4>Considered (" + numberOfCheckedRelevantCheckboxes + ")</h4><ul class='checkmark'>";
@@ -199,6 +202,9 @@ var $checkboxes = $('input:checkbox');
     
     $(".close").click(function() {
       $("#overlay").fadeOut();
+      $(".overlay_container").css({top:'50%',position:'absolute'}).animate({top: 1000}, 800, function() {
+          //callback
+      });
     });
  
 
