@@ -978,7 +978,6 @@ li.disable-circle::after,li.disable-circle::before {
   transition: transform 0.5s cubic-bezier(0.47, 0, 0.745, 0.715);
   transform: translateX(0) translateY(0);
   border-radius: 6px;
-  background-color:#FFF;
   height: auto;
   transform: translateX(-50%) translateY(-50%);
   top: 50%;
