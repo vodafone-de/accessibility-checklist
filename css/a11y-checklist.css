@@ -789,7 +789,7 @@ ul.checkmark {
 
 
 ul.checkmark li {
-  font-size: 16px;
+  font-size: 18px;
   list-style-type: none;
   margin-bottom: 12px;
   padding: 0.25em 0 0 2.5em;
@@ -819,8 +819,8 @@ ul.checkmark li:after {
   border: solid white;
   border-width: 0 2px 2px 0;
   position: absolute;
-  left: 15px;
-  top: 40%;
+  left: 16px;
+  top: 38%;
   margin-top: -0.2em;
   -webkit-transform: rotate(45deg);
   -moz-transform: rotate(45deg);
@@ -866,7 +866,7 @@ li.error-circle::before{
 }
 
 ul.fail li {
-  font-size: 16px;
+  font-size: 18px;
   list-style-type: none;
   position: relative;
   margin-bottom: 12px;
@@ -978,14 +978,78 @@ li.disable-circle::after,li.disable-circle::before {
   transition: transform 0.5s cubic-bezier(0.47, 0, 0.745, 0.715);
   transform: translateX(0) translateY(0);
   border-radius: 6px;
-  height: auto;
   transform: translateX(-50%) translateY(-50%);
   top: 50%;
   left: 50%;
   width: 900px;
+  min-height: 104px;
+  max-height: 90vh;
 }
 
 .overlay-inner{
 
 
+
+}
+
+
+.ws10-overlay__close {
+  position: absolute;
+  top: 16px;
+  right: 32px;
+  z-index: 1;
+}
+
+
+.ws10-button-icon-only--tertiary.ws10-button-icon-only--floating:not(:hover):not(:active):not(:focus) {
+  background: #fff;
+}
+.ws10-button-icon-only--floating {
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgb(0 0 0 / 20%);
+}
+
+.ws10-button-icon-only--standard {
+  width: 48px;
+  height: 48px;
+}
+.ws10-button-icon-only--tertiary {
+  background: transparent;
+  border: 2px solid #0d0d0d;
+}
+.ws10-button-icon-only {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ws10-button-icon-only--tertiary .ws10-button-icon-only__icon {
+  stroke: #0d0d0d;
+}
+
+.ws10-button-icon-only__icon {
+  width: 32px;
+  height: 32px;
+}
+
+.ws10-button-icon-only--tertiary:hover, .ws10-button-icon-only--tertiary:focus {
+  background: #313131;
+  cursor: pointer;
+}
+
+.ws10-button-icon-only--tertiary:hover .ws10-button-icon-only__icon, .ws10-button-icon-only--tertiary:focus .ws10-button-icon-only__icon {
+  stroke: #fff;
+}
+
+
+.no-mouse {
+
+  pointer-events: none;
+
+}
+
+.ws10-no-scroll {
+  position: fixed;
+  overflow: hidden;
+  width: 100%;
 }

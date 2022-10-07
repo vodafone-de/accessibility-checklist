@@ -155,6 +155,15 @@ var $checkboxes = $('input:checkbox');
       $(".overlay_container").css({top:1000,position:'absolute'}).animate({top: '50%'}, 800, function() {
           //callback
       });
+      
+      $('main').attr('aria-hidden', 'true').attr("tabindex", -1).addClass('ws10-no-scroll');
+      $('button').attr("tabindex", -1);
+      $('a').attr("tabindex", -1);
+      $('input').attr("tabindex", -1);
+      $('.toggle-link').attr("tabindex", -1);
+      $('.close').attr("tabindex", 1);
+      $('#save').attr("tabindex", 1);
+
 
       var rule = $('input[name="a11y-rule"]');
       var chtml = "<h4>Considered (" + numberOfCheckedRelevantCheckboxes + ")</h4><ul class='checkmark'>";
@@ -205,6 +214,14 @@ var $checkboxes = $('input:checkbox');
       $(".overlay_container").css({top:'50%',position:'absolute'}).animate({top: 1000}, 800, function() {
           //callback
       });
+      $('main').removeAttr('aria-hidden', 'true').removeClass('ws10-no-scroll');
+      $('button').removeAttr("tabindex", -1);
+      $('a').removeAttr("tabindex", -1);
+      $('input').removeAttr("tabindex", -1);
+      $('.toggle-link').removeAttr("tabindex", -1);
+      $('.close').removeAttr("tabindex", 1);
+      $('#save').removeAttr("tabindex", 1);
+      
     });
  
 
@@ -280,6 +297,12 @@ $(document).keyup(function(e) {
     $(".dropbtn").removeClass("dropbtn-key");
     $(".ws10-accordion-item__chevron--drop").removeClass("ws10-accordion-item__chevron--drop-key");
 
+    $("#overlay").fadeOut();
+      $(".overlay_container").css({top:'50%',position:'absolute'}).animate({top: 1000}, 800, function() {
+          //callback
+      });
+      $('main').removeAttr('aria-hidden', 'true').removeClass('ws10-no-scroll');
+    
 
   } 
 });
@@ -317,11 +340,10 @@ $(document).keyup(function(e) {
     });
 
 
+    $("#save").click(function () {
 
-
-
-
-
-
-
-   
+      $('<a/>').attr({
+            download: 'export.html', 
+            href: "data:text/html," + $('#export').html() 
+      })[0].click()
+  });
