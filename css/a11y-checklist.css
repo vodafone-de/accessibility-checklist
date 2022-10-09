@@ -768,10 +768,10 @@ cursor: pointer;
 
 
     .percentage-checked-checkboxes-result-rest {
-      position: absolute;
-      right: 70px;
+      color: #ffffff;
       font-weight: bold;
       font-size: 16px;
+      align-self: center;
     }
 
     .percentage-checked-checkboxes-result-rest:after {
