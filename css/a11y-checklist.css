@@ -772,6 +772,7 @@ cursor: pointer;
       font-weight: bold;
       font-size: 16px;
       align-self: center;
+      margin-left: 32px;
     }
 
     .percentage-checked-checkboxes-result-rest:after {
