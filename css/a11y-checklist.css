@@ -896,7 +896,7 @@ li.disable-circle::after,li.disable-circle::before {
   width: 20px;
   background: transparent;
   border-radius: 50%;
-  margin-left: 32px;
+  margin-left: 24px;
     margin-top: 6px;
 }
 .error-circle-progress::after,.error-circle-progress::before {

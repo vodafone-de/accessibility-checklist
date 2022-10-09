@@ -54,10 +54,14 @@ var updateStatus = function(){
     $('.progress-bar-result').css('width', Math.round(numberOfCheckedRelevantCheckboxes / numberOfRelevantCheckboxes * 100)+'%').attr('aria-valuenow', numberOfCheckedRelevantCheckboxes);
 
 
-    if ($('.progress-bar').prop("style")["width"] !== '100%') { 
+    if ($('.progress-bar-result').prop("style")["width"] == '0%') { 
+
+      $('#result-percentage').hide();
       
     }
     else {
+
+      $('#result-percentage').show();
       
     }
     
