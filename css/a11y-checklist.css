@@ -893,11 +893,11 @@ li.disable-circle::after,li.disable-circle::before {
 }
 
 .error-circle-progress {
-  width: 20px;
+  width: 14px;
   background: transparent;
   border-radius: 50%;
   margin-left: 24px;
-    margin-top: 6px;
+  margin-top: 7px;
 }
 .error-circle-progress::after,.error-circle-progress::before {
     position: absolute;
