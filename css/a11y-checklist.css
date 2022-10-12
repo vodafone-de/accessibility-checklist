@@ -1058,3 +1058,24 @@ li.disable-circle::after,li.disable-circle::before {
   overflow: hidden;
   width: 100%;
 }
+
+
+
+@media only screen and (max-width: 600px) {
+  .ws10-no-scroll {
+    position:initial;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  #content-wrapper {
+    margin: auto;
+    width: 100%;
+    /* min-width: 800px; */
+    /* max-width: 1050px; */
+    padding-top: 32px;
+}
+
+
+
+}
