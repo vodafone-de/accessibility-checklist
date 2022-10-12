@@ -708,6 +708,13 @@ cursor: pointer;
 
     }
 
+
+    .hide-report-text {
+
+      display: none;
+
+    }
+
     .show {
 
       display: block;
@@ -729,6 +736,7 @@ cursor: pointer;
     background-color: #EA1A1A;
     border-radius: 0.25rem;
     margin-bottom: 4px;
+    width: 700px;
     }
     
     .bg-success-result {
@@ -792,7 +800,7 @@ ul.checkmark li {
   font-size: 18px;
   list-style-type: none;
   margin-bottom: 12px;
-  padding: 0.25em 0 0 2.5em;
+  padding: 0.25em 0 0 2.2em;
   position: relative;
 }
 

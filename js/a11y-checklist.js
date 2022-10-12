@@ -344,10 +344,20 @@ $(document).keyup(function(e) {
     });
 
 
-    $("#save").click(function () {
 
-      $('<a/>').attr({
-            download: 'export.html', 
-            href: "data:text/html," + $('#export').html() 
-      })[0].click()
-  });
+
+  function downloadInnerHtml(filename, elId, mimeType) {
+    var elHtml = document.getElementById(elId).innerHTML;
+    var link = document.createElement('a');
+    mimeType = mimeType || 'text/plain';
+
+    link.setAttribute('download', filename);
+    link.setAttribute('href', 'data:' + mimeType + ';charset=utf-8,' + encodeURIComponent(elHtml));
+    link.click(); 
+}
+
+var fileName =  'export-report.html'; 
+
+$('#save').click(function(){
+    downloadInnerHtml(fileName, 'export','text/html');
+});

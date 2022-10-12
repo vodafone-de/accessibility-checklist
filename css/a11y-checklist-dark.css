@@ -238,3 +238,10 @@ box-shadow: 2px 0px #f4f4f4;
    background:  #262626;
 
   }
+
+  .dark .bg-success-result {
+
+    box-shadow: 6px 0px #262626;
+
+
+  }
