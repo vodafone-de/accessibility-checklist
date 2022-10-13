@@ -1101,16 +1101,16 @@ li.disable-circle::after,li.disable-circle::before {
 
 .overlay_container {
   position: absolute;
-  overflow: scroll;
+  overflow: hidden;
   z-index: 2;
   transition: transform 0.5s cubic-bezier(0.47, 0, 0.745, 0.715);
   transform: translateX(0) translateY(0);
-  /* border-radius: 6px; */
+  border-radius: 0px;
   transform: translateX(-50%) translateY(-50%);
   top: 53%;
   left: 50%;
   width: 100%;
-  /* min-height: 104px; */
+  min-height: 100%
   /* max-height: 90vh; */
 }
 
