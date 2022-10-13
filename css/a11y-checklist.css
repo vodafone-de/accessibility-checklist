@@ -1076,6 +1076,51 @@ li.disable-circle::after,li.disable-circle::before {
     padding-top: 32px;
 }
 
+.acc {
+  border-top: 1px solid #bebebe;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  font-size: 18px;
+  width: 80%;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 68% 21% 7%;
+  gap: 0px 8px;
+}
+
+.result-button-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-content: center;
+  margin-bottom: 16px;
+}
+
+.count-checkboxes-wrapper {
+
+  margin-bottom: 16px;
+}
+
+
+.overlay_container {
+  position: absolute;
+  overflow: scroll;
+  z-index: 2;
+  transition: transform 0.5s cubic-bezier(0.47, 0, 0.745, 0.715);
+  transform: translateX(0) translateY(0);
+  /* border-radius: 6px; */
+  transform: translateX(-50%) translateY(-50%);
+  top: 53%;
+  left: 50%;
+  width: 100%;
+  /* min-height: 104px; */
+  /* max-height: 90vh; */
+}
+
+
 
 
 }
