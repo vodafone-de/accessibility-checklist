@@ -1120,6 +1120,18 @@ li.disable-circle::after,li.disable-circle::before {
   /* max-height: 90vh; */
 }
 
+.progress-result {
+  display: -ms-flexbox;
+  display: flex;
+  height: 28px;
+  overflow: hidden;
+  font-size: .75rem;
+  background-color: #EA1A1A;
+  border-radius: 0.25rem;
+  margin-bottom: 4px;
+  width: 340px;
+}
+
 
 
 
