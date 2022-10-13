@@ -991,11 +991,6 @@ li.disable-circle::after,li.disable-circle::before {
   max-height: 90vh;
 }
 
-.overlay-inner{
-
-
-
-}
 
 
 .ws10-overlay__close {
@@ -1071,8 +1066,7 @@ li.disable-circle::after,li.disable-circle::before {
   #content-wrapper {
     margin: auto;
     width: 100%;
-    /* min-width: 800px; */
-    /* max-width: 1050px; */
+    min-width: auto;
     padding-top: 32px;
 }
 
