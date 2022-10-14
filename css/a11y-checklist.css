@@ -846,18 +846,17 @@ ul.fail {
   
  padding-left: 32px!important;
  display:block;
- width: max-content;
   
 }
 
-li.error-circle {
+span.error-circle {
   width: 20px;
-  position: relative;
+  position: absolute;
   height: 20px;
   background: #EA1A1A;
   border-radius: 50%;
 }
-li.error-circle::after,li.error-circle::before {
+span.error-circle::after,span.error-circle::before {
     position: absolute;
     content: '';
     width: 10%;
@@ -868,7 +867,7 @@ li.error-circle::after,li.error-circle::before {
     transform: rotate(-45deg);
 }
 
-li.error-circle::before{
+span.error-circle::before{
     
     transform: rotate(45deg);
 }
@@ -881,15 +880,15 @@ ul.fail li {
 }
 
 
-li.disable-circle {
-  width: 20px;
-  position: relative;
-  height: 20px;
+span.disable-circle {
+  position: absolute;
   border: solid 2px #4A4D4E;
   border-radius: 50%;
+  width: 20px;
+  height: 20px;
 }
 
-li.disable-circle::after,li.disable-circle::before {
+span.disable-circle::after,span.disable-circle::before {
   position: absolute;
   content: '';
   width: 10%;
@@ -1101,7 +1100,7 @@ li.disable-circle::after,li.disable-circle::before {
 
 .overlay_container {
   position: absolute;
-  overflow: hidden;
+  overflow: scroll;
   z-index: 2;
   transition: transform 0.5s cubic-bezier(0.47, 0, 0.745, 0.715);
   transform: translateX(0) translateY(0);
@@ -1123,7 +1122,7 @@ li.disable-circle::after,li.disable-circle::before {
   background-color: #EA1A1A;
   border-radius: 0.25rem;
   margin-bottom: 4px;
-  width: 340px;
+  width: auto!important;
 }
 
 

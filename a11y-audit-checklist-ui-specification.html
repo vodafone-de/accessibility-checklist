@@ -640,35 +640,34 @@
                     }
                     
                     .ect {
-                      
-                     padding-left: 32px!important;
-                     display:block;
-                     width: max-content;
-                      
-                    }
-                    
-                    li.error-circle {
-                      width: 20px;
-                      position: relative;
-                      height: 20px;
-                      background: #EA1A1A;
-                      border-radius: 50%;
-                    }
-                    li.error-circle::after,li.error-circle::before {
-                        position: absolute;
-                        content: '';
-                        width: 10%;
-                        left: 45%;
-                        top: 10%;
-                        height: 80%;
-                        background-color: white;
-                        transform: rotate(-45deg);
-                    }
-                    
-                    li.error-circle::before{
-                        
-                        transform: rotate(45deg);
-                    }
+          
+          padding-left: 32px!important;
+          display:block;
+           
+         }
+         
+         span.error-circle {
+           width: 20px;
+           position: absolute;
+           height: 20px;
+           background: #EA1A1A;
+           border-radius: 50%;
+         }
+         span.error-circle::after,span.error-circle::before {
+             position: absolute;
+             content: '';
+             width: 10%;
+             left: 45%;
+             top: 10%;
+             height: 80%;
+             background-color: white;
+             transform: rotate(-45deg);
+         }
+         
+         span.error-circle::before{
+             
+             transform: rotate(45deg);
+         }
                     
                     ul.fail li {
                       font-size: 18px;
@@ -678,24 +677,24 @@
                     }
                     
                     
-                    li.disable-circle {
-                      width: 20px;
-                      position: relative;
-                      height: 20px;
-                      border: solid 2px #4A4D4E;
-                      border-radius: 50%;
+                    span.disable-circle {
+                    position: absolute;
+                     border: solid 2px #4A4D4E;
+                   border-radius: 50%;
+                    width: 20px;
+                    height: 20px;
                     }
-                    
-                    li.disable-circle::after,li.disable-circle::before {
-                      position: absolute;
-                      content: '';
-                      width: 10%;
-                      left: 45%;
-                      top: 10%;
-                      height: 80%;
-                      background-color: #4A4D4E;
-                      transform: rotate(90deg);
-                    }
+        
+        span.disable-circle::after,span.disable-circle::before {
+          position: absolute;
+          content: '';
+          width: 10%;
+          left: 45%;
+          top: 10%;
+          height: 80%;
+          background-color: #4A4D4E;
+          transform: rotate(90deg);
+        }
                     
                     .error-circle-progress {
                       width: 14px;
@@ -782,6 +781,7 @@
 </div>
 
 <button id="save" class="ws10-prime-button">Save report as html (MVP)</button>
+<p>Note: The download functionality is not working in MS Internet Explorer or MS Edge at the moment. Please use Firefox or Chrome instead.</p>
 
 </div>
 

@@ -186,13 +186,13 @@ var $checkboxes = $('input:checkbox');
         
         if (!$this.is(":checked") && !$($this).prop('disabled')) {
          
-          uchtml += "<li class='error-circle'><span class='ect'>" + $this.val() + " </span></li>";
+          uchtml += "<li><span class='error-circle'></span><span class='ect'>" + $this.val() + " </span></li>";
           
           
         }
     
         if (!$this.is(":checked") && $($this).prop('disabled')) {
-        dischtml += "<li class='disable-circle'><span class='ect'>" + $this.val() + " </span></li>";
+        dischtml += "<li><span class='disable-circle'></span><span class='ect'>" + $this.val() + " </span></li>";
          
         }
     
