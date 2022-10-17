@@ -721,7 +721,7 @@
                         background-color: #EA1A1A;
                         border-radius: 0.25rem;
                         margin-bottom: 4px;
-                        width: 700px;
+                        width: 800px;
                         }
                         
                         .bg-success-result {
@@ -972,7 +972,7 @@ font-weight: bold;
   
   <div class="hide-report-text">
     <h3>Assessment details:</h3>
-    <span class="bold">UI element:</span> <span id="designtitle"></span></br>
+    <span class="bold">Design concept:</span> <span id="designtitle"></span></br>
     <span class="bold">Reporter:</span> <span id="reporter-report"></span></br>
     <span class="bold">Reporter email:</span> <span id="reporter-email-report"></span></br>
     <span class="bold">Project:</span> <span id="project-detail-report"></span></br>
@@ -984,6 +984,87 @@ font-weight: bold;
   <div id="rulesdisabled"></div>
   <span class="hide-report-text">Contact: <a href="mailto:jonas.fuchs@vodafone.com?subject=Accessibility%20Audit%20Checklist%20-%20Design">Jonas Fuchs</a> | COE UX | Vodafone GmbH | 2022</span>
   </div>
+
+  <hr>
+
+<h3>
+  Project info:
+</h3>
+<div class="ws10-grid">
+
+<div class="ws10-column ws10-column--medium-6">
+<div class="ws10-form-element-block__label-container"><label for="projecttitle" class="ws10-form-label ">
+  Design concept title:
+</label>
+</div>
+<div class="ws10-form-element-block__input-container"><div class="ws10-form-text-input">
+<input id="design-concept-title" class="tabenable ws10-form-text-input__input" name="projecttitle" type="text" value="">
+<span class="ws10-form-text-input__notification_icon-container"><svg class="ws10-notification-icon ws10-notification-icon--">
+</svg>
+</span>
+<span class="ws10-form-text-input__system_icon-container"><svg class="ws10-system-icon ws10-system-icon--size-inherit ws10-system-icon--color-monochrome-600">
+<use xlink:href="/simplicity/icons/.svg#icon"></use>
+</svg>
+</span>
+</div>
+</div>
+</div>
+
+<div class="ws10-column ws10-column--medium-6">
+  <div class="ws10-form-element-block__label-container"><label for="reporter" class="ws10-form-label ">
+    Reporter:
+  </label>
+  </div>
+  <div class="ws10-form-element-block__input-container"><div class="ws10-form-text-input">
+  <input id="reporter" class="tabenable ws10-form-text-input__input" name="reporter" type="text" value="">
+  <span class="ws10-form-text-input__notification_icon-container"><svg class="ws10-notification-icon ws10-notification-icon--">
+  </svg>
+  </span>
+  <span class="ws10-form-text-input__system_icon-container"><svg class="ws10-system-icon ws10-system-icon--size-inherit ws10-system-icon--color-monochrome-600">
+  <use xlink:href="/simplicity/icons/.svg#icon"></use>
+  </svg>
+  </span>
+  </div>
+  </div>
+  </div>
+
+  <div class="ws10-column ws10-column--medium-6">
+    <div class="ws10-form-element-block__label-container"><label for="reporter-email" class="ws10-form-label ">
+      Reporter email:
+    </label>
+    </div>
+    <div class="ws10-form-element-block__input-container"><div class="ws10-form-text-input">
+    <input id="reporter-email" class="tabenable ws10-form-text-input__input" name="reporter" type="text" value="">
+    <span class="ws10-form-text-input__notification_icon-container"><svg class="ws10-notification-icon ws10-notification-icon--">
+    </svg>
+    </span>
+    <span class="ws10-form-text-input__system_icon-container"><svg class="ws10-system-icon ws10-system-icon--size-inherit ws10-system-icon--color-monochrome-600">
+    <use xlink:href="/simplicity/icons/.svg#icon"></use>
+    </svg>
+    </span>
+    </div>
+    </div>
+    </div>
+
+    <div class="ws10-column ws10-column--medium-6">
+      <div class="ws10-form-element-block__label-container"><label for="project-detail" class="ws10-form-label ">
+        Project:
+      </label>
+      </div>
+      <div class="ws10-form-element-block__input-container"><div class="ws10-form-text-input">
+      <input id="project-detail" class="tabenable ws10-form-text-input__input" name="reporter" type="text" value="">
+      <span class="ws10-form-text-input__notification_icon-container"><svg class="ws10-notification-icon ws10-notification-icon--">
+      </svg>
+      </span>
+      <span class="ws10-form-text-input__system_icon-container"><svg class="ws10-system-icon ws10-system-icon--size-inherit ws10-system-icon--color-monochrome-600">
+      <use xlink:href="/simplicity/icons/.svg#icon"></use>
+      </svg>
+      </span>
+      </div>
+      </div>
+      </div>
+
+</div>
   
   <button id="save-design-report" class="ws10-prime-button">Save report as .html file</button>
   <p>Note: The download functionality is not working in MS Internet Explorer or MS Edge at the moment. Please use Firefox or Chrome instead.</p>

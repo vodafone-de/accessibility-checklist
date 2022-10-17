@@ -64,6 +64,20 @@ var updateStatus = function(){
       $('#result-percentage').show();
       
     }
+
+
+    if ($('.progress-bar-result').prop("style")["width"] == '100%') { 
+
+      $('#error-circle-progress').hide();
+      $('#result-percentage-rest').hide();
+      
+    }
+    else {
+
+      $('#error-circle-progress').show();
+      $('#result-percentage-rest').show();
+      
+    }
     
 };
 
@@ -275,7 +289,7 @@ $('.reset-form').click(function(event) {
 
 $('.dropbtn').keypress(function (e) {
     var key = e.which;
-    if(key == 13)  // the enter key code
+    if(key == 13) 
     {
 
         if ($(".dropdown-content").css("display") == "none") {
@@ -353,12 +367,16 @@ $(document).keyup(function(e) {
 
 
 
-   $("#spec-brix-element").on("input", function(){
-    $("#spectitle").text($(this).val());
+$("#spec-brix-element").on("input", function(){
+  $("#spectitle").text($(this).val());
 });
 
 $("#design-concept-title").on("input", function(){
   $("#designtitle").text($(this).val());
+});
+
+$("#cms-page-tite").on("input", function(){
+  $("#cms-page-report").text($(this).val());
 });
 
 $("#reporter").on("input", function(){
@@ -369,6 +387,14 @@ $("#reporter-email").on("input", function(){
   $("#reporter-email-report").text($(this).val());
 });
 
+
+$("#project-detail").on("input", function(){
+  $("#project-detail-report").text($(this).val());
+});
+
+$("#page-url").on("input", function(){
+  $("#page-url-report").text($(this).val());
+});
 
 
 
@@ -384,6 +410,7 @@ $("#reporter-email").on("input", function(){
 
   var fileNameSpec = 'vf-a11y-report-ui-spec-'; 
   var fileNameDesign = 'vf-a11y-report-design-concept-'; 
+  var fileNameCms = 'vf-a11y-report-cms-page-';
   
   $('#save-spec-report').click(function(){
 
@@ -395,6 +422,13 @@ $("#reporter-email").on("input", function(){
     $('#save-design-report').click(function(){
 
       downloadInnerHtml(fileNameDesign + ($("#designtitle").text().replace(/\s+/gim, '-').replace(/[àèìáéíóúàèìòùâêîôûãõç.!?="'()§$%&/#*;+^¡“¶¢[]{}≠¿']+/gim, '').replace(/[ä]+/gim, 'ae').replace(/[ü]+/gim, 'ue').replace(/[ö]+/gim, 'oe').replace(/[ß]+/gim, 'ss').replace(/[:]+/gim, '-').replace(/[,]+/gim, '')).toLowerCase() + '.html', 'export','text/html');
+  
+    });
+  
+
+    $('#save-cms-report').click(function(){
+
+      downloadInnerHtml(fileNameCms + ($("#cms-page-report").text().replace(/\s+/gim, '-').replace(/[àèìáéíóúàèìòùâêîôûãõç.!?="'()§$%&/#*;+^¡“¶¢[]{}≠¿']+/gim, '').replace(/[ä]+/gim, 'ae').replace(/[ü]+/gim, 'ue').replace(/[ö]+/gim, 'oe').replace(/[ß]+/gim, 'ss').replace(/[:]+/gim, '-').replace(/[,]+/gim, '')).toLowerCase() + '.html', 'export','text/html');
   
     });
   

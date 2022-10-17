@@ -245,3 +245,53 @@ box-shadow: 2px 0px #f4f4f4;
 
 
   }
+
+
+  .dark .ws10-form-label {
+
+    color: #ffffff;
+
+  }
+
+  .dark .ws10-button-icon-only--tertiary.ws10-button-icon-only--floating:not(:hover):not(:active):not(:focus) {
+    background: transparent;
+  }
+  .dark .ws10-button-icon-only--floating {
+    border-radius: 50%;
+    box-shadow: none;
+  }
+  
+  .dark .ws10-button-icon-only--standard {
+    width: 48px;
+    height: 48px;
+  }
+  .dark .ws10-button-icon-only--tertiary {
+    background: transparent;
+    border: 2px solid #D9D9D9;
+  }
+  .dark .ws10-button-icon-only {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .dark .ws10-button-icon-only--tertiary .ws10-button-icon-only__icon {
+    stroke: #D9D9D9;
+  }
+  
+ .dark .ws10-button-icon-only__icon {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .dark .ws10-button-icon-only--tertiary:hover, .ws10-button-icon-only--tertiary:focus {
+    background: #D9D9D9;
+    cursor: pointer;
+    transition: all 0.4s ease 0s;
+  }
+  
+  .dark .ws10-button-icon-only--tertiary:hover .ws10-button-icon-only__icon, .ws10-button-icon-only--tertiary:focus .ws10-button-icon-only__icon {
+    stroke: #0D0D0D;
+    transition: all 0.4s ease 0s;
+  }
+  

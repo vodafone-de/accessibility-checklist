@@ -79,6 +79,7 @@ line-height: 1.25;
 color: #0d0d0d;
 font-size: 18px;
 margin-bottom: 16px;
+width: 80%;
 }
 
 .rule-description-highlight {
@@ -733,7 +734,7 @@ cursor: pointer;
     background-color: #EA1A1A;
     border-radius: 0.25rem;
     margin-bottom: 4px;
-    width: 700px;
+    width: 800px;
     }
     
     .bg-success-result {
