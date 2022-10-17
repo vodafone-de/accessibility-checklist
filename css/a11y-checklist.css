@@ -1075,7 +1075,7 @@ span.disable-circle::after,span.disable-circle::before {
 .ws10-form-text-input .ws10-form-text-input__input {
     width: 100%;
     display: block;
-    padding: 11px 56px 11px 16px;
+    padding: 9px 16px 9px 16px;
     background-color: #fff;
     outline: none;
     -moz-appearance: none;
@@ -1085,7 +1085,7 @@ span.disable-circle::after,span.disable-circle::before {
     font-weight: 400;
     font-family: Vodafone,Arial,sans-serif;
     font-size: 20px;
-    line-height: 32px;
+    line-height: 28px;
 }
 .ws10-form-text-input .ws10-form-text-input__input {
     border-radius: 6px;
@@ -1137,14 +1137,39 @@ svg {
   box-shadow: inset 0 0 0 1px #005ea5;
 }
 
+
+.ws10-grid {
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 16px;
+}
+
 .ws10-grid .ws10-column {
   flex-grow: 0;
 }
 
 .ws10-grid .ws10-column--medium-6 {
-  flex-basis: 50%;
+  flex-basis: calc(50% + 16px);
 }
 
+
+.ws10-grid .ws10-column--12 {
+  flex-basis: 100%;
+}
+
+.bold {
+
+  font-weight: bold;
+
+}
+
+.hide-text {
+
+  display:block!important;
+
+}
 
 @media only screen and (max-width: 600px) {
   .ws10-no-scroll {

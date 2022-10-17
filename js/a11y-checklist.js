@@ -166,7 +166,7 @@ var $checkboxes = $('input:checkbox');
       $('input').attr("tabindex", -1);
       $('.toggle-link').attr("tabindex", -1);
       $('.close').attr("tabindex", 1);
-      $('#save').attr("tabindex", 1);
+      $('.tabenable').attr("tabindex", 1);
 
 
       var rule = $('input[name="a11y-rule"]');
@@ -218,13 +218,13 @@ var $checkboxes = $('input:checkbox');
       $(".overlay_container").css({top:'50%',position:'absolute'}).animate({top: 1000}, 800, function() {
           //callback
       });
-      $('main').removeAttr('aria-hidden', 'true').removeClass('ws10-no-scroll');
+      $('main').removeAttr('aria-hidden', 'true').removeAttr("tabindex", -1).removeClass('ws10-no-scroll');
       $('button').removeAttr("tabindex", -1);
       $('a').removeAttr("tabindex", -1);
       $('input').removeAttr("tabindex", -1);
       $('.toggle-link').removeAttr("tabindex", -1);
       $('.close').removeAttr("tabindex", 1);
-      $('#save').removeAttr("tabindex", 1);
+      $('.tabenable').removeAttr("tabindex", 1);
       
     });
  
@@ -305,7 +305,13 @@ $(document).keyup(function(e) {
       $(".overlay_container").css({top:'50%',position:'absolute'}).animate({top: 1000}, 800, function() {
           //callback
       });
-      $('main').removeAttr('aria-hidden', 'true').removeClass('ws10-no-scroll');
+      $('main').removeAttr('aria-hidden', 'true').removeAttr("tabindex", -1).removeClass('ws10-no-scroll');
+      $('button').removeAttr("tabindex", -1);
+      $('a').removeAttr("tabindex", -1);
+      $('input').removeAttr("tabindex", -1);
+      $('.toggle-link').removeAttr("tabindex", -1);
+      $('.close').removeAttr("tabindex", 1);
+      $('.tabenable').removeAttr("tabindex", 1);
     
 
   } 
@@ -347,9 +353,24 @@ $(document).keyup(function(e) {
 
 
 
-   $("#projectname").on("input", function(){
-    $("#dltitle").text($(this).val());
+   $("#spec-brix-element").on("input", function(){
+    $("#spectitle").text($(this).val());
 });
+
+$("#design-concept-title").on("input", function(){
+  $("#designtitle").text($(this).val());
+});
+
+$("#reporter").on("input", function(){
+  $("#reporter-report").text($(this).val());
+});
+
+$("#reporter-email").on("input", function(){
+  $("#reporter-email-report").text($(this).val());
+});
+
+
+
 
     function downloadInnerHtml(filename, elId, mimeType) {
       var elHtml = document.getElementById(elId).innerHTML;
@@ -361,12 +382,19 @@ $(document).keyup(function(e) {
       link.click(); 
   }
 
-  var fileName = 'vf-a11y-report-'; 
+  var fileNameSpec = 'vf-a11y-report-ui-spec-'; 
+  var fileNameDesign = 'vf-a11y-report-design-concept-'; 
   
-  $('#save').click(function(){
+  $('#save-spec-report').click(function(){
 
-      downloadInnerHtml(fileName + ($("#dltitle").text().replace(/\s+/gim, '-').replace(/[àèìáéíóúàèìòùâêîôûãõç.!?="'()§$%&/#*;+^¡“¶¢[]{}≠¿']+/gim, '').replace(/[ä]+/gim, 'ae').replace(/[ü]+/gim, 'ue').replace(/[ö]+/gim, 'oe').replace(/[ß]+/gim, 'ss').replace(/[:]+/gim, '-').replace(/[,]+/gim, '')).toLowerCase() + '.html', 'export','text/html');
-  });
+      downloadInnerHtml(fileNameSpec + ($("#spectitle").text().replace(/\s+/gim, '-').replace(/[àèìáéíóúàèìòùâêîôûãõç.!?="'()§$%&/#*;+^¡“¶¢[]{}≠¿']+/gim, '').replace(/[ä]+/gim, 'ae').replace(/[ü]+/gim, 'ue').replace(/[ö]+/gim, 'oe').replace(/[ß]+/gim, 'ss').replace(/[:]+/gim, '-').replace(/[,]+/gim, '')).toLowerCase() + '.html', 'export','text/html');
+  
+    });
   
 
+    $('#save-design-report').click(function(){
 
+      downloadInnerHtml(fileNameDesign + ($("#designtitle").text().replace(/\s+/gim, '-').replace(/[àèìáéíóúàèìòùâêîôûãõç.!?="'()§$%&/#*;+^¡“¶¢[]{}≠¿']+/gim, '').replace(/[ä]+/gim, 'ae').replace(/[ü]+/gim, 'ue').replace(/[ö]+/gim, 'oe').replace(/[ß]+/gim, 'ss').replace(/[:]+/gim, '-').replace(/[,]+/gim, '')).toLowerCase() + '.html', 'export','text/html');
+  
+    });
+  
