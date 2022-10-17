@@ -203,10 +203,7 @@ cursor:not-allowed;
 
 /* Checkbox Styling End */
 
-#projectname {
-text-decoration: underline;
 
-}
 
 .check-info thead tr th {
 border-bottom: #333 solid 1px;
@@ -1054,6 +1051,100 @@ span.disable-circle::after,span.disable-circle::before {
 }
 
 
+.ws10-form-element-block__label-container {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.ws10-form-label {
+  font-weight: 400;
+  line-height: 1.5;
+  font-size: 18px;
+  margin-bottom: 16px;
+  color: #0d0d0d;
+  transition: all .2s cubic-bezier(.47,0,.745,.715);
+}
+
+.ws10-form-text-input {
+  margin-bottom: 8px;
+}
+.ws10-form-text-input {
+  position: relative;
+}
+
+.ws10-form-text-input .ws10-form-text-input__input {
+    width: 100%;
+    display: block;
+    padding: 11px 56px 11px 16px;
+    background-color: #fff;
+    outline: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    color: #0d0d0d;
+    font-weight: 400;
+    font-family: Vodafone,Arial,sans-serif;
+    font-size: 20px;
+    line-height: 32px;
+}
+.ws10-form-text-input .ws10-form-text-input__input {
+    border-radius: 6px;
+    border: 1px solid #262626;
+}
+
+
+input[type=text], select, textarea {
+    border: 0;
+    border-radius: 3px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    box-shadow: 0 1px 3px rgb(50 50 50 / 60%) inset;
+    border: 1px solid #e9e9e9;
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
+}
+
+
+.ws10-form-text-input .ws10-notification-icon {
+  visibility: hidden;
+  pointer-events: none;
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
+}
+
+.ws10-form-text-input .ws10-system-icon {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
+}
+svg {
+  display: inline-block;
+  vertical-align: middle;
+  fill: #333;
+  width: inherit;
+  height: inherit;
+}
+
+.ws10-form-text-input .ws10-form-text-input__input:focus {
+  border-color: #005ea5;
+  box-shadow: inset 0 0 0 1px #005ea5;
+}
+
+.ws10-grid .ws10-column {
+  flex-grow: 0;
+}
+
+.ws10-grid .ws10-column--medium-6 {
+  flex-basis: 50%;
+}
+
 
 @media only screen and (max-width: 600px) {
   .ws10-no-scroll {
@@ -1129,3 +1220,5 @@ span.disable-circle::after,span.disable-circle::before {
 
 
 }
+
+

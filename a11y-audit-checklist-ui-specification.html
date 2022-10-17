@@ -28,7 +28,7 @@
   <h1>Accessibility Audit Checklist</h1>
   <h2>Self assessment</h2>
  <!-- <button class="reset-form">Reset checkboxes</button> --> 
-  <form class="contact-form" action="" method="post" id="a11y-checklist" accept-charset="UTF-8">
+  
     <div class="checklist-table">
       <table cellspacing="0" id="a11y-report" class="ws10-card--shadow-wide ws10-card ws10-card--background-white">
        <thead>
@@ -49,6 +49,7 @@
           </tr>
         </thead> 
         <tbody>
+          <form class="contact-form" action="" method="post" id="a11y-checklist" accept-charset="UTF-8">
          <!-- <tr>
             <td contenteditable="true" colspan="2"><h3>Project info:</h3>
               <span>Checked by:</span> <span class="highlight-input">Your name</span><br />
@@ -63,6 +64,33 @@
               <h2>UI Specification</h2>
               <div class="subheading">Our goal is to offer the most accessible experience for all of our customers. This list should help designers to follow the most important rules for an accessible website. Check the following things while creating a UI specification or annotate Accessibility in developer handoff. If a rule is not relevant (i.e. you don't have any images in your design, mark the rule as <strong>"not relevant"</strong>. Check also the <a href="https://www.vodafone.de/brix/docs/general/accessibility-specification" target="_blank">guideline for developer handoff</a></div>
             </td>
+            </tr>
+            <tr>
+              <td>
+                <div class=" ws10-column ws10-column--12 ws10-column--medium-6">
+                <div class="ws10-form-element-block__label-container"><label for="projecttitle" class="ws10-form-label ">
+                  Brix Elememt:
+              </label>
+              </div>
+
+              <div class="ws10-form-element-block__input-container"><div class="
+                ws10-form-text-input">
+                <input id="projectname" class="ws10-form-text-input__input" name="projecttitle" type="text" value="">
+            
+                <span class="ws10-form-text-input__notification_icon-container"><svg class="ws10-notification-icon ws10-notification-icon--">
+            
+            
+            </svg>
+            </span>
+            
+                <span class="ws10-form-text-input__system_icon-container"><svg class="ws10-system-icon ws10-system-icon--size-inherit ws10-system-icon--color-monochrome-600">
+                <use xlink:href="/simplicity/icons/.svg#icon"></use>
+            </svg>
+            </span>
+            </div>
+            </div>
+            </div>
+              </td>
             </tr>
           <tr id="page-structure">
             <td colspan="2" class="heading">
@@ -773,6 +801,17 @@
   <span class="error-circle-progress"></span><span id="result-percentage-rest" class="percentage-checked-checkboxes-result-rest">0 %</span>
 </div>
 <h3>Assessment details:</h3>
+
+<form class="contact-form" action="" method="post" id="a11y-checklist" accept-charset="UTF-8">
+
+
+  <span id="dltitle"></span>
+</form>
+
+
+
+
+<span>Report created on:</span> <span class="highlight-input" id="Date"></span><br />
 <div id="resultchecked"></div>
 <div id="resultunchecked"></div>
 <div id="rulesdisabled"></div>

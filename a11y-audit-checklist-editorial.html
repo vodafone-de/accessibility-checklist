@@ -26,7 +26,7 @@
   <h1>Accessibility Audit Checklist</h1>
   <h2>Self assessment</h2>
  <!-- <button class="reset-form">Reset checkboxes</button> --> 
-  <form class="contact-form" action="" method="post" id="a11y-checklist" accept-charset="UTF-8">
+  
     <div class="checklist-table">
       <table cellspacing="0" id="a11y-report" class="ws10-card--shadow-wide ws10-card ws10-card--background-white">
        <thead>
@@ -47,6 +47,7 @@
           </tr>
         </thead> 
         <tbody>
+          <form class="contact-form" action="" method="post" id="a11y-checklist" accept-charset="UTF-8">
          <!-- <tr>
             <td contenteditable="true" colspan="2"><h3>Project info:</h3>
               <span>Checked by:</span> <span class="highlight-input">Your name</span><br />
@@ -974,6 +975,7 @@ span.disable-circle::after,span.disable-circle::before {
     <span class="error-circle-progress"></span><span id="result-percentage-rest" class="percentage-checked-checkboxes-result-rest">0 %</span>
   </div>
   <h3>Assessment details:</h3>
+  <span>Report created on:</span> <span class="highlight-input" id="Date"></span><br />
   <div id="resultchecked"></div>
   <div id="resultunchecked"></div>
   <div id="rulesdisabled"></div>

@@ -346,18 +346,27 @@ $(document).keyup(function(e) {
 
 
 
-  function downloadInnerHtml(filename, elId, mimeType) {
-    var elHtml = document.getElementById(elId).innerHTML;
-    var link = document.createElement('a');
-    mimeType = mimeType || 'text/plain';
 
-    link.setAttribute('download', filename);
-    link.setAttribute('href', 'data:' + mimeType + ';charset=utf-8,' + encodeURIComponent(elHtml));
-    link.click(); 
-}
-
-var fileName =  'export-report.html'; 
-
-$('#save').click(function(){
-    downloadInnerHtml(fileName, 'export','text/html');
+   $("#projectname").on("input", function(){
+    $("#dltitle").text($(this).val());
 });
+
+    function downloadInnerHtml(filename, elId, mimeType) {
+      var elHtml = document.getElementById(elId).innerHTML;
+      var link = document.createElement('a');
+      mimeType = mimeType || 'text/plain';
+  
+      link.setAttribute('download', filename);
+      link.setAttribute('href', 'data:' + mimeType + ';charset=utf-8,' + encodeURIComponent(elHtml));
+      link.click(); 
+  }
+
+  var fileName = 'vf-a11y-report-'; 
+  
+  $('#save').click(function(){
+
+      downloadInnerHtml(fileName + ($("#dltitle").text().replace(/\s+/gim, '-').replace(/[àèìáéíóúàèìòùâêîôûãõç.!?="'()§$%&/#*;+^¡“¶¢[]{}≠¿']+/gim, '').replace(/[ä]+/gim, 'ae').replace(/[ü]+/gim, 'ue').replace(/[ö]+/gim, 'oe').replace(/[ß]+/gim, 'ss').replace(/[:]+/gim, '-').replace(/[,]+/gim, '')).toLowerCase() + '.html', 'export','text/html');
+  });
+  
+
+
