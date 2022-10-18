@@ -321,3 +321,21 @@ box-shadow: 2px 0px #f4f4f4;
   
 
 
+.dark span.disable-circle {
+    position: absolute;
+    border: solid 2px #D9D9D9;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+  }
+  
+  .dark span.disable-circle::after,span.disable-circle::before {
+    position: absolute;
+    content: '';
+    width: 10%;
+    left: 45%;
+    top: 10%;
+    height: 80%;
+    background-color: #D9D9D9;
+    transform: rotate(90deg);
+  }

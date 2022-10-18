@@ -167,11 +167,11 @@ var $checkboxes = $('input:checkbox');
 
 
 
-    $(".result").click(function() {
-
+    $(".result").click(function(e) {
+      e.preventDefault();
       $("#overlay").fadeIn();
       $(".overlay_container").css({top:1000,position:'absolute'}).animate({top: '50%'}, 800, function() {
-          //callback
+          return false;
       });
       
       $('main').attr('aria-hidden', 'true').attr("tabindex", -1).addClass('ws10-no-scroll');
