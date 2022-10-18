@@ -7,14 +7,12 @@ body {
     @font-face{font-display:swap;font-family:Vodafone;font-style:normal;font-weight:700;src:url(https://www.vodafone.de/simplicity/assets/css/fonts/vodafonergbd-webfont.eot);src:url(https://www.vodafone.de/simplicity/assets/css/fonts/vodafonergbd-webfont.woff2) format("woff2"),url(https://www.vodafone.de/simplicity/assets/css/fonts/vodafonergbd-webfont.woff) format("woff")}@font-face{font-display:swap;
     font-family:Vodafone; font-style:normal;font-weight:100; src:url(https://www.vodafone.de/simplicity/assets/css/fonts/VodafoneLt.eot);src:url(https://www.vodafone.de/simplicity/assets/css/fonts/VodafoneLt.woff2) format("woff2"),url(https://www.vodafone.de/simplicity/assets/css/fonts/VodafoneLt.woff) format("woff")}
 
+
 h1, .ws10-h1 {
+font-weight: 100;
+line-height: 1.25;
+color: #0d0d0d;
 font-size: 48px;
-}
-h1, .ws10-h1 {
-font-weight: 100;
-line-height: 1.25;
-color: #0d0d0d;
-font-size: 34px;
 margin-block-start: 0px;
 margin-block-end: 0px;
 margin-inline-start: 0px;
@@ -24,22 +22,19 @@ margin-inline-end: 0px;
 
 
 h2, .ws10-h2 {
+margin-block-start: 0px;
+margin-block-end: 0px;
+margin-inline-start: 0px;
+margin-inline-end: 0px;
+}
+
+
+h2, .ws10-h2 {
+font-size: 34px;
+font-weight: 100;
+line-height: 1.25;
+color: #0d0d0d;
 margin-bottom: 20px;
-margin-block-start: 0px;
-margin-block-end: 0px;
-margin-inline-start: 0px;
-margin-inline-end: 0px;
-}
-
-h2, .ws10-h2 {
-font-size: 34px;
-}
-h2, .ws10-h2 {
-font-weight: 100;
-line-height: 1.25;
-color: #0d0d0d;
-font-size: 30px;
-margin-bottom: 16px;
 }
 
 
@@ -47,9 +42,26 @@ h3, .ws10-h3 {
 font-weight: 700;
 line-height: 1.25;
 color: #0d0d0d;
-font-size: 24px;
+font-size: 30px;
 margin-bottom: 16px;
 margin-top: 16px;
+}
+
+@media screen and (min-width: 600px)
+h4, .ws10-headline--h4 {
+    font-size: 24px;
+}
+
+h4, .ws10-headline--h4 {
+    font-weight: 700;
+    line-height: 1.25;
+    color: #0d0d0d;
+    font-size: 20px;
+    margin-bottom: 16px;
+    margin-block-start: 0px;
+    margin-block-end: 16px;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
 }
 
 a {
@@ -97,6 +109,14 @@ font-weight: bold;
 text-decoration: underline;
 
 }
+
+.ws10-text-smaller {
+  font-weight: 400;
+  line-height: 1.5;
+  color: #0d0d0d;
+  font-size: 14px;
+}
+
 
 .ws10-card--shadow-wide {
 box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
@@ -1168,7 +1188,13 @@ svg {
 
 .hide-text {
 
-  display:block!important;
+  display: contents!important;
+
+}
+
+.hide-text-block {
+
+  display: block!important;
 
 }
 
