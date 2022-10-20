@@ -16,7 +16,7 @@ let desiredHint = 0;
 			return false;
 		}
 		httpRequest.onreadystatechange = updateOutput;
-		httpRequest.open("GET", "data.json");
+		httpRequest.open("GET", "https://vodafone-de.github.io/accessibility-checklist/data.json");
 		httpRequest.send();
 	};
 
