@@ -1,0 +1,74 @@
+<html>
+
+
+<script>
+
+//source data: https://codepen.io/melissacabral/pen/VmGEaa.js
+let desiredHint = 0;
+
+(function() {
+	var httpRequest;
+	window.onload = function makeRequest() {
+		httpRequest = new XMLHttpRequest();
+
+		if (!httpRequest) {
+			console.log("Giving up :( Cannot create an XMLHTTP instance");
+			return false;
+		}
+		httpRequest.onreadystatechange = updateOutput;
+		httpRequest.open("GET", "data.json");
+		httpRequest.send();
+	};
+
+	function updateOutput() {
+		if (httpRequest.readyState === XMLHttpRequest.DONE) {
+			if (httpRequest.status === 200) {
+				//SUCCESS
+				var json = JSON.parse(httpRequest.responseText);
+				var hint = json.hints[desiredHint];
+				var container = document.getElementById("output");
+				while (container.firstChild) {
+					container.removeChild(container.firstChild);
+				}
+				//heading
+				var header = document.createElement("h2");
+				header.innerHTML = hint.title;
+				container.appendChild(header);
+
+				//paragraph
+				var para = document.createElement("p");
+				para.innerHTML = hint.text;
+				container.appendChild(para);
+				
+			} else {
+				alert("There was a problem with the request.");
+			}
+		}
+	}
+
+	var button = document.getElementById("go");
+	button.onclick = function() {
+		desiredHint = document.getElementById("number").value;
+		updateOutput();
+	};
+})();
+
+
+</script>
+
+<body>
+    <h1>Content from JSON File</h1>
+    <label>Navigate Hints: <br>
+        <input type="number" id="number" step="1" min="0" max="11" value="0" class="">
+        <button id="go" class="btn btn-primary">go</button>
+    </label>
+    
+    <div id="output"></div>
+    
+
+</body>
+
+
+
+
+</html>

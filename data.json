@@ -1,0 +1,159 @@
+{
+	"levels": [{
+		"name": "1",
+		"difficulty": 4,
+		"color1": "#d43960",
+		"color2": "#1d53d8",
+		"color3": "#29cb51",
+		"color4": "#c4e804",
+		"width": 4,
+		"height": 4
+	}, {
+		"name": "2",
+		"difficulty": 4,
+		"color1": "#c45193",
+		"color2": "#f1eeee",
+		"color3": "#889023",
+		"color4": "#111404",
+		"width": 5,
+		"height": 4
+	}, {
+		"name": "3",
+		"difficulty": 4,
+		"color1": "#874098",
+		"color2": "#c2ed06",
+		"color3": "#246c5b",
+		"color4": "#b95fde",
+		"width": 4,
+		"height": 4
+	}, {
+		"name": "4",
+		"difficulty": 3,
+		"color1": "#6d4ebb",
+		"color2": "#ca8d31",
+		"color3": "#b7cb69",
+		"color4": "#4cf24c",
+		"width": 5,
+		"height": 4
+	}, {
+		"name": "5",
+		"difficulty": 4,
+		"color1": "#3756a7",
+		"color2": "#557bc6",
+		"color3": "#a6b8cb",
+		"color4": "#dcdbaf",
+		"width": 6,
+		"height": 5
+	}, {
+		"name": "6",
+		"difficulty": 4,
+		"color1": "#116895",
+		"color2": "#a1af3c",
+		"color3": "#20d9d2",
+		"color4": "#4a3027",
+		"width": 6,
+		"height": 5
+	}, {
+		"name": "7",
+		"difficulty": 2,
+		"color1": "#0fb1a6",
+		"color2": "#d19bce",
+		"color3": "#d0cfab",
+		"color4": "#91c5d2",
+		"width": 6,
+		"height": 5
+	}, {
+		"name": "8",
+		"difficulty": 3,
+		"color1": "#37c863",
+		"color2": "#8f2792",
+		"color3": "#1f93ab",
+		"color4": "#932d48",
+		"width": 7,
+		"height": 6
+	}, {
+		"name": "9",
+		"difficulty": 2,
+		"color1": "#83c12f",
+		"color2": "#801563",
+		"color3": "#95e8a2",
+		"color4": "#d94aae",
+		"width": 7,
+		"height": 6
+	}, {
+		"name": "10",
+		"difficulty": 2,
+		"color1": "#e8db3c",
+		"color2": "#76a9ad",
+		"color3": "#dbc7a2",
+		"color4": "#384270",
+		"width": 6,
+		"height": 4
+	}, {
+		"name": "11",
+		"difficulty": 1,
+		"color1": "#e7a834",
+		"color2": "#4a55d9",
+		"color3": "#ee8e8e",
+		"color4": "#6fdbd0",
+		"width": 6,
+		"height": 5
+	}, {
+		"name": "12",
+		"difficulty": 1,
+		"color1": "#ed6552",
+		"color2": "#f5ae8b",
+		"color3": "#f18bd8",
+		"color4": "#c180dd",
+		"width": 8,
+		"height": 6
+	},
+				 {
+	"name": "13",
+	"difficulty": 1,
+	"color1": "#00ffff",
+	"color2": "#0080ff",
+	"color3": "#00ccff",
+	"color4": "#ffff00",
+	"width": 6,
+	"height": 5
+}],
+	"hints": [{
+		"title": "How to Play:",
+		"text": "Drag the color chips from the Scrambled palette onto the game board square. Put the colors in order to form perfect gradient blends between the locked corner keys."
+	}, {
+		"title": "Hint:",
+		"text": "Drag the chips around in the <b>scrambled palette</b> before placing them in the game board to cut down on mistakes that hurt your score."
+	}, {
+		"title": "Did you know?",
+		"text": "<b style='color:crimson'>Red</b> and <b style='color:gold'>yellow</b> are the most appetite-stimulating colors."
+	}, {
+		"title": "Train your brain!",
+		"text": "You can replay a CHROMA level to improve your score. Keep practicing!"
+	}, {
+		"title": "Slow and Steady!",
+		"text": "Your score is calculated every time you drop a color chip on the board, so hang onto that color chip until you're sure you have it right!"
+	}, {
+		"title": "Color saves lives!",
+		"text": "The safest color to paint your car is <b style='color:lime'>lime-yellow</b> for its high visibility in most driving conditions."
+	}, {
+		"title": "I can't find my keys!",
+		"text": "Higher levels have missing <b>Corner keys</b>. Spot the keys in the scrambled pallette by looking for the purest colors."
+	}, {
+		"title": "Color Math",
+		"text": "Blends between complementary colors are <b style='color:gray'>neutral gray</b> in the center.  "
+	}, {
+		"title": "What's your favorite color?",
+		"text": "The most popular color in the world is <b style='color:dodgerblue'>blue</b>."
+	}, {
+		"title": "Colorblindness affects more men than women",
+		"text": "99% of all colorblind people are not really color blind but color deficient; the term color blindness is misleading."
+	}, {
+		"title": "CHROMA",
+		"text": "means \"color\" in Greek."
+	}, {
+		"title": "Don't wear red on exam day",
+		"text": "The color <b style='color:red'>red</b> is soothing for chickens, but it can increase anxiety in people because it is associated with failure."
+	}]
+
+}
