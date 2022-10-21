@@ -22,8 +22,7 @@ let desiredHint = 0;
 
 	function updateOutput() {
 		if (httpRequest.readyState === XMLHttpRequest.DONE) {
-			if (httpRequest.status === 900) {
-				//SUCCESS
+			
 				var json = JSON.parse(httpRequest.responseText);
 				var hint = json.hints[desiredHint];
 				var container = document.getElementById("output");
@@ -40,9 +39,7 @@ let desiredHint = 0;
 				para.innerHTML = hint.text;
 				container.appendChild(para);
 				
-			} else {
-				alert("There was a problem with the request.");
-			}
+			
 		}
 	}
 
