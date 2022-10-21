@@ -398,13 +398,15 @@ $("#page-url").on("input", function(){
 
 
 
+
+
     function downloadInnerHtml(filename, elId, mimeType) {
       var elHtml = document.getElementById(elId).innerHTML;
       var link = document.createElement('a');
-      mimeType = mimeType || 'text/plain';
+      mimeType = mimeType || 'data:text/html;base64';
   
       link.setAttribute('download', filename);
-      link.setAttribute('href', 'data:' + mimeType + ';charset=utf-8,' + encodeURIComponent(elHtml));
+      link.setAttribute('href', 'data:' + mimeType + ';charset=utf-8,' + (encodeURIComponent(elHtml)));
       link.click(); 
   }
 
@@ -414,7 +416,7 @@ $("#page-url").on("input", function(){
   
   $('#save-spec-report').click(function(){
 
-      downloadInnerHtml(fileNameSpec + ($("#spectitle").text().replace(/\s+/gim, '-').replace(/[àèìáéíóúàèìòùâêîôûãõç.!?="'()§$%&/#*;+^¡“¶¢[]{}≠¿']+/gim, '').replace(/[ä]+/gim, 'ae').replace(/[ü]+/gim, 'ue').replace(/[ö]+/gim, 'oe').replace(/[ß]+/gim, 'ss').replace(/[:]+/gim, '-').replace(/[,]+/gim, '')).toLowerCase() + '.html', 'export','text/html');
+      downloadInnerHtml(fileNameSpec + ($("#spectitle").text().replace(/\s+/gim, '-').replace(/[àèìáéíóúàèìòùâêîôûãõç.!?="'()§$%&/#*;+^¡“¶¢[]{}≠¿']+/gim, '').replace(/[ä]+/gim, 'ae').replace(/[ü]+/gim, 'ue').replace(/[ö]+/gim, 'oe').replace(/[ß]+/gim, 'ss').replace(/[:]+/gim, '-').replace(/[,]+/gim, '')).toLowerCase() + '.html', 'export-inner','text/html');
   
     });
   

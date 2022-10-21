@@ -1,0 +1,75 @@
+- Testcase: Accessibility Audit Checklist
+
+
+- Ein Nutzer/eine Nutzerin soll anhand der Checkliste überprüfen können, welche Dinge er/sie aus Sicht der Barrierefreiheit berücksichtigen sollte. 
+
+- Der Nutzer kann auswählen, für welches Szenario er/sie die Checkliste nutzen möchte (Design-Konzept, UI Spezifikation, Bau einer Seite im CMS)
+
+- Zusätzlich soll es zu jedem der Punkte noch weitere Infos zu den jeweiligen Anforderungen geben, um für ein besseres Verständnis zu sorgen, worum es bei dem jeweiligen Punkt geht. 
+
+- Ein Nutzer/eine Nutzerin soll unmittelbar Feedback dazu bekommen, wie konform sein/ihr Projekt in Bezug auf Barrierefreiheit ist. 
+
+- Um dokumentieren zu können, welche Dinge berücksichtigt wurden und wo noch Verbesserungsbedarf besteht, kann das Ergebnis der Checkliste in Form einer Übersicht dargestellt werden. 
+
+- Das Ergebnis der Überprüfung kann sich ein Nutzer/eine Nutzerin als Datei auf seinem Rechner speichern. 
+
+- Um im Nachhinein zuordnen zu können, in welchem Rahmen die Checkliste genutzt wurde, besteht die Möglichkeit, konkrete Angaben zum Projekt zu machen. Diese "Reports" sollen ebenfalls dazu dienen, nach außen zu kommunizieren, dass und in welchem Rahmen wir uns mit dem Thema der Barrierefreiheit auseinander setzen. 
+
+
+- Ziele, die mit der Implementierung des Tools in die Prozesse erreicht werden sollen: 
+
+ - Für den Nutzer/die Nutzerin soll die Checkliste ein verständlich und einfach zu nutzendes Tool für die tägliche Arbeit sein
+ - Die Checkliste soll als Nachschlagewerk dienen und ein Bewusstsein dafür schaffen, welche Aspekte der Barrierefreiheit zu berücksichtigen sind
+ - Die Qualität in Bezug die Barrierefreiheit der Vodafone.de soll sich deutlich verbessern
+ - Der Reifegrad der Barrierefreiheit soll gesteigert werden
+ - Durch das Prüfen gegen die gültigen Standards soll eine Vorbereitung getroffen werden auf zukünftige Audits. 
+ - Die Reports sollen zu Dokumentationszwecken dienen, dass wir uns als Vodafone mit dem Thema Barrierefreiheit auseinander setzen und wo noch Verbesserungsbedarf besteht
+ - Transparenz schaffen
+ - Dabei behilflich sein, WS10 Kriterien und Bezug auf Inclusive Design zu erfüllen
+
+
+Intro: 
+
+Im Folgenden siehst du eine Checkliste, mit der du überprüfen kannst, auf welche Aspekte du in Bezug auf Barrierefreiheit achten musst. Du kannst du wählen, ob du es sich um ein Design-Konzept, eine UI Spezifikation oder der Bau einer Seite im CMS handelt. Im Anschluss deiner Überprüfung kannst du dir das Gesamtergebnis anzeigen lassen und als Datei speichern.
+
+
+Aufgaben:
+
+ - Wähle die für dich relevante Liste aus
+ - Navigiere zu einer anderen Liste
+ - Gehe die Liste von oben nach unten durch
+ - Entscheide bei jedem Listen-Punkt, ob er für dein Projekt relevant ist und, ob du diesen in deinem Projekt berücksichtigt hast
+ - Markiere jeden Listen-Punkt mit der jeweiligen Entscheidung oder überspringe ihn un gehe zum nächsten
+ - Lasse dir zu mindestens einem der Punkte weitere Informationen anzeigen
+ - Lasse dir das Ergebnis deiner Entscheidungen in einer Übersicht anzeigen
+ - Lade dir das Ergebnis herunter und ergänze dabei Informationen, die zur Zuordnung des Projektes nötig sind.
+
+
+
+Ziel des Tests:
+
+- Es soll herausgefunden werden, ob der Zweck der Checkliste verstanden wird. Außerdem möchte ich erfahren, ob die Bedienung leicht verständlich ist und alle Funktionen an erwarteter Stelle gezeigt bzw. abgefragt werden.  
+
+
+Mögliche Testfragen: 
+
+- Wie wirkt die Checkliste auf dich von der Gestaltung? 
+
+- Wirkt die Checkliste übersichtlich auf dich?
+
+- Was denkst du über die Funktionalitäten?
+
+- Ist die Bedienung für dich verständlich?
+
+- Spielt für dich die Sprache eine Rolle?
+
+- Wenn du nach Informationen suchst, wo würdest du sie erwarten?
+
+- Was würdest du gerne verbessern aus deiner Sicht?
+
+- Entspricht die Checkliste deinen Erwartungen an eine auf deine Rolle zugeschnittenes Tool?
+
+
+
+
+
