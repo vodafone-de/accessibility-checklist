@@ -434,3 +434,49 @@ $("#page-url").on("input", function(){
   
     });
   
+
+    var tabIndexService = function (glHtml) {
+      var itemsRearangeForBurgerViewport = [glHtml.getElementsByClassName('brix-gn__logo')[0]];
+      var iconNavLinks = glHtml.getElementsByClassName('brix-gn__icon-nav-link');
+      Array.from(iconNavLinks).forEach(function (el, index) {
+          itemsRearangeForBurgerViewport[index + 1] = el;
+      });
+      var itemsRearangeForDesktopViewport = [];
+      var metaNavLinks = glHtml.getElementsByClassName('brix-gn__meta-nav-link');
+      Array.from(metaNavLinks).forEach(function (el, index) {
+          itemsRearangeForDesktopViewport[index + 1] = el;
+      });
+      var setTabIndices = function (arr01, arr02) {
+          glHtml.getElementsByClassName('brix-gn__skip-to-content')[0].getElementsByTagName('a')[0].setAttribute('tabindex', '1');
+          glHtml.getElementsByClassName('brix-gn__skip-to-content')[0].getElementsByTagName('a')[1].setAttribute('tabindex', '2');
+          arr01.forEach(function (elm, index) {
+              elm.setAttribute('tabindex', "" + (index + 2));
+          });
+          arr02.forEach(function (elm, index) {
+              elm.setAttribute('tabindex', "0");
+          });
+      };
+      // listen to viewport changes
+      var handleViewPortChange = function () {
+          glHtml.getElementsByClassName('brix-gn__skip-to-content')[0].getElementsByTagName('a')[0].setAttribute('tabindex', '1');
+          checkIfBurgerViewport() ? setTabIndices(itemsRearangeForBurgerViewport, itemsRearangeForDesktopViewport) : setTabIndices(itemsRearangeForDesktopViewport, itemsRearangeForBurgerViewport);
+      };
+      handleViewPortChange();
+      return handleViewPortChange;
+  };
+
+
+
+    var skipToService = function (glHtml) {
+      // const links = glHtml.querySSelectorAll('.brix-gn__skip-to-content a');
+      var skipToContainer = glHtml.getElementsByClassName('brix-gn__skip-to-content')[0];
+      Array.from(skipToContainer.children).forEach(function (link) {
+          link.addEventListener('keydown', function (e) {
+              // open submenu
+              if ((e.code === 'Space' || e.code === 'Enter')) {
+                  e.preventDefault();
+                  openLink(link);
+              }
+          });
+      });
+  };

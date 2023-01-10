@@ -339,3 +339,54 @@ box-shadow: 2px 0px #f4f4f4;
     background-color: #D9D9D9;
     transform: rotate(90deg);
   }
+
+
+  .dark .brix-gn__level-one::before {
+    background: #333;
+    z-index: -1;
+    box-shadow: 0 0 4px rgb(51 51 51 / 30%);
+  }
+
+
+  .dark .brix-gn__main-nav-container {
+    background-color: #333;
+  }
+
+  .dark .brix-gn__level-one {
+    background: #333;
+}
+
+
+
+
+.dark .brix-gn__level-one-item.brix-gn__level-one-item--selected .brix-gn__level-one-link {
+  color: #f06666;
+}
+
+.dark .brix-gn__level-one-item.brix-gn__level-one-item--selected {
+  box-shadow: 0 -3px #f06666 inset;
+}
+
+
+.dark .brix-gn__skip-to-content {
+  display: flex;
+  justify-content: center;
+  background-color: #f06666; }
+.dark .brix-gn__skip-to-content a {
+    position: fixed;
+    top: -100px;
+    padding: 8px 12px;
+    margin: 8px 0;
+    font-weight: 700;
+    font-size: 1.143rem;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: underline; }
+  
+.dark .brix-gn__skip-to-content a:focus {
+      position: relative;
+      top: 0;
+      color: #fff; }
+      
+.dark .brix-gn__skip-to-content a:visited {
+      color: #fff; }
