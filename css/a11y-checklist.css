@@ -1,11 +1,13 @@
 body {
+    margin:0;
     background-color: #f4f4f4;
     font-family:Vodafone;
     font-style:normal;
     font-weight:400;
     src:url(https://www.vodafone.de/simplicity/assets/css/fonts/VodafoneRg.eot);src:url(https://www.vodafone.de/simplicity/assets/css/fonts/VodafoneLt.woff2) format("woff2"),url(https://www.vodafone.de/simplicity/assets/css/fonts/VodafoneRg.woff) format("woff")}
     @font-face{font-display:swap;font-family:Vodafone;font-style:normal;font-weight:700;src:url(https://www.vodafone.de/simplicity/assets/css/fonts/vodafonergbd-webfont.eot);src:url(https://www.vodafone.de/simplicity/assets/css/fonts/vodafonergbd-webfont.woff2) format("woff2"),url(https://www.vodafone.de/simplicity/assets/css/fonts/vodafonergbd-webfont.woff) format("woff")}@font-face{font-display:swap;
-    font-family:Vodafone; font-style:normal;font-weight:100; src:url(https://www.vodafone.de/simplicity/assets/css/fonts/VodafoneLt.eot);src:url(https://www.vodafone.de/simplicity/assets/css/fonts/VodafoneLt.woff2) format("woff2"),url(https://www.vodafone.de/simplicity/assets/css/fonts/VodafoneLt.woff) format("woff")}
+    font-family:Vodafone; font-style:normal;font-weight:100; src:url(https://www.vodafone.de/simplicity/assets/css/fonts/VodafoneLt.eot);src:url(https://www.vodafone.de/simplicity/assets/css/fonts/VodafoneLt.woff2) format("woff2"),url(https://www.vodafone.de/simplicity/assets/css/fonts/VodafoneLt.woff) format("woff");
+  }
 
 
 h1, .ws10-h1 {
@@ -255,6 +257,164 @@ a:focus {
       color: #fff; }
     .brix-gn__skip-to-content a:visited {
       color: #fff; }
+
+      footer {
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        vertical-align: baseline;
+        color: #fff;
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+        flex-wrap: nowrap;
+        flex-direction: column;
+    }
+
+      .brix-gn-footer {
+        position: relative;
+        background-color: #000;
+        color: #fff;
+    }
+
+    .brix-gn-footer__main-nav {
+      position: relative;
+      max-width: 1050px;
+      margin: 0 auto 32px;
+  }
+
+  .brix-gn-footer__main-nav::after {
+    position: relative;
+    display: block;
+    content: '';
+    height: 1px;
+    background: #999;
+    margin: 0 16px;
+}
+
+  .brix-gn-footer__level-one {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 36px 0 16px;
+    list-style: none;
+}
+
+.brix-gn-footer__level-one-item {
+  font-size: 1.429rem;
+  font-weight: 700;
+  line-height: 1.25;
+  width: 25%;
+}
+
+.brix-gn-footer__level-one-item .brix-gn__chevron-label {
+  position: relative;
+  top: auto;
+  right: auto;
+  width: auto;
+  padding: 12px 0;
+  font-size: 20px;
+}
+
+.brix-gn-footer__level-two {
+  position: relative;
+  color: #ffffff;
+  padding: 12px 4px 0 0;
+}
+
+.brix-gn-footer__level-two-item {
+  font-size: 1.143rem;
+  font-weight: 400;
+  line-height: 1.5;
+  list-style: none;
+  font-size:16px;
+  text-decoration:none;
+  padding: 4px 0 4px 0px;
+}
+
+.brix-gn-footer__level-two-item a {
+
+  text-decoration:none;
+}
+
+.brix-gn-footer__level-two-item a:hover {
+
+  text-decoration:underline;
+ 
+}
+
+.brix-gn-footer a {
+  color: #fff;
+}
+
+.brix-gn-footer__level-two-link a {
+  display: block;
+  color: #fff;
+  padding: 4px 16px;
+  text-decoration: none;
+  
+}
+
+.brix-gn-footer__level-two-link a:visited {
+  display: block;
+  color: #fff;
+  padding: 4px 16px;
+  text-decoration: none;
+}
+
+.brix-gn-footer__level-two-link a:focus {
+  display: block;
+  color: #fff;
+  padding: 4px 16px;
+  text-decoration: underline;
+}
+
+
+.brix-gn-footer__main-nav::after {
+  position: relative;
+  display: block;
+  content: '';
+  height: 1px;
+  background: #999;
+  margin: 0;
+}
+
+.brix-gn-footer__legal-nav {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-bottom: 32px;
+}
+
+
+.brix-gn-footer__legal-item {
+  position: relative;
+  font-size: 0.857rem;
+  line-height: 1.5;
+  list-style: none;
+}
+
+.brix-gn-footer__legal-item a {
+text-decoration: none;
+font-size:12px;
+}
+
+.brix-gn-footer__legal-item a:hover {
+  text-decoration: underline;
+  }
+
+.brix-gn-footer__copy-text, .brix-gn-footer__legal-link {
+  position: relative;
+  display: block;
+  padding: 6px;
+  margin-top: -2px;
+  margin-bottom: -2px;
+  color: #fff;
+}
+
 
 
 

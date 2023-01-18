@@ -2,15 +2,15 @@ const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-schem
 $(function() {
 if (prefersDark) {
   $('body').addClass('dark');
-  $('.dark-mode-switcher').text('Dark mode ON');
+  $('.dark-mode-switcher').text('Dark mode OFF');
 }
 $('.dark-mode-switcher').on('click', function(e) {
   $('body').toggleClass('dark');
 
 if ($('body').hasClass('dark')) {
-    $('.dark-mode-switcher').text('Dark mode ON'); }
+    $('.dark-mode-switcher').text('Dark mode OFF'); }
     else {
-        $('.dark-mode-switcher').text('Dark mode OFF');
+        $('.dark-mode-switcher').text('Dark mode ON');
     }
   e.preventDefault();
 });
@@ -176,6 +176,7 @@ var $checkboxes = $('input:checkbox');
       
       $('main').attr('aria-hidden', 'true').attr("tabindex", -1).addClass('ws10-no-scroll');
       $('button').attr("tabindex", -1);
+      $('footer').css('display', 'none');
       $('a').attr("tabindex", -1);
       $('input').attr("tabindex", -1);
       $('.toggle-link').attr("tabindex", -1);
@@ -233,10 +234,11 @@ var $checkboxes = $('input:checkbox');
           //callback
       });
       $('main').removeAttr('aria-hidden', 'true').removeAttr("tabindex", -1).removeClass('ws10-no-scroll');
-      $('button').removeAttr("tabindex", -1);
-      $('a').removeAttr("tabindex", -1);
-      $('input').removeAttr("tabindex", -1);
-      $('.toggle-link').removeAttr("tabindex", -1);
+      $('button').attr("tabindex", 1);
+      $('footer').css('display', 'flex');
+      $('a').attr("tabindex", 1);
+      $('input').attr("tabindex", 1);
+      $('.toggle-link').attr("tabindex", 1);
       $('.close').removeAttr("tabindex", 1);
       $('.tabenable').removeAttr("tabindex", 1);
       
@@ -320,10 +322,11 @@ $(document).keyup(function(e) {
           //callback
       });
       $('main').removeAttr('aria-hidden', 'true').removeAttr("tabindex", -1).removeClass('ws10-no-scroll');
-      $('button').removeAttr("tabindex", -1);
-      $('a').removeAttr("tabindex", -1);
-      $('input').removeAttr("tabindex", -1);
-      $('.toggle-link').removeAttr("tabindex", -1);
+      $('button').attr("tabindex", 1);
+      $('footer').css('display', 'flex');
+      $('a').attr("tabindex", 1);
+      $('input').attr("tabindex", 1);
+      $('.toggle-link').attr("tabindex", 1);
       $('.close').removeAttr("tabindex", 1);
       $('.tabenable').removeAttr("tabindex", 1);
     
