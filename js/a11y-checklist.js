@@ -26,6 +26,10 @@ var numberOfCheckedRelevantCheckboxes = 0;
 
 
 var updateStatus = function(){
+
+  
+  
+  
     $('#count-checked-checkboxes').text(numberOfCheckedRelevantCheckboxes);
     $('#count-total-checkboxes').text(numberOfRelevantCheckboxes);
     $('#percentage-checked-checkboxes').text(
@@ -101,10 +105,15 @@ var $checkboxes = $('input:checkbox');
         
         if('relevant' === $checkbox.attr('data-dis')){
           isRelevant = false;
+        
           
         }
 
+      
+
         var isChecked = $checkbox.is(':checked');
+
+        localStorage.setItem("checked", isChecked);
 
         // an dem punkt weißt du:
         // eine checkbox hat sich geändert
@@ -123,6 +132,8 @@ var $checkboxes = $('input:checkbox');
 
           var ruledis = $(this).data('ruledis');
           $("[data-ruletog='" + ruledis + "']").attr("disabled", "disabled");
+          
+        
           
         }
 
@@ -161,10 +172,11 @@ var $checkboxes = $('input:checkbox');
 
 
         updateStatus();
-        
+
+    
+       
 
     });
-
 
 
     $(".result").click(function(e) {
@@ -336,12 +348,7 @@ $(document).keyup(function(e) {
 
 
 
-    $('a[href^="#"]').click(function(){
-        $($(this).attr("href")).addClass("highlight")
-        setTimeout(function() {
-            $(this).removeClass('highlight');
-        }, 1000);
-    });
+
 
     
 
@@ -483,3 +490,13 @@ $("#page-url").on("input", function(){
           });
       });
   };
+
+
+ 
+
+
+    $('.brix-gn__burger-label').on('click', function() {
+      $('.burger-icon-show').toggleClass("burger-icon-hide");
+      $('.burger-close-icon-hide').toggleClass("burger-close-icon-show");
+      $('#mobile-nav').toggleClass("show");
+   });
