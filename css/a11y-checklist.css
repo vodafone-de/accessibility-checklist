@@ -654,6 +654,15 @@ margin-left: 24px;
     display: none; }
 
 
+    .ws10-accordion-item__chevron-demo {
+      stroke: #bd0000;
+      width: 32px;
+      height: 32px;
+      background-color: transparent;
+      transform: rotateX(0deg);
+      transform-origin: center;
+  }   
+
 .ws10-accordion-item__icon {
   display: inline-block;
   margin-right: 16px;
@@ -1552,7 +1561,10 @@ display:none;
   transform: translate(50%, 50%) scaleY(1) rotate(0deg);
 }
 
+.desk-hide {
+display:none;
 
+}
 
 /* Small desktop view */
 
@@ -1972,6 +1984,14 @@ padding-right:16px;
 
 }
 
+.mobile-hide {
+  display:none;
+}
+
+.desk-hide {
+  display:block;
+  
+  }
 
 
 }

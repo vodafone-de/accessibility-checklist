@@ -500,3 +500,14 @@ $("#page-url").on("input", function(){
       $('.burger-close-icon-hide').toggleClass("burger-close-icon-show");
       $('#mobile-nav').toggleClass("show");
    });
+
+   $('.brix-gn__burger-label').keypress(function (e) {
+    var key = e.which;
+    if(key == 13)  // the enter key code
+     {
+      $('.burger-icon-show').toggleClass("burger-icon-hide");
+      $('.burger-close-icon-hide').toggleClass("burger-close-icon-show");
+      $('#mobile-nav').toggleClass("show");
+       return false;  
+     }
+   });
