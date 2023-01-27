@@ -390,3 +390,54 @@ box-shadow: 2px 0px #f4f4f4;
       
 .dark .brix-gn__skip-to-content a:visited {
       color: #fff; }
+
+
+
+      @media only screen and (max-width: 1049px) and (-webkit-min-device-pixel-ratio: 0) {
+      
+      
+      .dark .brix-gn__burger-label {
+
+          background-color: #333;
+
+      }
+
+.dark .burger-icon-show {
+
+  stroke: #f4f4f4;
+}
+
+.dark .burger-close-icon-show {
+
+  stroke: #fff;
+  background: #EA1A1A;
+}
+
+.dark .mobile-main-nav-list-item {
+  border-bottom: 1px solid #000000;
+
+}
+
+
+.dark .mobile-main-nav-container {
+
+  border-left: solid 1px #262626;
+  background: #333;
+
+}
+
+
+.dark .mobile-main-nav-link--selected {
+  color: #F06666!important;
+}
+
+.dark .mobile-main-nav-chevron-icon--selected {
+  stroke: #F06666!important;
+}
+
+.dark .mobile-main-nav-chevron-icon {
+  stroke: #f4f4f4;
+
+}
+
+    }

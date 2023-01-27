@@ -1353,6 +1353,8 @@ span.disable-circle::after,span.disable-circle::before {
 .ws10-button-icon-only--tertiary.ws10-button-icon-only--floating:not(:hover):not(:active):not(:focus) {
   background: #fff;
 }
+
+
 .ws10-button-icon-only--floating {
   border-radius: 50%;
   box-shadow: 0 4px 10px rgb(0 0 0 / 20%);
@@ -1376,21 +1378,64 @@ span.disable-circle::after,span.disable-circle::before {
   stroke: #0d0d0d;
 }
 
+.ws10-button-icon-only--tertiary:focus  {
+  stroke: #fff;
+  fill:#008A00;
+
+}
+
 .ws10-button-icon-only__icon {
   width: 32px;
   height: 32px;
 }
 
-.ws10-button-icon-only--tertiary:hover, .ws10-button-icon-only--tertiary:focus {
-  background: #313131;
-  cursor: pointer;
+.ws10-button-icon-only:focus .ws10-button-icon-only__icon {
+  stroke:#fff;
 }
 
-.ws10-button-icon-only--tertiary:hover .ws10-button-icon-only__icon, .ws10-button-icon-only--tertiary:focus .ws10-button-icon-only__icon {
+
+.ws10-button--tertiary.ws10-button--icon:hover .ws10-system-icon, .ws10-button--tertiary.ws10-button--icon:focus .ws10-system-icon, .ws10-button--tertiary.ws10-button--icon:active .ws10-system-icon {
+  transition: all 0.2s cubic-bezier(0.47, 0, 0.745, 0.715);
   stroke: #fff;
-}
+  fill: #fff; }
+.ws10-button--tertiary:active {
+  border-color: #565656; }
+.ws10-button--tertiary.ws10-button--icon .ws10-system-icon {
+  stroke: #0d0d0d;
+  fill: #0d0d0d; }
+.ws10-button--tertiary-inverse {
+border: 2px solid #fff;
+box-shadow: unset; }
+.ws10-button--tertiary-inverse:hover, .ws10-button--tertiary-inverse:focus-visible:not([disabled]), .ws10-button--tertiary-inverse:active {
+  border-color: #d9d9d9;
+  color: #0d0d0d !important; }
+.ws10-button--tertiary-inverse.ws10-button--icon:hover .ws10-system-icon, .ws10-button--tertiary-inverse.ws10-button--icon:focus .ws10-system-icon, .ws10-button--tertiary-inverse.ws10-button--icon:active .ws10-system-icon {
+  transition: all 0.2s cubic-bezier(0.47, 0, 0.745, 0.715);
+  stroke: #0d0d0d;
+  fill: #0d0d0d; }
+.ws10-button--tertiary-inverse:active {
+  border-color: #b3b3b3; }
+.ws10-button--tertiary-inverse.ws10-button--icon .ws10-system-icon {
+  stroke: #fff;
+  fill: #fff; }
 
-
+  ws10-button--tertiary, .ws10-button--tertiary:visited {
+    color: #0d0d0d; }
+  .ws10-button--tertiary:hover {
+    background-color: #313131; }
+  .ws10-button--tertiary:focus-visible:not([disabled]) {
+    background-color: #313131; }
+  .ws10-button--tertiary:active {
+    background-color: #565656; }
+  .ws10-button--tertiary-inverse, .ws10-button--tertiary-inverse:visited {
+    color: #fff; }
+  .ws10-button--tertiary-inverse:hover {
+    background-color: #d9d9d9; }
+  .ws10-button--tertiary-inverse:focus-visible:not([disabled]) {
+    background-color: #d9d9d9; }
+  .ws10-button--tertiary-inverse:active {
+    background-color: #b3b3b3; }
+  
 .no-mouse {
 
   pointer-events: none;
@@ -1995,6 +2040,8 @@ padding-right:16px;
 
 
 }
+
+
 
 
 
