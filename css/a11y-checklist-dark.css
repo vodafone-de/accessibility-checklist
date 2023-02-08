@@ -291,13 +291,13 @@ box-shadow: 2px 0px #f4f4f4;
     height: 32px;
   }
   
-  .dark .ws10-button-icon-only--tertiary:hover, .ws10-button-icon-only--tertiary:focus {
+  .dark .ws10-button-icon-only--tertiary:hover, .dark .ws10-button-icon-only--tertiary:focus {
     background: #D9D9D9;
     cursor: pointer;
     transition: all 0.4s ease 0s;
   }
   
-  .dark .ws10-button-icon-only--tertiary:hover .ws10-button-icon-only__icon, .ws10-button-icon-only--tertiary:focus .ws10-button-icon-only__icon {
+  .dark .ws10-button-icon-only--tertiary:hover .ws10-button-icon-only__icon, .dark .ws10-button-icon-only--tertiary:focus .ws10-button-icon-only__icon {
     stroke: #0D0D0D;
     transition: all 0.4s ease 0s;
   }

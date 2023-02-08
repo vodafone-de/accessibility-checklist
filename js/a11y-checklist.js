@@ -421,10 +421,17 @@ $("#page-url").on("input", function(){
   }
 
   var fileNameSpec = 'vf-a11y-report-ui-spec-'; 
+  var fileNameDev = 'vf-a11y-report-frontend-dev-'; 
   var fileNameDesign = 'vf-a11y-report-design-concept-'; 
   var fileNameCms = 'vf-a11y-report-cms-page-';
   
   $('#save-spec-report').click(function(){
+
+      downloadInnerHtml(fileNameSpec + ($("#spectitle").text().replace(/\s+/gim, '-').replace(/[àèìáéíóúàèìòùâêîôûãõç.!?="'()§$%&/#*;+^¡“¶¢[]{}≠¿']+/gim, '').replace(/[ä]+/gim, 'ae').replace(/[ü]+/gim, 'ue').replace(/[ö]+/gim, 'oe').replace(/[ß]+/gim, 'ss').replace(/[:]+/gim, '-').replace(/[,]+/gim, '')).toLowerCase() + '.html', 'export-inner','text/html');
+  
+    });
+
+    $('#save-dev-report').click(function(){
 
       downloadInnerHtml(fileNameSpec + ($("#spectitle").text().replace(/\s+/gim, '-').replace(/[àèìáéíóúàèìòùâêîôûãõç.!?="'()§$%&/#*;+^¡“¶¢[]{}≠¿']+/gim, '').replace(/[ä]+/gim, 'ae').replace(/[ü]+/gim, 'ue').replace(/[ö]+/gim, 'oe').replace(/[ß]+/gim, 'ss').replace(/[:]+/gim, '-').replace(/[,]+/gim, '')).toLowerCase() + '.html', 'export-inner','text/html');
   

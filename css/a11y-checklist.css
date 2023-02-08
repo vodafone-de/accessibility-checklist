@@ -49,7 +49,7 @@ margin-bottom: 16px;
 margin-top: 16px;
 }
 
-@media screen and (min-width: 600px)
+@media screen and (min-width: 600px) {
 h4, .ws10-headline--h4 {
     font-size: 24px;
 }
@@ -64,6 +64,7 @@ h4, .ws10-headline--h4 {
     margin-block-end: 16px;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
+}
 }
 
 a {
@@ -169,7 +170,7 @@ a:focus {
     font-size: 22px;
 }
 
-@media (min-width: 1025px)
+@media (min-width: 1025px) {
 .brix-gn__meta-nav {
     position: absolute;
     top: 0;
@@ -200,7 +201,9 @@ a:focus {
   z-index: -1;
 }
 
-@media (min-width: 1025px)
+}
+
+@media (min-width: 1025px) {
 .brix-gn__meta-nav-list {
     display: flex;
     flex-direction: row;
@@ -233,6 +236,7 @@ a:focus {
   line-height: 1.25;
   margin: 0;
 }
+}
 
 .brix-gn__skip-to-content {
   display: flex;
@@ -254,6 +258,7 @@ a:focus {
       color: #fff; }
     .brix-gn__skip-to-content a:visited {
       color: #fff; }
+
 
       footer {
         margin: 0;
@@ -1354,6 +1359,11 @@ span.disable-circle::after,span.disable-circle::before {
   background: #fff;
 }
 
+.ws10-button-icon-only--tertiary:hover, .ws10-button-icon-only--tertiary:focus {
+  background: #313131;
+  cursor: pointer;
+}
+
 
 .ws10-button-icon-only--floating {
   border-radius: 50%;
@@ -1378,10 +1388,8 @@ span.disable-circle::after,span.disable-circle::before {
   stroke: #0d0d0d;
 }
 
-.ws10-button-icon-only--tertiary:focus  {
+.ws10-button-icon-only--tertiary:hover .ws10-button-icon-only__icon, .ws10-button-icon-only--tertiary:focus .ws10-button-icon-only__icon {
   stroke: #fff;
-  fill:#008A00;
-
 }
 
 .ws10-button-icon-only__icon {
@@ -1389,9 +1397,6 @@ span.disable-circle::after,span.disable-circle::before {
   height: 32px;
 }
 
-.ws10-button-icon-only:focus .ws10-button-icon-only__icon {
-  stroke:#fff;
-}
 
 
 .ws10-button--tertiary.ws10-button--icon:hover .ws10-system-icon, .ws10-button--tertiary.ws10-button--icon:focus .ws10-system-icon, .ws10-button--tertiary.ws10-button--icon:active .ws10-system-icon {
