@@ -587,6 +587,12 @@ display:none;
 display: none;
 }
 
+#table {
+
+    border-spacing: 0;
+    border-collapse: collapse;
+    
+}
 
 table tfoot {
 position: sticky;
