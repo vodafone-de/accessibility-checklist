@@ -3,7 +3,7 @@
     "id": 1,
     "name": "Check that good proximity between content is maintained.",
     "desc": "Proximity issues can arise when interface elements are designed far apart from one another. This mostly affects people with low-vision who rely on zoom software.",
-    "role": "Design, Development"
+    "role": ["Design", "Development", "Editorial"]
   },
   {
     "id": 2,
