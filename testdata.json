@@ -23,6 +23,6 @@
          "rule": "Use a simple, straightforward, and consistent layout.",
          "description": "A complicated layout can be confusing to understand and use.",
          "role": "Designer, Web Developer"
-      },
+      }
    }
 }
