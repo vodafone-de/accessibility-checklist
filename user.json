@@ -1,6 +1,16 @@
 {
-  "userId": 1,
-  "id": 1,
-  "title": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit",
-  "body": "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
+   "appearance":  {
+      "rule1": {
+         "id": "a11y-rule-03-01",
+         "title": "Check that good proximity between content is maintained.",
+         "body": "Proximity issues can arise when interface elements are designed far apart from one another. This mostly affects people with low-vision who rely on zoom software.",
+         "role": "Designer, Web Developer"
+      },
+      "rule2": {
+         "id": "a11y-rule-03-02",
+         "title": "between content is maintained.",
+         "body": "Proximity issues can arise when interface elements are designed far apart from one another. This mostly affects people with low-vision who rely on zoom software.",
+         "role": "Designer, Web Developer"
+      },
+   }
 }
