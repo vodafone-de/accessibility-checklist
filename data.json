@@ -1,17 +1,17 @@
 [
   {
     "id": 1,
-    "name": "Soumyaneel Sarkar",
-    "desc": "I am a MCA student"
+    "name": "Check that good proximity between content is maintained.",
+    "desc": "Proximity issues can arise when interface elements are designed far apart from one another. This mostly affects people with low-vision who rely on zoom software."
   },
   {
     "id": 2,
-    "name": "Arunava Das",
-    "desc": "I am a Data Science enthusiastic"
+    "name": "Make sure color isn't the only way information is conveyed.",
+    "desc": "Can you still see where links are among body content if everything is grayscale?"
   },
   {
     "id": 3,
-    "name": "Pritam Sarkar",
-    "desc": "I am ML enthusiastic"
+    "name": "Make sure instructions are not visual or audio-only.",
+    "desc": "Use a combination of characteristics to write cues, particularly the actual names of sections and"
   }
 ]
