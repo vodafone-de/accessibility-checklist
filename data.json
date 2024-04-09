@@ -3,26 +3,28 @@
     "id": 1,
     "name": "Check that good proximity between content is maintained.",
     "desc": "Proximity issues can arise when interface elements are designed far apart from one another. This mostly affects people with low-vision who rely on zoom software.",
-    "role": ["Design", " ", 
-             "Development", 
-             "Editorial"]
+     "roles" :
+      [{
+      "role1"  : "Design",
+      "role2" : "Develop" 
+      }]
   },
   {
     "id": 2,
     "name": "Make sure color isn't the only way information is conveyed.",
     "desc": "Can you still see where links are among body content if everything is grayscale?",
-    "role": "Design"
+    "roles": "Design"
   },
   {
     "id": 3,
     "name": "Make sure instructions are not visual or audio-only.",
     "desc": "Use a combination of characteristics to write cues, particularly the actual names of sections and",
-    "role": "Editorial"
+    "roles": "Editorial"
   },
     {
     "id": 4,
-    "name": "Make sure instructions .",
-    "desc": "Use a combination of characteristics to write cues",
-    "role": "Design"
+    "name": "Make sure instructions are not visual or audio-only.",
+    "desc": "Use a combination of characteristics to write cues, particularly the actual names of sections and",
+    "roles": "Design"
   }
 ]
