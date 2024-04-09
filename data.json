@@ -1,22 +1,9 @@
 [
-[
-  "roles =", {
-  "role1": "Design",
-  "role2": "Editorial",
-  "role3": "Frontend Development",
-  "role4": "Testing"
-},
-
-"roleset1 =", ["role2", "role4"],";",
-"roleset2 =", ["role1", "role2", "role3"],";",
-"roleset3 =", ["role4"],";"
-],
-[
   {
     "id": 1,
     "name": "Check that good proximity between content is maintained.",
     "desc": "Proximity issues can arise when interface elements are designed far apart from one another. This mostly affects people with low-vision who rely on zoom software.",
-  "role" : "roleset1"
+  "roles" : ["Design", "Editorial"]
   },
   {
     "id": 2,
@@ -37,6 +24,4 @@
     "desc": "Use a combination of characteristics to write cues, particularly the actual names of sections and",
     "roles": "Design"
   }
-]
-
 ]
