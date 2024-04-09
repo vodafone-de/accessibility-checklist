@@ -1,28 +1,45 @@
 [
   {
-    "id": 1,
-    "name": "Check that good proximity between content is maintained.",
-    "desc": "Proximity issues can arise when interface elements are designed far apart from one another. This mostly affects people with low-vision who rely on zoom software.",
-     "roleprop1": "Design",
-     "roleprop2": "Editorial",
-     "roleprop3": "Frontend Development"
-  },
+	"id": "0001",
+	"type": "appearance",
+	"name": "Check that good proximity between content is maintained.",
+      "desc": "Proximity issues can arise when interface elements are designed far apart from one another. This mostly affects people with low-vision who rely on zoom software.",
+	"roles":
+		{
+			"role":
+				[
+					{ "id": "1001", "type": "Design" },
+					{ "id": "1002", "type": "Editorial" },
+					{ "id": "1003", "type": "Development" },
+					{ "id": "1004", "type": "Testing" }
+				]
+		}
+},
+{
+	"id": "0002",
+	"type": "appearance",
+	"name": "Make sure color isn't the only way information is conveyed.",
+      "desc": "Can you still see where links are among body content if everything is grayscale?",
+	"roles":
+		{
+			"role":
+				[
+					{ "id": "1001", "type": "Design" }
+				]
+		}
+},
   {
-    "id": 2,
-    "name": "Make sure color isn't the only way information is conveyed.",
-    "desc": "Can you still see where links are among body content if everything is grayscale?",
-    "roles": "Design"
-  },
-  {
-    "id": 3,
-    "name": "Make sure instructions are not visual or audio-only.",
-    "desc": "Use a combination of characteristics to write cues, particularly the actual names of sections and",
-    "roles": "Editorial"
-  },
-    {
-    "id": 4,
-    "name": "Make sure instructions are not visual or audio-only.",
-    "desc": "Use a combination of characteristics to write cues, particularly the actual names of sections and",
-    "roles": "Design"
-  }
+	"id": "0003",
+	"type": "contrast",
+	"name": "Make sure instructions are not visual or audio-only.",
+      "desc": "Use a combination of characteristics to write cues, particularly the actual names of sections and",
+	"roles":
+		{
+			"role":
+				[
+					{ "id": "1002", "type": "Editorial" },
+					{ "id": "1004", "type": "Testing" }
+				]
+		}
+}
 ]
