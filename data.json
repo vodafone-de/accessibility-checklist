@@ -284,5 +284,170 @@
     "type": "",
     "link": "#",
     "applicable": "yes"
+  },
+  {
+    "id": 26,
+    "category": "Videofähigkeiten",
+    "bitv": "Prüfschritt 7.2.1 - Wiedergabe von Audiodeskription",
+    "dod": "tbd",
+    "desc": "tbd",
+    "roles": ["tbd"],
+    "type": "",
+    "link": "#",
+    "applicable": "yes"
+  },
+  {
+    "id": 27,
+    "category": "Videofähigkeiten",
+    "bitv": "Prüfschritt 7.2.2 - Synchrone Audiodeskription",
+    "dod": "tbd",
+    "desc": "tbd",
+    "roles": ["tbd"],
+    "type": "",
+    "link": "#",
+    "applicable": "yes"
+  },
+  {
+    "id": 28,
+    "category": "Videofähigkeiten",
+    "bitv": "Prüfschritt 7.2.3 - Erhaltung von Audiodeskription",
+    "dod": "tbd",
+    "desc": "tbd",
+    "roles": ["tbd"],
+    "type": "",
+    "link": "#",
+    "applicable": "yes"
+  },
+  {
+    "id": 29,
+    "category": "Videofähigkeiten",
+    "bitv": "Prüfschritt 7.3 - Bedienelemente für Untertitel und Audiodeskription",
+    "dod": "tbd",
+    "desc": "tbd",
+    "roles": ["tbd"],
+    "type": "",
+    "link": "#",
+    "applicable": "yes"
+  },
+  {
+    "id": 30,
+    "category": "Textalternativen",
+    "bitv": "Prüfschritt 9.1.1.1a - Alternativtexte für Bedienelemente",
+    "dod": "tbd",
+    "desc": "tbd",
+    "roles": ["tbd"],
+    "type": "",
+    "link": "#",
+    "applicable": "yes"
+  },
+  {
+    "id": 31,
+    "category": "Textalternativen",
+    "bitv": "Prüfschritt 9.1.1.1b - Alternativtexte für Grafiken und Objekte",
+    "dod": "tbd",
+    "desc": "tbd",
+    "roles": ["tbd"],
+    "type": "",
+    "link": "#",
+    "applicable": "yes"
+  },
+  {
+    "id": 32,
+    "category": "Textalternativen",
+    "bitv": "Prüfschritt 9.1.1.1c - Leere alt-Attribute für Layoutgrafiken",
+    "dod": "tbd",
+    "desc": "tbd",
+    "roles": ["tbd"],
+    "type": "",
+    "link": "#",
+    "applicable": "yes"
+  },
+  {
+    "id": 33,
+    "category": "Textalternativen",
+    "bitv": "Prüfschritt 9.1.1.1d - Alternativen für CAPTCHAs",
+    "dod": "tbd",
+    "desc": "tbd",
+    "roles": ["tbd"],
+    "type": "",
+    "link": "#",
+    "applicable": "yes"
+  },
+  {
+    "id": 34,
+    "category": "Zeitbasierte Medien",
+    "bitv": "Prüfschritt 9.1.2.1 - Alternativen für Audiodateien und stumme Videos",
+    "dod": "tbd",
+    "desc": "tbd",
+    "roles": ["tbd"],
+    "type": "",
+    "link": "#",
+    "applicable": "yes"
+  },
+  {
+    "id": 35,
+    "category": "Zeitbasierte Medien",
+    "bitv": "Prüfschritt 9.1.2.2 - Aufgezeichnete Videos mit Untertiteln",
+    "dod": "tbd",
+    "desc": "tbd",
+    "roles": ["tbd"],
+    "type": "",
+    "link": "#",
+    "applicable": "yes"
+  },
+  {
+    "id": 36,
+    "category": "Zeitbasierte Medien",
+    "bitv": "Prüfschritt 9.1.2.3 - Audiodeskription oder Volltext-Alternative für Videos",
+    "dod": "tbd",
+    "desc": "tbd",
+    "roles": ["tbd"],
+    "type": "",
+    "link": "#",
+    "applicable": "yes"
+  },
+  {
+    "id": 37,
+    "category": "Zeitbasierte Medien",
+    "bitv": "Prüfschritt 9.1.2.4 - Videos (live) mit Untertiteln",
+    "dod": "tbd",
+    "desc": "tbd",
+    "roles": ["tbd"],
+    "type": "",
+    "link": "#",
+    "applicable": "yes"
+  },
+  {
+    "id": 38,
+    "category": "Zeitbasierte Medien",
+    "bitv": "Prüfschritt 9.1.2.5 - Audiodeskription für Videos",
+    "dod": "tbd",
+    "desc": "tbd",
+    "roles": ["tbd"],
+    "type": "",
+    "link": "#",
+    "applicable": "yes"
+  },
+  {
+    "id": 39,
+    "category": "Anpassbar",
+    "bitv": "Prüfschritt 9.1.3.1a - HTML-Strukturelemente für Überschriften",
+    "dod": "tbd",
+    "desc": "tbd",
+    "roles": ["tbd"],
+    "type": "",
+    "link": "#",
+    "applicable": "yes"
+  },
+  {
+    "id": 40,
+    "category": "Anpassbar",
+    "bitv": "Prüfschritt 9.1.3.1b - HTML-Strukturelemente für Listen",
+    "dod": "tbd",
+    "desc": "tbd",
+    "roles": ["tbd"],
+    "type": "",
+    "link": "#",
+    "applicable": "yes"
   }
 ]
