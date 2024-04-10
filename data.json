@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "category": "Allgemeine Anforderungen",
     "bitv": "Prüfschritt 5.2 - Aktivierung von Barrierefreiheitsfunktionen",
     "dod": "tbd",
@@ -11,7 +11,7 @@
     "applicable": "yes"
   },
   {
-    "id": 2,
+    "id": "2",
     "category": "Allgemeine Anforderungen",
     "bitv": "Prüfschritt 5.3 - Biometrie",
     "dod": "tbd",
@@ -22,7 +22,7 @@
     "applicable": "yes"
   },
   {
-    "id": 3,
+    "id": "3",
     "category": "Allgemeine Anforderungen",
     "bitv": "Prüfschritt 5.4 - Erhaltung von Barrierefreiheitsinformationen bei Konvertierung",
     "dod": "tbd",
@@ -231,7 +231,7 @@
     "applicable": "no"
   },
   {
-    "id": 21,
+    "id": "21",
     "category": "Videofähigkeiten",
     "bitv": "Prüfschritt 7.1.1 - Wiedergabe von Untertiteln",
     "dod": "tbd",
@@ -242,7 +242,7 @@
     "applicable": "yes"
   },
   {
-    "id": 22,
+    "id": "22",
     "category": "Videofähigkeiten",
     "bitv": "Prüfschritt 7.1.2 - Synchrone Untertitel",
     "dod": "tbd",
@@ -253,7 +253,7 @@
     "applicable": "yes"
   },
   {
-    "id": 23,
+    "id": "23",
     "category": "Videofähigkeiten",
     "bitv": "Prüfschritt 7.1.3 - Erhaltung von Untertiteln",
     "dod": "tbd",
@@ -264,7 +264,7 @@
     "applicable": "yes"
   },
   {
-    "id": 24,
+    "id": "24",
     "category": "Videofähigkeiten",
     "bitv": "Prüfschritt 7.1.4 - Untertitel-Anpassungen",
     "dod": "tbd",
@@ -275,7 +275,7 @@
     "applicable": "yes"
   },
   {
-    "id": 25,
+    "id": "25",
     "category": "Videofähigkeiten",
     "bitv": "Prüfschritt 7.1.5 - Gesprochene Untertitel",
     "dod": "tbd",
@@ -286,7 +286,7 @@
     "applicable": "yes"
   },
   {
-    "id": 26,
+    "id": "26",
     "category": "Videofähigkeiten",
     "bitv": "Prüfschritt 7.2.1 - Wiedergabe von Audiodeskription",
     "dod": "tbd",
@@ -297,7 +297,7 @@
     "applicable": "yes"
   },
   {
-    "id": 27,
+    "id": "27",
     "category": "Videofähigkeiten",
     "bitv": "Prüfschritt 7.2.2 - Synchrone Audiodeskription",
     "dod": "tbd",
@@ -308,7 +308,7 @@
     "applicable": "yes"
   },
   {
-    "id": 28,
+    "id": "28",
     "category": "Videofähigkeiten",
     "bitv": "Prüfschritt 7.2.3 - Erhaltung von Audiodeskription",
     "dod": "tbd",
@@ -319,7 +319,7 @@
     "applicable": "yes"
   },
   {
-    "id": 29,
+    "id": "29",
     "category": "Videofähigkeiten",
     "bitv": "Prüfschritt 7.3 - Bedienelemente für Untertitel und Audiodeskription",
     "dod": "tbd",
