@@ -17,22 +17,16 @@ function (data) {
   
   $.each(data, function (key, value) { 
   
-  student += '<tr>'; 
-  student += '<td class="accord-content">' +  
-  value.id + '</td>'; 
+  student += '<li>'; 
   
-  student += '<td class="list-checkbox acc acc-last">' +  
-  value.name + '</td>'; 
+  student += '<p>' +  
+  value.bitv + '</p>'; 
   
-  student += '<td class="accord-content">' +  
-  value.desc + '</td>'; 
-   
-  
-  student += '</tr>'; 
+  student += '</li>'; 
                         }); 
                           
 //INSERTING ROWS INTO TABLE  
-$('#table').append(student); 
+$('#list').append(student); 
                     }); 
                 }); 
 
@@ -170,8 +164,8 @@ $('#table').append(student);
       <div class="ws10-card--shadow-wide ws10-card ws10-card--background-white">
 
         
-  <table id="table"> 
-  </table>
+  <ul id="list"> 
+  </ul>
       </div>
 
 
