@@ -11,25 +11,61 @@
 
   $(document).ready(function () { 
   
+
 $.getJSON("https://vodafone-de.github.io/accessibility-checklist/data.json",  
 function (data) { 
+
   
- var student = data.filter(function (entry) {
+var rules = data.filter(function (entry) {
     return (entry.applicable === 'yes' && entry.category === 'Videofähigkeiten');
+
+});
   
+
   
-  $.each(data, function (key, value) { 
+  console.clear();
+  console.log(data.filter(function(role) {
+    return (role.applicable === 'yes');
+    
+}));
   
-  student += '<li>'; 
+   
+   
+  $.each(rules, function (key, value) { 
   
-  student += '<p>' +  
-  value.bitv + '</p>'; 
+  rules += '<li class="test">'; 
+  rules += '<p>' +  
+    value.id + '</p>'; 
   
-  student += '</li>'; 
+  rules += '<p>' +  
+  value.category + '</p>';
+  
+  rules += '<h4>' +  
+  value.bitv + '</h4>';
+  
+  rules += '<p>' +  
+  value.dod + '</p>'; 
+  
+  rules += '<p>' +  
+  value.desc + '</p>'; 
+   
+  rules += '<p>' +  
+  value.type + '</p>'; 
+   
+  rules += '<p>' +  
+  value.roles + '</p>'; 
+    
+  rules += '<p>' + '<a href="' + 
+  value.link + '">More info</a>' + '</p>'; 
+   
+  
+  rules += '</li>'; 
                         }); 
                           
-//INSERTING ROWS INTO TABLE  
-$('#list').append(student); 
+//INSERTING ROWS INTO TABLE 
+
+   
+$('#list').append(rules); 
                     }); 
                 }); 
 
