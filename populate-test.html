@@ -13,7 +13,10 @@
   
 $.getJSON("https://vodafone-de.github.io/accessibility-checklist/data.json",  
 function (data) { 
-  var student = ''; 
+  
+ var student = data.filter(function (entry) {
+    return (entry.applicable === 'yes' && entry.category === 'Videofähigkeiten');
+  
   
   $.each(data, function (key, value) { 
   
