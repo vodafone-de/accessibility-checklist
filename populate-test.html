@@ -9,34 +9,56 @@
 
 <script>
 
- $(document).ready(function () { 
+$(document).ready(function () { 
   
-$.getJSON("https://vodafone-de.github.io/accessibility-checklist/data.json",  
-function (data) { 
+  $.getJSON("https://vodafone-de.github.io/accessibility-checklist/data.json",  
+  function (data) { 
+    
+    
+    var bitvlist1 = '';
+     var bitvlist2 = '';
+    
+    var list1 = data.filter(function (entry1) {
+      return entry1.applicable === 'yes' && entry1.category === 'Videofähigkeiten';
+  });
+    
+    var list2 = data.filter(function (entry) {
+      return entry.applicable === 'yes' && entry.category === 'Zeitbasierte Medien';
+  });
+    
   
+    $.each(list1, function (key, value) { 
   
-  var bitvlist = '';
+    bitvlist1 += '<li>'; 
   
-  var rules = data.filter(function (entry) {
-    return entry.applicable === 'yes' && entry.category === 'Videofähigkeiten';
-});
+    bitvlist1 += '<p>' +  
+    value.bitv + '</p>'; 
   
-
-  $.each(rules, function (key, value) { 
-
-  bitvlist += '<li>'; 
-
-  bitvlist += '<p>' +  
-  value.bitv + '</p>'; 
-
-  bitvlist += '</li>'; 
-                        }); 
-
-//INSERTING ROWS INTO LIST  
-$('#list').append(bitvlist); 
-                    }); 
-                }); 
+    bitvlist1 += '</li>'; 
+                          });
+    
+    $('#list1').append(bitvlist1); 
+    
+    $.each(list2, function (key, value) { 
   
+    bitvlist2 += '<li>'; 
+  
+    bitvlist2 += '<p>' +  
+    value.bitv + '</p>'; 
+  
+    bitvlist2 += '</li>'; 
+                          });
+  
+    $('#list2').append(bitvlist2);
+                      }); 
+    
+    
+  
+    
+    
+                  }); 
+  
+    
 </script>
     
     <noscript>
@@ -168,11 +190,21 @@ $('#list').append(bitvlist);
     <div class="checklist-table">
 
       <div class="ws10-card--shadow-wide ws10-card ws10-card--background-white">
-
+        <h2>Videofähigkeiten</h2>
         
-  <ul id="list"> 
+  <ul id="list1"> 
   </ul>
       </div>
+
+      <div class="checklist-table">
+
+        <div class="ws10-card--shadow-wide ws10-card ws10-card--background-white">
+  
+          <h2>Zeitbasierte Medien</h2>
+          
+    <ul id="list2"> 
+    </ul>
+        </div>
 
 
       
