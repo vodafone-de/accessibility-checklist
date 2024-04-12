@@ -11,51 +11,7 @@
 
 $(document).ready(function () { 
   
-  $.getJSON("https://vodafone-de.github.io/accessibility-checklist/data.json",  
-  function (data) { 
-    
-    
-    var bitvlist1 = '';
-     var bitvlist2 = '';
-    
-    var list1 = data.filter(function (entry1) {
-      return entry1.applicable === 'yes' && entry1.category === 'Videofähigkeiten';
-  });
-    
-    var list2 = data.filter(function (entry) {
-      return entry.applicable === 'yes' && entry.category === 'Zeitbasierte Medien';
-  });
-    
-  
-    $.each(list1, function (key, value) { 
-  
-    bitvlist1 += '<li>'; 
-  
-    bitvlist1 += '<p>' +  
-    value.bitv + '</p>'; 
-  
-    bitvlist1 += '</li>'; 
-                          });
-    
-    $('#list1').append(bitvlist1); 
-    
-    $.each(list2, function (key, value) { 
-  
-    bitvlist2 += '<li>'; 
-  
-    bitvlist2 += '<p>' +  
-    value.bitv + '</p>'; 
-  
-    bitvlist2 += '</li>'; 
-                          });
-  
-    $('#list2').append(bitvlist2);
-                      }); 
-    
-    
-  
-    
-    
+
                   }); 
   
     
@@ -134,7 +90,7 @@ $(document).ready(function () {
                     </svg>
                   </li>
                   <li class="mobile-main-nav-list-item">
-                    <a href="a11y-audit-checklist-audit.html" class="mobile-main-nav-link mobile-main-nav-link--selected">Audit</a>
+                    <a href="a11y-audit-checklist-audit.html" class="mobile-main-nav-link mobile-main-nav-link--selected">BITV</a>
                     <svg class="mobile-main-nav-chevron-icon mobile-main-nav-chevron-icon--selected" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
                       <polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/>
                     </svg>
@@ -161,7 +117,7 @@ $(document).ready(function () {
                         <a class="brix-gn__level-one-link" href="a11y-audit-checklist-editorial.html" tabindex="1" aria-haspopup="true" aria-expanded="false" aria-controls="gn-ul-1-1">CMS</a>
                     </li>
                     <li class="brix-gn__level-one-item brix-gn__level-one-item--selected">
-                      <a class="brix-gn__level-one-link" href="a11y-audit-checklist-audit.html" tabindex="1" aria-haspopup="true" aria-expanded="false" aria-controls="gn-ul-1-1">Audit</a>
+                      <a class="brix-gn__level-one-link" href="a11y-audit-checklist-audit.html" tabindex="1" aria-haspopup="true" aria-expanded="false" aria-controls="gn-ul-1-1">BITV</a>
                   </li>
                     <div class="small-view-navi"></div>
                 </ul>
@@ -180,37 +136,208 @@ $(document).ready(function () {
 <div id="content-wrapper">
   
   <h1 class="small-vw">Accessibility Self Assessment</h1>
-  <h2 class="small-vw">Audit</h2>
+  <h2 class="small-vw">BITV</h2>
  <!-- <button class="reset-form">Reset checkboxes</button> --> 
+ <form class="contact-form" action="" method="post" id="a11y-checklist" accept-charset="UTF-8"></form>
 
+ <div class="checklist-table">
 
-
-  
-  
-    <div class="checklist-table">
-
-      <div class="ws10-card--shadow-wide ws10-card ws10-card--background-white">
-        <h2>Videofähigkeiten</h2>
-        
-  <ul id="list1"> 
-  </ul>
-      </div>
+  <div class="ws10-card--shadow-wide ws10-card ws10-card--background-white">
+    <h3>Allgemeine Anforderungen</h3>
+    
+<ul id="list1"> 
+</ul>
+  </div>
+  </div>
+  <div class="checklist-table"><div class="ws10-card--shadow-wide ws10-card ws10-card--background-white"><h3>Zwei-Wege-Sprachkommunikation</h3>
+  <ul id="list2">
+    </ul>
+    </div>
+    </div>
 
       <div class="checklist-table">
 
         <div class="ws10-card--shadow-wide ws10-card ws10-card--background-white">
   
-          <h2>Zeitbasierte Medien</h2>
+          <h3>Videofähigkeiten</h3>
           
-    <ul id="list2"> 
+    <ul id="list3"> 
     </ul>
         </div>
+</div>
+
+<div class="checklist-table">
+
+  <div class="ws10-card--shadow-wide ws10-card ws10-card--background-white">
+
+    <h3>Textalternativen</h3>
+    
+<ul id="list4"> 
+</ul>
+  </div>
+</div>
 
 
+<div class="checklist-table">
+
+  <div class="ws10-card--shadow-wide ws10-card ws10-card--background-white">
+
+    <h3>Zeitbasierte Medien</h3>
+    
+<ul id="list5"> 
+</ul>
+  </div>
+</div>
+
+<div class="checklist-table">
+
+  <div class="ws10-card--shadow-wide ws10-card ws10-card--background-white">
+    <h3>Anpassbar</h3>
+    
+<ul id="list6"> 
+</ul>
+  </div>
+  </div>
+
+  <div class="checklist-table">
+
+    <div class="ws10-card--shadow-wide ws10-card ws10-card--background-white">
+      <h3>Unterscheidbar</h3>
       
+  <ul id="list7"> 
+  </ul>
+    </div>
+    </div>
+
+  
+    <div class="checklist-table">
+
+      <div class="ws10-card--shadow-wide ws10-card ws10-card--background-white">
+        <h3>Per Tastatur zugänglich</h3>
+        
+    <ul id="list8"> 
+    </ul>
+      </div>
+      </div>
+
+
+      <div class="checklist-table">
+
+        <div class="ws10-card--shadow-wide ws10-card ws10-card--background-white">
+          <h3>Ausreichend Zeit</h3>
+          
+      <ul id="list9"> 
+      </ul>
+        </div>
+        </div>
+
+        <div class="checklist-table">
+
+          <div class="ws10-card--shadow-wide ws10-card ws10-card--background-white">
+            <h3>Anfälle</h3>
+            
+        <ul id="list10"> 
+        </ul>
+          </div>
+          </div>       
+      
+          <div class="checklist-table">
+
+            <div class="ws10-card--shadow-wide ws10-card ws10-card--background-white">
+              <h3>Navigierbar</h3>
+              
+          <ul id="list11"> 
+          </ul>
+            </div>
+            </div>
+
+ <div class="checklist-table">
+
+<div class="ws10-card--shadow-wide ws10-card ws10-card--background-white">
+<h3>Eingabemodalitäten</h3>
+                
+            <ul id="list12"> 
+            </ul>
+              </div>
+              </div>
+
+              <div class="checklist-table">
+
+                <div class="ws10-card--shadow-wide ws10-card ws10-card--background-white">
+                  <h3>Lesbar</h3>
+                  
+              <ul id="list13"> 
+              </ul>
+                </div>
+                </div>
+
+                <div class="checklist-table">
+
+                  <div class="ws10-card--shadow-wide ws10-card ws10-card--background-white">
+                    <h3>Vorhersehbar</h3>
+                    
+                <ul id="list14"> 
+                </ul>
+                  </div>
+                  </div>
+
+                  <div class="checklist-table">
+
+                    <div class="ws10-card--shadow-wide ws10-card ws10-card--background-white">
+                      <h3>Hilfestellung bei der Eingabe</h3>
+                      
+                  <ul id="list15"> 
+                  </ul>
+                    </div>
+                    </div>
+
+
+                    <div class="checklist-table">
+
+                      <div class="ws10-card--shadow-wide ws10-card ws10-card--background-white">
+                        <h3>Kompatibel</h3>
+                        
+                    <ul id="list16"> 
+                    </ul>
+                      </div>
+                      </div> 
+                      
+                      
+                      <div class="checklist-table">
+
+                        <div class="ws10-card--shadow-wide ws10-card ws10-card--background-white">
+                          <h3>Benutzerdefinierte Einstellungen</h3>
+                          
+                      <ul id="list17"> 
+                      </ul>
+                        </div>
+                        </div> 
+                        
+                        
+                        <div class="checklist-table">
+
+                          <div class="ws10-card--shadow-wide ws10-card ws10-card--background-white">
+                            <h3>Autorenwerkzeuge</h3>
+                            
+                        <ul id="list18"> 
+                        </ul>
+                          </div>
+                          </div> 
+                          
+                          
+                          <div class="checklist-table">
+
+                            <div class="ws10-card--shadow-wide ws10-card ws10-card--background-white">
+                              <h3>Dokumentation und Support</h3>
+                              
+                          <ul id="list19"> 
+                          </ul>
+                            </div>
+                            </div>
+
       <table cellspacing="0" id="a11y-report">
         <tbody>
-          <form class="contact-form" action="" method="post" id="a11y-checklist" accept-charset="UTF-8">
+         
           <tr>
             <td colspan="3" class="heading">
               <div class="subheading small-vw"><strong>Check if</strong> everyone is able to participate in our Vodafone experience. The following checklist is a tool to help you following the most important rules for an accessible website or app.

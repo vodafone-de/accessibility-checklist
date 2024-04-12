@@ -18,6 +18,364 @@ if ($('body').hasClass('dark')) {
 
 
 
+
+$.getJSON("https://vodafone-de.github.io/accessibility-checklist/data.json",  
+function (data) { 
+  
+  
+  var bitvlist1 = '';
+  var bitvlist2 = '';
+  var bitvlist3 = '';
+  var bitvlist4 = '';
+  var bitvlist5 = '';
+  var bitvlist6 = '';
+  var bitvlist7 = '';
+  var bitvlist8 = '';
+  var bitvlist9 = '';
+  var bitvlist10 = '';
+  var bitvlist11 = '';
+  var bitvlist12 = '';
+  var bitvlist13 = '';
+  var bitvlist14 = '';
+  var bitvlist15 = '';
+  var bitvlist16 = '';
+  var bitvlist17 = '';
+  var bitvlist18 = '';
+  var bitvlist19 = '';
+
+  
+  var list1 = data.filter(function (entry1) {
+    return entry1.applicable === 'yes' && entry1.category === 'Allgemeine Anforderungen';
+});
+  
+  var list2 = data.filter(function (entry2) {
+    return entry2.applicable === 'yes' && entry2.category === 'Zwei-Wege-Sprachkommunikation';
+});
+
+var list3 = data.filter(function (entry3) {
+    return entry3.applicable === 'yes' && entry3.category === 'Videofähigkeiten';
+});
+
+var list4 = data.filter(function (entry4) {
+    return entry4.applicable === 'yes' && entry4.category === 'Textalternativen';
+});
+
+var list5 = data.filter(function (entry5) {
+    return entry5.applicable === 'yes' && entry5.category === 'Zeitbasierte Medien';
+});
+
+var list6 = data.filter(function (entry6) {
+    return entry6.applicable === 'yes' && entry6.category === 'Anpassbar';
+});
+
+var list7 = data.filter(function (entry7) {
+    return entry7.applicable === 'yes' && entry7.category === 'Unterscheidbar';
+});
+
+var list8 = data.filter(function (entry8) {
+    return entry8.applicable === 'yes' && entry8.category === 'Per Tastatur zugänglich';
+});
+
+var list9 = data.filter(function (entry9) {
+    return entry9.applicable === 'yes' && entry9.category === 'Ausreichend Zeit';
+});
+
+var list10 = data.filter(function (entry10) {
+    return entry10.applicable === 'yes' && entry10.category === 'Anfälle';
+});
+
+var list11 = data.filter(function (entry11) {
+    return entry11.applicable === 'yes' && entry11.category === 'Navigierbar';
+});
+
+var list12 = data.filter(function (entry12) {
+    return entry12.applicable === 'yes' && entry12.category === 'Eingabemodalitäten';
+});
+
+var list13 = data.filter(function (entry13) {
+    return entry13.applicable === 'yes' && entry13.category === 'Lesbar';
+});
+
+var list14 = data.filter(function (entry14) {
+    return entry14.applicable === 'yes' && entry14.category === 'Vorhersehbar';
+});
+
+var list15 = data.filter(function (entry15) {
+    return entry15.applicable === 'yes' && entry15.category === 'Hilfestellung bei der Eingabe';
+});
+
+var list16 = data.filter(function (entry16) {
+    return entry16.applicable === 'yes' && entry16.category === 'Kompatibel';
+});
+
+var list17 = data.filter(function (entry17) {
+    return entry17.applicable === 'yes' && entry17.category === 'Benutzerdefinierte Einstellungen';
+});
+
+var list18 = data.filter(function (entry18) {
+    return entry18.applicable === 'yes' && entry18.category === 'Autorenwerkzeuge';
+});
+
+var list19 = data.filter(function (entry19) {
+    return entry19.applicable === 'yes' && entry19.category === 'Dokumentation und Support';
+});
+
+
+  $.each(list1, function (key, value) { 
+ 
+
+
+ bitvlist1 += '<div class="grid_item_checkbox"><input type="checkbox" id="a11y-rule-03-06" name="a11y-rule" data-ruledis="r-increase-text-200" data-disenable="a11y-rule-03-06" value="test" class="rel-check ws10-form-selection-control__input" /><label class="rule-description" id="a11y-rule-03-06" data-acc="a11y-rule-03-06-acc">' +
+ value.title + '</label></div>'; 
+
+
+
+        
+  bitvlist1 += '<li>'; 
+
+  bitvlist1 += '<p>' +  
+  value.bitv + '</p>'; 
+
+  bitvlist1 += '</li>'; 
+                        });
+
+  
+  $('#list1').append(bitvlist1); 
+
+  
+  $.each(list2, function (key, value) { 
+
+  bitvlist2 += '<li>'; 
+
+  bitvlist2 += '<p>' +  
+  value.bitv + '</p>'; 
+
+  bitvlist2 += '</li>'; 
+                        });
+
+  $('#list2').append(bitvlist2);
+
+
+
+
+$.each(list3, function (key, value) { 
+
+
+bitvlist3 += '<li>'; 
+
+bitvlist3 += '<p>' +  
+value.bitv + '</p>'; 
+
+bitvlist3 += '</li>'; 
+
+
+
+                      });
+
+$('#list3').append(bitvlist3); 
+
+$.each(list4, function (key, value) { 
+
+bitvlist4 += '<li>'; 
+
+bitvlist4 += '<p>' +  
+value.bitv + '</p>'; 
+
+bitvlist4 += '</li>'; 
+                      });
+
+$('#list4').append(bitvlist4); 
+
+$.each(list5, function (key, value) { 
+
+bitvlist5 += '<li>'; 
+
+bitvlist5 += '<p>' +  
+value.bitv + '</p>'; 
+
+bitvlist5 += '</li>'; 
+                      });
+
+$('#list5').append(bitvlist5); 
+
+$.each(list6, function (key, value) { 
+
+bitvlist6 += '<li>'; 
+
+bitvlist6 += '<p>' +  
+value.bitv + '</p>'; 
+
+bitvlist6 += '</li>'; 
+                      });
+
+$('#list6').append(bitvlist6); 
+
+                    
+  
+$.each(list7, function (key, value) { 
+
+bitvlist7 += '<li>'; 
+
+bitvlist7 += '<p>' +  
+value.bitv + '</p>'; 
+
+bitvlist7 += '</li>'; 
+                      });
+
+$('#list7').append(bitvlist7);    
+
+$.each(list8, function (key, value) { 
+
+bitvlist8 += '<li>'; 
+
+bitvlist8 += '<p>' +  
+value.bitv + '</p>'; 
+
+bitvlist8 += '</li>'; 
+                      });
+
+$('#list8').append(bitvlist8);   
+  
+$.each(list9, function (key, value) { 
+
+bitvlist9 += '<li>'; 
+
+bitvlist9 += '<p>' +  
+value.bitv + '</p>'; 
+
+bitvlist9 += '</li>'; 
+                      });
+
+$('#list9').append(bitvlist9); 
+
+$.each(list10, function (key, value) { 
+
+bitvlist10 += '<li>'; 
+
+bitvlist10 += '<p>' +  
+value.bitv + '</p>'; 
+
+bitvlist10 += '</li>'; 
+                      });
+
+$('#list10').append(bitvlist10); 
+
+$.each(list11, function (key, value) { 
+
+bitvlist11 += '<li>'; 
+
+bitvlist11 += '<p>' +  
+value.bitv + '</p>'; 
+
+bitvlist11 += '</li>'; 
+                      });
+
+$('#list11').append(bitvlist11); 
+
+$.each(list12, function (key, value) { 
+
+bitvlist12 += '<li>'; 
+
+bitvlist12 += '<p>' +  
+value.bitv + '</p>'; 
+
+bitvlist12 += '</li>'; 
+                      });
+
+$('#list12').append(bitvlist12); 
+
+$.each(list13, function (key, value) { 
+
+bitvlist13 += '<li>'; 
+
+bitvlist13 += '<p>' +  
+value.bitv + '</p>'; 
+
+bitvlist13 += '</li>'; 
+                      });
+
+$('#list13').append(bitvlist13); 
+
+$.each(list14, function (key, value) { 
+
+bitvlist14 += '<li>'; 
+
+bitvlist14 += '<p>' +  
+value.bitv + '</p>'; 
+
+bitvlist14 += '</li>'; 
+                      });
+
+$('#list14').append(bitvlist14); 
+
+$.each(list15, function (key, value) { 
+
+bitvlist15 += '<li>'; 
+
+bitvlist15 += '<p>' +  
+value.bitv + '</p>'; 
+
+bitvlist15 += '</li>'; 
+                      });
+
+$('#list15').append(bitvlist15); 
+
+$.each(list16, function (key, value) { 
+
+bitvlist16 += '<li>'; 
+
+bitvlist16 += '<p>' +  
+value.bitv + '</p>'; 
+
+bitvlist16 += '</li>'; 
+                      });
+
+$('#list16').append(bitvlist16); 
+
+$.each(list17, function (key, value) { 
+
+bitvlist17 += '<li>'; 
+
+bitvlist17 += '<p>' +  
+value.bitv + '</p>'; 
+
+bitvlist17 += '</li>'; 
+                      });
+
+$('#list17').append(bitvlist17); 
+
+$.each(list18, function (key, value) { 
+
+bitvlist18 += '<li>'; 
+
+bitvlist18 += '<p>' +  
+value.bitv + '</p>'; 
+
+bitvlist18 += '</li>'; 
+                      });
+
+$('#list18').append(bitvlist18); 
+
+$.each(list19, function (key, value) { 
+
+bitvlist19 += '<li>'; 
+
+bitvlist19 += '<p>' +  
+value.bitv + '</p>'; 
+
+bitvlist19 += '</li>'; 
+                      });
+
+$('#list19').append(bitvlist19); 
+
+}); 
+
+
+
+
+$(document).ready(function () { 
+
+
 // Big thanks to Bastian Pertz for help with the following function
 
 var numberOfRelevantCheckboxes = 0;
@@ -239,6 +597,7 @@ var $checkboxes = $('input:checkbox');
     
     });
     
+
     
     $(".close").click(function() {
       $("#overlay").fadeOut();
@@ -518,3 +877,5 @@ $("#page-url").on("input", function(){
        return false;  
      }
    });
+
+  }); 

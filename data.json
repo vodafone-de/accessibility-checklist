@@ -2,7 +2,8 @@
   {
     "id": "1",
     "category": "Allgemeine Anforderungen",
-    "bitv": "Prüfschritt 5.2 - Aktivierung von Barrierefreiheitsfunktionen",
+    "bitv": "Prüfschritt 5.2",
+    "title": "Aktivierung von Barrierefreiheitsfunktionen",
     "dod": "tbd",
     "desc": "tbd",
     "roles": ["tbd"],
@@ -13,7 +14,8 @@
   {
     "id": "2",
     "category": "Allgemeine Anforderungen",
-    "bitv": "Prüfschritt 5.3 - Biometrie",
+    "bitv": "Prüfschritt 5.3",
+    "title": "Biometrie",
     "dod": "tbd",
     "desc": "tbd",
     "roles": ["tbd"],
@@ -24,7 +26,8 @@
   {
     "id": "3",
     "category": "Allgemeine Anforderungen",
-    "bitv": "Prüfschritt 5.4 - Erhaltung von Barrierefreiheitsinformationen bei Konvertierung",
+    "bitv": "Prüfschritt 5.4",
+    "title": "Erhaltung von Barrierefreiheitsinformationen bei Konvertierung",
     "dod": "tbd",
     "desc": "tbd",
     "roles": ["tbd"],
