@@ -122,7 +122,11 @@ var list19 = data.filter(function (entry19) {
 
 
   $.each(list1, function (key, value) { 
- 
+
+    bitvlist1 += '<li class="bitvlist">'; 
+
+    bitvlist1 += '<p>' +  
+    value.bitv + '</p>'; 
 
 
  bitvlist1 += '<div class="grid_item_checkbox"><input type="checkbox" id="a11y-rule-03-06" name="a11y-rule" data-ruledis="r-increase-text-200" data-disenable="a11y-rule-03-06" value="' + value.title +  '" class="rel-check ws10-form-selection-control__input" /><label class="rule-description" id="a11y-rule-03-06" data-acc="a11y-rule-03-06-acc">' +
@@ -131,10 +135,7 @@ var list19 = data.filter(function (entry19) {
 
 
         
-  bitvlist1 += '<li>'; 
 
-  bitvlist1 += '<p>' +  
-  value.bitv + '</p>'; 
 
   bitvlist1 += '</li>'; 
                         });

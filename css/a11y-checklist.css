@@ -732,13 +732,17 @@ gap: 0px 8px;
 max-width: 996px;
 }
 
+.bitvlist {
 
+  list-style: none;
+
+}
 
 .grid_item_checkbox {
 display: -ms-flexbox;
 display: flex;
--ms-flex-pack: center;
-justify-content: center;
+-ms-flex-pack: left;
+justify-content: left;
 -ms-flex-align: center;
 align-items: center;
 justify-self: self-start;
