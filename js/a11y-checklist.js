@@ -27,14 +27,14 @@ async function getapi(url) {
   
   // Storing data in form of JSON
   var data = await response.json();
-  buildTable(data);
+  build(data);
 }
 
 // Calling that async function
 getapi(api_url);
 
 
-function buildTable(data) {
+function build(data) {
   
   
   var bitvlist1 = '';
