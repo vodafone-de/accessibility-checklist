@@ -16,11 +16,25 @@ if ($('body').hasClass('dark')) {
 });
 }); 
 
+// api url
+const api_url = "https://vodafone-de.github.io/accessibility-checklist/data.json";
+
+// Defining async function
+async function getapi(url) {
+    
+  // Storing response
+  const response = await fetch(url);
+  
+  // Storing data in form of JSON
+  var data = await response.json();
+  buildTable(data);
+}
+
+// Calling that async function
+getapi(api_url);
 
 
-
-$.getJSON("https://vodafone-de.github.io/accessibility-checklist/data.json",  
-function (data) { 
+function buildTable(data) {
   
   
   var bitvlist1 = '';
@@ -369,7 +383,7 @@ bitvlist19 += '</li>';
 
 $('#list19').append(bitvlist19); 
 
-}); 
+}
 
 
 
