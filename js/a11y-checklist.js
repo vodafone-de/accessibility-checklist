@@ -122,9 +122,12 @@ var list19 = data.filter(function (entry19) {
 });
 
 
+
   $.each(list1, function (key, value) { 
 
     bitvlist1 += '<li class="bitvlist acc-list">'; 
+
+  
 
     bitvlist1 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard" aria-label="' + value.roles + '"><span class="ws10-highlight-badge__text">' + value.roles + '</span></span>';
 
