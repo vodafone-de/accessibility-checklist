@@ -126,7 +126,7 @@ var list19 = data.filter(function (entry19) {
 
     bitvlist1 += '<li class="bitvlist acc-list">'; 
 
-    bitvlist1 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard" aria-label="' + value.roles + '"><span class="ws10-highlight-badge__text">' + value.roles.split() + '</span></span>';
+    bitvlist1 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard" aria-label="' + value.roles + '"><span class="ws10-highlight-badge__text">' + value.roles + '</span></span>';
 
 
     bitvlist1 += '<p class="bitv-step-number">' +  
