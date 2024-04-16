@@ -16,26 +16,13 @@ if ($('body').hasClass('dark')) {
 });
 }); 
 
-// api url
-const api_url = "https://vodafone-de.github.io/accessibility-checklist/data.json";
+$.ajaxSetup({
+  async: false
+  });
 
-// Defining async function
-async function getapi(url) {
-    
-  // Storing response
-  const response = await fetch(url);
-  
-  // Storing data in form of JSON
-  var data = await response.json();
-  build(data);
-}
+$.getJSON("https://vodafone-de.github.io/accessibility-checklist/data.json",  
+function (data) { 
 
-// Calling that async function
-getapi(api_url);
-
-
-function build(data) {
-  
   
   var bitvlist1 = '';
   var bitvlist2 = '';
@@ -137,9 +124,9 @@ var list19 = data.filter(function (entry19) {
 
   $.each(list1, function (key, value) { 
 
-    bitvlist1 += '<li class="bitvlist">'; 
+    bitvlist1 += '<li class="bitvlist acc-list">'; 
 
-    bitvlist1 += '<p>' +  
+    bitvlist1 += '<p class="bitv-step-number">' +  
     value.bitv + '</p>'; 
 
 
@@ -383,12 +370,8 @@ bitvlist19 += '</li>';
 
 $('#list19').append(bitvlist19); 
 
-}
+});
 
-
-
-
-$(document).ready(function () { 
 
 
 // Big thanks to Bastian Pertz for help with the following function
@@ -399,8 +382,8 @@ var numberOfCheckedRelevantCheckboxes = 0;
 
 
 var updateStatus = function(){
-
   
+
   
   
     $('#count-checked-checkboxes').text(numberOfCheckedRelevantCheckboxes);
@@ -430,11 +413,13 @@ var updateStatus = function(){
     $('.progress-bar').css('width', Math.round(numberOfCheckedRelevantCheckboxes / numberOfRelevantCheckboxes * 100)+'%').attr('aria-valuenow', numberOfCheckedRelevantCheckboxes);
     $('.progress-bar-result').css('width', Math.round(numberOfCheckedRelevantCheckboxes / numberOfRelevantCheckboxes * 100)+'%').attr('aria-valuenow', numberOfCheckedRelevantCheckboxes);
 
+    
 
     if ($('.progress-bar-result').prop("style")["width"] == '0%') { 
 
       $('#result-percentage').hide();
-      
+
+           
     }
     else {
 
@@ -455,13 +440,17 @@ var updateStatus = function(){
       $('#result-percentage-rest').show();
       
     }
+
+
     
 };
+
 
 
 var $checkboxes = $('input:checkbox');
 
     $checkboxes.each(function(){
+      
 
       if('relevant' !== $(this).attr('data-dis')){
         numberOfRelevantCheckboxes += 1;       
@@ -546,7 +535,6 @@ var $checkboxes = $('input:checkbox');
 
         updateStatus();
 
-    
        
 
     });
@@ -575,6 +563,8 @@ var $checkboxes = $('input:checkbox');
       var dischtml = "<h4>Not relevant (" + numberOfUnrelevantCheckboxes + ")</h4><ul class='fail'>";
     
       $.each(rule, function() {
+
+        
         var $this = $(this);
     
         if ($this.is(":checked") && !$($this).prop('disabled')) {
@@ -612,8 +602,7 @@ var $checkboxes = $('input:checkbox');
     
     });
     
-
-    
+      
     $(".close").click(function() {
       $("#overlay").fadeOut();
       $(".overlay_container").css({top:'50%',position:'absolute'}).animate({top: 1000}, 800, function() {
@@ -893,4 +882,6 @@ $("#page-url").on("input", function(){
      }
    });
 
-  }); 
+
+
+

@@ -735,8 +735,29 @@ max-width: 996px;
 .bitvlist {
 
   list-style: none;
+  padding-left: 0px;
+}
+
+.bitv-step-number {
+  margin-bottom: 4px;
+  font-weight: bold;
+  font-size: 16px;
 
 }
+
+.acc-list {
+
+  border-bottom: 1px solid #bebebe;
+  border-top: 1px solid #bebebe;
+  padding-top: 12px;
+  padding-bottom: 24px;
+  font-size: 18px;
+  width: 100%;
+  margin-top: -1px;
+
+}
+
+
 
 .grid_item_checkbox {
 display: -ms-flexbox;
