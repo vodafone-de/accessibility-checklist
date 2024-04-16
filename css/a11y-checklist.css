@@ -757,6 +757,29 @@ max-width: 996px;
 
 }
 
+.ws10-highlight-badge--gray {
+  background-color: #eee;
+  color: #fff;
+  stroke: #fff;
+  fill: #fff;
+}
+.ws10-highlight-badge--standard {
+  min-height: 24px;
+  padding: 0px 8px;
+}
+
+.ws10-highlight-badge {
+  font-weight: bold;
+  line-height: 1.5;
+  color: #0d0d0d;
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  border-radius: 100px;
+  max-width: 100%;
+  line-height: 24px;
+}
 
 
 .grid_item_checkbox {

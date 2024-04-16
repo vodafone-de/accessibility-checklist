@@ -6,7 +6,10 @@
     "title": "Aktivierung von Barrierefreiheitsfunktionen",
     "dod": "tbd",
     "desc": "tbd",
-    "roles": ["ux", "dev"],
+    "roles": {
+      "ux": "ux",
+      "dev": "dev"
+      },
     "type": "Pattern",
     "link": "#",
     "applicable": "yes"
