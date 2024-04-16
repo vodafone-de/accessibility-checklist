@@ -126,6 +126,8 @@ var list19 = data.filter(function (entry19) {
 
     bitvlist1 += '<li class="bitvlist acc-list">'; 
 
+    bitvlist1 += value.roles;
+
     bitvlist1 += '<p class="bitv-step-number">' +  
     value.bitv + '</p>'; 
 
