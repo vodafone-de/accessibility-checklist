@@ -763,7 +763,7 @@ max-width: 996px;
   stroke: #fff;
   fill: #fff;
 }
-.ws10-highlight-badge--standard {
+.ws10-highlight-badge--standard span{
   min-height: 24px;
   padding: 0px 8px;
 }
@@ -780,6 +780,19 @@ max-width: 996px;
   max-width: 100%;
   line-height: 24px;
   margin-right: 8px;
+}
+
+.ws10-highlight-badge--standard span:empty {
+  display:none;
+}
+
+.is-empty {
+  display: none;
+}
+
+
+.checklist-table:has(.elementlist:empty) {
+  display: none;
 }
 
 

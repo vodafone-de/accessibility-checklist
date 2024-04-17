@@ -47,14 +47,14 @@ function (data) {
 
   
   var list1 = data.filter(function (entry1) {
-    return entry1.applicable === 'yes' && entry1.category === 'Allgemeine Anforderungen';
-
+    return entry1.category === 'Allgemeine Anforderungen';
+    // return entry1.applicable === 'yes' && entry1.category === 'Allgemeine Anforderungen';
 });
   
   var list2 = data.filter(function (entry2) {
 
-    return entry2.applicable === 'yes' && entry2.category === 'Zwei-Wege-Sprachkommunikation';
-
+    return entry2.category === 'Zwei-Wege-Sprachkommunikation';
+    // eturn entry2.applicable === 'yes' && entry2.category === 'Zwei-Wege-Sprachkommunikation';
 });
 
 var list3 = data.filter(function (entry3) {
@@ -130,8 +130,8 @@ var list19 = data.filter(function (entry19) {
 
     bitvlist1 += '<li class="bitvlist acc-list">'; 
 
-  
-
+    
+    bitvlist1 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard" aria-label="' + value.applicable + '"><span class="ws10-highlight-badge__text">' + value.applicable + '</span></span>';
     bitvlist1 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard" aria-label="' + value.roleux + '"><span class="ws10-highlight-badge__text">' + value.roleux + '</span></span>';
     bitvlist1 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard" aria-label="' + value.roledev + '"><span class="ws10-highlight-badge__text">' + value.roledev + '</span></span>';
 
@@ -156,10 +156,10 @@ var list19 = data.filter(function (entry19) {
   
   $.each(list2, function (key, value) { 
 
+
   bitvlist2 += '<li>'; 
 
-  bitvlist2 += '<p>' +  
-  value.bitv + '</p>'; 
+  bitvlist2 += '<p>' + value.bitv + '</p>'; 
 
   bitvlist2 += '</li>'; 
                         });
@@ -380,6 +380,11 @@ bitvlist19 += '</li>';
 $('#list19').append(bitvlist19); 
 
 });
+
+
+if($("ul").has("li").length == 0) {
+  $("ul").html("Sorry, this is empty");
+}
 
 
 
