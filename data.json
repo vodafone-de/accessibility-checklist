@@ -8,6 +8,8 @@
     "desc": "tbd",
     "roleux": "ux",
     "roledev": "dev",
+    "roleedt": "editorial",
+    "roletesting": "testing",
     "type": "Pattern",
     "link": "#",
     "applicable": "applicable"
@@ -19,7 +21,10 @@
     "title": "Biometrie",
     "dod": "tbd",
     "desc": "tbd",
-    "roles": ["tbd"],
+    "roleux": "ux",
+    "roledev": "",
+    "roleedt": "",
+    "roletesting": "",
     "type": "",
     "link": "#",
     "applicable": "applicable"
