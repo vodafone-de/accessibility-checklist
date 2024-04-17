@@ -791,7 +791,7 @@ max-width: 996px;
 }
 
 
-.checklist-table:has(.elementlist:empty) {
+.ws10-highlight-badge:has(.ws10-highlight-badge__text:empty) {
   display: none;
 }
 

@@ -58,23 +58,28 @@ function (data) {
 });
 
 var list3 = data.filter(function (entry3) {
-    return entry3.applicable === 'yes' && entry3.category === 'Videofähigkeiten';
+    return entry3.category === 'Videofähigkeiten';
+    // return entry3.applicable === 'yes' && entry3.category === 'Videofähigkeiten';
 });
 
 var list4 = data.filter(function (entry4) {
-    return entry4.applicable === 'yes' && entry4.category === 'Textalternativen';
+    entry4.category === 'Textalternativen';
+    // return entry4.applicable === 'yes' && entry4.category === 'Textalternativen';
 });
 
 var list5 = data.filter(function (entry5) {
-    return entry5.applicable === 'yes' && entry5.category === 'Zeitbasierte Medien';
+    return entry5.category === 'Zeitbasierte Medien';
+    // return entry5.applicable === 'yes' && entry5.category === 'Zeitbasierte Medien';
 });
 
 var list6 = data.filter(function (entry6) {
-    return entry6.applicable === 'yes' && entry6.category === 'Anpassbar';
+    return entry6.category === 'Anpassbar';
+    // return entry6.applicable === 'yes' && entry6.category === 'Anpassbar';
 });
 
 var list7 = data.filter(function (entry7) {
-    return entry7.applicable === 'yes' && entry7.category === 'Unterscheidbar';
+    return entry7.category === 'Unterscheidbar';
+    // return entry7.applicable === 'yes' && entry7.category === 'Unterscheidbar';
 });
 
 var list8 = data.filter(function (entry8) {
@@ -134,6 +139,8 @@ var list19 = data.filter(function (entry19) {
     bitvlist1 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard" aria-label="' + value.applicable + '"><span class="ws10-highlight-badge__text">' + value.applicable + '</span></span>';
     bitvlist1 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard" aria-label="' + value.roleux + '"><span class="ws10-highlight-badge__text">' + value.roleux + '</span></span>';
     bitvlist1 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard" aria-label="' + value.roledev + '"><span class="ws10-highlight-badge__text">' + value.roledev + '</span></span>';
+    bitvlist1 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard" aria-label="' + value.roleedt + '"><span class="ws10-highlight-badge__text">' + value.roleedt + '</span></span>';
+    bitvlist1 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard" aria-label="' + value.roletesting + '"><span class="ws10-highlight-badge__text">' + value.roletesting + '</span></span>';
 
     bitvlist1 += '<p class="bitv-step-number">' +  
     value.bitv + '</p>'; 
@@ -141,11 +148,6 @@ var list19 = data.filter(function (entry19) {
 
  bitvlist1 += '<div class="grid_item_checkbox"><input type="checkbox" id="a11y-rule-03-06" name="a11y-rule" data-ruledis="r-increase-text-200" data-disenable="a11y-rule-03-06" value="' + value.title +  '" class="rel-check ws10-form-selection-control__input" /><label class="rule-description" id="a11y-rule-03-06" data-acc="a11y-rule-03-06-acc">' +
  value.title + '</label></div>'; 
-
-
-
-        
-
 
   bitvlist1 += '</li>'; 
                         });
@@ -157,9 +159,22 @@ var list19 = data.filter(function (entry19) {
   $.each(list2, function (key, value) { 
 
 
-  bitvlist2 += '<li>'; 
+    bitvlist2 += '<li class="bitvlist acc-list">'; 
 
-  bitvlist2 += '<p>' + value.bitv + '</p>'; 
+    
+    bitvlist2 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard" aria-label="' + value.applicable + '"><span class="ws10-highlight-badge__text">' + value.applicable + '</span></span>';
+    bitvlist2 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard" aria-label="' + value.roleux + '"><span class="ws10-highlight-badge__text">' + value.roleux + '</span></span>';
+    bitvlist2 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard" aria-label="' + value.roledev + '"><span class="ws10-highlight-badge__text">' + value.roledev + '</span></span>';
+    bitvlist1 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard" aria-label="' + value.roleedt + '"><span class="ws10-highlight-badge__text">' + value.roleedt + '</span></span>';
+    bitvlist1 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard" aria-label="' + value.roletesting + '"><span class="ws10-highlight-badge__text">' + value.roletesting + '</span></span>';
+
+
+    bitvlist2 += '<p class="bitv-step-number">' +  
+    value.bitv + '</p>'; 
+
+
+ bitvlist2 += '<div class="grid_item_checkbox"><input type="checkbox" id="a11y-rule-03-06" name="a11y-rule" data-ruledis="r-increase-text-200" data-disenable="a11y-rule-03-06" value="' + value.title +  '" class="rel-check ws10-form-selection-control__input" /><label class="rule-description" id="a11y-rule-03-06" data-acc="a11y-rule-03-06-acc">' +
+ value.title + '</label></div>'; 
 
   bitvlist2 += '</li>'; 
                         });
