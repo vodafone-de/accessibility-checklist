@@ -7,10 +7,10 @@
     "dod": "tbd",
     "desc": "tbd",
     "roleux": "ux",
-    "roledev": "",
+    "roledev": "dev",
     "type": "Pattern",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": "2",
@@ -22,7 +22,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": "3",
@@ -34,7 +34,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 4,
@@ -45,7 +45,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "no"
+    "applicable": "N/A"
   },
   {
     "id": 5,
@@ -56,7 +56,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "no"
+    "applicable": "N/A"
   },
   {
     "id": 6,
@@ -67,7 +67,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "no"
+    "applicable": "N/A"
   },
   {
     "id": 7,
@@ -78,7 +78,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "no"
+    "applicable": "N/A"
   },
   {
     "id": 8,
@@ -89,7 +89,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "no"
+    "applicable": "N/A"
   },
   {
     "id": 9,
@@ -100,7 +100,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "no"
+    "applicable": "N/A"
   },
   {
     "id": 10,
@@ -111,7 +111,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "no"
+    "applicable": "N/A"
   },
   {
     "id": 11,
@@ -122,7 +122,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "no"
+    "applicable": "N/A"
   },
   {
     "id": 12,
@@ -133,7 +133,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "no"
+    "applicable": "N/A"
   },
   {
     "id": 13,
@@ -144,7 +144,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "no"
+    "applicable": "N/A"
   },
   {
     "id": 13,
@@ -155,7 +155,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "no"
+    "applicable": "N/A"
   },
   {
     "id": 14,
@@ -166,7 +166,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "no"
+    "applicable": "N/A"
   },
   {
     "id": 15,
@@ -177,7 +177,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "no"
+    "applicable": "N/A"
   },
   {
     "id": 16,
@@ -188,7 +188,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "no"
+    "applicable": "N/A"
   },
   {
     "id": 17,
@@ -199,7 +199,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "no"
+    "applicable": "N/A"
   },
   {
     "id": 18,
@@ -210,7 +210,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "no"
+    "applicable": "N/A"
   },
   {
     "id": 19,
@@ -221,7 +221,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "no"
+    "applicable": "N/A"
   },
   {
     "id": 20,
@@ -232,7 +232,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "no"
+    "applicable": "N/A"
   },
   {
     "id": "21",
@@ -243,7 +243,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": "22",
@@ -254,7 +254,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": "23",
@@ -265,7 +265,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": "24",
@@ -276,7 +276,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": "25",
@@ -287,7 +287,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": "26",
@@ -298,7 +298,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": "27",
@@ -309,7 +309,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": "28",
@@ -320,7 +320,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": "29",
@@ -331,7 +331,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 30,
@@ -342,7 +342,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 31,
@@ -353,7 +353,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 32,
@@ -364,7 +364,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 33,
@@ -375,7 +375,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 34,
@@ -386,7 +386,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 35,
@@ -397,7 +397,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 36,
@@ -408,7 +408,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 37,
@@ -419,7 +419,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 38,
@@ -430,7 +430,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 39,
@@ -441,7 +441,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 40,
@@ -452,7 +452,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 41,
@@ -463,7 +463,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 42,
@@ -474,7 +474,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 43,
@@ -485,7 +485,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 44,
@@ -496,7 +496,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 45,
@@ -507,7 +507,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 46,
@@ -518,7 +518,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 47,
@@ -529,7 +529,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 48,
@@ -540,7 +540,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 49,
@@ -551,7 +551,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 50,
@@ -562,7 +562,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 51,
@@ -573,7 +573,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 52,
@@ -584,7 +584,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 53,
@@ -595,7 +595,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 54,
@@ -606,7 +606,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 55,
@@ -617,7 +617,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 56,
@@ -628,7 +628,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 57,
@@ -639,7 +639,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 58,
@@ -650,7 +650,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 59,
@@ -661,7 +661,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 60,
@@ -672,7 +672,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 61,
@@ -683,7 +683,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 62,
@@ -694,7 +694,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 63,
@@ -705,7 +705,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 64,
@@ -716,7 +716,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 65,
@@ -727,7 +727,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 66,
@@ -738,7 +738,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 67,
@@ -749,7 +749,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 68,
@@ -760,7 +760,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 69,
@@ -771,7 +771,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 70,
@@ -782,7 +782,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 71,
@@ -793,7 +793,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 72,
@@ -804,7 +804,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 73,
@@ -815,7 +815,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 74,
@@ -826,7 +826,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 75,
@@ -837,7 +837,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 76,
@@ -848,7 +848,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 77,
@@ -859,7 +859,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 78,
@@ -870,7 +870,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 79,
@@ -881,7 +881,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 80,
@@ -892,7 +892,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 81,
@@ -903,7 +903,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 82,
@@ -914,7 +914,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 83,
@@ -925,7 +925,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 84,
@@ -936,7 +936,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 85,
@@ -947,7 +947,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 86,
@@ -958,7 +958,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 87,
@@ -969,7 +969,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 88,
@@ -980,7 +980,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 89,
@@ -991,7 +991,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 90,
@@ -1002,7 +1002,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 91,
@@ -1013,7 +1013,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 92,
@@ -1024,7 +1024,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 93,
@@ -1035,7 +1035,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 94,
@@ -1046,7 +1046,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 95,
@@ -1057,7 +1057,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 96,
@@ -1068,7 +1068,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 97,
@@ -1079,7 +1079,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 98,
@@ -1090,7 +1090,7 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   },
   {
     "id": 99,
@@ -1101,6 +1101,6 @@
     "roles": ["tbd"],
     "type": "",
     "link": "#",
-    "applicable": "yes"
+    "applicable": "applicable"
   }
 ]
