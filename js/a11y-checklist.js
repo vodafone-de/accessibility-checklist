@@ -63,7 +63,7 @@ var list3 = data.filter(function (entry3) {
 });
 
 var list4 = data.filter(function (entry4) {
-    entry4.category === 'Textalternativen';
+    return entry4.category === 'Textalternativen';
     // return entry4.applicable === 'yes' && entry4.category === 'Textalternativen';
 });
 
@@ -83,58 +83,72 @@ var list7 = data.filter(function (entry7) {
 });
 
 var list8 = data.filter(function (entry8) {
-    return entry8.applicable === 'yes' && entry8.category === 'Per Tastatur zugänglich';
+    return entry8.category === 'Per Tastatur zugänglich';
+    // return entry8.applicable === 'yes' && entry8.category === 'Per Tastatur zugänglich';
 });
 
 var list9 = data.filter(function (entry9) {
-    return entry9.applicable === 'yes' && entry9.category === 'Ausreichend Zeit';
+    return entry9.category === 'Ausreichend Zeit';
+    // return entry9.applicable === 'yes' && entry9.category === 'Ausreichend Zeit';
 });
 
 var list10 = data.filter(function (entry10) {
-    return entry10.applicable === 'yes' && entry10.category === 'Anfälle';
+    return entry10.category === 'Anfälle';
+    // return entry10.applicable === 'yes' && entry10.category === 'Anfälle';
 });
 
 var list11 = data.filter(function (entry11) {
-    return entry11.applicable === 'yes' && entry11.category === 'Navigierbar';
+    return entry11.category === 'Navigierbar';
+    // return entry11.applicable === 'yes' && entry11.category === 'Navigierbar';
 });
 
 var list12 = data.filter(function (entry12) {
-    return entry12.applicable === 'yes' && entry12.category === 'Eingabemodalitäten';
+    return entry12.category === 'Eingabemodalitäten';
+    // return entry12.applicable === 'yes' && entry12.category === 'Eingabemodalitäten';
 });
 
 var list13 = data.filter(function (entry13) {
-    return entry13.applicable === 'yes' && entry13.category === 'Lesbar';
+    return entry13.category === 'Lesbar';
+    // return entry13.applicable === 'yes' && entry13.category === 'Lesbar';
 });
 
 var list14 = data.filter(function (entry14) {
-    return entry14.applicable === 'yes' && entry14.category === 'Vorhersehbar';
+    return entry14.category === 'Vorhersehbar';
+    // return entry14.applicable === 'yes' && entry14.category === 'Vorhersehbar';
 });
 
 var list15 = data.filter(function (entry15) {
-    return entry15.applicable === 'yes' && entry15.category === 'Hilfestellung bei der Eingabe';
+    return entry15.category === 'Hilfestellung bei der Eingabe';
+    // return entry15.applicable === 'yes' && entry15.category === 'Hilfestellung bei der Eingabe';
 });
 
 var list16 = data.filter(function (entry16) {
-    return entry16.applicable === 'yes' && entry16.category === 'Kompatibel';
+    return entry16.category === 'Kompatibel';
+    // return entry16.applicable === 'yes' && entry16.category === 'Kompatibel';
 });
 
 var list17 = data.filter(function (entry17) {
-    return entry17.applicable === 'yes' && entry17.category === 'Benutzerdefinierte Einstellungen';
+    return entry17.category === 'Benutzerdefinierte Einstellungen';
+    // return entry17.applicable === 'yes' && entry17.category === 'Benutzerdefinierte Einstellungen';
 });
 
 var list18 = data.filter(function (entry18) {
-    return entry18.applicable === 'yes' && entry18.category === 'Autorenwerkzeuge';
+    return entry18.category === 'Autorenwerkzeuge';
+    // return entry18.applicable === 'yes' && entry18.category === 'Autorenwerkzeuge';
 });
 
 var list19 = data.filter(function (entry19) {
-    return entry19.applicable === 'yes' && entry19.category === 'Dokumentation und Support';
+    return entry19.category === 'Dokumentation und Support';
+    // return entry19.applicable === 'yes' && entry19.category === 'Dokumentation und Support';
 });
+
+$("div#allgemeine-anforderungen").prepend("<h3>Allgemeine Anforderungen</h3><span class='subheading'>How your website/app content looks in any given situation.</span><div class='accord-content-ul' id='allg-content'><ul id='list1' class='bitvlist'></ul></div></div>");
+$("div#zwei-wege-sprachkommunikation").prepend("<h3>Zwei-Wege-Sprachkommunikation</h3><span class='subheading'>How your website/app content looks in any given situation.</span><div class='accord-content-ul' id='zwei-wege-content'><ul id='list2' class='bitvlist'></ul></div></div>");
 
 
   $.each(list1, function (key, value) { 
 
-    bitvlist1 += '<li class="bitvlist acc-list">'; 
-
+    bitvlist1 += '<li class="bitvlist acc-list ' + 'filter_' + value.applicable + ' filter_' + value.roleux + '">'; 
     
     bitvlist1 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard" aria-label="' + value.applicable + '"><span class="ws10-highlight-badge__text">' + value.applicable + '</span></span>';
     bitvlist1 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard" aria-label="' + value.roleux + '"><span class="ws10-highlight-badge__text">' + value.roleux + '</span></span>';
@@ -397,9 +411,27 @@ $('#list19').append(bitvlist19);
 });
 
 
-if($("ul").has("li").length == 0) {
-  $("ul").html("Sorry, this is empty");
-}
+// filter function
+
+$("#filter-options :checkbox").click(function() 
+	{
+       	$(".bitvlist li").hide();
+       	$("#filter-options :checkbox:checked").each(function() 
+       	{
+           $("." + $(this).val()).fadeIn();
+		});
+       
+        if($('#filter-options :checkbox').filter(':checked').length < 1) 
+        {
+        	$(".bitvlist li").fadeIn();
+        	
+        }
+        
+    });
+
+
+
+
 
 
 
@@ -476,7 +508,7 @@ var updateStatus = function(){
 
 
 
-var $checkboxes = $('input:checkbox');
+var $checkboxes = $('input.rel-check[type=checkbox]');
 
     $checkboxes.each(function(){
       
@@ -739,6 +771,24 @@ $(document).keyup(function(e) {
 });
 
 
+var KEYCODE_ENTER = 13;
+
+$(document).keyup(function(e) {
+  if (e.keyCode == KEYCODE_ENTER) {
+    $(".bitvlist li").hide();
+       	$("#filter-options :checkbox:checked").each(function() 
+       	{
+           $("." + $(this).val()).fadeIn();
+		});
+       
+        if($('#filter-options :checkbox').filter(':checked').length < 1) 
+        {
+        	$(".bitvlist li").fadeIn();
+        	
+        }
+
+  } 
+});
 
 
 

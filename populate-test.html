@@ -129,26 +129,71 @@
   <h2 class="small-vw">BITV</h2>
  <!-- <button class="reset-form">Reset checkboxes</button> --> 
 
+
+<div class="filter">
+ <h3>Filter:</h3>
+<ul id="filter-options">
+  <li><div class="cat action" tabindex="0">
+    <label><input type="checkbox" data-dis="relevant" value="filter_applicable" data-filter_id="applicable"><span class="ws10-text">Applicable</span>
+    </label>
+ </div></li>
+  <li><div class="cat action" tabindex="0">
+    <label><input type="checkbox" data-dis="relevant" value="filter_ux" data-filter_id="ux"><span class="ws10-text">User Experience</span>
+    </label>
+ </div></li>
+  <li><input type="checkbox" data-dis="relevant" value="filter_blue" data-filter_id="blue"> Blue</li>
+  <li><input type="checkbox" data-dis="relevant" value="filter_orange" data-filter_id="orange"> Orange</li>
+  <li><input type="checkbox" data-dis="relevant" value="filter_yellow" data-filter_id="yellow"> Yellow</li>
+</ul>
+
+<div style="clear:both"></div>
+</div>
+
+
  <form class="contact-form" action="" method="post" id="a11y-checklist" accept-charset="UTF-8">
 
- <div class="checklist-table">
 
-  <div class="ws10-card--shadow-wide ws10-card ws10-card--background-white">
-    <h3>Allgemeine Anforderungen</h3>
-    <span class="subheading">How your website/app content looks in any given situation.</span>
+
+  <!-- Card begin -->
+
+ <div class="checklist-table ws10-card--shadow-wide ws10-card ws10-card--background-white">
+
+  <div class="togglehead">
+
+  <div class="toggle-link" data-div-id="allg-content" data-label-id="allg-acc" tabindex="0" role="button" aria-pressed="false">
+    <div class="accord-header grid_item_text-togglehead" id="a11y-rule-03-01"><svg class="ws10-accordion-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+    <polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/></svg>
+    </div>
+    </div>
+  
+<div class="category-head" id="allgemeine-anforderungen"></div>
+</div>
+
+</div>
+
+
+<!-- Card end -->
+
+  <!-- Card begin -->
+
+  <div class="checklist-table ws10-card--shadow-wide ws10-card ws10-card--background-white">
+
+    <div class="togglehead">
+  
+    <div class="toggle-link" data-div-id="zwei-wege-content" data-label-id="zwei-wege-acc" tabindex="0" role="button" aria-pressed="false">
+      <div class="accord-header grid_item_text-togglehead" id="a11y-rule-03-01"><svg class="ws10-accordion-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+      <polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/></svg>
+      </div>
+      </div>
     
-<ul id="list1" class="bitvlist"> 
-</ul>
+  <div class="category-head" id="zwei-wege-sprachkommunikation"></div>
   </div>
+  
   </div>
+  
+  
+  <!-- Card end -->
 
-  <div class="checklist-table"><div class="ws10-card--shadow-wide ws10-card ws10-card--background-white">
-    <h3>Zwei-Wege-Sprachkommunikation</h3>
-    <span class="subheading">How your website/app content looks in any given situation.</span>
-  <ul class="bitvlist" id="list2">
-    </ul>
-    </div>
-    </div>
 
       <div class="checklist-table">
 
@@ -337,7 +382,7 @@
             <td colspan="3" class="heading">
               <div class="subheading small-vw"><strong>Check if</strong> everyone is able to participate in our Vodafone experience. The following checklist is a tool to help you following the most important rules for an accessible website or app.
               <p></p>
-              <strong>How to use this list</strong><br>Check the following things on online websites/apps. If a rule is not relevant (i.e. you don't have any images in your design) mark the rule as <strong>"not relevant"</strong>. Use the chevron icon <svg class="ws10-accordion-item__chevron-demo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+              <strong>How to use this list</strong><br>Check the following things on online websites/apps. If a rule is not applicable (i.e. you don't have any images in your design) mark the rule as <strong>"not relevant"</strong>. Use the chevron icon <svg class="ws10-accordion-item__chevron-demo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
                 <polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/></svg> to get further information for each rule.</div>
             </td>
             </tr>
@@ -678,7 +723,7 @@
           <div class="count-checkboxes-wrapper">
            <span id="count-checked-checkboxes" class="digit">0</span> of
            <span id="count-total-checkboxes" class="digit">0</span> checked | 
-           <span id="count-disabled-checkboxes">0</span> not relevant
+           <span id="count-disabled-checkboxes">0</span> not applicable
   
           </div>
           <div class="button-wrapper">
