@@ -1,9 +1,15 @@
 [
     {
-    "id": "01",
+    "id": "lis11",
     "category": "Allgemeine Anforderungen",
     "subhead": "Subhead",
     "applicable": "applicable"
+  },
+  {
+    "id": "list2",
+    "category": "Zwei-Wege-Sprachkommunikation",
+    "subhead": "Subhead",
+    "applicable": "N/A"
   },
   {
     "id": "5.2",
