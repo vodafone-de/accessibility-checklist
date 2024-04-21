@@ -1,4 +1,10 @@
 [
+    {
+    "id": "01",
+    "category": "Allgemeine Anforderungen",
+    "subhead": "Subhead",
+    "applicable": "applicable"
+  },
   {
     "id": "5.2",
     "category": "Allgemeine Anforderungen",
