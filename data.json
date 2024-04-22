@@ -1,4 +1,18 @@
 [
+    {
+    "id": "list1",
+    "category": "Allgemeine Anforderungen",
+    "type": "category-heading",
+    "subhead": "Subhead",
+    "applicable": "applicable"
+  },
+    {
+    "id": "list2",
+    "category": "Zwei-Wege-Sprachkommunikation",
+    "type": "category-heading",
+    "subhead": "Lorem ipsum",
+    "applicable": "N/A"
+  },
   {
     "id": "5.2",
     "category": "Allgemeine Anforderungen",
