@@ -917,7 +917,17 @@ margin-bottom: 32px;
     padding: 12px; 
   }
 
+  .ws10-highlight-badge--filteractive {
+    background-color: #00697c;
+    color: #fff!important;
+    stroke: #fff;
+    fill: #fff;
+}
 
+.acc-expander {
+  text-align: right;
+  padding: 8px;
+}
 
 
 .grid_item_checkbox {

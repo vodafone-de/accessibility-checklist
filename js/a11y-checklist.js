@@ -16,6 +16,8 @@ if ($('body').hasClass('dark')) {
 });
 }); 
 
+
+
 $.ajaxSetup({
   async: false
   });
@@ -47,13 +49,13 @@ function (data) {
 
   
   var list1 = data.filter(function (entry1) {
-    return entry1.category === 'Allgemeine Anforderungen';
+    return entry1.category === 'Allgemeine Anforderungen' && entry1.type != 'category-heading';
     // return entry1.applicable === 'yes' && entry1.category === 'Allgemeine Anforderungen';
 });
   
   var list2 = data.filter(function (entry2) {
 
-    return entry2.category === 'Zwei-Wege-Sprachkommunikation';
+    return entry2.category === 'Zwei-Wege-Sprachkommunikation' && entry2.type != 'category-heading';
     // eturn entry2.applicable === 'yes' && entry2.category === 'Zwei-Wege-Sprachkommunikation';
 });
 
@@ -142,19 +144,31 @@ var list19 = data.filter(function (entry19) {
     // return entry19.applicable === 'yes' && entry19.category === 'Dokumentation und Support';
 });
 
-$("div#allgemeine-anforderungen").prepend("<h3>Allgemeine Anforderungen</h3><span class='subheading'>How your website/app content looks in any given situation.</span><div class='accord-content-ul' id='allg-content'><ul id='list1' class='bitvlist'></ul></div></div>");
-$("div#zwei-wege-sprachkommunikation").prepend("<h3>Zwei-Wege-Sprachkommunikation</h3><span class='subheading'>How your website/app content looks in any given situation.</span><div class='accord-content-ul' id='zwei-wege-content'><ul id='list2' class='bitvlist'></ul></div></div>");
+var cathead1 = data.filter(function (heading1) {
+  return heading1.category === 'Allgemeine Anforderungen' && heading1.type === 'category-heading';
+});
+
+var cathead2 = data.filter(function (heading2) {
+  return heading2.category === 'Zwei-Wege-Sprachkommunikation' && heading2.type === 'category-heading';
+});
+
+
+
+$("div#allgemeine-anforderungen").prepend("<h3>" + cathead1[0].category + "</h3><span class='subheading'>" + cathead1[0].subhead + "</span><div class='accord-content-ul' id='allg-content'><ul id='list1' class='bitvlist'></ul></div></div>");
+
+
+$("div#zwei-wege-sprachkommunikation").prepend("<h3>" + cathead2[0].category + "</h3><span class='subheading'>" + cathead2[0].subhead + "</span><div class='accord-content-ul' id='zwei-wege-content'><ul id='list2' class='bitvlist'></ul></div></div>");
 
 
   $.each(list1, function (key, value) { 
 
-    bitvlist1 += '<li class="bitvlist acc-list ' + 'filter_' + value.applicable + ' filter_' + value.roleux + '">'; 
+    bitvlist1 += '<li class="acc-list ' + 'filter_' + value.applicable + ' filter_' + value.roleux + ' filter_' + value.roledev + '">'; 
     
-    bitvlist1 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard" aria-label="' + value.applicable + '"><span class="ws10-highlight-badge__text">' + value.applicable + '</span></span>';
-    bitvlist1 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard" aria-label="' + value.roleux + '"><span class="ws10-highlight-badge__text">' + value.roleux + '</span></span>';
-    bitvlist1 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard" aria-label="' + value.roledev + '"><span class="ws10-highlight-badge__text">' + value.roledev + '</span></span>';
-    bitvlist1 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard" aria-label="' + value.roleedt + '"><span class="ws10-highlight-badge__text">' + value.roleedt + '</span></span>';
-    bitvlist1 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard" aria-label="' + value.roletesting + '"><span class="ws10-highlight-badge__text">' + value.roletesting + '</span></span>';
+    bitvlist1 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.applicable + '" aria-label="' + value.applicable + '"><span class="ws10-highlight-badge__text">' + value.applicable + '</span></span>';
+    bitvlist1 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleux + '" aria-label="' + value.roleux + '"><span class="ws10-highlight-badge__text">' + value.roleux + '</span></span>';
+    bitvlist1 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roledev + '" aria-label="' + value.roledev + '"><span class="ws10-highlight-badge__text">' + value.roledev + '</span></span>';
+    bitvlist1 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleedt + '" aria-label="' + value.roleedt + '"><span class="ws10-highlight-badge__text">' + value.roleedt + '</span></span>';
+    bitvlist1 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roletesting + '" aria-label="' + value.roletesting + '"><span class="ws10-highlight-badge__text">' + value.roletesting + '</span></span>';
 
     bitvlist1 += '<p class="bitv-step-number">' +  
     value.bitv + '</p>'; 
@@ -173,7 +187,7 @@ $("div#zwei-wege-sprachkommunikation").prepend("<h3>Zwei-Wege-Sprachkommunikatio
   $.each(list2, function (key, value) { 
 
 
-    bitvlist2 += '<li class="bitvlist acc-list">'; 
+    bitvlist2 += '<li class="acc-list">'; 
 
     
     bitvlist2 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard" aria-label="' + value.applicable + '"><span class="ws10-highlight-badge__text">' + value.applicable + '</span></span>';
@@ -411,23 +425,7 @@ $('#list19').append(bitvlist19);
 });
 
 
-// filter function
 
-$("#filter-options :checkbox").click(function() 
-	{
-       	$(".bitvlist li").hide();
-       	$("#filter-options :checkbox:checked").each(function() 
-       	{
-           $("." + $(this).val()).fadeIn();
-		});
-       
-        if($('#filter-options :checkbox').filter(':checked').length < 1) 
-        {
-        	$(".bitvlist li").fadeIn();
-        	
-        }
-        
-    });
 
 
 
@@ -505,6 +503,43 @@ var updateStatus = function(){
 
     
 };
+
+// filter function
+
+$("#filter-options :checkbox").click(function() {
+  var lifi = $(".bitvlist li").hide();
+  var badge = $(".ws10-highlight-badge").hide();  
+
+  $("#filter-options :checkbox:checked").each(function(lifi) {
+      $("." + $(this).val()).fadeIn();
+  });
+
+  $("#filter-options :checkbox:checked").each(function(badge) {
+      $("." + $(this).val()).fadeIn();
+      $(".ws10-highlight-badge").addClass("ws10-highlight-badge--filteractive");
+  });
+
+  if ($('#filter-options :checkbox').filter(':checked').length < 1) {
+      $(".bitvlist li").fadeIn();
+      $(".ws10-highlight-badge").fadeIn();
+      $(".ws10-highlight-badge").removeClass("ws10-highlight-badge--filteractive");
+      $(".checklist-table").show(); 
+  }
+
+  // Hier füge die vorherige Funktion ein, um das umgebende div zu verstecken, wenn alle li ausgeblendet sind
+  $(".checklist-table").each(function() {
+      var list = $(this).find(".bitvlist li");
+      var hiddenList = $(this).find(".bitvlist li[style*='none']");
+      if (list.length === hiddenList.length) {
+          $(this).hide();
+      } else {
+          $(this).show(); // Stelle sicher, dass das div angezeigt wird, wenn nicht alle li ausgeblendet sind
+      }
+  });
+});
+
+
+
 
 
 
@@ -699,6 +734,21 @@ $('#Date').html(newDate.getDate() + ' ' + monthNames[newDate.getMonth()] + ' ' +
     $(".rule-description" + "[data-acc='" + linkId2 + "']").toggleClass("rule-description-highlight");
  });
 
+ $('.expand-all-toggle-link').on('click', function(e) {
+  $('.accord-content-ul').slideToggle();
+  $('.toggle-link').toggleClass("ws10-accordion-item__checked");
+  $('.accord-content-ul').toggleClass("acc-all-open");
+
+if ($('.accord-content-ul').hasClass('acc-all-open')) {
+    $('.expand-all-toggle-link').text('Collapse all'); }
+    else {
+        $('.expand-all-toggle-link').text('Expand all');
+    }
+  e.preventDefault();
+});
+
+
+
  $('.toggle-link').keypress(function (e) {
  var key = e.which;
  if(key == 13)  // the enter key code
@@ -711,8 +761,13 @@ $('#Date').html(newDate.getDate() + ' ' + monthNames[newDate.getMonth()] + ' ' +
     return false;  
   }
 });  
+
  
 });
+
+
+
+
 
 
 /**
@@ -771,24 +826,7 @@ $(document).keyup(function(e) {
 });
 
 
-var KEYCODE_ENTER = 13;
 
-$(document).keyup(function(e) {
-  if (e.keyCode == KEYCODE_ENTER) {
-    $(".bitvlist li").hide();
-       	$("#filter-options :checkbox:checked").each(function() 
-       	{
-           $("." + $(this).val()).fadeIn();
-		});
-       
-        if($('#filter-options :checkbox').filter(':checked').length < 1) 
-        {
-        	$(".bitvlist li").fadeIn();
-        	
-        }
-
-  } 
-});
 
 
 
