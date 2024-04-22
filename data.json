@@ -35,13 +35,13 @@
     "title": "Biometrie",
     "dod": "tbd",
     "desc": "tbd",
-    "roleux": "ux",
+    "roleux": "",
     "roledev": "",
     "roleedt": "",
     "roletesting": "",
     "type": "",
     "link": "#",
-    "applicable": "applicable"
+    "applicable": "N/A"
   },
   {
     "id": "5.4",
@@ -51,12 +51,12 @@
     "dod": "tbd",
     "desc": "tbd",
     "roleux": "",
-    "roledev": "dev",
+    "roledev": "",
     "roleedt": "",
     "roletesting": "",
     "type": "",
     "link": "#",
-    "applicable": "applicable"
+    "applicable": "N/A"
   },
   {
     "id": "6.1",
