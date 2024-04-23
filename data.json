@@ -28,6 +28,111 @@
     "applicable": "applicable"
   },
   {
+    "id": "list5",
+    "category": "Zeitbasierte Medien",
+    "type": "category-heading",
+    "subhead": "Lorem ipsum",
+    "applicable": "applicable"
+  },
+  {
+    "id": "list6",
+    "category": "Anpassbar",
+    "type": "category-heading",
+    "subhead": "Lorem ipsum",
+    "applicable": "applicable"
+  },
+  {
+    "id": "list7",
+    "category": "Unterscheidbar",
+    "type": "category-heading",
+    "subhead": "Lorem ipsum",
+    "applicable": "applicable"
+  },
+  {
+    "id": "list8",
+    "category": "Per Tastatur zugänglich",
+    "type": "category-heading",
+    "subhead": "Lorem ipsum",
+    "applicable": "applicable"
+  },
+  {
+    "id": "list9",
+    "category": "Ausreichend Zeit",
+    "type": "category-heading",
+    "subhead": "Lorem ipsum",
+    "applicable": "applicable"
+  },
+  {
+    "id": "list10",
+    "category": "Anfälle",
+    "type": "category-heading",
+    "subhead": "Lorem ipsum",
+    "applicable": "applicable"
+  },
+  {
+    "id": "list11",
+    "category": "Navigierbar",
+    "type": "category-heading",
+    "subhead": "Lorem ipsum",
+    "applicable": "applicable"
+  },
+  {
+    "id": "list12",
+    "category": "Eingabemodalitäten",
+    "type": "category-heading",
+    "subhead": "Lorem ipsum",
+    "applicable": "applicable"
+  },
+  {
+    "id": "list13",
+    "category": "Lesbar",
+    "type": "category-heading",
+    "subhead": "Lorem ipsum",
+    "applicable": "applicable"
+  },
+  {
+    "id": "list14",
+    "category": "Vorhersehbar",
+    "type": "category-heading",
+    "subhead": "Lorem ipsum",
+    "applicable": "applicable"
+  },
+  {
+    "id": "list15",
+    "category": "Hilfestellung bei der Eingabe",
+    "type": "category-heading",
+    "subhead": "Lorem ipsum",
+    "applicable": "applicable"
+  },
+  {
+    "id": "list16",
+    "category": "Kompatibel",
+    "type": "category-heading",
+    "subhead": "Lorem ipsum",
+    "applicable": "applicable"
+  },
+  {
+    "id": "list17",
+    "category": "Benutzerdefinierte Einstellungen",
+    "type": "category-heading",
+    "subhead": "Lorem ipsum",
+    "applicable": "applicable"
+  },
+  {
+    "id": "list18",
+    "category": "Autorenwerkzeuge",
+    "type": "category-heading",
+    "subhead": "Lorem ipsum",
+    "applicable": "applicable"
+  },
+  {
+    "id": "list19",
+    "category": "Dokumentation und Support",
+    "type": "category-heading",
+    "subhead": "Lorem ipsum",
+    "applicable": "applicable"
+  },
+  {
     "id": "5.2",
     "category": "Allgemeine Anforderungen",
     "bitv": "Prüfschritt 5.2",

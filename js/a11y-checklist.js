@@ -69,77 +69,77 @@ var list4 = data.filter(function (entry4) {
 });
 
 var list5 = data.filter(function (entry5) {
-    return entry5.category === 'Zeitbasierte Medien';
+    return entry5.category === 'Zeitbasierte Medien' && entry5.type != 'category-heading';
     // return entry5.applicable === 'yes' && entry5.category === 'Zeitbasierte Medien';
 });
 
 var list6 = data.filter(function (entry6) {
-    return entry6.category === 'Anpassbar';
+    return entry6.category === 'Anpassbar' && entry6.type != 'category-heading';
     // return entry6.applicable === 'yes' && entry6.category === 'Anpassbar';
 });
 
 var list7 = data.filter(function (entry7) {
-    return entry7.category === 'Unterscheidbar';
+    return entry7.category === 'Unterscheidbar' && entry7.type != 'category-heading';
     // return entry7.applicable === 'yes' && entry7.category === 'Unterscheidbar';
 });
 
 var list8 = data.filter(function (entry8) {
-    return entry8.category === 'Per Tastatur zugänglich';
+    return entry8.category === 'Per Tastatur zugänglich' && entry8.type != 'category-heading';
     // return entry8.applicable === 'yes' && entry8.category === 'Per Tastatur zugänglich';
 });
 
 var list9 = data.filter(function (entry9) {
-    return entry9.category === 'Ausreichend Zeit';
+    return entry9.category === 'Ausreichend Zeit' && entry9.type != 'category-heading';
     // return entry9.applicable === 'yes' && entry9.category === 'Ausreichend Zeit';
 });
 
 var list10 = data.filter(function (entry10) {
-    return entry10.category === 'Anfälle';
+    return entry10.category === 'Anfälle' && entry10.type != 'category-heading';
     // return entry10.applicable === 'yes' && entry10.category === 'Anfälle';
 });
 
 var list11 = data.filter(function (entry11) {
-    return entry11.category === 'Navigierbar';
+    return entry11.category === 'Navigierbar' && entry11.type != 'category-heading';
     // return entry11.applicable === 'yes' && entry11.category === 'Navigierbar';
 });
 
 var list12 = data.filter(function (entry12) {
-    return entry12.category === 'Eingabemodalitäten';
+    return entry12.category === 'Eingabemodalitäten' && entry12.type != 'category-heading';
     // return entry12.applicable === 'yes' && entry12.category === 'Eingabemodalitäten';
 });
 
 var list13 = data.filter(function (entry13) {
-    return entry13.category === 'Lesbar';
+    return entry13.category === 'Lesbar' && entry13.type != 'category-heading';
     // return entry13.applicable === 'yes' && entry13.category === 'Lesbar';
 });
 
 var list14 = data.filter(function (entry14) {
-    return entry14.category === 'Vorhersehbar';
+    return entry14.category === 'Vorhersehbar' && entry14.type != 'category-heading';
     // return entry14.applicable === 'yes' && entry14.category === 'Vorhersehbar';
 });
 
 var list15 = data.filter(function (entry15) {
-    return entry15.category === 'Hilfestellung bei der Eingabe';
+    return entry15.category === 'Hilfestellung bei der Eingabe' && entry15.type != 'category-heading';
     // return entry15.applicable === 'yes' && entry15.category === 'Hilfestellung bei der Eingabe';
 });
 
 var list16 = data.filter(function (entry16) {
-    return entry16.category === 'Kompatibel';
+    return entry16.category === 'Kompatibel' && entry16.type != 'category-heading';
     // return entry16.applicable === 'yes' && entry16.category === 'Kompatibel';
 });
 
 var list17 = data.filter(function (entry17) {
-    return entry17.category === 'Benutzerdefinierte Einstellungen';
+    return entry17.category === 'Benutzerdefinierte Einstellungen' && entry17.type != 'category-heading';
     // return entry17.applicable === 'yes' && entry17.category === 'Benutzerdefinierte Einstellungen';
 });
 
 var list18 = data.filter(function (entry18) {
-    return entry18.category === 'Autorenwerkzeuge';
+    return entry18.category === 'Autorenwerkzeuge' && entry18.type != 'category-heading';
     // return entry18.applicable === 'yes' && entry18.category === 'Autorenwerkzeuge';
 });
 
 var list19 = data.filter(function (entry19) {
-    return entry19.category === 'Dokumentation und Support';
+    return entry19.category === 'Dokumentation und Support' && entry19.type != 'category-heading';
     // return entry19.applicable === 'yes' && entry19.category === 'Dokumentation und Support';
 });
 
@@ -159,12 +159,72 @@ var cathead4 = data.filter(function (heading4) {
   return heading4.category === 'Textalternativen' && heading4.type === 'category-heading';
 });
 
+var cathead5 = data.filter(function (heading5) {
+  return heading5.category === 'Zeitbasierte Medien' && heading5.type === 'category-heading';
+});
+
+var cathead6 = data.filter(function (heading6) {
+  return heading6.category === 'Anpassbar' && heading6.type === 'category-heading';
+});
+
+var cathead7 = data.filter(function (heading7) {
+  return heading7.category === 'Unterscheidbar' && heading7.type === 'category-heading';
+});
+
+var cathead8 = data.filter(function (heading8) {
+  return heading8.category === 'Per Tastatur zugänglich' && heading8.type === 'category-heading';
+});
+
+var cathead9 = data.filter(function (heading9) {
+  return heading9.category === 'Ausreichend Zeit' && heading9.type === 'category-heading';
+});
+
+var cathead10 = data.filter(function (heading10) {
+  return heading10.category === 'Anfälle' && heading10.type === 'category-heading';
+});
+
+var cathead11 = data.filter(function (heading11) {
+  return heading11.category === 'Navigierbar' && heading11.type === 'category-heading';
+});
+
+var cathead12 = data.filter(function (heading12) {
+  return heading12.category === 'Eingabemodalitäten' && heading12.type === 'category-heading';
+});
+
+var cathead13 = data.filter(function (heading13) {
+  return heading13.category === 'Lesbar' && heading13.type === 'category-heading';
+});
+
+var cathead14 = data.filter(function (heading14) {
+  return heading14.category === 'Vorhersehbar' && heading14.type === 'category-heading';
+});
+
+var cathead15 = data.filter(function (heading15) {
+  return heading15.category === 'Hilfestellung bei der Eingabe' && heading15.type === 'category-heading';
+});
+
+var cathead16 = data.filter(function (heading16) {
+  return heading16.category === 'Kompatibel' && heading16.type === 'category-heading';
+});
+
+var cathead17 = data.filter(function (heading17) {
+  return heading17.category === 'Benutzerdefinierte Einstellungen' && heading17.type === 'category-heading';
+});
+
+var cathead18 = data.filter(function (heading18) {
+  return heading18.category === 'Autorenwerkzeuge' && heading18.type === 'category-heading';
+});
+
+var cathead19 = data.filter(function (heading19) {
+  return heading19.category === 'Dokumentation und Support' && heading19.type === 'category-heading';
+});
 
 
 $("div#allgemeine-anforderungen").prepend("<h3>" + cathead1[0].category + "</h3><span class='subheading'>" + cathead1[0].subhead + "</span><div class='accord-content-ul' id='allg-content'><ul id='list1' class='bitvlist'></ul></div></div>");
 $("div#zwei-wege-sprachkommunikation").prepend("<h3>" + cathead2[0].category + "</h3><span class='subheading'>" + cathead2[0].subhead + "</span><div class='accord-content-ul' id='zwei-wege-content'><ul id='list2' class='bitvlist'></ul></div></div>");
 $("div#videofähigkeiten").prepend("<h3>" + cathead3[0].category + "</h3><span class='subheading'>" + cathead3[0].subhead + "</span><div class='accord-content-ul' id='videofähig-content'><ul id='list3' class='bitvlist'></ul></div></div>");
 $("div#textalternativen").prepend("<h3>" + cathead4[0].category + "</h3><span class='subheading'>" + cathead4[0].subhead + "</span><div class='accord-content-ul' id='textalternativen-content'><ul id='list4' class='bitvlist'></ul></div></div>");
+$("div#zeitbasierte-medien").prepend("<h3>" + cathead5[0].category + "</h3><span class='subheading'>" + cathead5[0].subhead + "</span><div class='accord-content-ul' id='zeitbasierte-medien-content'><ul id='list5' class='bitvlist'></ul></div></div>");
 
 
   $.each(list1, function (key, value) { 
@@ -269,17 +329,28 @@ $("div#textalternativen").prepend("<h3>" + cathead4[0].category + "</h3><span cl
 
 
 
-$.each(list5, function (key, value) { 
+  $.each(list5, function (key, value) { 
 
-bitvlist5 += '<li>'; 
+    bitvlist5 += '<li class="acc-list ' + 'filter_' + value.applicable + ' filter_' + value.roleux + ' filter_' + value.roledev + '">'; 
+    
+    bitvlist5 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.applicable + '" aria-label="' + value.applicable + '"><span class="ws10-highlight-badge__text">' + value.applicable + '</span></span>';
+    bitvlist5 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleux + '" aria-label="' + value.roleux + '"><span class="ws10-highlight-badge__text">' + value.roleux + '</span></span>';
+    bitvlist5 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roledev + '" aria-label="' + value.roledev + '"><span class="ws10-highlight-badge__text">' + value.roledev + '</span></span>';
+    bitvlist5 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleedt + '" aria-label="' + value.roleedt + '"><span class="ws10-highlight-badge__text">' + value.roleedt + '</span></span>';
+    bitvlist5 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roletesting + '" aria-label="' + value.roletesting + '"><span class="ws10-highlight-badge__text">' + value.roletesting + '</span></span>';
 
-bitvlist5 += '<p>' +  
-value.bitv + '</p>'; 
+    bitvlist5 += '<p class="bitv-step-number">' +  
+    value.bitv + '</p>'; 
 
-bitvlist5 += '</li>'; 
-                      });
 
-$('#list5').append(bitvlist5); 
+ bitvlist5 += '<div class="grid_item_checkbox"><input type="checkbox" id="a11y-rule-03-06" name="a11y-rule" data-ruledis="r-increase-text-200" data-disenable="a11y-rule-03-06" value="' + value.title +  '" class="rel-check ws10-form-selection-control__input" /><label class="rule-description" id="a11y-rule-03-06" data-acc="a11y-rule-03-06-acc">' +
+ value.title + '</label></div>'; 
+
+  bitvlist5 += '</li>'; 
+                        });
+
+  
+  $('#list5').append(bitvlist5);
 
 
 
