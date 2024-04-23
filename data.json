@@ -141,7 +141,7 @@
     "desc": "tbd",
     "roleux": "ux",
     "roledev": "dev",
-    "roleedt": "editorial",
+    "roleedt": "edt",
     "roletesting": "testing",
     "type": "Pattern",
     "link": "#",

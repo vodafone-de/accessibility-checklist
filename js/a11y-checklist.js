@@ -225,11 +225,28 @@ $("div#zwei-wege-sprachkommunikation").prepend("<h3>" + cathead2[0].category + "
 $("div#videofähigkeiten").prepend("<h3>" + cathead3[0].category + "</h3><span class='subheading'>" + cathead3[0].subhead + "</span><div class='accord-content-ul' id='videofähig-content'><ul id='list3' class='bitvlist'></ul></div></div>");
 $("div#textalternativen").prepend("<h3>" + cathead4[0].category + "</h3><span class='subheading'>" + cathead4[0].subhead + "</span><div class='accord-content-ul' id='textalternativen-content'><ul id='list4' class='bitvlist'></ul></div></div>");
 $("div#zeitbasierte-medien").prepend("<h3>" + cathead5[0].category + "</h3><span class='subheading'>" + cathead5[0].subhead + "</span><div class='accord-content-ul' id='zeitbasierte-medien-content'><ul id='list5' class='bitvlist'></ul></div></div>");
+$("div#anpassbar").prepend("<h3>" + cathead6[0].category + "</h3><span class='subheading'>" + cathead6[0].subhead + "</span><div class='accord-content-ul' id='anpassbar-content'><ul id='list6' class='bitvlist'></ul></div></div>");
+$("div#unterscheidbar").prepend("<h3>" + cathead7[0].category + "</h3><span class='subheading'>" + cathead7[0].subhead + "</span><div class='accord-content-ul' id='unterscheidbar-content'><ul id='list7' class='bitvlist'></ul></div></div>");
+$("div#tastatur").prepend("<h3>" + cathead8[0].category + "</h3><span class='subheading'>" + cathead8[0].subhead + "</span><div class='accord-content-ul' id='tastatur-content'><ul id='list8' class='bitvlist'></ul></div></div>");
+$("div#ausreichend-zeit").prepend("<h3>" + cathead9[0].category + "</h3><span class='subheading'>" + cathead9[0].subhead + "</span><div class='accord-content-ul' id='ausreichend-zeit-content'><ul id='list9' class='bitvlist'></ul></div></div>");
+$("div#anfälle").prepend("<h3>" + cathead10[0].category + "</h3><span class='subheading'>" + cathead10[0].subhead + "</span><div class='accord-content-ul' id='anfälle-content'><ul id='list10' class='bitvlist'></ul></div></div>");
+$("div#navigierbar").prepend("<h3>" + cathead11[0].category + "</h3><span class='subheading'>" + cathead11[0].subhead + "</span><div class='accord-content-ul' id='navigierbar-content'><ul id='list11' class='bitvlist'></ul></div></div>");
+$("div#eingabemodalitäten").prepend("<h3>" + cathead12[0].category + "</h3><span class='subheading'>" + cathead12[0].subhead + "</span><div class='accord-content-ul' id='eingabemodalitäten-content'><ul id='list12' class='bitvlist'></ul></div></div>");
+$("div#lesbar").prepend("<h3>" + cathead13[0].category + "</h3><span class='subheading'>" + cathead13[0].subhead + "</span><div class='accord-content-ul' id='lesbar-content'><ul id='list13' class='bitvlist'></ul></div></div>");
+$("div#vorhersehbar").prepend("<h3>" + cathead14[0].category + "</h3><span class='subheading'>" + cathead14[0].subhead + "</span><div class='accord-content-ul' id='vorhersehbar-content'><ul id='list14' class='bitvlist'></ul></div></div>");
+$("div#hilfestellung").prepend("<h3>" + cathead15[0].category + "</h3><span class='subheading'>" + cathead15[0].subhead + "</span><div class='accord-content-ul' id='hilfestellung-content'><ul id='list15' class='bitvlist'></ul></div></div>");
+$("div#kompatibel").prepend("<h3>" + cathead16[0].category + "</h3><span class='subheading'>" + cathead16[0].subhead + "</span><div class='accord-content-ul' id='kompatibel-content'><ul id='list16' class='bitvlist'></ul></div></div>");
+$("div#benutzerdefiniert").prepend("<h3>" + cathead17[0].category + "</h3><span class='subheading'>" + cathead17[0].subhead + "</span><div class='accord-content-ul' id='benutzerdefiniert-content'><ul id='list17' class='bitvlist'></ul></div></div>");
+$("div#autorenwerkzeuge").prepend("<h3>" + cathead18[0].category + "</h3><span class='subheading'>" + cathead18[0].subhead + "</span><div class='accord-content-ul' id='autorenwerkzeuge-content'><ul id='list18' class='bitvlist'></ul></div></div>");
+$("div#dokumentation").prepend("<h3>" + cathead19[0].category + "</h3><span class='subheading'>" + cathead19[0].subhead + "</span><div class='accord-content-ul' id='dokumentation-content'><ul id='list19' class='bitvlist'></ul></div></div>");
+
+
+
 
 
   $.each(list1, function (key, value) { 
 
-    bitvlist1 += '<li class="acc-list ' + 'filter_' + value.applicable + ' filter_' + value.roleux + ' filter_' + value.roledev + '">'; 
+    bitvlist1 += '<li class="acc-list ' + 'filter_' + value.applicable + ' filter_' + value.roleux + ' filter_' + value.roledev + ' filter_' + value.roleedt + ' filter_' + value.roletesting + '">'; 
     
     bitvlist1 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.applicable + '" aria-label="' + value.applicable + '"><span class="ws10-highlight-badge__text">' + value.applicable + '</span></span>';
     bitvlist1 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleux + '" aria-label="' + value.roleux + '"><span class="ws10-highlight-badge__text">' + value.roleux + '</span></span>';
@@ -254,7 +271,7 @@ $("div#zeitbasierte-medien").prepend("<h3>" + cathead5[0].category + "</h3><span
   $.each(list2, function (key, value) { 
 
 
-    bitvlist2 += '<li class="acc-list ' + 'filter_' + value.applicable + ' filter_' + value.roleux + ' filter_' + value.roledev + '">'; 
+    bitvlist2 += '<li class="acc-list ' + 'filter_' + value.applicable + ' filter_' + value.roleux + ' filter_' + value.roledev + ' filter_' + value.roleedt + ' filter_' + value.roletesting + '">';  
 
     
     bitvlist2 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.applicable + '" aria-label="' + value.applicable + '"><span class="ws10-highlight-badge__text">' + value.applicable + '</span></span>';
@@ -281,7 +298,7 @@ $("div#zeitbasierte-medien").prepend("<h3>" + cathead5[0].category + "</h3><span
   $.each(list3, function (key, value) { 
 
 
-    bitvlist3 += '<li class="acc-list ' + 'filter_' + value.applicable + ' filter_' + value.roleux + ' filter_' + value.roledev + '">'; 
+    bitvlist3 += '<li class="acc-list ' + 'filter_' + value.applicable + ' filter_' + value.roleux + ' filter_' + value.roledev + ' filter_' + value.roleedt + ' filter_' + value.roletesting + '">';  
 
     
     bitvlist3 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.applicable + '" aria-label="' + value.applicable + '"><span class="ws10-highlight-badge__text">' + value.applicable + '</span></span>';
@@ -304,7 +321,7 @@ $("div#zeitbasierte-medien").prepend("<h3>" + cathead5[0].category + "</h3><span
 
   $.each(list4, function (key, value) { 
 
-    bitvlist4 += '<li class="acc-list ' + 'filter_' + value.applicable + ' filter_' + value.roleux + ' filter_' + value.roledev + '">'; 
+    bitvlist4 += '<li class="acc-list ' + 'filter_' + value.applicable + ' filter_' + value.roleux + ' filter_' + value.roledev + ' filter_' + value.roleedt + ' filter_' + value.roletesting + '">';  
     
     bitvlist4 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.applicable + '" aria-label="' + value.applicable + '"><span class="ws10-highlight-badge__text">' + value.applicable + '</span></span>';
     bitvlist4 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleux + '" aria-label="' + value.roleux + '"><span class="ws10-highlight-badge__text">' + value.roleux + '</span></span>';
@@ -331,7 +348,7 @@ $("div#zeitbasierte-medien").prepend("<h3>" + cathead5[0].category + "</h3><span
 
   $.each(list5, function (key, value) { 
 
-    bitvlist5 += '<li class="acc-list ' + 'filter_' + value.applicable + ' filter_' + value.roleux + ' filter_' + value.roledev + '">'; 
+    bitvlist5 += '<li class="acc-list ' + 'filter_' + value.applicable + ' filter_' + value.roleux + ' filter_' + value.roledev + ' filter_' + value.roleedt + ' filter_' + value.roletesting + '">';  
     
     bitvlist5 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.applicable + '" aria-label="' + value.applicable + '"><span class="ws10-highlight-badge__text">' + value.applicable + '</span></span>';
     bitvlist5 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleux + '" aria-label="' + value.roleux + '"><span class="ws10-highlight-badge__text">' + value.roleux + '</span></span>';
@@ -355,175 +372,352 @@ $("div#zeitbasierte-medien").prepend("<h3>" + cathead5[0].category + "</h3><span
 
 
 
-$.each(list6, function (key, value) { 
+  $.each(list6, function (key, value) { 
 
-bitvlist6 += '<li>'; 
+    bitvlist6 += '<li class="acc-list ' + 'filter_' + value.applicable + ' filter_' + value.roleux + ' filter_' + value.roledev + ' filter_' + value.roleedt + ' filter_' + value.roletesting + '">';  
+    
+    bitvlist6 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.applicable + '" aria-label="' + value.applicable + '"><span class="ws10-highlight-badge__text">' + value.applicable + '</span></span>';
+    bitvlist6 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleux + '" aria-label="' + value.roleux + '"><span class="ws10-highlight-badge__text">' + value.roleux + '</span></span>';
+    bitvlist6 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roledev + '" aria-label="' + value.roledev + '"><span class="ws10-highlight-badge__text">' + value.roledev + '</span></span>';
+    bitvlist6 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleedt + '" aria-label="' + value.roleedt + '"><span class="ws10-highlight-badge__text">' + value.roleedt + '</span></span>';
+    bitvlist6 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roletesting + '" aria-label="' + value.roletesting + '"><span class="ws10-highlight-badge__text">' + value.roletesting + '</span></span>';
 
-bitvlist6 += '<p>' +  
-value.bitv + '</p>'; 
+    bitvlist6 += '<p class="bitv-step-number">' +  
+    value.bitv + '</p>'; 
 
-bitvlist6 += '</li>'; 
-                      });
 
-$('#list6').append(bitvlist6); 
+ bitvlist6 += '<div class="grid_item_checkbox"><input type="checkbox" id="a11y-rule-03-06" name="a11y-rule" data-ruledis="r-increase-text-200" data-disenable="a11y-rule-03-06" value="' + value.title +  '" class="rel-check ws10-form-selection-control__input" /><label class="rule-description" id="a11y-rule-03-06" data-acc="a11y-rule-03-06-acc">' +
+ value.title + '</label></div>'; 
+
+  bitvlist6 += '</li>'; 
+                        });
+
+  
+  $('#list6').append(bitvlist6);
 
                     
   
-$.each(list7, function (key, value) { 
+  $.each(list7, function (key, value) { 
 
-bitvlist7 += '<li>'; 
+    bitvlist7 += '<li class="acc-list ' + 'filter_' + value.applicable + ' filter_' + value.roleux + ' filter_' + value.roledev + ' filter_' + value.roleedt + ' filter_' + value.roletesting + '">'; 
+    
+    bitvlist7 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.applicable + '" aria-label="' + value.applicable + '"><span class="ws10-highlight-badge__text">' + value.applicable + '</span></span>';
+    bitvlist7 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleux + '" aria-label="' + value.roleux + '"><span class="ws10-highlight-badge__text">' + value.roleux + '</span></span>';
+    bitvlist7 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roledev + '" aria-label="' + value.roledev + '"><span class="ws10-highlight-badge__text">' + value.roledev + '</span></span>';
+    bitvlist7 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleedt + '" aria-label="' + value.roleedt + '"><span class="ws10-highlight-badge__text">' + value.roleedt + '</span></span>';
+    bitvlist7 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roletesting + '" aria-label="' + value.roletesting + '"><span class="ws10-highlight-badge__text">' + value.roletesting + '</span></span>';
 
-bitvlist7 += '<p>' +  
-value.bitv + '</p>'; 
+    bitvlist7 += '<p class="bitv-step-number">' +  
+    value.bitv + '</p>'; 
 
-bitvlist7 += '</li>'; 
-                      });
 
-$('#list7').append(bitvlist7);    
+ bitvlist7 += '<div class="grid_item_checkbox"><input type="checkbox" id="a11y-rule-03-06" name="a11y-rule" data-ruledis="r-increase-text-200" data-disenable="a11y-rule-03-06" value="' + value.title +  '" class="rel-check ws10-form-selection-control__input" /><label class="rule-description" id="a11y-rule-03-06" data-acc="a11y-rule-03-06-acc">' +
+ value.title + '</label></div>'; 
 
-$.each(list8, function (key, value) { 
+  bitvlist7 += '</li>'; 
+                        });
 
-bitvlist8 += '<li>'; 
-
-bitvlist8 += '<p>' +  
-value.bitv + '</p>'; 
-
-bitvlist8 += '</li>'; 
-                      });
-
-$('#list8').append(bitvlist8);   
   
-$.each(list9, function (key, value) { 
+  $('#list7').append(bitvlist7);
+  
+  
 
-bitvlist9 += '<li>'; 
+  $.each(list8, function (key, value) { 
 
-bitvlist9 += '<p>' +  
-value.bitv + '</p>'; 
+    bitvlist8 += '<li class="acc-list ' + 'filter_' + value.applicable + ' filter_' + value.roleux + ' filter_' + value.roledev + ' filter_' + value.roleedt + ' filter_' + value.roletesting + '">';  
+    
+    bitvlist8 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.applicable + '" aria-label="' + value.applicable + '"><span class="ws10-highlight-badge__text">' + value.applicable + '</span></span>';
+    bitvlist8 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleux + '" aria-label="' + value.roleux + '"><span class="ws10-highlight-badge__text">' + value.roleux + '</span></span>';
+    bitvlist8 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roledev + '" aria-label="' + value.roledev + '"><span class="ws10-highlight-badge__text">' + value.roledev + '</span></span>';
+    bitvlist8 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleedt + '" aria-label="' + value.roleedt + '"><span class="ws10-highlight-badge__text">' + value.roleedt + '</span></span>';
+    bitvlist8 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roletesting + '" aria-label="' + value.roletesting + '"><span class="ws10-highlight-badge__text">' + value.roletesting + '</span></span>';
 
-bitvlist9 += '</li>'; 
-                      });
+    bitvlist8 += '<p class="bitv-step-number">' +  
+    value.bitv + '</p>'; 
 
-$('#list9').append(bitvlist9); 
 
-$.each(list10, function (key, value) { 
+ bitvlist8 += '<div class="grid_item_checkbox"><input type="checkbox" id="a11y-rule-03-06" name="a11y-rule" data-ruledis="r-increase-text-200" data-disenable="a11y-rule-03-06" value="' + value.title +  '" class="rel-check ws10-form-selection-control__input" /><label class="rule-description" id="a11y-rule-03-06" data-acc="a11y-rule-03-06-acc">' +
+ value.title + '</label></div>'; 
 
-bitvlist10 += '<li>'; 
+  bitvlist8 += '</li>'; 
+                        });
 
-bitvlist10 += '<p>' +  
-value.bitv + '</p>'; 
+  
+  $('#list8').append(bitvlist8);
+  
+  
 
-bitvlist10 += '</li>'; 
-                      });
+  
+  $.each(list9, function (key, value) { 
 
-$('#list10').append(bitvlist10); 
+    bitvlist9 += '<li class="acc-list ' + 'filter_' + value.applicable + ' filter_' + value.roleux + ' filter_' + value.roledev + ' filter_' + value.roleedt + ' filter_' + value.roletesting + '">';  
+    
+    bitvlist9 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.applicable + '" aria-label="' + value.applicable + '"><span class="ws10-highlight-badge__text">' + value.applicable + '</span></span>';
+    bitvlist9 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleux + '" aria-label="' + value.roleux + '"><span class="ws10-highlight-badge__text">' + value.roleux + '</span></span>';
+    bitvlist9 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roledev + '" aria-label="' + value.roledev + '"><span class="ws10-highlight-badge__text">' + value.roledev + '</span></span>';
+    bitvlist9 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleedt + '" aria-label="' + value.roleedt + '"><span class="ws10-highlight-badge__text">' + value.roleedt + '</span></span>';
+    bitvlist9 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roletesting + '" aria-label="' + value.roletesting + '"><span class="ws10-highlight-badge__text">' + value.roletesting + '</span></span>';
+
+    bitvlist9 += '<p class="bitv-step-number">' +  
+    value.bitv + '</p>'; 
+
+
+ bitvlist9 += '<div class="grid_item_checkbox"><input type="checkbox" id="a11y-rule-03-06" name="a11y-rule" data-ruledis="r-increase-text-200" data-disenable="a11y-rule-03-06" value="' + value.title +  '" class="rel-check ws10-form-selection-control__input" /><label class="rule-description" id="a11y-rule-03-06" data-acc="a11y-rule-03-06-acc">' +
+ value.title + '</label></div>'; 
+
+ bitvlist9 += '</li>'; 
+                        });
+
+  
+  $('#list9').append(bitvlist9);
+
+
+
+  $.each(list10, function (key, value) { 
+
+    bitvlist10 += '<li class="acc-list ' + 'filter_' + value.applicable + ' filter_' + value.roleux + ' filter_' + value.roledev + ' filter_' + value.roleedt + ' filter_' + value.roletesting + '">';  
+    
+    bitvlist10 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.applicable + '" aria-label="' + value.applicable + '"><span class="ws10-highlight-badge__text">' + value.applicable + '</span></span>';
+    bitvlist10 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleux + '" aria-label="' + value.roleux + '"><span class="ws10-highlight-badge__text">' + value.roleux + '</span></span>';
+    bitvlist10 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roledev + '" aria-label="' + value.roledev + '"><span class="ws10-highlight-badge__text">' + value.roledev + '</span></span>';
+    bitvlist10 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleedt + '" aria-label="' + value.roleedt + '"><span class="ws10-highlight-badge__text">' + value.roleedt + '</span></span>';
+    bitvlist10 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roletesting + '" aria-label="' + value.roletesting + '"><span class="ws10-highlight-badge__text">' + value.roletesting + '</span></span>';
+
+    bitvlist10 += '<p class="bitv-step-number">' +  
+    value.bitv + '</p>'; 
+
+
+    bitvlist10 += '<div class="grid_item_checkbox"><input type="checkbox" id="a11y-rule-03-06" name="a11y-rule" data-ruledis="r-increase-text-200" data-disenable="a11y-rule-03-06" value="' + value.title +  '" class="rel-check ws10-form-selection-control__input" /><label class="rule-description" id="a11y-rule-03-06" data-acc="a11y-rule-03-06-acc">' +
+ value.title + '</label></div>'; 
+
+ bitvlist10 += '</li>'; 
+                        });
+
+  
+  $('#list10').append(bitvlist10);
+
+
 
 $.each(list11, function (key, value) { 
 
-bitvlist11 += '<li>'; 
+    bitvlist11 += '<li class="acc-list ' + 'filter_' + value.applicable + ' filter_' + value.roleux + ' filter_' + value.roledev + ' filter_' + value.roleedt + ' filter_' + value.roletesting + '">';  
+    
+    bitvlist11 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.applicable + '" aria-label="' + value.applicable + '"><span class="ws10-highlight-badge__text">' + value.applicable + '</span></span>';
+    bitvlist11 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleux + '" aria-label="' + value.roleux + '"><span class="ws10-highlight-badge__text">' + value.roleux + '</span></span>';
+    bitvlist11 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roledev + '" aria-label="' + value.roledev + '"><span class="ws10-highlight-badge__text">' + value.roledev + '</span></span>';
+    bitvlist11 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleedt + '" aria-label="' + value.roleedt + '"><span class="ws10-highlight-badge__text">' + value.roleedt + '</span></span>';
+    bitvlist11 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roletesting + '" aria-label="' + value.roletesting + '"><span class="ws10-highlight-badge__text">' + value.roletesting + '</span></span>';
 
-bitvlist11 += '<p>' +  
-value.bitv + '</p>'; 
+    bitvlist11 += '<p class="bitv-step-number">' +  
+    value.bitv + '</p>'; 
 
-bitvlist11 += '</li>'; 
-                      });
 
-$('#list11').append(bitvlist11); 
+    bitvlist11 += '<div class="grid_item_checkbox"><input type="checkbox" id="a11y-rule-03-06" name="a11y-rule" data-ruledis="r-increase-text-200" data-disenable="a11y-rule-03-06" value="' + value.title +  '" class="rel-check ws10-form-selection-control__input" /><label class="rule-description" id="a11y-rule-03-06" data-acc="a11y-rule-03-06-acc">' +
+ value.title + '</label></div>'; 
 
-$.each(list12, function (key, value) { 
+ bitvlist11 += '</li>'; 
+                        });
 
-bitvlist12 += '<li>'; 
+  
+  $('#list11').append(bitvlist11);
 
-bitvlist12 += '<p>' +  
-value.bitv + '</p>'; 
 
-bitvlist12 += '</li>'; 
-                      });
 
-$('#list12').append(bitvlist12); 
+  $.each(list12, function (key, value) { 
 
-$.each(list13, function (key, value) { 
+    bitvlist12 += '<li class="acc-list ' + 'filter_' + value.applicable + ' filter_' + value.roleux + ' filter_' + value.roledev + ' filter_' + value.roleedt + ' filter_' + value.roletesting + '">'; 
+    
+    bitvlist12 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.applicable + '" aria-label="' + value.applicable + '"><span class="ws10-highlight-badge__text">' + value.applicable + '</span></span>';
+    bitvlist12 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleux + '" aria-label="' + value.roleux + '"><span class="ws10-highlight-badge__text">' + value.roleux + '</span></span>';
+    bitvlist12 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roledev + '" aria-label="' + value.roledev + '"><span class="ws10-highlight-badge__text">' + value.roledev + '</span></span>';
+    bitvlist12 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleedt + '" aria-label="' + value.roleedt + '"><span class="ws10-highlight-badge__text">' + value.roleedt + '</span></span>';
+    bitvlist12 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roletesting + '" aria-label="' + value.roletesting + '"><span class="ws10-highlight-badge__text">' + value.roletesting + '</span></span>';
 
-bitvlist13 += '<li>'; 
+    bitvlist12 += '<p class="bitv-step-number">' +  
+    value.bitv + '</p>'; 
 
-bitvlist13 += '<p>' +  
-value.bitv + '</p>'; 
 
-bitvlist13 += '</li>'; 
-                      });
+    bitvlist12 += '<div class="grid_item_checkbox"><input type="checkbox" id="a11y-rule-03-06" name="a11y-rule" data-ruledis="r-increase-text-200" data-disenable="a11y-rule-03-06" value="' + value.title +  '" class="rel-check ws10-form-selection-control__input" /><label class="rule-description" id="a11y-rule-03-06" data-acc="a11y-rule-03-06-acc">' +
+ value.title + '</label></div>'; 
 
-$('#list13').append(bitvlist13); 
+ bitvlist12 += '</li>'; 
+                        });
 
-$.each(list14, function (key, value) { 
+  
+  $('#list12').append(bitvlist12);
 
-bitvlist14 += '<li>'; 
 
-bitvlist14 += '<p>' +  
-value.bitv + '</p>'; 
 
-bitvlist14 += '</li>'; 
-                      });
+  $.each(list13, function (key, value) { 
 
-$('#list14').append(bitvlist14); 
+    bitvlist13 += '<li class="acc-list ' + 'filter_' + value.applicable + ' filter_' + value.roleux + ' filter_' + value.roledev + ' filter_' + value.roleedt + ' filter_' + value.roletesting + '">';  
+    
+    bitvlist13 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.applicable + '" aria-label="' + value.applicable + '"><span class="ws10-highlight-badge__text">' + value.applicable + '</span></span>';
+    bitvlist13 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleux + '" aria-label="' + value.roleux + '"><span class="ws10-highlight-badge__text">' + value.roleux + '</span></span>';
+    bitvlist13 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roledev + '" aria-label="' + value.roledev + '"><span class="ws10-highlight-badge__text">' + value.roledev + '</span></span>';
+    bitvlist13 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleedt + '" aria-label="' + value.roleedt + '"><span class="ws10-highlight-badge__text">' + value.roleedt + '</span></span>';
+    bitvlist13 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roletesting + '" aria-label="' + value.roletesting + '"><span class="ws10-highlight-badge__text">' + value.roletesting + '</span></span>';
 
-$.each(list15, function (key, value) { 
+    bitvlist13 += '<p class="bitv-step-number">' +  
+    value.bitv + '</p>'; 
 
-bitvlist15 += '<li>'; 
 
-bitvlist15 += '<p>' +  
-value.bitv + '</p>'; 
+    bitvlist13 += '<div class="grid_item_checkbox"><input type="checkbox" id="a11y-rule-03-06" name="a11y-rule" data-ruledis="r-increase-text-200" data-disenable="a11y-rule-03-06" value="' + value.title +  '" class="rel-check ws10-form-selection-control__input" /><label class="rule-description" id="a11y-rule-03-06" data-acc="a11y-rule-03-06-acc">' +
+ value.title + '</label></div>'; 
 
-bitvlist15 += '</li>'; 
-                      });
+ bitvlist13 += '</li>'; 
+                        });
 
-$('#list15').append(bitvlist15); 
+  
+  $('#list13').append(bitvlist13);
 
-$.each(list16, function (key, value) { 
 
-bitvlist16 += '<li>'; 
+  $.each(list14, function (key, value) { 
 
-bitvlist16 += '<p>' +  
-value.bitv + '</p>'; 
+    bitvlist14 += '<li class="acc-list ' + 'filter_' + value.applicable + ' filter_' + value.roleux + ' filter_' + value.roledev + ' filter_' + value.roleedt + ' filter_' + value.roletesting + '">';  
+    
+    bitvlist14 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.applicable + '" aria-label="' + value.applicable + '"><span class="ws10-highlight-badge__text">' + value.applicable + '</span></span>';
+    bitvlist14 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleux + '" aria-label="' + value.roleux + '"><span class="ws10-highlight-badge__text">' + value.roleux + '</span></span>';
+    bitvlist14 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roledev + '" aria-label="' + value.roledev + '"><span class="ws10-highlight-badge__text">' + value.roledev + '</span></span>';
+    bitvlist14 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleedt + '" aria-label="' + value.roleedt + '"><span class="ws10-highlight-badge__text">' + value.roleedt + '</span></span>';
+    bitvlist14 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roletesting + '" aria-label="' + value.roletesting + '"><span class="ws10-highlight-badge__text">' + value.roletesting + '</span></span>';
 
-bitvlist16 += '</li>'; 
-                      });
+    bitvlist14 += '<p class="bitv-step-number">' +  
+    value.bitv + '</p>'; 
 
-$('#list16').append(bitvlist16); 
 
-$.each(list17, function (key, value) { 
+    bitvlist14 += '<div class="grid_item_checkbox"><input type="checkbox" id="a11y-rule-03-06" name="a11y-rule" data-ruledis="r-increase-text-200" data-disenable="a11y-rule-03-06" value="' + value.title +  '" class="rel-check ws10-form-selection-control__input" /><label class="rule-description" id="a11y-rule-03-06" data-acc="a11y-rule-03-06-acc">' +
+ value.title + '</label></div>'; 
 
-bitvlist17 += '<li>'; 
+ bitvlist14 += '</li>'; 
+                        });
 
-bitvlist17 += '<p>' +  
-value.bitv + '</p>'; 
+  
+  $('#list14').append(bitvlist14);
+  
+  
+  $.each(list15, function (key, value) { 
 
-bitvlist17 += '</li>'; 
-                      });
+    bitvlist15 += '<li class="acc-list ' + 'filter_' + value.applicable + ' filter_' + value.roleux + ' filter_' + value.roledev + ' filter_' + value.roleedt + ' filter_' + value.roletesting + '">';  
+    
+    bitvlist15 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.applicable + '" aria-label="' + value.applicable + '"><span class="ws10-highlight-badge__text">' + value.applicable + '</span></span>';
+    bitvlist15 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleux + '" aria-label="' + value.roleux + '"><span class="ws10-highlight-badge__text">' + value.roleux + '</span></span>';
+    bitvlist15 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roledev + '" aria-label="' + value.roledev + '"><span class="ws10-highlight-badge__text">' + value.roledev + '</span></span>';
+    bitvlist15 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleedt + '" aria-label="' + value.roleedt + '"><span class="ws10-highlight-badge__text">' + value.roleedt + '</span></span>';
+    bitvlist15 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roletesting + '" aria-label="' + value.roletesting + '"><span class="ws10-highlight-badge__text">' + value.roletesting + '</span></span>';
 
-$('#list17').append(bitvlist17); 
+    bitvlist15 += '<p class="bitv-step-number">' +  
+    value.bitv + '</p>'; 
 
-$.each(list18, function (key, value) { 
 
-bitvlist18 += '<li>'; 
+    bitvlist15 += '<div class="grid_item_checkbox"><input type="checkbox" id="a11y-rule-03-06" name="a11y-rule" data-ruledis="r-increase-text-200" data-disenable="a11y-rule-03-06" value="' + value.title +  '" class="rel-check ws10-form-selection-control__input" /><label class="rule-description" id="a11y-rule-03-06" data-acc="a11y-rule-03-06-acc">' +
+ value.title + '</label></div>'; 
 
-bitvlist18 += '<p>' +  
-value.bitv + '</p>'; 
+ bitvlist15 += '</li>'; 
+                        });
 
-bitvlist18 += '</li>'; 
-                      });
+  
+  $('#list15').append(bitvlist15);
+  
+  
 
-$('#list18').append(bitvlist18); 
+  $.each(list16, function (key, value) { 
 
-$.each(list19, function (key, value) { 
+    bitvlist16 += '<li class="acc-list ' + 'filter_' + value.applicable + ' filter_' + value.roleux + ' filter_' + value.roledev + ' filter_' + value.roleedt + ' filter_' + value.roletesting + '">';  
+    
+    bitvlist16 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.applicable + '" aria-label="' + value.applicable + '"><span class="ws10-highlight-badge__text">' + value.applicable + '</span></span>';
+    bitvlist16 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleux + '" aria-label="' + value.roleux + '"><span class="ws10-highlight-badge__text">' + value.roleux + '</span></span>';
+    bitvlist16 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roledev + '" aria-label="' + value.roledev + '"><span class="ws10-highlight-badge__text">' + value.roledev + '</span></span>';
+    bitvlist16 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleedt + '" aria-label="' + value.roleedt + '"><span class="ws10-highlight-badge__text">' + value.roleedt + '</span></span>';
+    bitvlist16 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roletesting + '" aria-label="' + value.roletesting + '"><span class="ws10-highlight-badge__text">' + value.roletesting + '</span></span>';
 
-bitvlist19 += '<li>'; 
+    bitvlist16 += '<p class="bitv-step-number">' +  
+    value.bitv + '</p>'; 
 
-bitvlist19 += '<p>' +  
-value.bitv + '</p>'; 
 
-bitvlist19 += '</li>'; 
-                      });
+    bitvlist16 += '<div class="grid_item_checkbox"><input type="checkbox" id="a11y-rule-03-06" name="a11y-rule" data-ruledis="r-increase-text-200" data-disenable="a11y-rule-03-06" value="' + value.title +  '" class="rel-check ws10-form-selection-control__input" /><label class="rule-description" id="a11y-rule-03-06" data-acc="a11y-rule-03-06-acc">' +
+ value.title + '</label></div>'; 
 
-$('#list19').append(bitvlist19); 
+ bitvlist16 += '</li>'; 
+                        });
+
+  
+  $('#list16').append(bitvlist16);
+  
+  
+
+  $.each(list17, function (key, value) { 
+
+    bitvlist17 += '<li class="acc-list ' + 'filter_' + value.applicable + ' filter_' + value.roleux + ' filter_' + value.roledev + ' filter_' + value.roleedt + ' filter_' + value.roletesting + '">';  
+    
+    bitvlist17 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.applicable + '" aria-label="' + value.applicable + '"><span class="ws10-highlight-badge__text">' + value.applicable + '</span></span>';
+    bitvlist17 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleux + '" aria-label="' + value.roleux + '"><span class="ws10-highlight-badge__text">' + value.roleux + '</span></span>';
+    bitvlist17 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roledev + '" aria-label="' + value.roledev + '"><span class="ws10-highlight-badge__text">' + value.roledev + '</span></span>';
+    bitvlist17 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleedt + '" aria-label="' + value.roleedt + '"><span class="ws10-highlight-badge__text">' + value.roleedt + '</span></span>';
+    bitvlist17 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roletesting + '" aria-label="' + value.roletesting + '"><span class="ws10-highlight-badge__text">' + value.roletesting + '</span></span>';
+
+    bitvlist17 += '<p class="bitv-step-number">' +  
+    value.bitv + '</p>'; 
+
+
+    bitvlist17 += '<div class="grid_item_checkbox"><input type="checkbox" id="a11y-rule-03-06" name="a11y-rule" data-ruledis="r-increase-text-200" data-disenable="a11y-rule-03-06" value="' + value.title +  '" class="rel-check ws10-form-selection-control__input" /><label class="rule-description" id="a11y-rule-03-06" data-acc="a11y-rule-03-06-acc">' +
+ value.title + '</label></div>'; 
+
+ bitvlist17 += '</li>'; 
+                        });
+
+  
+  $('#list17').append(bitvlist17);
+
+
+
+  $.each(list18, function (key, value) { 
+
+    bitvlist18 += '<li class="acc-list ' + 'filter_' + value.applicable + ' filter_' + value.roleux + ' filter_' + value.roledev + ' filter_' + value.roleedt + ' filter_' + value.roletesting + '">';  
+    
+    bitvlist18 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.applicable + '" aria-label="' + value.applicable + '"><span class="ws10-highlight-badge__text">' + value.applicable + '</span></span>';
+    bitvlist18 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleux + '" aria-label="' + value.roleux + '"><span class="ws10-highlight-badge__text">' + value.roleux + '</span></span>';
+    bitvlist18 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roledev + '" aria-label="' + value.roledev + '"><span class="ws10-highlight-badge__text">' + value.roledev + '</span></span>';
+    bitvlist18 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleedt + '" aria-label="' + value.roleedt + '"><span class="ws10-highlight-badge__text">' + value.roleedt + '</span></span>';
+    bitvlist18 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roletesting + '" aria-label="' + value.roletesting + '"><span class="ws10-highlight-badge__text">' + value.roletesting + '</span></span>';
+
+    bitvlist18 += '<p class="bitv-step-number">' +  
+    value.bitv + '</p>'; 
+
+
+    bitvlist18 += '<div class="grid_item_checkbox"><input type="checkbox" id="a11y-rule-03-06" name="a11y-rule" data-ruledis="r-increase-text-200" data-disenable="a11y-rule-03-06" value="' + value.title +  '" class="rel-check ws10-form-selection-control__input" /><label class="rule-description" id="a11y-rule-03-06" data-acc="a11y-rule-03-06-acc">' +
+ value.title + '</label></div>'; 
+
+ bitvlist18 += '</li>'; 
+                        });
+
+  
+  $('#list18').append(bitvlist18);
+  
+  
+
+  $.each(list19, function (key, value) { 
+
+    bitvlist19 += '<li class="acc-list ' + 'filter_' + value.applicable + ' filter_' + value.roleux + ' filter_' + value.roledev + ' filter_' + value.roleedt + ' filter_' + value.roletesting + '">';  
+    
+    bitvlist19 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.applicable + '" aria-label="' + value.applicable + '"><span class="ws10-highlight-badge__text">' + value.applicable + '</span></span>';
+    bitvlist19 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleux + '" aria-label="' + value.roleux + '"><span class="ws10-highlight-badge__text">' + value.roleux + '</span></span>';
+    bitvlist19 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roledev + '" aria-label="' + value.roledev + '"><span class="ws10-highlight-badge__text">' + value.roledev + '</span></span>';
+    bitvlist19 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleedt + '" aria-label="' + value.roleedt + '"><span class="ws10-highlight-badge__text">' + value.roleedt + '</span></span>';
+    bitvlist19 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roletesting + '" aria-label="' + value.roletesting + '"><span class="ws10-highlight-badge__text">' + value.roletesting + '</span></span>';
+
+    bitvlist19 += '<p class="bitv-step-number">' +  
+    value.bitv + '</p>'; 
+
+
+    bitvlist19 += '<div class="grid_item_checkbox"><input type="checkbox" id="a11y-rule-03-06" name="a11y-rule" data-ruledis="r-increase-text-200" data-disenable="a11y-rule-03-06" value="' + value.title +  '" class="rel-check ws10-form-selection-control__input" /><label class="rule-description" id="a11y-rule-03-06" data-acc="a11y-rule-03-06-acc">' +
+ value.title + '</label></div>'; 
+
+ bitvlist19 += '</li>'; 
+                        });
+
+  
+  $('#list19').append(bitvlist19);
 
 });
 
