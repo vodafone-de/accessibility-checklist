@@ -54,19 +54,18 @@ function (data) {
 });
   
   var list2 = data.filter(function (entry2) {
-
     return entry2.category === 'Zwei-Wege-Sprachkommunikation' && entry2.type != 'category-heading';
     // eturn entry2.applicable === 'yes' && entry2.category === 'Zwei-Wege-Sprachkommunikation';
 });
 
 var list3 = data.filter(function (entry3) {
-    return entry3.category === 'Videofähigkeiten';
+    return entry3.category === 'Videofähigkeiten' && entry3.type != 'category-heading';
     // return entry3.applicable === 'yes' && entry3.category === 'Videofähigkeiten';
 });
 
 var list4 = data.filter(function (entry4) {
-    return entry4.category === 'Textalternativen';
-    // return entry4.applicable === 'yes' && entry4.category === 'Textalternativen';
+  return entry4.category === 'Textalternativen' && entry4.type != 'category-heading';
+  // return entry3.applicable === 'yes' && entry3.category === 'Videofähigkeiten';
 });
 
 var list5 = data.filter(function (entry5) {
@@ -152,12 +151,20 @@ var cathead2 = data.filter(function (heading2) {
   return heading2.category === 'Zwei-Wege-Sprachkommunikation' && heading2.type === 'category-heading';
 });
 
+var cathead3 = data.filter(function (heading3) {
+  return heading3.category === 'Videofähigkeiten' && heading3.type === 'category-heading';
+});
+
+var cathead4 = data.filter(function (heading4) {
+  return heading4.category === 'Textalternativen' && heading4.type === 'category-heading';
+});
+
 
 
 $("div#allgemeine-anforderungen").prepend("<h3>" + cathead1[0].category + "</h3><span class='subheading'>" + cathead1[0].subhead + "</span><div class='accord-content-ul' id='allg-content'><ul id='list1' class='bitvlist'></ul></div></div>");
-
-
 $("div#zwei-wege-sprachkommunikation").prepend("<h3>" + cathead2[0].category + "</h3><span class='subheading'>" + cathead2[0].subhead + "</span><div class='accord-content-ul' id='zwei-wege-content'><ul id='list2' class='bitvlist'></ul></div></div>");
+$("div#videofähigkeiten").prepend("<h3>" + cathead3[0].category + "</h3><span class='subheading'>" + cathead3[0].subhead + "</span><div class='accord-content-ul' id='videofähig-content'><ul id='list3' class='bitvlist'></ul></div></div>");
+$("div#textalternativen").prepend("<h3>" + cathead4[0].category + "</h3><span class='subheading'>" + cathead4[0].subhead + "</span><div class='accord-content-ul' id='textalternativen-content'><ul id='list4' class='bitvlist'></ul></div></div>");
 
 
   $.each(list1, function (key, value) { 
@@ -187,14 +194,14 @@ $("div#zwei-wege-sprachkommunikation").prepend("<h3>" + cathead2[0].category + "
   $.each(list2, function (key, value) { 
 
 
-    bitvlist2 += '<li class="acc-list">'; 
+    bitvlist2 += '<li class="acc-list ' + 'filter_' + value.applicable + ' filter_' + value.roleux + ' filter_' + value.roledev + '">'; 
 
     
-    bitvlist2 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard" aria-label="' + value.applicable + '"><span class="ws10-highlight-badge__text">' + value.applicable + '</span></span>';
-    bitvlist2 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard" aria-label="' + value.roleux + '"><span class="ws10-highlight-badge__text">' + value.roleux + '</span></span>';
-    bitvlist2 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard" aria-label="' + value.roledev + '"><span class="ws10-highlight-badge__text">' + value.roledev + '</span></span>';
-    bitvlist1 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard" aria-label="' + value.roleedt + '"><span class="ws10-highlight-badge__text">' + value.roleedt + '</span></span>';
-    bitvlist1 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard" aria-label="' + value.roletesting + '"><span class="ws10-highlight-badge__text">' + value.roletesting + '</span></span>';
+    bitvlist2 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.applicable + '" aria-label="' + value.applicable + '"><span class="ws10-highlight-badge__text">' + value.applicable + '</span></span>';
+    bitvlist2 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleux + '" aria-label="' + value.roleux + '"><span class="ws10-highlight-badge__text">' + value.roleux + '</span></span>';
+    bitvlist2 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roledev + '" aria-label="' + value.roledev + '"><span class="ws10-highlight-badge__text">' + value.roledev + '</span></span>';
+    bitvlist2 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleedt + '" aria-label="' + value.roleedt + '"><span class="ws10-highlight-badge__text">' + value.roleedt + '</span></span>';
+    bitvlist2 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roletesting + '" aria-label="' + value.roletesting + '"><span class="ws10-highlight-badge__text">' + value.roletesting + '</span></span>';
 
 
     bitvlist2 += '<p class="bitv-step-number">' +  
@@ -211,34 +218,56 @@ $("div#zwei-wege-sprachkommunikation").prepend("<h3>" + cathead2[0].category + "
 
 
 
-
-$.each(list3, function (key, value) { 
-
-
-bitvlist3 += '<li>'; 
-
-bitvlist3 += '<p>' +  
-value.bitv + '</p>'; 
-
-bitvlist3 += '</li>'; 
+  $.each(list3, function (key, value) { 
 
 
+    bitvlist3 += '<li class="acc-list ' + 'filter_' + value.applicable + ' filter_' + value.roleux + ' filter_' + value.roledev + '">'; 
 
-                      });
+    
+    bitvlist3 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.applicable + '" aria-label="' + value.applicable + '"><span class="ws10-highlight-badge__text">' + value.applicable + '</span></span>';
+    bitvlist3 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleux + '" aria-label="' + value.roleux + '"><span class="ws10-highlight-badge__text">' + value.roleux + '</span></span>';
+    bitvlist3 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roledev + '" aria-label="' + value.roledev + '"><span class="ws10-highlight-badge__text">' + value.roledev + '</span></span>';
+    bitvlist3 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleedt + '" aria-label="' + value.roleedt + '"><span class="ws10-highlight-badge__text">' + value.roleedt + '</span></span>';
+    bitvlist3 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roletesting + '" aria-label="' + value.roletesting + '"><span class="ws10-highlight-badge__text">' + value.roletesting + '</span></span>';
 
-$('#list3').append(bitvlist3); 
 
-$.each(list4, function (key, value) { 
+    bitvlist3 += '<p class="bitv-step-number">' +  
+    value.bitv + '</p>'; 
+    bitvlist3 += '<div class="grid_item_checkbox"><input type="checkbox" id="a11y-rule-03-06" name="a11y-rule" data-ruledis="r-increase-text-200" data-disenable="a11y-rule-03-06" value="' + value.title +  '" class="rel-check ws10-form-selection-control__input" /><label class="rule-description" id="a11y-rule-03-06" data-acc="a11y-rule-03-06-acc">' +
+    value.title + '</label></div>'; 
 
-bitvlist4 += '<li>'; 
+    bitvlist3 += '</li>'; 
+                        });
 
-bitvlist4 += '<p>' +  
-value.bitv + '</p>'; 
+  $('#list3').append(bitvlist3);
 
-bitvlist4 += '</li>'; 
-                      });
 
-$('#list4').append(bitvlist4); 
+  $.each(list4, function (key, value) { 
+
+    bitvlist4 += '<li class="acc-list ' + 'filter_' + value.applicable + ' filter_' + value.roleux + ' filter_' + value.roledev + '">'; 
+    
+    bitvlist4 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.applicable + '" aria-label="' + value.applicable + '"><span class="ws10-highlight-badge__text">' + value.applicable + '</span></span>';
+    bitvlist4 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleux + '" aria-label="' + value.roleux + '"><span class="ws10-highlight-badge__text">' + value.roleux + '</span></span>';
+    bitvlist4 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roledev + '" aria-label="' + value.roledev + '"><span class="ws10-highlight-badge__text">' + value.roledev + '</span></span>';
+    bitvlist4 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roleedt + '" aria-label="' + value.roleedt + '"><span class="ws10-highlight-badge__text">' + value.roleedt + '</span></span>';
+    bitvlist4 += '<span class="ws10-highlight-badge ws10-highlight-badge--gray ws10-highlight-badge--standard' + ' filter_' + value.roletesting + '" aria-label="' + value.roletesting + '"><span class="ws10-highlight-badge__text">' + value.roletesting + '</span></span>';
+
+    bitvlist4 += '<p class="bitv-step-number">' +  
+    value.bitv + '</p>'; 
+
+
+ bitvlist4 += '<div class="grid_item_checkbox"><input type="checkbox" id="a11y-rule-03-06" name="a11y-rule" data-ruledis="r-increase-text-200" data-disenable="a11y-rule-03-06" value="' + value.title +  '" class="rel-check ws10-form-selection-control__input" /><label class="rule-description" id="a11y-rule-03-06" data-acc="a11y-rule-03-06-acc">' +
+ value.title + '</label></div>'; 
+
+  bitvlist4 += '</li>'; 
+                        });
+
+  
+  $('#list4').append(bitvlist4);
+
+
+
+
 
 $.each(list5, function (key, value) { 
 
@@ -251,6 +280,9 @@ bitvlist5 += '</li>';
                       });
 
 $('#list5').append(bitvlist5); 
+
+
+
 
 $.each(list6, function (key, value) { 
 
@@ -512,6 +544,13 @@ $("#filter-options :checkbox").click(function() {
 
   $("#filter-options :checkbox:checked").each(function(lifi) {
       $("." + $(this).val()).fadeIn();
+      var accordContent = $('.accord-content-ul');
+      $('.toggle-link').addClass("ws10-accordion-item__checked");
+      accordContent.slideDown();
+      accordContent.addClass("acc-all-open");
+    $('.expand-all-toggle-link').text('Collapse all');
+      
+
   });
 
   $("#filter-options :checkbox:checked").each(function(badge) {
@@ -724,6 +763,7 @@ newDate.setDate(newDate.getDate());
 $('#Date').html(newDate.getDate() + ' ' + monthNames[newDate.getMonth()] + ' ' + newDate.getFullYear());
 
 
+// Accordion Funktion
 
   $(function(){
   $('.toggle-link').on('click', function() {
@@ -735,17 +775,54 @@ $('#Date').html(newDate.getDate() + ' ' + monthNames[newDate.getMonth()] + ' ' +
  });
 
  $('.expand-all-toggle-link').on('click', function(e) {
-  $('.accord-content-ul').slideToggle();
-  $('.toggle-link').toggleClass("ws10-accordion-item__checked");
-  $('.accord-content-ul').toggleClass("acc-all-open");
+  var accordContent = $('.accord-content-ul');
+  var allOpen = !accordContent.hasClass('acc-all-open');
 
-if ($('.accord-content-ul').hasClass('acc-all-open')) {
-    $('.expand-all-toggle-link').text('Collapse all'); }
-    else {
-        $('.expand-all-toggle-link').text('Expand all');
-    }
+  if (allOpen) {
+    $('.toggle-link').addClass("ws10-accordion-item__checked");
+    accordContent.slideDown();
+    accordContent.addClass("acc-all-open");
+    $('.expand-all-toggle-link').text('Collapse all');
+  } else {
+    $('.toggle-link').removeClass("ws10-accordion-item__checked");
+    accordContent.slideUp();
+    accordContent.removeClass("acc-all-open");
+    $('.expand-all-toggle-link').text('Expand all');
+  }
+
   e.preventDefault();
 });
+
+// Annahme: Dies ist die Funktion, die ein einzelnes Accordion öffnet oder schließt
+$('.toggle-link').on('click', function(e) {
+  var accordContent = $(this).closest('.ws10-accordion-item').find('.accord-content-ul');
+  var isOpen = accordContent.is(':visible');
+
+  if (isOpen) {
+    $(this).removeClass("ws10-accordion-item__checked");
+    accordContent.slideUp();
+    accordContent.removeClass("acc-all-open");
+  } else {
+    $(this).addClass("ws10-accordion-item__checked");
+    accordContent.slideDown();
+    accordContent.addClass("acc-all-open");
+  }
+
+  // Aktualisiere den Text des Expand/Collapse-Links basierend auf dem Status der Accordions
+  updateExpandCollapseText();
+
+  e.preventDefault();
+});
+
+// Funktion zum Aktualisieren des Textes des Expand/Collapse-Links basierend auf dem Status der Accordions
+function updateExpandCollapseText() {
+  var allOpen = $('.accord-content-ul').hasClass('acc-all-open');
+  if (allOpen) {
+    $('.expand-all-toggle-link').text('Collapse all');
+  } else {
+    $('.expand-all-toggle-link').text('Expand all');
+  }
+}
 
 
 
