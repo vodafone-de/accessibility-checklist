@@ -14,6 +14,20 @@
     "applicable": "N/A"
   },
   {
+    "id": "list3",
+    "category": "Videofähigkeiten",
+    "type": "category-heading",
+    "subhead": "Lorem ipsum",
+    "applicable": "applicable"
+  },
+  {
+    "id": "list4",
+    "category": "Textalternativen",
+    "type": "category-heading",
+    "subhead": "Lorem ipsum",
+    "applicable": "applicable"
+  },
+  {
     "id": "5.2",
     "category": "Allgemeine Anforderungen",
     "bitv": "Prüfschritt 5.2",
@@ -35,13 +49,13 @@
     "title": "Biometrie",
     "dod": "tbd",
     "desc": "tbd",
-    "roleux": "ux",
+    "roleux": "",
     "roledev": "",
     "roleedt": "",
     "roletesting": "",
     "type": "",
     "link": "#",
-    "applicable": "applicable"
+    "applicable": "N/A"
   },
   {
     "id": "5.4",
@@ -51,12 +65,12 @@
     "dod": "tbd",
     "desc": "tbd",
     "roleux": "",
-    "roledev": "dev",
+    "roledev": "",
     "roleedt": "",
     "roletesting": "",
     "type": "",
     "link": "#",
-    "applicable": "applicable"
+    "applicable": "N/A"
   },
   {
     "id": "6.1",
@@ -305,9 +319,9 @@
     "title": "Wiedergabe von Untertiteln",
     "dod": "tbd",
     "desc": "tbd",
-    "roleux": "",
+    "roleux": "ux",
     "roledev": "",
-    "roleedt": "",
+    "roleedt": "edt",
     "roletesting": "",
     "type": "",
     "link": "#",
@@ -429,7 +443,8 @@
   {
     "id": 30,
     "category": "Textalternativen",
-    "bitv": "Prüfschritt 9.1.1.1a - Alternativtexte für Bedienelemente",
+    "bitv": "Prüfschritt 9.1.1.1a",
+    "title": "Alternativtexte für Bedienelemente",
     "dod": "tbd",
     "desc": "tbd",
     "roleux": "",
