@@ -21,6 +21,13 @@
     "applicable": "applicable"
   },
   {
+    "id": "list4",
+    "category": "Textalternativen",
+    "type": "category-heading",
+    "subhead": "Lorem ipsum",
+    "applicable": "applicable"
+  },
+  {
     "id": "5.2",
     "category": "Allgemeine Anforderungen",
     "bitv": "Prüfschritt 5.2",
@@ -436,7 +443,8 @@
   {
     "id": 30,
     "category": "Textalternativen",
-    "bitv": "Prüfschritt 9.1.1.1a - Alternativtexte für Bedienelemente",
+    "bitv": "Prüfschritt 9.1.1.1a",
+    "title": "Alternativtexte für Bedienelemente",
     "dod": "tbd",
     "desc": "tbd",
     "roleux": "",
