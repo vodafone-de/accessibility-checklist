@@ -807,6 +807,7 @@ $("#filter-options :checkbox").click(function() {
   var lifi = $(".bitvlist li").hide();
   var badge = $(".ws10-highlight-badge").hide();  
 
+
   $("#filter-options :checkbox:checked").each(function(lifi) {
       $("." + $(this).val()).fadeIn();
       var accordContent = $('.accord-content-ul');
@@ -814,13 +815,16 @@ $("#filter-options :checkbox").click(function() {
       accordContent.slideDown();
       accordContent.addClass("acc-all-open");
     $('.expand-all-toggle-link').text('Collapse all');
-      
+
+    
+          
 
   });
 
   $("#filter-options :checkbox:checked").each(function(badge) {
       $("." + $(this).val()).fadeIn();
       $(".ws10-highlight-badge").addClass("ws10-highlight-badge--filteractive");
+      
   });
 
   if ($('#filter-options :checkbox').filter(':checked').length < 1) {
@@ -834,17 +838,37 @@ $("#filter-options :checkbox").click(function() {
   $(".checklist-table").each(function() {
       var list = $(this).find(".bitvlist li");
       var hiddenList = $(this).find(".bitvlist li[style*='none']");
+      var hiddenCheck = $(".bitvlist li[style*='none']").find("input.rel-check[type=checkbox]");
+      
+      
       if (list.length === hiddenList.length) {
           $(this).hide();
+          $(hiddenCheck).addClass('hide-check');
+          
+
+        updateStatus();
+          
       } else {
           $(this).show(); // Stelle sicher, dass das div angezeigt wird, wenn nicht alle li ausgeblendet sind
+          $(hiddenCheck).removeClass('hide-check');
       }
+
+      
+      
   });
+
+
+    
+  e.preventDefault();
+
+
+
+
 });
 
 
 
-
+updateStatus();
 
 
 var $checkboxes = $('input.rel-check[type=checkbox]');
@@ -855,7 +879,10 @@ var $checkboxes = $('input.rel-check[type=checkbox]');
       if('relevant' !== $(this).attr('data-dis')){
         numberOfRelevantCheckboxes += 1;       
       }
+
     });
+
+    
 
     updateStatus();
 
@@ -864,6 +891,8 @@ var $checkboxes = $('input.rel-check[type=checkbox]');
         var $checkbox = $(this);
 
         var isRelevant = true;
+
+      
         
         if('relevant' === $checkbox.attr('data-dis')){
           isRelevant = false;
@@ -894,9 +923,7 @@ var $checkboxes = $('input.rel-check[type=checkbox]');
 
           var ruledis = $(this).data('ruledis');
           $("[data-ruletog='" + ruledis + "']").attr("disabled", "disabled");
-          
-        
-          
+
         }
 
         // ist relavant und nicht gecheckt
@@ -931,6 +958,8 @@ var $checkboxes = $('input.rel-check[type=checkbox]');
           
 
         }
+
+
 
 
         updateStatus();
