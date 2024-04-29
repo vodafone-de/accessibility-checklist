@@ -735,6 +735,7 @@ $.each(list11, function (key, value) {
 var numberOfRelevantCheckboxes = 0;
 var numberOfUnrelevantCheckboxes = 0;
 var numberOfCheckedRelevantCheckboxes = 0;
+var numberOfUncheckedUnrelevantCheckboxes = 0;
 
 
 var updateStatus = function(){
@@ -801,11 +802,24 @@ var updateStatus = function(){
     
 };
 
+
 // filter function
 
 $("#filter-options :checkbox").click(function() {
   var lifi = $(".bitvlist li").hide();
   var badge = $(".ws10-highlight-badge").hide();  
+  var checkHide = $("input.rel-check[type=checkbox]").find("disabled", "disabled").length;
+  var visibleCheck = $("input.rel-check[type=checkbox]").find(":visible").length;
+  
+  var hiddenCheck = $(".bitvlist li[style*='none']").find("input.rel-check[type=checkbox]");
+  
+
+  var count = $(hiddenCheck).length;
+  console.log(count);
+  numberOfRelevantCheckboxes -= count;
+  numberOfUnrelevantCheckboxes += count;
+  updateStatus();
+
 
 
   $("#filter-options :checkbox:checked").each(function(lifi) {
@@ -815,53 +829,80 @@ $("#filter-options :checkbox").click(function() {
       accordContent.slideDown();
       accordContent.addClass("acc-all-open");
     $('.expand-all-toggle-link').text('Collapse all');
-
     
+
+    $(".checklist-table").each(function() {
+      var list = $(this).find(".bitvlist li");
+      var hiddenList = $(this).find(".bitvlist li[style*='none']");
+      
+      if (list.length === hiddenList.length) {
+          $(this).hide();
           
+          
+      } else {
+          $(this).show(); // Stelle sicher, dass das div angezeigt wird, wenn nicht alle li ausgeblendet sind
+          $("input.rel-check[type=checkbox]").removeClass('hide-check');
+        
+      }
+  });
 
   });
+
+
 
   $("#filter-options :checkbox:checked").each(function(badge) {
       $("." + $(this).val()).fadeIn();
       $(".ws10-highlight-badge").addClass("ws10-highlight-badge--filteractive");
-      
+    
   });
 
+
+
   if ($('#filter-options :checkbox').filter(':checked').length < 1) {
+
+
       $(".bitvlist li").fadeIn();
       $(".ws10-highlight-badge").fadeIn();
       $(".ws10-highlight-badge").removeClass("ws10-highlight-badge--filteractive");
       $(".checklist-table").show(); 
+      $("input.rel-check[type=checkbox]").removeAttr("disabled", "disabled");
+
+
+  
+  
   }
 
-  // Hier füge die vorherige Funktion ein, um das umgebende div zu verstecken, wenn alle li ausgeblendet sind
-  $(".checklist-table").each(function() {
-      var list = $(this).find(".bitvlist li");
-      var hiddenList = $(this).find(".bitvlist li[style*='none']");
-      var hiddenCheck = $(".bitvlist li[style*='none']").find("input.rel-check[type=checkbox]");
-      
-      
-      if (list.length === hiddenList.length) {
-          $(this).hide();
-          $(hiddenCheck).addClass('hide-check');
-          
+//   $("#filter-options :checkbox:not(:checked)").each(function() {
+//     $("." + $(this).val()).fadeOut(); // Einblenden wird zu Ausblenden
+//     var accordContent = $('.accord-content-ul');
+//     $('.toggle-link').removeClass("ws10-accordion-item__checked"); // Hinzufügen wird zu Entfernen
+//     accordContent.slideUp(); // Einblenden wird zu Ausblenden
+//     accordContent.removeClass("acc-all-open"); // Hinzufügen wird zu Entfernen
+//     $('.expand-all-toggle-link').text('Expand all'); // Text ändern
+//     var hiddenCheck = $(".bitvlist li[style*='none']").find("input.rel-check[type=checkbox]");
+//     $(hiddenCheck).removeClass('hide-check'); // Hinzufügen wird zu Entfernen
+//     $(hiddenCheck).removeAttr("disabled"); // Hinzufügen wird zu Entfernen
 
-        updateStatus();
-          
-      } else {
-          $(this).show(); // Stelle sicher, dass das div angezeigt wird, wenn nicht alle li ausgeblendet sind
-          $(hiddenCheck).removeClass('hide-check');
-      }
+//     var count = $(hiddenCheck).length;
+//     console.log(count);
+//     numberOfRelevantCheckboxes += count; // Umgekehrte Änderung
+//     numberOfUnrelevantCheckboxes -= count; // Umgekehrte Änderung
+//     updateStatus();
 
-      
-      
-  });
+//     $(".checklist-table").each(function() {
+//         var list = $(this).find(".bitvlist li");
+//         var hiddenList = $(this).find(".bitvlist li[style*='none']");
 
+//         if (list.length === hiddenList.length) {
+//             $(this).show(); // Anzeigen wird zu Ausblenden
 
-    
-  e.preventDefault();
+//         } else {
+//             $(this).hide(); // Ausblenden wird zu Anzeigen
+//             $("input.rel-check[type=checkbox]").addClass('hide-check'); // Entfernen wird zu Hinzufügen
 
-
+//         }
+//     });
+// });
 
 
 });
@@ -879,6 +920,7 @@ var $checkboxes = $('input.rel-check[type=checkbox]');
       if('relevant' !== $(this).attr('data-dis')){
         numberOfRelevantCheckboxes += 1;       
       }
+    
 
     });
 
@@ -886,87 +928,92 @@ var $checkboxes = $('input.rel-check[type=checkbox]');
 
     updateStatus();
 
+
     $checkboxes.change(function(){
 
-        var $checkbox = $(this);
+      var $checkbox = $(this);
 
-        var isRelevant = true;
-
+      var isRelevant = true;
+  
+      if('relevant' === $checkbox.attr('data-dis')){
+        isRelevant = false;
       
         
-        if('relevant' === $checkbox.attr('data-dis')){
-          isRelevant = false;
+      }
+
+      var isChecked = $checkbox.is(':checked');
+
+      localStorage.setItem("checked", isChecked);
+
+
+
+      // an dem punkt weißt du:
+      // eine checkbox hat sich geändert
+      // ob die checkbox "relevant" is
+      // ob die checkbox angehackt ist oder nicht
+      // d.h. du hast vier fälle
+      // bei denen passiert im prinzip immer dassgleiche
+      // zahlen updaten
+      // elemente updaten
+      // im anschluss den gelbe statzs updaten
+
+
+      // ist relavant und gecheckt
+      if(isRelevant=== true && isChecked === true){
+
+        numberOfCheckedRelevantCheckboxes += 1;
+
+        var ruledis = $(this).data('ruledis');
+        $("[data-ruletog='" + ruledis + "']").attr("disabled", "disabled");
+
+      }
+
+      // ist relavant und nicht gecheckt
+      if(isRelevant === true && isChecked === false){
+
+        numberOfCheckedRelevantCheckboxes -= 1;
+
+        var ruledis = $(this).data('ruledis');
+        $("[data-ruletog='" + ruledis + "']").attr("disabled", null);
         
-          
-        }
+      }
 
-      
+      // ist nicht relavant und gecheckt
+      if(isRelevant === false && isChecked === true){
+        
+        numberOfRelevantCheckboxes -= 1;
+        numberOfUnrelevantCheckboxes += 1
 
-        var isChecked = $checkbox.is(':checked');
-
-        localStorage.setItem("checked", isChecked);
-
-        // an dem punkt weißt du:
-        // eine checkbox hat sich geändert
-        // ob die checkbox "relevant" is
-        // ob die checkbox angehackt ist oder nicht
-        // d.h. du hast vier fälle
-        // bei denen passiert im prinzip immer dassgleiche
-        // zahlen updaten
-        // elemente updaten
-        // im anschluss den gelbe statzs updaten
-
-        // ist relavant und gecheckt
-        if(isRelevant=== true && isChecked === true){
-
-          numberOfCheckedRelevantCheckboxes += 1;
-
-          var ruledis = $(this).data('ruledis');
-          $("[data-ruletog='" + ruledis + "']").attr("disabled", "disabled");
-
-        }
-
-        // ist relavant und nicht gecheckt
-        if(isRelevant === true && isChecked === false){
-
-          numberOfCheckedRelevantCheckboxes -= 1;
-
-          var ruledis = $(this).data('ruledis');
-          $("[data-ruletog='" + ruledis + "']").attr("disabled", null);
-          
-        }
-
-        // ist nicht relavant und gecheckt
-        if(isRelevant === false && isChecked === true){
-          
-          numberOfRelevantCheckboxes -= 1;
-          numberOfUnrelevantCheckboxes += 1
-
-          var ruletog = $(this).data('ruletog');
-          $("[data-ruledis='" + ruletog + "']").attr("disabled", "disabled");
-         
-        }
-
-        // ist nicht relavant und nicht gecheckt (Dann weißt Du auch, dass die mal gecheckt war)
-        if(isRelevant === false && isChecked === false){
-          
-          numberOfRelevantCheckboxes += 1;
-          numberOfUnrelevantCheckboxes -= 1
-
-          var ruletog = $(this).data('ruletog');
-          $("[data-ruledis='" + ruletog + "']").attr("disabled", null);
-          
-
-        }
-
-
-
-
-        updateStatus();
-
+        var ruletog = $(this).data('ruletog');
+        $("[data-ruledis='" + ruletog + "']").attr("disabled", "disabled");
        
+      }
 
-    });
+      // ist nicht relavant und nicht gecheckt (Dann weißt Du auch, dass die mal gecheckt war)
+      if(isRelevant === false && isChecked === false){
+        
+        numberOfRelevantCheckboxes += 1;
+        numberOfUnrelevantCheckboxes -= 1
+
+        var ruletog = $(this).data('ruletog');
+        $("[data-ruledis='" + ruletog + "']").attr("disabled", null);
+        
+
+      }
+
+
+
+
+      updateStatus();
+
+     
+
+  });
+
+
+// --- 
+
+
 
 
     $(".result").click(function(e) {
