@@ -811,25 +811,36 @@ $("#filter-options :checkbox").click(function() {
   var checkHide = $("input.rel-check[type=checkbox]").find("disabled", "disabled").length;
   var visibleCheck = $("input.rel-check[type=checkbox]").find(":visible").length;
   
-  var hiddenCheck = $(".bitvlist li[style*='none']").find("input.rel-check[type=checkbox]");
-  
-
-  var count = $(hiddenCheck).length;
-  console.log(count);
-  numberOfRelevantCheckboxes -= count;
-  numberOfUnrelevantCheckboxes += count;
-  updateStatus();
-
-
-
   $("#filter-options :checkbox:checked").each(function(lifi) {
       $("." + $(this).val()).fadeIn();
+      $("." + $(this).val()).addClass("visible-el");
+      
       var accordContent = $('.accord-content-ul');
       $('.toggle-link').addClass("ws10-accordion-item__checked");
       accordContent.slideDown();
       accordContent.addClass("acc-all-open");
     $('.expand-all-toggle-link').text('Collapse all');
     
+    // var countVisible = $(".bitvlist li.visible-el").length; // Anzahl der sichtbaren Elemente neu berechnen
+    // console.log("Anzahl der sichtbaren Elemente in <li>: " + countVisible);
+
+    // var countHidden = $(".bitvlist li:not(.visible-el)").length;
+    // console.log("Anzahl der <li>-Elemente ohne Klasse 'visible-el': " + countHidden);
+
+
+    // numberOfRelevantCheckboxes -= countHidden;
+        
+    // numberOfUnrelevantCheckboxes += countHidden;
+    // updateStatus();
+
+    var count = $(".bitvlist li.visible-el").length; // Anzahl der sichtbaren Elemente neu berechnen
+
+    // Aktualisierung der Anzahl der relevanten und irrelevanten Checkboxes
+    numberOfRelevantCheckboxes = count;
+    numberOfUnrelevantCheckboxes = $(".bitvlist li").length - count;
+
+    updateStatus(); // Aktualisieren Sie den Status nach jedem Klic
+
 
     $(".checklist-table").each(function() {
       var list = $(this).find(".bitvlist li");
@@ -839,10 +850,11 @@ $("#filter-options :checkbox").click(function() {
           $(this).hide();
           
           
+          
       } else {
           $(this).show(); // Stelle sicher, dass das div angezeigt wird, wenn nicht alle li ausgeblendet sind
           $("input.rel-check[type=checkbox]").removeClass('hide-check');
-        
+          
       }
   });
 
@@ -850,10 +862,12 @@ $("#filter-options :checkbox").click(function() {
 
 
 
+
+
   $("#filter-options :checkbox:checked").each(function(badge) {
       $("." + $(this).val()).fadeIn();
       $(".ws10-highlight-badge").addClass("ws10-highlight-badge--filteractive");
-    
+      $(".ws10-highlight-badge").removeClass("visible-el");
   });
 
 
@@ -866,43 +880,18 @@ $("#filter-options :checkbox").click(function() {
       $(".ws10-highlight-badge").removeClass("ws10-highlight-badge--filteractive");
       $(".checklist-table").show(); 
       $("input.rel-check[type=checkbox]").removeAttr("disabled", "disabled");
+      $(".acc-list").removeClass("visible-el");
 
+      var count = $(".bitvlist li.visible-el").length; // Anzahl der sichtbaren Elemente neu berechnen
 
+      // Aktualisierung der Anzahl der relevanten und irrelevanten Checkboxes
+      numberOfRelevantCheckboxes =  $(".bitvlist li").length - count;
+      numberOfUnrelevantCheckboxes = count;
   
+      updateStatus(); // Aktualisieren Sie den Status nach jedem Klic
   
   }
 
-//   $("#filter-options :checkbox:not(:checked)").each(function() {
-//     $("." + $(this).val()).fadeOut(); // Einblenden wird zu Ausblenden
-//     var accordContent = $('.accord-content-ul');
-//     $('.toggle-link').removeClass("ws10-accordion-item__checked"); // Hinzufügen wird zu Entfernen
-//     accordContent.slideUp(); // Einblenden wird zu Ausblenden
-//     accordContent.removeClass("acc-all-open"); // Hinzufügen wird zu Entfernen
-//     $('.expand-all-toggle-link').text('Expand all'); // Text ändern
-//     var hiddenCheck = $(".bitvlist li[style*='none']").find("input.rel-check[type=checkbox]");
-//     $(hiddenCheck).removeClass('hide-check'); // Hinzufügen wird zu Entfernen
-//     $(hiddenCheck).removeAttr("disabled"); // Hinzufügen wird zu Entfernen
-
-//     var count = $(hiddenCheck).length;
-//     console.log(count);
-//     numberOfRelevantCheckboxes += count; // Umgekehrte Änderung
-//     numberOfUnrelevantCheckboxes -= count; // Umgekehrte Änderung
-//     updateStatus();
-
-//     $(".checklist-table").each(function() {
-//         var list = $(this).find(".bitvlist li");
-//         var hiddenList = $(this).find(".bitvlist li[style*='none']");
-
-//         if (list.length === hiddenList.length) {
-//             $(this).show(); // Anzeigen wird zu Ausblenden
-
-//         } else {
-//             $(this).hide(); // Ausblenden wird zu Anzeigen
-//             $("input.rel-check[type=checkbox]").addClass('hide-check'); // Entfernen wird zu Hinzufügen
-
-//         }
-//     });
-// });
 
 
 });
