@@ -261,6 +261,10 @@ $("div#dokumentation").prepend("<h3>" + cathead19[0].category + "</h3><span clas
  bitvlist1 += '<div class="grid_item_checkbox"><input type="checkbox" id="a11y-rule-03-06" name="a11y-rule" data-ruledis="r-increase-text-200" data-disenable="a11y-rule-03-06" value="' + value.title +  '" class="rel-check ws10-form-selection-control__input" /><label class="rule-description" id="a11y-rule-03-06" data-acc="a11y-rule-03-06-acc">' +
  value.title + '</label></div>'; 
 
+
+ bitvlist1 += '<div class="tasks"><h4>DoDs UX</h4><div><div class="grid_item_checkbox"><input type="checkbox" id="a11y-rule-03-06" name="a11y-rule" data-ruledis="r-increase-text-200" data-disenable="a11y-rule-03-06" value="Lorem ipsum" class="ws10-form-selection-control__input" /><label class="rule-description" id="a11y-rule-03-06" data-acc="a11y-rule-03-06-acc">Lorem impsum dolor est task</label></div></div></div>';
+
+
   bitvlist1 += '</li>'; 
                         });
 
