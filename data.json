@@ -5,7 +5,7 @@
     "type": "category-heading",
     "subhead": "Subhead",
     "applicable": "applicable",
-    "uxtasks":["Task 1", "Task 2", "Task 3"]
+    "uxtasks": ["Task 1", "Task 2", "Task 3"]
   },
     {
     "id": "list2",
