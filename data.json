@@ -4,7 +4,8 @@
     "category": "Allgemeine Anforderungen",
     "type": "category-heading",
     "subhead": "Subhead",
-    "applicable": "applicable"
+    "applicable": "applicable",
+    "uxtasks":["Task 1", "Task 2", "Task 3"]
   },
     {
     "id": "list2",
