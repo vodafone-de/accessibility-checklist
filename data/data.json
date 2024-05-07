@@ -1,0 +1,96 @@
+[
+      {
+        "id": "01-01",
+        "category": "Allgemeine Anforderungen",
+        "bitv": "5.2",
+        "title": "Aktivierung von Barrierefreiheitsfunktionen",
+        "applicable": "applicable",
+        "roles": ["ux", "dev", "edt", "testing"],
+        "dods": {
+          "uxtasks": [
+            {"taskid": "01-01-01",
+            "taskdesc" : "UX Lorem ipsum task 1",
+            "tasktype": "pattern",
+            "taskcat": ["design", "color", "button"],
+            "testtool":"Figma Plugin xyz",
+            "testmethod": "Test it like it's hot"},
+            {"taskid": "01-01-02",
+            "taskdesc" : "Lorem ipsum task 2 UX",
+            "tasktype": "page",
+            "taskcat": ["forms", "contrast"],
+            "testtool":"Browser Plugin xyz",
+            "testmethod": "Test it like it's hot"}
+          ],
+          "devtasks": [
+            {"taskid": "01-02-01",
+            "taskdesc" : "Dev Lorem ipsum task 1",
+            "tasktype": "pattern",
+            "taskcat": ["color", "button"],
+            "testtool":"Chrome Plugin xyz",
+            "testmethod": "Test it like it's hot"}
+          ],
+          "edttasks": [
+            {"taskid": "01-03-01",
+            "taskdesc" : "Editorial lorem ipsum task 1",
+            "tasktype": "page",
+            "taskcat": ["cms", "button", "text"],
+            "testtool":"Figma Plugin xyz",
+            "testmethod": "Test it like it's hot"}
+          ],
+          "testingtasks": [
+            {"taskid": "01-04-01",
+            "taskdesc" : "Testing Lorem ipsum task 1",
+            "tasktype": "pattern",
+            "taskcat": ["color", "button"],
+            "testtool":"Chrome Plugin xyz",
+            "testmethod": "Test it like it's hot"}
+          ]
+        }},  
+      {
+        "id": "01-02",
+        "category": "Allgemeine Anforderungen",
+        "bitv": "5.3",
+        "title": "Biometrie",
+        "applicable": "applicable",
+        "roles": ["ux", "dev"],
+        "dods": {
+          "uxtasks": [
+            {"taskid": "01-01-01",
+            "taskdesc" : "UX Lorem ipsum task 1",
+            "tasktype": "pattern",
+            "taskcat": ["design", "color", "button"],
+            "testtool":"Figma Plugin xyz",
+            "testmethod": "Test it like it's hot"},
+            {"taskid": "01-01-02",
+            "taskdesc" : "Lorem ipsum task 2 UX",
+            "tasktype": "page",
+            "taskcat": ["forms", "contrast"],
+            "testtool":"Browser Plugin xyz",
+            "testmethod": "Test it like it's hot"}
+          ],
+          "devtasks": [
+            {"taskid": "01-02-01",
+            "taskdesc" : "Dev Lorem ipsum task 1",
+            "tasktype": "pattern",
+            "taskcat": ["color", "button"],
+            "testtool":"Chrome Plugin xyz",
+            "testmethod": "Test it like it's hot"}
+          ],
+          "edttasks": [
+            {"taskid": "01-03-01",
+            "taskdesc" : "Editorial lorem ipsum task 1",
+            "tasktype": "page",
+            "taskcat": ["cms", "button", "text"],
+            "testtool":"Figma Plugin xyz",
+            "testmethod": "Test it like it's hot"}
+          ]
+        }},
+      {
+        "id": "02-01",
+        "category": "Zwei-Wege-Sprachkommunikation",
+        "bitv": "6.1",
+        "title": "Audiobandbreite für Sprache",
+        "applicable": "N/A",
+        "roles": []
+      }
+    ]
