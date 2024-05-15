@@ -45,43 +45,6 @@
     margin: 0; /* Zurücksetzen der Standardmargen */
 }
 
-
-.accordion {
-  margin-bottom: 20px;
-}
-
-.accordion-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1px solid #ddd;
-  padding: 10px 0;
-}
-
-.accordion-title {
-  display: flex;
-  align-items: center;
-}
-
-.accordion-title h3 {
-  margin: 0;
-}
-
-.accordion-toggle {
-  stroke: #bd0000;
-  width: 32px;
-  height: 32px;
-  background-color: transparent;
-  transform-origin: center;
-  cursor: pointer;
-}
-
-.accordion-content {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.3s ease;
-}
-
 .rotate {
   transform: rotate(180deg);
 }
@@ -98,6 +61,33 @@
     color: #f4f4f4;
 }
 
+.ws10-accordion-item__chevron {
+    stroke: #bd0000;
+    width: 32px;
+    height: 32px;
+    background-color: transparent;
+    transform: rotate(0deg);
+    transform-origin: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.ws10-accordion-item__chevron.rotate {
+    transform: rotate(180deg);
+}
+
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
 
 
 </style>

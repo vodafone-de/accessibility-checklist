@@ -18,7 +18,21 @@ $(document).ready(function() {
         // Für jede Kategorie HTML erstellen und anhängen
         Object.keys(groupedByCategory).forEach(category => {
             const container = $('<div>').addClass('ws10-card'); // Klasse "ws10-card" hinzufügen
-            container.append(`<h3>${category}</h3>`);
+            
+            // Accordion Header
+            const accordionHeader = $('<div>').addClass('accordion-header');
+            const accordionTitle = $('<h3>').text(category).addClass('accordion-title');
+
+            // SVG für Accordion Toggle
+            const accordionToggle = $('<div>').addClass('accordion-toggle');
+            const svg = $('<svg class="ws10-accordion-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"></polyline></svg>');
+            accordionToggle.append(svg);
+
+            accordionHeader.append(accordionTitle).append(accordionToggle);
+            container.append(accordionHeader);
+
+            // Accordion Content
+            const accordionContent = $('<div>').addClass('accordion-content').css('max-height', '0');
             groupedByCategory[category].forEach(item => {
                 const innerDiv = $('<div>').attr('id', item.id);
                 innerDiv.append(`<span>${item.bitv}</span>`);
@@ -50,22 +64,22 @@ $(document).ready(function() {
                             const failRadio = $('<input>').attr({type: 'radio', name: 'status_' + task.taskid, id: 'fail_' + task.taskid, value: 'fail'});
                             const failLabel = $('<label>').attr('for', 'fail_' + task.taskid).text('fail');
 
-                           // Eventlistener für Radio Buttons hinzufügen
-passRadio.on('change', function() {
-    if ($(this).is(':checked') && !$(this).closest('fieldset').data('isChecked')) {
-        selectedRadioCount++;
-        $(this).closest('fieldset').data('isChecked', true);
-        updateCounter();
-    }
-});
+                            // Eventlistener für Radio Buttons hinzufügen
+                            passRadio.on('change', function() {
+                                if ($(this).is(':checked') && !$(this).closest('fieldset').data('isChecked')) {
+                                    selectedRadioCount++;
+                                    $(this).closest('fieldset').data('isChecked', true);
+                                    updateCounter();
+                                }
+                            });
 
-failRadio.on('change', function() {
-    if ($(this).is(':checked') && !$(this).closest('fieldset').data('isChecked')) {
-        selectedRadioCount++;
-        $(this).closest('fieldset').data('isChecked', true);
-        updateCounter();
-    }
-});
+                            failRadio.on('change', function() {
+                                if ($(this).is(':checked') && !$(this).closest('fieldset').data('isChecked')) {
+                                    selectedRadioCount++;
+                                    $(this).closest('fieldset').data('isChecked', true);
+                                    updateCounter();
+                                }
+                            });
 
                             fieldset.append(radioLegend, passRadio, passLabel, failRadio, failLabel);
                             li.append(fieldset);
@@ -81,8 +95,23 @@ failRadio.on('change', function() {
                     });
                     innerDiv.append(dodsDiv);
                 }
-                container.append(innerDiv);
+                accordionContent.append(innerDiv);
             });
+            container.append(accordionContent);
+
+            // Accordion Header Klick-Event
+            accordionHeader.click(function() {
+                const chevron = $(this).find('.ws10-accordion-item__chevron');
+                chevron.toggleClass('rotate');
+                accordionContent.toggleClass('open');
+
+                if (accordionContent.hasClass('open')) {
+                    accordionContent.css('max-height', accordionContent[0].scrollHeight + 'px');
+                } else {
+                    accordionContent.css('max-height', '0');
+                }
+            });
+
             $('body').append(container);
         });
 
