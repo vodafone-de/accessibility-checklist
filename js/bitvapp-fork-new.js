@@ -88,6 +88,18 @@ $(document).ready(function() {
                             const applicableLabel = $('<label>').attr('for', 'applicable_' + task.taskid).text('applicable');
                             li.append(applicableCheckbox, applicableLabel);
 
+                            // Reset Button hinzufügen
+                            const resetButton = $('<button>').text('Reset').on('click', function() {
+                                const fieldset = $(this).siblings('fieldset');
+                                if (fieldset.data('isChecked')) {
+                                    selectedRadioCount--;
+                                    fieldset.data('isChecked', false);
+                                }
+                                fieldset.find('input[type="radio"]').prop('checked', false);
+                                updateCounter();
+                            });
+                            li.append(resetButton);
+
                             ul.append(li);
                             fieldsetCount++; // Zähler für Fieldset erhöhen
                         });
@@ -117,7 +129,7 @@ $(document).ready(function() {
 
         // Funktion zur Aktualisierung des Zählers aufrufen
         function updateCounter() {
-            $('#counter').html(`<p>Anzahl Tasks: ${fieldsetCount} </p> <p>Anzahl erledigte Tasks: ${selectedRadioCount}</p>`);
+            $('#counter').html(`<p>Zu erledigende Tasks: ${fieldsetCount} </p> <p>Anzahl erledigte Tasks: ${selectedRadioCount}</p>`);
         }
 
         // Separates div für Zähler hinzufügen
