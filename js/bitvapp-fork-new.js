@@ -69,6 +69,7 @@ $(document).ready(function() {
                                 if ($(this).is(':checked') && !$(this).closest('fieldset').data('isChecked')) {
                                     selectedRadioCount++;
                                     $(this).closest('fieldset').data('isChecked', true);
+                                    fieldsetCount--; // Verringere den fieldsetCount
                                     updateCounter();
                                 }
                             });
@@ -77,6 +78,7 @@ $(document).ready(function() {
                                 if ($(this).is(':checked') && !$(this).closest('fieldset').data('isChecked')) {
                                     selectedRadioCount++;
                                     $(this).closest('fieldset').data('isChecked', true);
+                                    fieldsetCount--; // Verringere den fieldsetCount
                                     updateCounter();
                                 }
                             });
@@ -93,6 +95,7 @@ $(document).ready(function() {
                                 const fieldset = $(this).siblings('fieldset');
                                 if (fieldset.data('isChecked')) {
                                     selectedRadioCount--;
+                                    fieldsetCount++; // Erhöhe den fieldsetCount beim Zurücksetzen
                                     fieldset.data('isChecked', false);
                                 }
                                 fieldset.find('input[type="radio"]').prop('checked', false);
