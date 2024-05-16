@@ -84,7 +84,9 @@ $(document).ready(function() {
                             });
 
                             // Reset Button hinzufügen
-                            const resetButton = $('<button>').text('Reset').addClass('reset-button');
+                            const resetButton = $('<button>').addClass('reset-button');
+                            const resetSvg = $('<svg>').html('<svg xmlns="http://www.w3.org/2000/svg"><image href="img/refresh-system.svg" /></svg>').addClass('reset-button-icon');
+                            resetButton.append(resetSvg);
                             resetButton.on('click', function() {
                                 if (passRadio.is(':checked') || failRadio.is(':checked')) {
                                     selectedRadioCount--;
@@ -100,14 +102,19 @@ $(document).ready(function() {
 
                             const applicableCheckbox = $('<input>').attr({type: 'checkbox', id: 'applicable_' + task.taskid, name: 'applicable_' + task.taskid, checked: true});
                             const applicableLabel = $('<label>').attr('for', 'applicable_' + task.taskid).text('applicable');
-                            li.append(applicableCheckbox, applicableLabel);
+
+                            // Checkbox in Switch verwandeln
+                            const switchWrapper = $('<div>').addClass('switch');
+                            const slider = $('<span>').addClass('slider');
+                            switchWrapper.append(applicableCheckbox, slider);
+                            li.append(switchWrapper, applicableLabel);
 
                             // Eventlistener für applicable Checkbox
                             applicableCheckbox.on('change', function() {
                                 const isChecked = $(this).is(':checked');
                                 const radioChecked = $(this).closest('li').find('input[type="radio"]:checked').length > 0;
                                 const fieldset = $(this).closest('li').find('fieldset');
-                            
+
                                 if (isChecked) {
                                     fieldset.prop('disabled', false);
                                     if (!radioChecked) {
@@ -129,8 +136,11 @@ $(document).ready(function() {
                                 }
                                 updateCounter();
                             });
-                            
-                            
+
+                            // Eventlistener für switchWrapper hinzufügen
+                            switchWrapper.on('click', function() {
+                                applicableCheckbox.prop('checked', !applicableCheckbox.prop('checked')).trigger('change');
+                            });
 
                             ul.append(li);
                             fieldsetCount++; // Zähler für Fieldset erhöhen
