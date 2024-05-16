@@ -19,6 +19,12 @@
             "tasktype": "page",
             "taskcat": ["forms", "contrast"],
             "testtool":"Browser Plugin xyz",
+            "testmethod": "Test it like it's hot"},
+            {"taskid": "01-01-ux-3",
+            "taskdesc" : "Task 3",
+            "tasktype": "pattern",
+            "taskcat": ["forms"],
+            "testtool":"Browser Plugin xyz",
             "testmethod": "Test it like it's hot"}
           ],
           "devtasks": [
