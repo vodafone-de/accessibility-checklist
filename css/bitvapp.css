@@ -1,0 +1,128 @@
+
+.badgegroup span {background-color: #f4f4f4; margin-right: 8px; padding: 4px 8px; border-radius: 100px; }
+
+.ws10-card {
+  
+  box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
+    padding: 24px 24px 32px 24px;
+    margin-bottom: 32px;
+    border-radius: 6px;
+  
+}
+
+.taskcat span {
+  
+  background-color: #f4f4f4; 
+  margin-right: 8px; padding: 4px 8px; border-radius: 100px; 
+}
+
+
+.checkboxes {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px; /* Abstand zwischen den Checkboxen */
+}
+
+.checkboxes input[type="checkbox"],
+.checkboxes label {
+    margin: 0; /* Zurücksetzen der Standardmargen */
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+
+#counter{
+    position: -webkit-sticky;
+    position: sticky;
+    bottom: 0;
+    padding: 16px;
+    background-color: #0D0D0D;
+    font-size: 18px;
+    border-radius: 6px;
+    color: #f4f4f4;
+}
+
+.ws10-accordion-item__chevron {
+    stroke: #bd0000;
+    width: 32px;
+    height: 32px;
+    background-color: transparent;
+    transform: rotate(0deg);
+    transform-origin: center;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.ws10-accordion-item__chevron.rotate {
+    transform: rotate(180deg);
+}
+
+.accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+
+/* Grundstil für das Switch-Label */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+/* Verstecke die eigentliche Checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Slider-Stil */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+/* Wenn die Checkbox aktiviert ist */
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
+/* Optional: Schatten für den Slider */
+.slider:before {
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}

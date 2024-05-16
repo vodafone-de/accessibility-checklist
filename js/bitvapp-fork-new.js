@@ -18,7 +18,7 @@ $(document).ready(function() {
         // Für jede Kategorie HTML erstellen und anhängen
         Object.keys(groupedByCategory).forEach(category => {
             const container = $('<div>').addClass('ws10-card'); // Klasse "ws10-card" hinzufügen
-            
+
             // Accordion Header
             const accordionHeader = $('<div>').addClass('accordion-header');
             const accordionTitle = $('<h3>').text(category).addClass('accordion-title');
@@ -58,7 +58,7 @@ $(document).ready(function() {
                             li.append($('<div>').addClass('testtool').text(task.testtool));
                             li.append($('<div>').addClass('testmethod').text(task.testmethod));
                             const fieldset = $('<fieldset>').addClass('status-options');
-                            const radioLegend = $('<legend>').text('Status');
+                            const radioLegend = $('<legend>').text('compliance');
                             const passRadio = $('<input>').attr({type: 'radio', name: 'status_' + task.taskid, id: 'pass_' + task.taskid, value: 'pass'});
                             const passLabel = $('<label>').attr('for', 'pass_' + task.taskid).text('pass');
                             const failRadio = $('<input>').attr({type: 'radio', name: 'status_' + task.taskid, id: 'fail_' + task.taskid, value: 'fail'});
@@ -68,8 +68,8 @@ $(document).ready(function() {
                             passRadio.on('change', function() {
                                 if ($(this).is(':checked') && !$(this).closest('fieldset').data('isChecked')) {
                                     selectedRadioCount++;
+                                    fieldsetCount--;
                                     $(this).closest('fieldset').data('isChecked', true);
-                                    fieldsetCount--; // Verringere den fieldsetCount
                                     updateCounter();
                                 }
                             });
@@ -77,31 +77,60 @@ $(document).ready(function() {
                             failRadio.on('change', function() {
                                 if ($(this).is(':checked') && !$(this).closest('fieldset').data('isChecked')) {
                                     selectedRadioCount++;
+                                    fieldsetCount--;
                                     $(this).closest('fieldset').data('isChecked', true);
-                                    fieldsetCount--; // Verringere den fieldsetCount
                                     updateCounter();
                                 }
                             });
 
-                            fieldset.append(radioLegend, passRadio, passLabel, failRadio, failLabel);
+                            // Reset Button hinzufügen
+                            const resetButton = $('<button>').text('Reset').addClass('reset-button');
+                            resetButton.on('click', function() {
+                                if (passRadio.is(':checked') || failRadio.is(':checked')) {
+                                    selectedRadioCount--;
+                                    fieldsetCount++;
+                                    passRadio.prop('checked', false).closest('fieldset').data('isChecked', false);
+                                    failRadio.prop('checked', false).closest('fieldset').data('isChecked', false);
+                                    updateCounter();
+                                }
+                            });
+
+                            fieldset.append(radioLegend, passRadio, passLabel, failRadio, failLabel, resetButton);
                             li.append(fieldset);
 
-                            const applicableCheckbox = $('<input>').attr({type: 'checkbox', id: 'applicable_' + task.taskid, name: 'applicable_' + task.taskid});
+                            const applicableCheckbox = $('<input>').attr({type: 'checkbox', id: 'applicable_' + task.taskid, name: 'applicable_' + task.taskid, checked: true});
                             const applicableLabel = $('<label>').attr('for', 'applicable_' + task.taskid).text('applicable');
                             li.append(applicableCheckbox, applicableLabel);
 
-                            // Reset Button hinzufügen
-                            const resetButton = $('<button>').text('Reset').on('click', function() {
-                                const fieldset = $(this).siblings('fieldset');
-                                if (fieldset.data('isChecked')) {
-                                    selectedRadioCount--;
-                                    fieldsetCount++; // Erhöhe den fieldsetCount beim Zurücksetzen
-                                    fieldset.data('isChecked', false);
+                            // Eventlistener für applicable Checkbox
+                            applicableCheckbox.on('change', function() {
+                                const isChecked = $(this).is(':checked');
+                                const radioChecked = $(this).closest('li').find('input[type="radio"]:checked').length > 0;
+                                const fieldset = $(this).closest('li').find('fieldset');
+                            
+                                if (isChecked) {
+                                    fieldset.prop('disabled', false);
+                                    if (!radioChecked) {
+                                        fieldsetCount++;
+                                    }
+                                    if (radioChecked && !fieldset.data('isChecked')) {
+                                        selectedRadioCount++;
+                                        fieldset.data('isChecked', true);
+                                    }
+                                } else {
+                                    if (!radioChecked) {
+                                        fieldsetCount--;
+                                    }
+                                    fieldset.prop('disabled', true);
+                                    if (selectedRadioCount > 0 && radioChecked) {
+                                        selectedRadioCount--;
+                                        fieldset.data('isChecked', false);
+                                    }
                                 }
-                                fieldset.find('input[type="radio"]').prop('checked', false);
                                 updateCounter();
                             });
-                            li.append(resetButton);
+                            
+                            
 
                             ul.append(li);
                             fieldsetCount++; // Zähler für Fieldset erhöhen
