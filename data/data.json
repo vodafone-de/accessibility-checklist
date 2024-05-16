@@ -9,7 +9,7 @@
         "dods": {
           "uxtasks": [
             {"taskid": "01-01-ux-01",
-            "taskdesc" : "UX Lorem ipsum task 1",
+            "taskdesc" : "UX ist toll",
             "tasktype": "pattern",
             "taskcat": ["design", "color", "button"],
             "testtool":"Figma Plugin xyz",
