@@ -25,14 +25,12 @@ $(document).ready(function() {
             $('#counter').html(`
                 <p>Zu erledigende Tasks: ${fieldsetCount}</p>
                 <p>Anzahl erledigte Tasks: ${selectedRadioCount}</p>
-                <p>Pass: ${passCount} (${passPercentage}%)</p>
                 <div class="progress">
                     <div class="progress-bar pass" style="width: ${passPercentage}%;">${passPercentage}%</div>
-                </div>
-                <p>Fail: ${failCount} (${failPercentage}%)</p>
-                <div class="progress">
                     <div class="progress-bar fail" style="width: ${failPercentage}%;">${failPercentage}%</div>
                 </div>
+                <p>Pass: ${passCount}</p>
+                <p>Fail: ${failCount}</p>
             `);
         }
 
@@ -58,11 +56,18 @@ $(document).ready(function() {
                 const innerDiv = $('<div>').attr('id', item.id);
                 innerDiv.append(`<span>${item.bitv}</span>`);
                 innerDiv.append(`<h4>${item.title}</h4>`);
+
+                // Extrahieren der Rollen aus dem "dods"-Objekt
                 const badgeGroup = $('<div>').addClass('badgegroup');
-                item.roles.forEach(role => {
-                    badgeGroup.append(`<span class="${role}_filter">${role}</span>`);
-                });
+                if (item.dods) {
+                    const dodsKeys = Object.keys(item.dods);
+                    const uniqueRoles = new Set(dodsKeys.map(key => key.replace('tasks', '')));
+                    uniqueRoles.forEach(role => {
+                        badgeGroup.append(`<span class="${role}_filter">${role}</span>`);
+                    });
+                }
                 innerDiv.append(badgeGroup);
+
                 if (item.dods) { // Überprüfen, ob dods existiert
                     const dodsDiv = $('<div>').addClass('dods');
                     Object.keys(item.dods).forEach(taskType => {

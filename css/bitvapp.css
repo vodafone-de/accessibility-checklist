@@ -155,21 +155,20 @@ cursor: pointer;
     height: 30px;
    
    }
-
    .progress {
     width: 100%;
     background-color: #e0e0e0;
     border-radius: 5px;
     overflow: hidden;
     margin: 10px 0;
+    display: flex;
   }
   
   .progress-bar {
     height: 20px;
-    border-radius: 5px;
-    text-align: center;
     line-height: 20px;
     color: white;
+    text-align: center;
     transition: width 0.4s ease;
   }
   
