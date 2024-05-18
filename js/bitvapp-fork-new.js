@@ -1,4 +1,27 @@
 $(document).ready(function() {
+
+const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+$(function() {
+if (prefersDark) {
+  $('body').addClass('dark');
+  $('.dark-mode-switcher').text('Dark mode OFF');
+}
+$('.dark-mode-switcher').on('click', function(e) {
+  $('body').toggleClass('dark');
+
+if ($('body').hasClass('dark')) {
+    $('.dark-mode-switcher').text('Dark mode OFF'); }
+    else {
+        $('.dark-mode-switcher').text('Dark mode ON');
+    }
+  e.preventDefault();
+});
+}); 
+
+
+
+
+
     // JSON von externer URL laden
     $.getJSON('https://vodafone-de.github.io/accessibility-checklist/data/data.json', function(jsonArray) {
         // Objekte nach Kategorien gruppieren
