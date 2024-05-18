@@ -34,73 +34,80 @@ $(document).ready(function() {
             `);
         }
 
-// Filter HTML erstellen und anhängen
-const filterHtml = `
-    <div class="filter">
-        <h3>Filter:</h3>
-        <ul id="filter-options">
-            <li><div class="cat action" tabindex="0">
-                <label><input type="checkbox" value="filter_cm" data-filter_id="cm"><span class="ws10-text">Channel Management</span></label>
-            </div></li>
-            <li><div class="cat action" tabindex="0">
-                <label><input type="checkbox" value="filter_ux" data-filter_id="ux"><span class="ws10-text">User Experience</span></label>
-            </div></li>
-            <li><div class="cat action" tabindex="0">
-                <label><input type="checkbox" value="filter_dev" data-filter_id="dev"><span class="ws10-text">Frontend Development</span></label>
-            </div></li>
-            <li><div class="cat action" tabindex="0">
-                <label><input type="checkbox" value="filter_edt" data-filter_id="edt"><span class="ws10-text">Editorial</span></label>
-            </div></li>
-            <li><div class="cat action" tabindex="0">
-                <label><input type="checkbox" value="filter_testing" data-filter_id="testing"><span class="ws10-text">Testing</span></label>
-            </div></li>
-        </ul>
-        <div style="clear:both"></div>
-    </div>`;
-$('body').prepend(filterHtml);
+        // Filter HTML erstellen und anhängen
+        const filterHtml = `
+            <div class="filter">
+                <h3>Filter:</h3>
+                <ul id="filter-options">
+                    <li><div class="cat action" tabindex="0">
+                        <label><input type="checkbox" value="filter_cm" data-filter_id="cm"><span class="ws10-text">Channel Management</span></label>
+                    </div></li>
+                    <li><div class="cat action" tabindex="0">
+                        <label><input type="checkbox" value="filter_ux" data-filter_id="ux"><span class="ws10-text">User Experience</span></label>
+                    </div></li>
+                    <li><div class="cat action" tabindex="0">
+                        <label><input type="checkbox" value="filter_dev" data-filter_id="dev"><span class="ws10-text">Frontend Development</span></label>
+                    </div></li>
+                    <li><div class="cat action" tabindex="0">
+                        <label><input type="checkbox" value="filter_edt" data-filter_id="edt"><span class="ws10-text">Editorial</span></label>
+                    </div></li>
+                    <li><div class="cat action" tabindex="0">
+                        <label><input type="checkbox" value="filter_testing" data-filter_id="testing"><span class="ws10-text">Testing</span></label>
+                    </div></li>
+                </ul>
+                <div style="clear:both"></div>
+            </div>`;
+        $('#content-wrapper').prepend(filterHtml);
 
-// Filter-Logik hinzufügen
-$('#filter-options input[type="checkbox"]').change(function() {
-    const filters = $('#filter-options input[type="checkbox"]:checked').map(function() {
-        return $(this).data('filter_id');
-    }).get();
-
-    // Reset visibility of all elements before applying filters
-    $('.badgegroup span').hide();
-    $('.accordion-content .dods ul').hide();
-    $('.accordion-content .dods ul li').hide();
-    $('.ws10-card').hide();
-
-    if (filters.length > 0) {
-        filters.forEach(filter => {
-            $(`.badgegroup .${filter}_filter`).show();
-            $(`.accordion-content .dods ul[class*="${filter}tasks"]`).each(function() {
-                $(this).show().find('li').show();
+        // Function to adjust the max-height of open accordions
+        function adjustAccordionHeights() {
+            $('.accordion-content.open').each(function() {
+                $(this).css('max-height', this.scrollHeight + 'px');
             });
-        });
+        }
 
-        $('.ws10-card').each(function() {
-            const card = $(this);
-            let showCard = false;
+        // Filter-Logik hinzufügen
+        $('#filter-options input[type="checkbox"]').change(function() {
+            const filters = $('#filter-options input[type="checkbox"]:checked').map(function() {
+                return $(this).data('filter_id');
+            }).get();
 
-            filters.forEach(filter => {
-                if (card.find(`.badgegroup .${filter}_filter`).length > 0 || card.find(`.dods ul[class*="${filter}tasks"]`).length > 0) {
-                    showCard = true;
-                }
-            });
+            // Reset visibility of all elements before applying filters
+            $('.badgegroup span').hide();
+            $('.accordion-content .dods ul').hide();
+            $('.accordion-content .dods ul li').hide();
+            $('.ws10-card').hide();
 
-            if (showCard) {
-                card.show();
+            if (filters.length > 0) {
+                filters.forEach(filter => {
+                    $(`.badgegroup .${filter}_filter`).addClass("filteractive").show();
+                    $(`.accordion-content .dods ul[class*="${filter}tasks"]`).each(function() {
+                        $(this).show().find('li').show();
+                    });
+                });
+
+                $('.ws10-card').each(function() {
+                    const card = $(this);
+                    let showCard = false;
+
+                    filters.forEach(filter => {
+                        if (card.find(`.badgegroup .${filter}_filter`).length > 0 || card.find(`.dods ul[class*="${filter}tasks"]`).length > 0) {
+                            showCard = true;
+                        }
+                    });
+
+                    if (showCard) {
+                        card.show();
+                    }
+                });
+            } else {
+                $('.badgegroup span').show();
+                $('.accordion-content .dods ul').show().find('li').show();
+                $('.ws10-card').show();
             }
+
+            adjustAccordionHeights(); // Adjust heights after filters are applied
         });
-    } else {
-        $('.badgegroup span').show();
-        $('.accordion-content .dods ul').show().find('li').show();
-        $('.ws10-card').show();
-    }
-});
-
-
 
         // Für jede Kategorie HTML erstellen und anhängen
         Object.keys(groupedByCategory).forEach(category => {
@@ -297,11 +304,11 @@ $('#filter-options input[type="checkbox"]').change(function() {
                 }
             });
 
-            $('body').append(container);
+            $('#content-wrapper').append(container);
         });
 
         // Separates div für Zähler hinzufügen
-        $('body').append($('<div>').attr('id', 'counter'));
+        $('#content-wrapper').append($('<div>').attr('id', 'counter'));
         updateCounter();
     });
 });
