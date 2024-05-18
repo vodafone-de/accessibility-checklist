@@ -1,26 +1,47 @@
 $(document).ready(function() {
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    $(function() {
+        if (prefersDark) {
+            $('body').addClass('dark');
+            $('.dark-mode-switcher').text('Dark mode OFF');
+        }
+        $('.dark-mode-switcher').on('click', function(e) {
+            $('body').toggleClass('dark');
 
-const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-$(function() {
-if (prefersDark) {
-  $('body').addClass('dark');
-  $('.dark-mode-switcher').text('Dark mode OFF');
-}
-$('.dark-mode-switcher').on('click', function(e) {
-  $('body').toggleClass('dark');
+            if ($('body').hasClass('dark')) {
+                $('.dark-mode-switcher').text('Dark mode OFF'); 
+            } else {
+                $('.dark-mode-switcher').text('Dark mode ON');
+            }
+            e.preventDefault();
+        });
+    });
 
-if ($('body').hasClass('dark')) {
-    $('.dark-mode-switcher').text('Dark mode OFF'); }
-    else {
-        $('.dark-mode-switcher').text('Dark mode ON');
+    // Funktion zum Aktualisieren des Query-Strings
+    function updateQueryString() {
+        const selectedFilters = $('#filter-options input[type="checkbox"]:checked').map(function() {
+            return $(this).data('filter_id');
+        }).get();
+
+        const queryString = selectedFilters.length > 0 ? `?filters=${selectedFilters.join('%2C')}` : '';
+        history.replaceState(null, '', `${location.pathname}${queryString}`);
     }
-  e.preventDefault();
-});
-}); 
 
+    // Funktion zum Setzen der Filter basierend auf dem Query-String
+    function setFiltersFromQueryString() {
+        const params = new URLSearchParams(window.location.search);
+        const filters = params.get('filters');
 
+        if (filters) {
+            const filterArray = filters.split('%2C');
+            filterArray.forEach(filterId => {
+                $(`#filter-options input[data-filter_id="${filterId}"]`).prop('checked', true);
+            });
+        }
+    }
 
-
+    // Setzen der Filter basierend auf dem Query-String beim Seitenaufruf
+    setFiltersFromQueryString();
 
     // JSON von externer URL laden
     $.getJSON('https://vodafone-de.github.io/accessibility-checklist/data/data.json', function(jsonArray) {
@@ -124,12 +145,13 @@ if ($('body').hasClass('dark')) {
                     }
                 });
             } else {
-                $('.badgegroup span').show();
+                $('.badgegroup span').removeClass("filteractive").show();
                 $('.accordion-content .dods ul').show().find('li').show();
                 $('.ws10-card').show();
             }
 
             adjustAccordionHeights(); // Adjust heights after filters are applied
+            updateQueryString(); // Update the query string whenever a filter is changed
         });
 
         // Für jede Kategorie HTML erstellen und anhängen
@@ -333,5 +355,12 @@ if ($('body').hasClass('dark')) {
         // Separates div für Zähler hinzufügen
         $('#content-wrapper').append($('<div>').attr('id', 'counter'));
         updateCounter();
+
+        // Filter anwenden, falls Query-String Filter enthält
+        $('#filter-options input[type="checkbox"]').change();
     });
+
+    // Apply filters based on URL query string after setting the filters
+    setFiltersFromQueryString();
+    $('#filter-options input[type="checkbox"]').change();
 });
