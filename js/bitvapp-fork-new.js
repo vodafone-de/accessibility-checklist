@@ -27,49 +27,6 @@ $(document).ready(function() {
         history.replaceState(null, '', `${location.pathname}${queryString}`);
     }
 
-    // Funktion zum Anwenden der Filter
-    function applyFilters() {
-        const filters = $('#filter-options input[type="checkbox"]:checked').map(function() {
-            return $(this).data('filter_id');
-        }).get();
-
-        // Reset visibility of all elements before applying filters
-        $('.badgegroup span').hide();
-        $('.accordion-content .dods ul').hide();
-        $('.accordion-content .dods ul li').hide();
-        $('.ws10-card').hide();
-
-        if (filters.length > 0) {
-            filters.forEach(filter => {
-                $(`.badgegroup .${filter}_filter`).addClass("filteractive").show();
-                $(`.accordion-content .dods ul[class*="${filter}tasks"]`).each(function() {
-                    $(this).show().find('li').show();
-                });
-            });
-
-            $('.ws10-card').each(function() {
-                const card = $(this);
-                let showCard = false;
-
-                filters.forEach(filter => {
-                    if (card.find(`.badgegroup .${filter}_filter`).length > 0 || card.find(`.dods ul[class*="${filter}tasks"]`).length > 0) {
-                        showCard = true;
-                    }
-                });
-
-                if (showCard) {
-                    card.show();
-                }
-            });
-        } else {
-            $('.badgegroup span').removeClass("filteractive").show();
-            $('.accordion-content .dods ul').show().find('li').show();
-            $('.ws10-card').show();
-        }
-
-        adjustAccordionHeights(); // Adjust heights after filters are applied
-    }
-
     // Funktion zum Setzen der Filter basierend auf dem Query-String
     function setFiltersFromQueryString() {
         const params = new URLSearchParams(window.location.search);
@@ -80,12 +37,12 @@ $(document).ready(function() {
             filterArray.forEach(filterId => {
                 $(`#filter-options input[data-filter_id="${filterId}"]`).prop('checked', true);
             });
-            applyFilters(); // Anwenden der Filter nach dem Setzen
         }
     }
 
     // Setzen der Filter basierend auf dem Query-String beim Seitenaufruf
     setFiltersFromQueryString();
+    
 
     // JSON von externer URL laden
     $.getJSON('https://vodafone-de.github.io/accessibility-checklist/data/data.json', function(jsonArray) {
@@ -156,7 +113,45 @@ $(document).ready(function() {
 
         // Filter-Logik hinzufügen
         $('#filter-options input[type="checkbox"]').change(function() {
-            applyFilters();
+            const filters = $('#filter-options input[type="checkbox"]:checked').map(function() {
+                return $(this).data('filter_id');
+            }).get();
+
+            // Reset visibility of all elements before applying filters
+            $('.badgegroup span').hide();
+            $('.accordion-content .dods ul').hide();
+            $('.accordion-content .dods ul li').hide();
+            $('.ws10-card').hide();
+
+            if (filters.length > 0) {
+                filters.forEach(filter => {
+                    $(`.badgegroup .${filter}_filter`).addClass("filteractive").show();
+                    $(`.accordion-content .dods ul[class*="${filter}tasks"]`).each(function() {
+                        $(this).show().find('li').show();
+                    });
+                });
+
+                $('.ws10-card').each(function() {
+                    const card = $(this);
+                    let showCard = false;
+
+                    filters.forEach(filter => {
+                        if (card.find(`.badgegroup .${filter}_filter`).length > 0 || card.find(`.dods ul[class*="${filter}tasks"]`).length > 0) {
+                            showCard = true;
+                        }
+                    });
+
+                    if (showCard) {
+                        card.show();
+                    }
+                });
+            } else {
+                $('.badgegroup span').removeClass("filteractive").show();
+                $('.accordion-content .dods ul').show().find('li').show();
+                $('.ws10-card').show();
+            }
+
+            adjustAccordionHeights(); // Adjust heights after filters are applied
             updateQueryString(); // Update the query string whenever a filter is changed
         });
 
@@ -364,6 +359,8 @@ $(document).ready(function() {
 
         // Apply filters based on URL query string after setting the filters
         setFiltersFromQueryString();
-        applyFilters(); // Filter direkt nach dem Setzen der Filter anwenden
     });
+
+    // Apply filters based on URL query string after setting the filters
+    $('#filter-options input[type="checkbox"]').change();
 });
