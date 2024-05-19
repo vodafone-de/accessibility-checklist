@@ -78,6 +78,12 @@ $(document).ready(function() {
         });
     }
 
+    // Function to reset all filters
+    function resetFilters() {
+        $('#filter-options input[type="checkbox"]').prop('checked', false);
+        applyFilters();
+    }
+
     // Initialize filters from the query string
     setFiltersFromQueryString();
 
@@ -114,30 +120,36 @@ $(document).ready(function() {
 
         const filterHtml = `
         <div class="filter">
-        <h3>Filter:</h3>
-        <ul id="filter-options">
-            <li><div class="cat action" tabindex="0">
-                <label><input type="checkbox" value="filter_cm" data-filter_id="cm"><span class="ws10-text">Channel Management</span></label>
-            </div></li>
-            <li><div class="cat action" tabindex="0">
-                <label><input type="checkbox" value="filter_ux" data-filter_id="ux"><span class="ws10-text">User Experience</span></label>
-            </div></li>
-            <li><div class="cat action" tabindex="0">
-                <label><input type="checkbox" value="filter_dev" data-filter_id="dev"><span class="ws10-text">Frontend Development</span></label>
-            </div></li>
-            <li><div class="cat action" tabindex="0">
-                <label><input type="checkbox" value="filter_edt" data-filter_id="edt"><span class="ws10-text">Editorial</span></label>
-            </div></li>
-            <li><div class="cat action" tabindex="0">
-                <label><input type="checkbox" value="filter_testing" data-filter_id="testing"><span class="ws10-text">Testing</span></label>
-            </div></li>
-        </ul>
-        <div style="clear:both"></div>
-    </div>`;
+            <h3>Filter:</h3>
+            <ul id="filter-options">
+                <li><div class="cat action" tabindex="0">
+                    <label><input type="checkbox" value="filter_cm" data-filter_id="cm"><span class="ws10-text">Channel Management</span></label>
+                </div></li>
+                <li><div class="cat action" tabindex="0">
+                    <label><input type="checkbox" value="filter_ux" data-filter_id="ux"><span class="ws10-text">User Experience</span></label>
+                </div></li>
+                <li><div class="cat action" tabindex="0">
+                    <label><input type="checkbox" value="filter_dev" data-filter_id="dev"><span class="ws10-text">Frontend Development</span></label>
+                </div></li>
+                <li><div class="cat action" tabindex="0">
+                    <label><input type="checkbox" value="filter_edt" data-filter_id="edt"><span class="ws10-text">Editorial</span></label>
+                </div></li>
+                <li><div class="cat action" tabindex="0">
+                    <label><input type="checkbox" value="filter_testing" data-filter_id="testing"><span class="ws10-text">Testing</span></label>
+                </div></li>
+            </ul>
+            <button class="ws10-alt-button" id="reset-filters">Filter zurücksetzen</button>
+            <div style="clear:both"></div>
+        </div>`;
+        
         $('#content-wrapper').prepend(filterHtml);
 
         $('#filter-options input[type="checkbox"]').change(function() {
             applyFilters();
+        });
+
+        $('#reset-filters').click(function() {
+            resetFilters();
         });
 
         Object.keys(groupedByCategory).forEach(category => {
