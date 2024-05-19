@@ -46,6 +46,14 @@ $(document).ready(function() {
                 $(`.accordion-content .dods ul[class*="${filter}tasks"]`).each(function() {
                     $(this).show().find('li').show();
                 });
+
+                // Open the accordions that contain the filtered items
+                $(`.accordion-content:has(.dods ul[class*="${filter}tasks"])`).each(function() {
+                    const accordionContent = $(this);
+                    const accordionHeader = accordionContent.prev('.accordion-header');
+                    accordionContent.addClass('open').css('max-height', accordionContent[0].scrollHeight + 'px');
+                    accordionHeader.find('.ws10-accordion-item__chevron').addClass('rotate');
+                });
             });
 
             $('.ws10-card').each(function() {
@@ -66,6 +74,9 @@ $(document).ready(function() {
             $('.badgegroup span').removeClass("filteractive").show();
             $('.accordion-content .dods ul').show().find('li').show();
             $('.ws10-card').show();
+            // Close all accordions when no filters are applied
+            $('.accordion-content').removeClass('open').css('max-height', '0');
+            $('.accordion-header .ws10-accordion-item__chevron').removeClass('rotate');
         }
 
         adjustAccordionHeights();
