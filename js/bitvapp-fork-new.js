@@ -138,7 +138,7 @@ $(document).ready(function() {
                     <label><input type="checkbox" value="filter_testing" data-filter_id="testing"><span class="ws10-text">Testing</span></label>
                 </div></li>
             </ul>
-            <button class="ws10-alt-button" id="reset-filters">Filter zurücksetzen</button>
+            <button class="ws10-secondary-button" id="reset-filters">Filter zurücksetzen</button>
             <div style="clear:both"></div>
         </div>`;
         

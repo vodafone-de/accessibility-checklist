@@ -234,6 +234,45 @@ h1, .ws10-h1 {
     box-shadow: 0 0 0 1px #fff, 0 0 0 3px #005fcc, 0 0 0 4px #fff;
     }
 
+
+    .ws10-secondary-button {
+        font-family:Vodafone; font-style:normal;font-weight:100;
+        font-size: 18px;
+          display: inline-flex;
+          -webkit-box-align: center;
+          align-items: center;
+          -webkit-box-pack: center;
+          justify-content: center;
+          box-sizing: border-box;
+          text-align: center;
+          position: relative;
+          transition: all 0.4s ease 0s;
+          line-height: 12px;
+          height: 44px;
+          font-weight: 400;
+          color: #ffffff;
+          background: #0d0d0d;
+          border-radius: 6px;
+          padding: 12px 20px;
+          border: 2px solid rgb(13, 13, 13);
+          }
+          
+          .ws10-secondary-button:hover {
+          transition: all 0.4s ease 0s;
+          color: #ffffff;
+          background: #313131;
+          border: 2px solid rgb(13, 13, 13);
+          }
+          
+          .ws10-secondary-button:focus {
+          transition: all 0.4s ease 0s;
+          color: #ffffff;
+          background: #313131;
+          border: 2px solid rgb(13, 13, 13);
+          box-shadow: 0 0 0 1px #fff, 0 0 0 3px #005fcc, 0 0 0 4px #fff;
+          }
+
+
 /* Global Navigation */
 
 .brix-gn {
@@ -1129,6 +1168,8 @@ color:#e60000;
   border: 2px solid rgb(13, 13, 13);
   margin-right: 70px;
 }
+
+
 
 
   .grid-container {
