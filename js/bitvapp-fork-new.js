@@ -297,7 +297,9 @@ $(document).ready(function() {
     
                                     if (isChecked) {
                                         fieldset.prop('disabled', false);
-                                        fieldsetCount++;
+                                        if (!fieldset.data('isChecked')) {
+                                            fieldsetCount++;
+                                        }
                                         if (selectedRadio) {
                                             selectedRadioCount++;
                                             if (selectedRadio === 'pass') {
@@ -308,7 +310,9 @@ $(document).ready(function() {
                                         }
                                     } else {
                                         fieldset.prop('disabled', true);
-                                        fieldsetCount = Math.max(fieldsetCount - 1, 0);
+                                        if (!fieldset.data('isChecked')) {
+                                            fieldsetCount = Math.max(fieldsetCount - 1, 0);
+                                        }
                                         if (selectedRadio) {
                                             selectedRadioCount--;
                                             if (selectedRadio === 'pass') {
@@ -359,6 +363,5 @@ $(document).ready(function() {
             applyFilters();
         });
 
-    
     
 });
