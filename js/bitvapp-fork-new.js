@@ -140,7 +140,7 @@ $(document).ready(function() {
     
             const filterHtml = `
             <div class="filter">
-                <h3>Filter:</h3>
+                <h4>Filter:</h4>
                 <ul id="filter-options">
                     <li><div class="cat action" tabindex="0">
                         <label><input type="checkbox" value="filter_cm" data-filter_id="cm"><span class="ws10-text">Channel Management</span></label>
@@ -176,9 +176,9 @@ $(document).ready(function() {
                 const container = $('<div>').addClass('ws10-card');
     
                 const accordionHeader = $('<div>').addClass('accordion-header');
-                const accordionTitle = $('<h3>').text(category).addClass('accordion-title');
+                const accordionTitle = $('<h4>').text(category).addClass('accordion-title');
     
-                const accordionToggle = $('<div>').addClass('accordion-toggle');
+                const accordionToggle = $('<div aria-hidden="true">').addClass('accordion-toggle');
                 const svg = $('<svg class="ws10-accordion-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"></polyline></svg>');
                 accordionToggle.append(svg);
     
@@ -188,13 +188,14 @@ $(document).ready(function() {
                 const accordionContent = $('<div>').addClass('accordion-content').css('max-height', '0');
                 groupedByCategory[category].forEach(item => {
                     const innerDiv = $('<div>').attr('id', item.id);
-                    innerDiv.append(`<span>${item.bitv}</span>`);
-                    innerDiv.append(`<h4>${item.title}</h4>`);
+                    innerDiv.append(`<span class="bitvnr">${item.bitv}</span>`);
+                    innerDiv.append(`<h5>${item.title}</h5>`);
     
                     const badgeGroup = $('<div>').addClass('badgegroup');
                     if (item.dods) {
                         const dodsKeys = Object.keys(item.dods);
                         const uniqueRoles = new Set(dodsKeys.map(key => key.replace('tasks', '')));
+                        badgeGroup.append(`<span class="roles">Roles:</span>`);
                         uniqueRoles.forEach(role => {
                             badgeGroup.append(`<span class="${role}_filter">${role}</span>`);
                         });
@@ -207,8 +208,8 @@ $(document).ready(function() {
                             const ul = $('<ul>').addClass(taskType + 'tasks');
                             item.dods[taskType].forEach(task => {
                                 const li = $('<li>').attr('id', task.taskid);
-                                li.append($('<h5>').addClass('taskdesc').text(task.taskdesc));
-                                li.append($('<span>').addClass('tasktype').text(task.tasktype));
+                                li.append($('<div>').addClass('taskdesc').text(task.taskdesc));
+                                li.append($('<div>').addClass('tasktype').text(task.tasktype));
                                 const taskCatDiv = $('<div>').addClass('taskcat');
                                 task.taskcat.forEach(cat => {
                                     taskCatDiv.append($('<span>').text(cat));

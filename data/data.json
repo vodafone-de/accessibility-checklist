@@ -8,6 +8,7 @@
         "roles": ["ux", "dev", "edt", "testing"],
         "dods": {
           "uxtasks": [
+            {"roletitle": "User Experience"},
             {"taskid": "01-01-ux-01",
             "taskdesc" : "UX Task 1",
             "tasktype": "pattern",
@@ -28,6 +29,7 @@
             "testmethod": "Test it like it's hot"}
           ],
           "devtasks": [
+            {"roletitle": "Frontend Development"},
             {"taskid": "01-01-dev-01",
             "taskdesc" : "Dev Lorem ipsum task 1",
             "tasktype": "pattern",
@@ -36,6 +38,7 @@
             "testmethod": "Test it like it's hot"}
           ],
           "edttasks": [
+            {"roletitle": "Editorial"},
             {"taskid": "01-01-edt-01",
             "taskdesc" : "Editorial lorem ipsum task 1",
             "tasktype": "page",
@@ -44,6 +47,7 @@
             "testmethod": "Test it like it's hot"}
           ],
           "testingtasks": [
+            {"roletitle": "Testing"},
             {"taskid": "01-01-test-01",
             "taskdesc" : "Testing Lorem ipsum task 1",
             "tasktype": "pattern",
@@ -61,6 +65,7 @@
         "roles": ["ux", "dev"],
         "dods": {
           "uxtasks": [
+            {"roletitle": "User Experience"},
             {"taskid": "01-02-ux-01",
             "taskdesc" : "UX Lorem ipsum task 1",
             "tasktype": "pattern",
@@ -75,6 +80,7 @@
             "testmethod": "Test it like it's hot"}
           ],
           "devtasks": [
+            {"roletitle": "Frontend Development"},
             {"taskid": "01-02-dev-01",
             "taskdesc" : "Dev Lorem ipsum task 1",
             "tasktype": "pattern",
@@ -83,6 +89,7 @@
             "testmethod": "Test it like it's hot"}
           ],
           "edttasks": [
+            {"roletitle": "Editorial"},
             {"taskid": "01-02-edt-01",
             "taskdesc" : "Editorial lorem ipsum task 1",
             "tasktype": "page",
@@ -108,6 +115,7 @@
         "roles": ["ux", "dev", "edt", "testing"],
         "dods": {
           "uxtasks": [
+            {"roletitle": "User Experience"},
             {"taskid": "03-01-ux-01",
             "taskdesc" : "UX ist toll",
             "tasktype": "pattern",
@@ -128,6 +136,7 @@
             "testmethod": "Test it like it's hot"}
           ],
           "cmtasks": [
+            {"roletitle": "Channel Management"},
             {"taskid": "03-01-cm-01",
             "taskdesc" : "Channel Management task 1",
             "tasktype": "page",
@@ -136,6 +145,7 @@
             "testmethod": "Test it like it's hot"}
           ],
           "testingtasks": [
+            {"roletitle": "Testing"},
             {"taskid": "03-01-test-01",
             "taskdesc" : "Testing Lorem ipsum task 1",
             "tasktype": "pattern",

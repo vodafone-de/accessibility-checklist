@@ -1,3 +1,138 @@
+:root {
+  --ws10-color-primary-100: #e60000;
+  --ws10-color-primary-200: #bd0000;
+  --ws10-color-primary-300: #820000;
+  --ws10-color-secondary-100: #00697c;
+  --ws10-color-secondary-200: #5e2750;
+  --ws10-color-secondary-300: #eb7800;
+  --ws10-color-secondary-400: #fecb00;
+  --ws10-color-secondary-500: #008a00;
+  --ws10-color-secondary-600: #005ea5;
+  --ws10-color-monochrome-100: #fff;
+  --ws10-color-monochrome-200: #f2f2f2;
+  --ws10-color-monochrome-300: #bebebe;
+  --ws10-color-monochrome-400: #7e7e7e;
+  --ws10-color-monochrome-500: #262626;
+  --ws10-color-monochrome-600: #0d0d0d;
+  --ws10-color-gradient-100: linear-gradient(45deg, #820000 0%, #e60000 100%);
+  --ws10-color-gradient-200: linear-gradient(45deg, #f2f2f2 0%, #fafafa 100%);
+  --ws10-color-gradient-300: linear-gradient(45deg, #222 0%, #25282b 100%);
+    --ws10-color-primary-inverse-100: #ea1a1a;
+    --ws10-color-primary-inverse-200: #f06666;
+    --ws10-color-primary-inverse-300: #8a0f0f;
+    --ws10-color-secondary-inverse-100: #0096ad;
+    --ws10-color-secondary-inverse-200: #b04a98;
+    --ws10-color-secondary-inverse-300: #eb9700;
+    --ws10-color-secondary-inverse-400: #fecb00;
+    --ws10-color-secondary-inverse-500: #b7bf10;
+    --ws10-color-secondary-inverse-600: #5f9bc8;
+    --ws10-color-monochrome-inverse-100: #0d0d0d;
+    --ws10-color-monochrome-inverse-200: #262626;
+    --ws10-color-monochrome-inverse-300: #7e7e7e;
+    --ws10-color-monochrome-inverse-400: #bebebe;
+    --ws10-color-monochrome-inverse-500: #f2f2f2;
+    --ws10-color-monochrome-inverse-600: #fff;
+    --ws10-color-gradient-inverse-100: linear-gradient(45deg, #820000 0%, #e60000 100%);
+    --ws10-color-gradient-inverse-200: linear-gradient(45deg, #222 0%, #25282b 100%);
+    --ws10-color-gradient-inverse-300: linear-gradient(45deg, #f2f2f2 0%, #fafafa 100%);
+    --ws10-size-icon-100: 16px;
+    --ws10-size-icon-125: 20px;
+    --ws10-size-icon-150: 24px;
+    --ws10-size-icon-200: 32px;
+    --ws10-size-icon-225: 36px;
+    --ws10-size-icon-250: 40px;
+    --ws10-size-icon-275: 44px;
+    --ws10-size-icon-300: 48px;
+    --ws10-size-icon-350: 56px;
+    --ws10-size-icon-400: 64px;
+    --ws10-size-icon-450: 72px;
+    --ws10-size-icon-525: 84px;
+    --ws10-size-icon-600: 96px;
+    --ws10-size-icon-750: 120px;
+    --ws10-size-icon-1200: 192px;
+    --ws10-size-button-small: 32px;
+    --ws10-size-button-medium: 44px;
+    --ws10-size-button-large: 48px;
+    --ws10-size-button-x-large: 56px;
+    --ws10-space-0: 0px;
+    --ws10-space-15: 2px;
+    --ws10-space-25: 4px;
+    --ws10-space-50: 8px;
+    --ws10-space-75: 12px;
+    --ws10-space-100: 16px;
+    --ws10-space-125: 20px;
+    --ws10-space-150: 24px;
+    --ws10-space-200: 32px;
+    --ws10-space-300: 48px;
+    --ws10-space-400: 64px;
+    --ws10-space-450: 72px;
+    --ws10-space-500: 80px;
+    --ws10-breakpoint-x-small: 320px;
+    --ws10-breakpoint-small: 600px;
+    --ws10-breakpoint-medium: 768px;
+    --ws10-breakpoint-large: 1024px;
+    --ws10-breakpoint-x-large: 1280px;
+    --ws10-font-size-50: 14px;
+    --ws10-font-size-100: 16px;
+    --ws10-font-size-150: 18px;
+    --ws10-font-size-200: 20px;
+    --ws10-font-size-300: 24px;
+    --ws10-font-size-400: 30px;
+    --ws10-font-size-500: 34px;
+    --ws10-font-size-700: 48px;
+    --ws10-font-size-750: 56px;
+    --ws10-font-size-900: 80px;
+    --ws10-font-size-1000: 140px;
+    --ws10-line-height-25: 1.125;
+    --ws10-line-height-50: 1.25;
+    --ws10-line-height-100: 1.5;
+    --ws10-line-height-reset: 1;
+    --ws10-line-height-fix-150: 24px;
+    --ws10-line-height-fix-200: 32px;
+    --ws10-font-weight-light: 100;
+    --ws10-font-weight-normal: 400;
+    --ws10-font-weight-bold: 700;
+    --ws10-text-decoration-underline: underline;
+    --ws10-text-decoration-strike-through: line-through;
+    --ws10-text-decoration-none: none;
+    --ws10-opacity-10: 0.1;
+    --ws10-opacity-20: 0.2;
+    --ws10-opacity-60: 0.6;
+    --ws10-border-style-dashed: dashed;
+    --ws10-border-style-solid: solid;
+    --ws10-border-width-none: 0;
+    --ws10-border-width-small: 1px;
+    --ws10-border-width-medium: 2px;
+    --ws10-border-width-large: 3px;
+    --ws10-border-width-x-large: 5px;
+    --ws10-border-width-xx-large: 10px;
+    --ws10-border-radius-small: 3px;
+    --ws10-border-radius-medium: 6px;
+    --ws10-border-radius-large: 10px;
+    --ws10-border-radius-pill: 100px;
+    --ws10-border-radius-half: 50%;
+    --ws10-shadow-x-small: 0 1px 3px rgba(0, 0, 0, 0.6);
+    --ws10-shadow-small: 0 1px 4px rgba(0, 0, 0, 0.2);
+    --ws10-shadow-medium: 0 2px 8px rgba(0, 0, 0, 0.2);
+    --ws10-shadow-large: 0 4px 10px rgba(0, 0, 0, 0.2);
+    --ws10-duration-0: 0s;
+    --ws10-duration-50: 0.05s;
+    --ws10-duration-100: 0.1s;
+    --ws10-duration-200: 0.2s;
+    --ws10-duration-500: 0.5s;
+    --ws10-duration-800: 0.8s;
+    --ws10-duration-1000: 1s;
+    --ws10-easing-sine: cubic-bezier(0.47, 0, 0.745, 0.715);
+    --ws10-easing-out-back: cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --ws10-easing-out-circ: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    --ws10-easing-out-sine: cubic-bezier(0.445, 0.05, 0.55, 0.95);
+
+}
+
+
+
+
+
 body {
   margin:0;
   background-color: #f4f4f4;
@@ -138,11 +273,14 @@ svg {
     margin-left: 8px; 
 }
 
+
+
+
 h1, .ws10-h1 {
-  font-weight: 100;
-  line-height: 1.25;
-  color: #0d0d0d;
-  font-size: 48px;
+  font-weight: var(--ws10-font-weight-light);
+  line-height: var(--ws10-line-height-50);
+  color: var(--ws10-color-monochrome-600);
+  font-size: var(--ws10-font-size-700);
   margin-block-start: 0px;
   margin-block-end: 0px;
   margin-inline-start: 0px;
@@ -151,31 +289,49 @@ h1, .ws10-h1 {
   }
   
   
+ 
   h2, .ws10-h2 {
-  margin-block-start: 0px;
-  margin-block-end: 0px;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  }
-  
-  
-  h2, .ws10-h2 {
-  font-size: 34px;
-  font-weight: 100;
-  line-height: 1.25;
-  color: #0d0d0d;
+    font-weight: var(--ws10-font-weight-light);
+    line-height: var(--ws10-line-height-50);
+    color: var(--ws10-color-monochrome-600);
+    font-size: var(--ws10-font-size-500);
   margin-bottom: 20px;
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
   }
   
   
   h3, .ws10-h3 {
-  font-weight: 700;
-  line-height: 1.25;
-  color: #0d0d0d;
-  font-size: 30px;
-  margin-bottom: 16px;
-  margin-top: 16px;
+    font-weight: var(--ws10-font-weight-bold);
+    line-height: var(--ws10-line-height-50);
+    color: var(--ws10-color-monochrome-600);
+    font-size: var(--ws10-font-size-400);
+  margin-bottom: 0px;
+  margin-top: 0px;
   }
+
+
+  h4, .ws10-h4 {
+    font-weight: var(--ws10-font-weight-bold);
+    line-height: var(--ws10-line-height-50);
+    color: var(--ws10-color-monochrome-600);
+    font-size: var(--ws10-font-size-300);
+  margin-bottom: 0px;
+  margin-top: 0px;
+  }
+
+  h5, .ws10-h5 {
+    font-weight: var(--ws10-font-weight-bold);
+    line-height: var(--ws10-line-height-50);
+    color: var(--ws10-color-monochrome-600);
+    font-size: var(--ws10-font-size-200);
+  margin-bottom: 0px;
+  margin-top: 0px;
+  }
+
+
 
   a {
     color: #0d0d0d;
@@ -622,29 +778,33 @@ font-size:12px;
 
 }
 
-.status-options > legend {
 
-
+.badgegroup span {
+  
+  background-color: #f4f4f4;
+  margin-right: 8px;
+  padding: 4px 8px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: bold;
 
 }
-
-
-.badgegroup span {background-color: #f4f4f4; margin-right: 8px; padding: 4px 8px; border-radius: 100px; }
 
 .ws10-card {
   
   box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
-    padding: 24px 24px 32px 24px;
+    padding: 20px;
     margin-bottom: 32px;
     border-radius: 6px;
     background-color: #fff;
 }
 
+.taskdesc {
+  font-size: 18px;
+  margin: 0px 0px 16px 0;
+  font-weight: normal;
 
-.taskcat span {
-  
-  background-color: #f4f4f4; 
-  margin-right: 8px; padding: 4px 8px; border-radius: 100px; 
+
 }
 
 
@@ -764,6 +924,8 @@ font-size:12px;
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
+    border-bottom: 1px solid #bebebe;
+    padding-bottom: 8px;
 }
 
 .accordion-content {
@@ -998,8 +1160,6 @@ display:none;
     line-height: 1.25;
     color: #0d0d0d;
     font-size: 30px;
-    margin-bottom: 16px;
-    margin-top: 16px;
     }
     
 
@@ -1188,7 +1348,11 @@ color:#e60000;
   margin-right: 70px;
 }
 
-
+.roles {
+  background-color: #fff;
+  font-weight: normal;
+  padding: 0;
+  font-size: 14px;}
 
 
   .grid-container {
