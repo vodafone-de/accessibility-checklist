@@ -205,133 +205,150 @@ $(document).ready(function() {
                     if (item.dods) {
                         const dodsDiv = $('<div>').addClass('dods');
                         Object.keys(item.dods).forEach(taskType => {
+                            const tasks = item.dods[taskType];
+        
+                            // Find the roletitle for the current task type
+                            let roletitle = '';
+                            if (tasks.length > 0 && tasks[0].roletitle) {
+                                roletitle = tasks[0].roletitle;
+                            }
+        
+                            // Create a div for the roletitle and append it to dodsDiv
+                            if (roletitle) {
+                                const roletitleDiv = $('<div>').addClass('roletitle').text(roletitle);
+                                dodsDiv.append(roletitleDiv);
+                            }
+        
                             const ul = $('<ul>').addClass(taskType + 'tasks');
-                            item.dods[taskType].forEach(task => {
-                                const li = $('<li>').attr('id', task.taskid);
-                                li.append($('<div>').addClass('taskdesc').text(task.taskdesc));
-                                li.append($('<div>').addClass('tasktype').text(task.tasktype));
-                                const taskCatDiv = $('<div>').addClass('taskcat');
-                                task.taskcat.forEach(cat => {
-                                    taskCatDiv.append($('<span>').text(cat));
-                                });
-                                li.append(taskCatDiv);
-                                li.append($('<div>').addClass('testtool').text(task.testtool));
-                                li.append($('<div>').addClass('testmethod').text(task.testmethod));
-                                const fieldset = $('<fieldset>').addClass('status-options');
-                                const radioLegend = $('<legend>').text('compliance');
-                                const passRadio = $('<input>').attr({ type: 'radio', name: 'status_' + task.taskid, id: 'pass_' + task.taskid, value: 'pass' });
-                                const passLabel = $('<label>').attr('for', 'pass_' + task.taskid).text('pass');
-                                const failRadio = $('<input>').attr({ type: 'radio', name: 'status_' + task.taskid, id: 'fail_' + task.taskid, value: 'fail' });
-                                const failLabel = $('<label>').attr('for', 'fail_' + task.taskid).text('fail');
-    
-                                passRadio.on('change', function() {
-                                    const fieldset = $(this).closest('fieldset');
-                                    const previousValue = fieldset.data('previousValue');
-                                    if (!fieldset.data('isChecked')) {
-                                        selectedRadioCount++;
-                                        fieldsetCount = Math.max(fieldsetCount - 1, 0);
-                                        fieldset.data('isChecked', true);
-                                    }
-                                    if (previousValue === 'fail') {
-                                        failCount--;
-                                        passCount++;
-                                    } else if (previousValue !== 'pass') {
-                                        passCount++;
-                                    }
-                                    fieldset.data('previousValue', 'pass');
-                                    updateCounter();
-                                });
-    
-                                failRadio.on('change', function() {
-                                    const fieldset = $(this).closest('fieldset');
-                                    const previousValue = fieldset.data('previousValue');
-                                    if (!fieldset.data('isChecked')) {
-                                        selectedRadioCount++;
-                                        fieldsetCount = Math.max(fieldsetCount - 1, 0);
-                                        fieldset.data('isChecked', true);
-                                    }
-                                    if (previousValue === 'pass') {
-                                        passCount--;
-                                        failCount++;
-                                    } else if (previousValue !== 'fail') {
-                                        failCount++;
-                                    }
-                                    fieldset.data('previousValue', 'fail');
-                                    updateCounter();
-                                });
-    
-                                const resetButton = $('<button>').addClass('reset-button');
-                                const resetSvg = $('<svg>').html('<svg xmlns="http://www.w3.org/2000/svg"><image href="img/refresh-system.svg" /></svg>').addClass('reset-button-icon');
-                                resetButton.append(resetSvg);
-                                resetButton.on('click', function() {
-                                    if (passRadio.is(':checked') || failRadio.is(':checked')) {
-                                        if (passRadio.is(':checked')) {
-                                            passCount--;
-                                        } else {
-                                            failCount--;
-                                        }
-                                        selectedRadioCount--;
-                                        fieldsetCount++;
-                                        passRadio.prop('checked', false);
-                                        failRadio.prop('checked', false);
-                                        fieldset.data('isChecked', false);
-                                        fieldset.data('previousValue', null);
-                                        updateCounter();
-                                    }
-                                });
-    
-                                fieldset.append(radioLegend, passRadio, passLabel, failRadio, failLabel, resetButton);
-                                li.append(fieldset);
-    
-                                const applicableCheckbox = $('<input>').attr({ type: 'checkbox', id: 'applicable_' + task.taskid, name: 'applicable_' + task.taskid, checked: true });
-                                const applicableLabel = $('<label>').attr('for', 'applicable_' + task.taskid).text('applicable');
-    
-                                const switchWrapper = $('<div>').addClass('switch');
-                                const slider = $('<span>').addClass('slider');
-                                switchWrapper.append(applicableCheckbox, slider);
-                                li.append(switchWrapper, applicableLabel);
-    
-                                applicableCheckbox.on('change', function() {
-                                    const isChecked = $(this).is(':checked');
-                                    const fieldset = $(this).closest('li').find('fieldset');
-                                    const selectedRadio = fieldset.find('input[type="radio"]:checked').val();
-    
-                                    if (isChecked) {
-                                        fieldset.prop('disabled', false);
+                            tasks.forEach(task => {
+                                // Skip the roletitle object
+                                if (task.taskid) {
+                                    const li = $('<li>').attr('id', task.taskid);
+                                    li.append($('<div>').addClass('taskdesc').text(task.taskdesc));
+                                    li.append($('<div>').addClass('tasktype').text(task.tasktype));
+                                    const taskCatDiv = $('<div>').addClass('taskcat');
+                                    task.taskcat.forEach(cat => {
+                                        taskCatDiv.append($('<span>').text(cat));
+                                    });
+                                    li.append(taskCatDiv);
+                                    li.append($('<div>').addClass('testtool').text(task.testtool));
+                                    li.append($('<div>').addClass('testmethod').text(task.testmethod));
+                                    const fieldset = $('<fieldset>').addClass('status-options');
+                                    const radioLegend = $('<legend>').text('compliance');
+                                    const passRadio = $('<input>').attr({ type: 'radio', name: 'status_' + task.taskid, id: 'pass_' + task.taskid, value: 'pass' });
+                                    const passLabel = $('<label>').attr('for', 'pass_' + task.taskid).text('pass');
+                                    const failRadio = $('<input>').attr({ type: 'radio', name: 'status_' + task.taskid, id: 'fail_' + task.taskid, value: 'fail' });
+                                    const failLabel = $('<label>').attr('for', 'fail_' + task.taskid).text('fail');
+        
+                                    passRadio.on('change', function() {
+                                        const fieldset = $(this).closest('fieldset');
+                                        const previousValue = fieldset.data('previousValue');
                                         if (!fieldset.data('isChecked')) {
-                                            fieldsetCount++;
-                                        }
-                                        if (selectedRadio) {
                                             selectedRadioCount++;
-                                            if (selectedRadio === 'pass') {
-                                                passCount++;
-                                            } else if (selectedRadio === 'fail') {
-                                                failCount++;
-                                            }
-                                        }
-                                    } else {
-                                        fieldset.prop('disabled', true);
-                                        if (!fieldset.data('isChecked')) {
                                             fieldsetCount = Math.max(fieldsetCount - 1, 0);
+                                            fieldset.data('isChecked', true);
                                         }
-                                        if (selectedRadio) {
-                                            selectedRadioCount--;
-                                            if (selectedRadio === 'pass') {
+                                        if (previousValue === 'fail') {
+                                            failCount--;
+                                            passCount++;
+                                        } else if (previousValue !== 'pass') {
+                                            passCount++;
+                                        }
+                                        fieldset.data('previousValue', 'pass');
+                                        updateCounter();
+                                    });
+        
+                                    failRadio.on('change', function() {
+                                        const fieldset = $(this).closest('fieldset');
+                                        const previousValue = fieldset.data('previousValue');
+                                        if (!fieldset.data('isChecked')) {
+                                            selectedRadioCount++;
+                                            fieldsetCount = Math.max(fieldsetCount - 1, 0);
+                                            fieldset.data('isChecked', true);
+                                        }
+                                        if (previousValue === 'pass') {
+                                            passCount--;
+                                            failCount++;
+                                        } else if (previousValue !== 'fail') {
+                                            failCount++;
+                                        }
+                                        fieldset.data('previousValue', 'fail');
+                                        updateCounter();
+                                    });
+        
+                                    const resetButton = $('<button>').addClass('reset-button');
+                                    const resetSvg = $('<svg>').html('<svg xmlns="http://www.w3.org/2000/svg"><image href="img/refresh-system.svg" /></svg>').addClass('reset-button-icon');
+                                    resetButton.append(resetSvg);
+                                    resetButton.on('click', function() {
+                                        if (passRadio.is(':checked') || failRadio.is(':checked')) {
+                                            if (passRadio.is(':checked')) {
                                                 passCount--;
-                                            } else if (selectedRadio === 'fail') {
+                                            } else {
                                                 failCount--;
                                             }
+                                            selectedRadioCount--;
+                                            fieldsetCount++;
+                                            passRadio.prop('checked', false);
+                                            failRadio.prop('checked', false);
+                                            fieldset.data('isChecked', false);
+                                            fieldset.data('previousValue', null);
+                                            updateCounter();
                                         }
-                                    }
-                                    updateCounter();
-                                });
-    
-                                switchWrapper.on('click', function() {
-                                    applicableCheckbox.prop('checked', !applicableCheckbox.prop('checked')).trigger('change');
-                                });
-    
-                                ul.append(li);
-                                fieldsetCount++;
+                                    });
+        
+                                    fieldset.append(radioLegend, passRadio, passLabel, failRadio, failLabel, resetButton);
+                                    li.append(fieldset);
+        
+                                    const applicableCheckbox = $('<input>').attr({ type: 'checkbox', id: 'applicable_' + task.taskid, name: 'applicable_' + task.taskid, checked: true });
+                                    const applicableLabel = $('<label>').attr('for', 'applicable_' + task.taskid).text('applicable');
+        
+                                    const switchWrapper = $('<div>').addClass('switch');
+                                    const slider = $('<span>').addClass('slider');
+                                    switchWrapper.append(applicableCheckbox, slider);
+                                    li.append(switchWrapper, applicableLabel);
+        
+                                    applicableCheckbox.on('change', function() {
+                                        const isChecked = $(this).is(':checked');
+                                        const fieldset = $(this).closest('li').find('fieldset');
+                                        const selectedRadio = fieldset.find('input[type="radio"]:checked').val();
+        
+                                        if (isChecked) {
+                                            fieldset.prop('disabled', false);
+                                            if (!fieldset.data('isChecked')) {
+                                                fieldsetCount++;
+                                            }
+                                            if (selectedRadio) {
+                                                selectedRadioCount++;
+                                                if (selectedRadio === 'pass') {
+                                                    passCount++;
+                                                } else if (selectedRadio === 'fail') {
+                                                    failCount++;
+                                                }
+                                            }
+                                        } else {
+                                            fieldset.prop('disabled', true);
+                                            if (!fieldset.data('isChecked')) {
+                                                fieldsetCount = Math.max(fieldsetCount - 1, 0);
+                                            }
+                                            if (selectedRadio) {
+                                                selectedRadioCount--;
+                                                if (selectedRadio === 'pass') {
+                                                    passCount--;
+                                                } else if (selectedRadio === 'fail') {
+                                                    failCount--;
+                                                }
+                                            }
+                                        }
+                                        updateCounter();
+                                    });
+        
+                                    switchWrapper.on('click', function() {
+                                        applicableCheckbox.prop('checked', !applicableCheckbox.prop('checked')).trigger('change');
+                                    });
+        
+                                    ul.append(li);
+                                    fieldsetCount++;
+                                }
                             });
                             dodsDiv.append(ul);
                         });
