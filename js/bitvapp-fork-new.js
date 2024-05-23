@@ -63,19 +63,21 @@ $(document).ready(function() {
             const filters = $('#filter-options input[type="checkbox"]:checked').map(function() {
                 return $(this).data('filter_id');
             }).get();
-    
+        
             $('.badgegroup span').hide();
             $('.accordion-content .dods ul').hide();
             $('.accordion-content .dods ul li').hide();
             $('.ws10-card').hide();
-    
+            $('div.roletitle').hide();  // Hier wird das div.roletitle versteckt
+            $('div.roletitle + ul').hide();  // Hier wird das ul unterhalb von div.roletitle versteckt
+        
             if (filters.length > 0) {
                 filters.forEach(filter => {
                     $(`.badgegroup .${filter}_filter`).addClass("filteractive").show();
                     $(`.accordion-content .dods ul[class*="${filter}tasks"]`).each(function() {
                         $(this).show().find('li').show();
                     });
-    
+        
                     // Open the accordions that contain the filtered items
                     $(`.accordion-content:has(.dods ul[class*="${filter}tasks"])`).each(function() {
                         const accordionContent = $(this);
@@ -83,18 +85,24 @@ $(document).ready(function() {
                         accordionContent.addClass('open').css('max-height', accordionContent[0].scrollHeight + 'px');
                         accordionHeader.find('.ws10-accordion-item__chevron').addClass('rotate');
                     });
+        
+                    // Show the ul under div.roletitle if it contains filtered items
+                    $(`div.roletitle + ul[class*="${filter}tasks"]`).each(function() {
+                        $(this).show();
+                        $(this).prev('div.roletitle').show();  // Hier wird das div.roletitle angezeigt, wenn das ul gezeigt wird
+                    });
                 });
-    
+        
                 $('.ws10-card').each(function() {
                     const card = $(this);
                     let showCard = false;
-    
+        
                     filters.forEach(filter => {
                         if (card.find(`.badgegroup .${filter}_filter`).length > 0 || card.find(`.dods ul[class*="${filter}tasks"]`).length > 0) {
                             showCard = true;
                         }
                     });
-    
+        
                     if (showCard) {
                         card.show();
                     }
@@ -103,15 +111,18 @@ $(document).ready(function() {
                 $('.badgegroup span').removeClass("filteractive").show();
                 $('.accordion-content .dods ul').show().find('li').show();
                 $('.ws10-card').show();
+                $('div.roletitle').show();  // Hier wird das div.roletitle angezeigt
+                $('div.roletitle + ul').show();  // Hier wird das ul unterhalb von div.roletitle angezeigt
                 // Close all accordions when no filters are applied
                 $('.accordion-content').removeClass('open').css('max-height', '0');
                 $('.accordion-header .ws10-accordion-item__chevron').removeClass('rotate');
             }
-    
+        
             adjustAccordionHeights();
             updateQueryString();
             updateFieldsetCountAfterFiltering();
         }
+        
     
         function adjustAccordionHeights() {
             $('.accordion-content.open').each(function() {
@@ -195,7 +206,7 @@ $(document).ready(function() {
                     if (item.dods) {
                         const dodsKeys = Object.keys(item.dods);
                         const uniqueRoles = new Set(dodsKeys.map(key => key.replace('tasks', '')));
-                        badgeGroup.append(`<span class="roles">Roles:</span>`);
+                        badgeGroup.append(`<div class="roles">Role:</div>`);
                         uniqueRoles.forEach(role => {
                             badgeGroup.append(`<span class="${role}_filter">${role}</span>`);
                         });
@@ -277,7 +288,7 @@ $(document).ready(function() {
                                     });
         
                                     const resetButton = $('<button>').addClass('reset-button');
-                                    const resetSvg = $('<svg>').html('<svg xmlns="http://www.w3.org/2000/svg"><image href="img/refresh-system.svg" /></svg>').addClass('reset-button-icon');
+                                    const resetSvg = $('<svg>').html('<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><path class="st0" d="M108.84,155.75a60,60,0,0,0,1.72-120l-1.88,0a60,60,0,0,0-59.92,60v27.36" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/><polyline class="st0" points="77.44 95.6 48.76 123.11 20.86 95.6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/></svg>').addClass('reset-button-icon');
                                     resetButton.append(resetSvg);
                                     resetButton.on('click', function() {
                                         if (passRadio.is(':checked') || failRadio.is(':checked')) {

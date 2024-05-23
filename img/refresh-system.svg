@@ -1,8 +1,6 @@
 <svg id="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
 
-<style type="text/css">
-                .st0{stroke:#fff;}
-</style>
+
       <path class="st0" d="M108.84,155.75a60,60,0,0,0,1.72-120l-1.88,0a60,60,0,0,0-59.92,60v27.36" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
       <polyline class="st0" points="77.44 95.6 48.76 123.11 20.86 95.6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
 </svg>

@@ -814,7 +814,14 @@ font-size:12px;
     font-size: 16px;
     border-bottom: 1px solid #bebebe;
     padding-bottom: 8px;
-    
+
+}
+
+.open {
+
+  border-top: 1px solid #bebebe;
+  padding-top: 8px;
+
 }
 
 .cat{
@@ -933,8 +940,7 @@ font-size:12px;
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
-    border-bottom: 1px solid #bebebe;
-    padding-bottom: 8px;
+
 }
 
 .accordion-content {
@@ -997,8 +1003,8 @@ input:checked + .slider:before {
 
 
 .reset-button {
-border-radius: 6px;
-background: #e60000;
+border-radius: 100px;
+background: transparent;
 height: 48px;
 width: 48px;
 cursor: pointer;
@@ -1011,14 +1017,22 @@ cursor: pointer;
 
 .reset-button:hover {
     background: #c40000;
+    stroke: #fff;
     }
 
 .reset-button-icon svg{
-
- width: 30px;
- height: 30px;
+stroke: #c40000;
+ width: 24px;
+ height: 24px;
 
 }
+
+.reset-button-icon:hover svg{
+  stroke: #fff;
+   width: 24px;
+   height: 24px;
+  
+  }
 
 .reset-button-icon image{
 
