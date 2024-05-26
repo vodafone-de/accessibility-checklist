@@ -235,7 +235,7 @@ $(document).ready(function() {
                                 // Skip the roletitle object
                                 if (task.taskid) {
                                     const li = $('<li>').attr('id', task.taskid).addClass('taskContainer');
-                                    li.append($('<div>').addClass('taskdesc').text(task.taskdesc));
+                                    li.append($('<div>').addClass('taskdesc').html(task.taskdesc));
                                     li.append($('<div>Type:</div>').addClass('tasktype-desc'));
                                     li.append($('<div>').addClass('tasktype').text(task.tasktype));
                                     const taskCatDiv = $('<div>').addClass('taskcat');
