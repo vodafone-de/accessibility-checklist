@@ -222,5 +222,125 @@
               "testtool":"ARC Toolkit",
               "testmethod": "Lorem ipsum"}
             ]
-          }}
+          }},
+          {
+            "id": "04-02",
+            "category": "Textalternativen",
+            "bitv": "9.1.1.1b",
+            "title": "Alternativtexte für Grafiken und Objekte",
+            "applicable": "applicable",
+            "roles": ["ux", "dev", "edt", "testing"],
+            "dods": {
+              "uxtasks": [
+                {"roletitle": "User Experience"},
+                {"taskid": "04-02-ux-01",
+                "taskdesc" : "Bildinhalt wird durch UX bewertet und als dekorativ oder aussagekräftig spezifiziert",
+                "tasktype": "pattern",
+                "taskcat": ["image", "alt-text"],
+                "testtool":"Lorem ipsum",
+                "testmethod": "Lorem ipsum"},
+                {"taskid": "04-02-ux-02",
+                "taskdesc" : "UX hat Alternativtext bei entsprechenden AP angefordert (z.B. CL, Edt, etc.)",
+                "tasktype": "pattern",
+                "taskcat": ["screen reader", "alt-text", "Figma"],
+                "testtool":"Lorem ipsum",
+                "testmethod": "Lorem ipsum"}
+              ],
+              "devtasks": [
+                {"roletitle": "Frontend Development"},
+                {"taskid": "04-02-dev-01",
+                "taskdesc" : "Images that are included via the <img> tag have the attribute <code>Alt=''</code>",
+                "tasktype": "pattern",
+                "taskcat": ["image", "alt-text"],
+                "testtool":"Lorem ipsum",
+                "testmethod": "Lorem ipsum"},
+                {"taskid": "04-02-dev-02",
+                "taskdesc" : "For editorially maintainable images, it is possible to maintain the alt attribute",
+                "tasktype": "pattern",
+                "taskcat": ["image", "alt-text"],
+                "testtool":"Lorem ipsum",
+                "testmethod": "Lorem ipsum"},
+                {"taskid": "04-02-dev-03",
+                "taskdesc" : "Interactive <area> elements have the option of including alternative text.",
+                "tasktype": "pattern",
+                "taskcat": ["image", "alt-text"],
+                "testtool":"Lorem ipsum",
+                "testmethod": "Lorem ipsum"}
+              ],
+              "edttasks": [
+                {"roletitle": "Editorial"},
+                {"taskid": "04-01-edt-01",
+                "taskdesc" : "Im UX-Konzept und/oder auf der Seite wurde geprüft: Werden Bilder/Grafiken/Icons verwendet? Falls ja: Ggf. Unterstützung von UX bei der Bewertung, ob ein Bild dekorativ oder aussagekräftig/informativ is. Bei aussagekräftigen/informativen Bildern: Enthalten sie Informationen, die nicht durch den zugehörigen Text auf der Seite abgedeckt sind? → Dann, falls sinnvoll, Text ergänzen oder es braucht einen Alternativtext. Bei letzterem: eCare-Bereich: Alternativtexte sind im CMS-enabled und können so durch Editorials angepasst werden Editorial hat einen Alternativtext erstellt & eingefügt",
+                "tasktype": "page",
+                "taskcat": ["cms","eCare", "image", "alt-text"],
+                "testtool":"Lorem ipsum",
+                "testmethod": "Lorem ipsum"}
+              ],
+              "testingtasks": [
+                {"roletitle": "Testing"},
+                {"taskid": "04-02-test-01",
+                "taskdesc" : "Non-linked informative graphics and images must be provided with alternative text (linked graphics are checked in success criterion 9.1.1.1a 'Alternative for Controls'). The alternative text replaces the image and should therefore fulfill the same function as the image, if possible. For embedded multimedia objects, video or audio files, or applets, the alternative text should at least enable a descriptive identification of the content. This success criterion also addresses text alternatives for background images, icon fonts, and SVGs, if they are not linked.",
+                "tasktype": "pattern",
+                "taskcat": ["image", "alt-text"],
+                "testtool":"ARC Toolkit",
+                "testmethod": "Lorem ipsum"},
+                {"taskid": "04-02-test-02",
+                "taskdesc" : "<strong>Subrequirement 9.1.1.1b.1:</strong> Non-linked informative graphics and images must be provided with alternative text (linked graphics are checked in success criterion 9.1.1.1a 'Alternative for Controls'). [...]",
+                "tasktype": "pattern",
+                "taskcat": ["image", "alt-text"],
+                "testtool":"ARC Toolkit",
+                "testmethod": "Lorem ipsum"},
+                {"taskid": "04-02-test-03",
+                "taskdesc" : "<strong>Subrequirement 9.1.1.1b.2:</strong> The alternative text replaces the image and should therefore fulfill the same function as the image, if possible.",
+                "tasktype": "pattern",
+                "taskcat": ["image", "alt-text"],
+                "testtool":"ARC Toolkit",
+                "testmethod": "Lorem ipsum"}
+              ]
+            }},
+            {
+              "id": "04-03",
+              "category": "Textalternativen",
+              "bitv": "9.1.1.1c",
+              "title": "Leere alt-Attribute für Layoutgrafiken",
+              "applicable": "applicable",
+              "roles": ["ux", "dev", "edt", "testing"],
+              "dods": {
+                "uxtasks": [
+                  {"roletitle": "User Experience"},
+                  {"taskid": "04-03-ux-01",
+                  "taskdesc" : "Bildinhalt wird durch UX bewertet und als dekorativ oder aussagekräftig spezifiziert",
+                  "tasktype": "pattern",
+                  "taskcat": ["image", "alt-text"],
+                  "testtool":"Lorem ipsum",
+                  "testmethod": "Lorem ipsum"}
+                ],
+                "devtasks": [
+                  {"roletitle": "Frontend Development"},
+                  {"taskid": "04-03-dev-01",
+                  "taskdesc" : "add empty alt attributes to decorative images and icons",
+                  "tasktype": "pattern",
+                  "taskcat": ["image", "alt-text"],
+                  "testtool":"Lorem ipsum",
+                  "testmethod": "Lorem ipsum"}
+                ],
+                "edttasks": [
+                  {"roletitle": "Editorial"},
+                  {"taskid": "04-01-edt-01",
+                  "taskdesc" : "Im UX-Konzept und/oder auf der Seite wurde geprüft: Werden Bilder/Grafiken/Icons verwendet? Falls ja: Ggf. Unterstützung von UX bei der Bewertung, ob ein Bild dekorativ oder aussagekräftig/informativ ist eCare-Bereich: Alternativtexte sind im CMS-enabled und können so durch Editorials angepasst werden Alternativtexte im CMS sind kein Pflichtfeld. Wird das Feld leer gelassen, wird im Code ein leeres Alt-Attribut/Null-Alt-Attributwert ('') ausgegeben. Es ist sichergestellt, dass für dekorative Bilder leere Alt-Attribute/Null-Alt-Attributwerte ('') eingefügt wurden",
+                  "tasktype": "page",
+                  "taskcat": ["cms","eCare", "image", "alt-text"],
+                  "testtool":"Lorem ipsum",
+                  "testmethod": "Lorem ipsum"}
+                ],
+                "testingtasks": [
+                  {"roletitle": "Testing"},
+                  {"taskid": "04-03-test-01",
+                  "taskdesc" : "A graphic that does not have an informative function does not require alternative text. Examples of graphics without an informative function are placeholders, color blocks, patterns, or purely decorative photos. Such graphics should be marked with an empty alt attribute (alt=''). The topic of the testing step also includes icons that are included using an icon font and SVGs.",
+                  "tasktype": "pattern",
+                  "taskcat": ["image", "alt-text"],
+                  "testtool":"ARC Toolkit",
+                  "testmethod": "Lorem ipsum"}
+                ]
+              }}
     ]

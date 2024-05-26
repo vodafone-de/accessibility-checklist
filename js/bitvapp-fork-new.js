@@ -335,6 +335,7 @@ $(document).ready(function() {
         
                                         if (isChecked) {
                                             fieldset.prop('disabled', false);
+                                            resetButton.removeClass('reset-button-icon-disabled');
                                             if (!fieldset.data('isChecked')) {
                                                 fieldsetCount++;
                                             }
@@ -348,6 +349,7 @@ $(document).ready(function() {
                                             }
                                         } else {
                                             fieldset.prop('disabled', true);
+                                            resetButton.addClass('reset-button-icon-disabled');
                                             if (!fieldset.data('isChecked')) {
                                                 fieldsetCount = Math.max(fieldsetCount - 1, 0);
                                             }

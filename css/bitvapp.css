@@ -1389,10 +1389,6 @@ border:0;
     stroke: #fff!important;
     }
 
-    
-
-
-
 
 .reset-button-icon {
 stroke: #c40000;
@@ -1400,6 +1396,12 @@ stroke: #c40000;
  height: 24px;
 
 }
+
+.reset-button-icon:disabled {
+  stroke: #7e7e7e;
+
+  
+  }
 
 .reset-button-icon:hover svg{
   stroke: #fff;
@@ -1414,6 +1416,31 @@ stroke: #c40000;
     margin: -14px 0px 0px -6px;
 
 }
+
+.reset-button-icon-disabled svg {
+
+  stroke: #7e7e7e!important;
+  
+}
+
+.reset-button-icon-disabled .reset-button:hover {
+
+  stroke: #7e7e7e!important;
+  background: transparent;
+  cursor:not-allowed;
+}
+
+
+.reset-button-icon-disabled .reset-button:hover svg {
+
+  stroke: #7e7e7e!important;
+  background: transparent;
+  cursor:not-allowed;
+
+}
+
+
+
 
 
 
