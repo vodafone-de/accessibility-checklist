@@ -200,6 +200,27 @@
               "taskcat": ["cms","eCare", "image", "alt-text"],
               "testtool":"Lorem ipsum",
               "testmethod": "Lorem ipsum"}
+            ],
+            "testingtasks": [
+              {"roletitle": "Testing"},
+              {"taskid": "04-01-test-01",
+              "taskdesc" : "Graphical user interface elements (all linked/interactive graphics and images) must be provided with alternative texts (non-linked/non-interactive graphics and images will be checked in audit step 9.1.1.1b 'Alternative text for graphics and objects'). The alternative texts for user interface elements (such as icons or logos) or teaser images should indicate the target of the link. Alternative texts for graphical buttons should indicate the action that the button triggers. If image maps are used, their areas (area elements) should have meaningful alternative texts. This audit step also covers text links that are replaced by background images through CSS, as well as text alternatives for icon fonts and SVGs.",
+              "tasktype": "pattern",
+              "taskcat": ["image", "alt-text"],
+              "testtool":"ARC Toolkit",
+              "testmethod": "Lorem ipsum"},
+              {"taskid": "04-01-test-02",
+              "taskdesc" : "Subrequirement 9.1.1.1a.1: Graphical user interface elements (all linked/interactive graphics and images) must be provided with alternative texts [...]",
+              "tasktype": "pattern",
+              "taskcat": ["image", "alt-text"],
+              "testtool":"ARC Toolkit",
+              "testmethod": "Lorem ipsum"},
+              {"taskid": "04-01-test-03",
+              "taskdesc" : "Subrequirement 9.1.1.1a.2: The alternative texts for user interface elements (such as icons or logos) or teaser images should indicate the target of the link. Alternative texts for graphical buttons should indicate the action that the button triggers. If image maps are used, their areas (area elements) should have meaningful alternative texts.",
+              "tasktype": "pattern",
+              "taskcat": ["image", "alt-text"],
+              "testtool":"ARC Toolkit",
+              "testmethod": "Lorem ipsum"}
             ]
           }}
     ]
