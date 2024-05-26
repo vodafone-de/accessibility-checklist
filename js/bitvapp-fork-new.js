@@ -189,8 +189,8 @@ $(document).ready(function() {
                 const accordionHeader = $('<div>').addClass('accordion-header');
                 const accordionTitle = $('<h4>').text(category).addClass('accordion-title');
     
-                const accordionToggle = $('<div aria-hidden="true">').addClass('accordion-toggle');
-                const svg = $('<svg class="ws10-accordion-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"></polyline></svg>');
+                const accordionToggle = $('<div>').addClass('accordion-toggle');
+                const svg = $('<svg aria-hidden="true" class="ws10-accordion-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"></polyline></svg>');
                 accordionToggle.append(svg);
     
                 accordionHeader.append(accordionTitle).append(accordionToggle);
@@ -198,7 +198,7 @@ $(document).ready(function() {
     
                 const accordionContent = $('<div>').addClass('accordion-content').css('max-height', '0');
                 groupedByCategory[category].forEach(item => {
-                    const innerDiv = $('<div>').attr('id', item.id);
+                    const innerDiv = $('<div>').attr('id', item.id).addClass('bitvcontainer');
                     innerDiv.append(`<span class="bitvnr">${item.bitv}</span>`);
                     innerDiv.append(`<h5>${item.title}</h5>`);
     
@@ -206,7 +206,7 @@ $(document).ready(function() {
                     if (item.dods) {
                         const dodsKeys = Object.keys(item.dods);
                         const uniqueRoles = new Set(dodsKeys.map(key => key.replace('tasks', '')));
-                        badgeGroup.append(`<div class="roles">Role:</div>`);
+                        badgeGroup.append(`<div class="roles">Roles:</div>`);
                         uniqueRoles.forEach(role => {
                             badgeGroup.append(`<span class="${role}_filter">${role}</span>`);
                         });
@@ -229,27 +229,35 @@ $(document).ready(function() {
                                 const roletitleDiv = $('<div>').addClass('roletitle').text(roletitle);
                                 dodsDiv.append(roletitleDiv);
                             }
-        
+                            
                             const ul = $('<ul>').addClass(taskType + 'tasks');
                             tasks.forEach(task => {
                                 // Skip the roletitle object
                                 if (task.taskid) {
-                                    const li = $('<li>').attr('id', task.taskid);
+                                    const li = $('<li>').attr('id', task.taskid).addClass('taskContainer');
                                     li.append($('<div>').addClass('taskdesc').text(task.taskdesc));
+                                    li.append($('<div>Type:</div>').addClass('tasktype-desc'));
                                     li.append($('<div>').addClass('tasktype').text(task.tasktype));
                                     const taskCatDiv = $('<div>').addClass('taskcat');
+                                    taskCatDiv.append($('<div>').text('Tags:').addClass('roles'));
                                     task.taskcat.forEach(cat => {
-                                        taskCatDiv.append($('<span>').text(cat));
+                                        taskCatDiv.append($('<div>').text(cat).addClass('taglistitems'));
                                     });
+                                    taskCatDiv.append($('<div style="clear:both"></div>'));
                                     li.append(taskCatDiv);
                                     li.append($('<div>').addClass('testtool').text(task.testtool));
                                     li.append($('<div>').addClass('testmethod').text(task.testmethod));
+                                   
+                                   
                                     const fieldset = $('<fieldset>').addClass('status-options');
-                                    const radioLegend = $('<legend>').text('compliance');
-                                    const passRadio = $('<input>').attr({ type: 'radio', name: 'status_' + task.taskid, id: 'pass_' + task.taskid, value: 'pass' });
-                                    const passLabel = $('<label>').attr('for', 'pass_' + task.taskid).text('pass');
-                                    const failRadio = $('<input>').attr({ type: 'radio', name: 'status_' + task.taskid, id: 'fail_' + task.taskid, value: 'fail' });
-                                    const failLabel = $('<label>').attr('for', 'fail_' + task.taskid).text('fail');
+                                    const radioLegend = $('<legend>').text('compliance').addClass('status-optionslegend');
+                                    const passRadio = $('<input>').attr({ type: 'radio', name: 'status_' + task.taskid, id: 'pass_' + task.taskid, value: 'pass' }).addClass('ws10-form-selection-control__input');
+                                    const passLabel = $('<label>').attr('for', 'pass_' + task.taskid).addClass('ws10-form-selection-control__label');
+                                    passLabel.append($('<span>').addClass('ws10-form-selection-control__text').html('<p>pass</p>'));
+                                    const failRadio = $('<input>').attr({ type: 'radio', name: 'status_' + task.taskid, id: 'fail_' + task.taskid, value: 'fail' }).addClass('ws10-form-selection-control__input');
+                                    const failLabel = $('<label>').attr('for', 'fail_' + task.taskid).addClass('ws10-form-selection-control__label');
+                                    failLabel.append($('<span>').addClass('ws10-form-selection-control__text').html('<p>fail</p>'));
+                                    
         
                                     passRadio.on('change', function() {
                                         const fieldset = $(this).closest('fieldset');
@@ -286,10 +294,11 @@ $(document).ready(function() {
                                         fieldset.data('previousValue', 'fail');
                                         updateCounter();
                                     });
-        
-                                    const resetButton = $('<button>').addClass('reset-button');
-                                    const resetSvg = $('<svg>').html('<svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><path class="st0" d="M108.84,155.75a60,60,0,0,0,1.72-120l-1.88,0a60,60,0,0,0-59.92,60v27.36" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/><polyline class="st0" points="77.44 95.6 48.76 123.11 20.86 95.6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/></svg>').addClass('reset-button-icon');
-                                    resetButton.append(resetSvg);
+                                    
+                                    const resetButton = $('<div class="reset-button-container"><button class="reset-button"><svg class="reset-button-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><path class="st0" d="M108.84,155.75a60,60,0,0,0,1.72-120l-1.88,0a60,60,0,0,0-59.92,60v27.36" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/><polyline class="st0" points="77.44 95.6 48.76 123.11 20.86 95.6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/></svg></button></div>');                                    
+
+                                   
+
                                     resetButton.on('click', function() {
                                         if (passRadio.is(':checked') || failRadio.is(':checked')) {
                                             if (passRadio.is(':checked')) {
@@ -315,8 +324,9 @@ $(document).ready(function() {
         
                                     const switchWrapper = $('<div>').addClass('switch');
                                     const slider = $('<span>').addClass('slider');
-                                    switchWrapper.append(applicableCheckbox, slider);
-                                    li.append(switchWrapper, applicableLabel);
+                                    switchWrapper.append(applicableCheckbox, slider, applicableLabel);
+                                    li.append(switchWrapper);
+                                    
         
                                     applicableCheckbox.on('change', function() {
                                         const isChecked = $(this).is(':checked');
