@@ -153,5 +153,53 @@
             "testtool":"Chrome Plugin xyz",
             "testmethod": "Test it like it's hot"}
           ]
-        }}
+        }},
+        {
+          "id": "04-01",
+          "category": "Textalternativen",
+          "bitv": "9.1.1.1a",
+          "title": "Alternativtexte für Bedienelemente",
+          "applicable": "applicable",
+          "roles": ["ux", "dev", "edt", "testing"],
+          "dods": {
+            "uxtasks": [
+              {"roletitle": "User Experience"},
+              {"taskid": "04-01-ux-01",
+              "taskdesc" : "UX hat spezifiziert, dass ein Alternativtext pflegbar ist (Verantwortung der Implementierung liegt bei Dev)",
+              "tasktype": "pattern",
+              "taskcat": ["image", "alt-text"],
+              "testtool":"Lorem ipsum",
+              "testmethod": "Lorem ipsum"},
+              {"taskid": "04-01-ux-02",
+              "taskdesc" : "tbd: Screen Reader Handoff wurde erstellt (Sinnhaftigkeit (was soll vorgelesen werden) wurde durch UX spezifiziert (z.B. Icon Button Suche oder Schließen Button))",
+              "tasktype": "page",
+              "taskcat": ["screen reader", "alt-text", "Figma"],
+              "testtool":"Lorem ipsum",
+              "testmethod": "Lorem ipsum"}
+            ],
+            "devtasks": [
+              {"roletitle": "Frontend Development"},
+              {"taskid": "04-01-dev-01",
+              "taskdesc" : "Add alt attribute to all linked, interactive images and icons with meaningful texts",
+              "tasktype": "pattern",
+              "taskcat": ["image", "alt-text"],
+              "testtool":"Lorem ipsum",
+              "testmethod": "Lorem ipsum"},
+              {"taskid": "04-01-dev-02",
+              "taskdesc" : "We need UX & Editorial support for the required information (example:text, images)",
+              "tasktype": "pattern",
+              "taskcat": ["image", "alt-text"],
+              "testtool":"Lorem ipsum",
+              "testmethod": "Lorem ipsum"}
+            ],
+            "edttasks": [
+              {"roletitle": "Editorial"},
+              {"taskid": "04-01-edt-01",
+              "taskdesc" : "Im UX-Konzept und/oder auf der Seite wurde geprüft: Werden verlinkte Icons/Grafiken/(Teaser-)Bilder verwendet (Beispiel: Vodafone-Icon oben links auf all unseren Seiten)? Falls ja: eCare-Bereich: Alternativtexte sind im CMS-enabled und können so durch Editorials angepasst werden Editorial hat einen Alternativtext erstellt & eingefügt Alternativtext enthält das Ziel des Links",
+              "tasktype": "page",
+              "taskcat": ["cms","eCare", "image", "alt-text"],
+              "testtool":"Lorem ipsum",
+              "testmethod": "Lorem ipsum"}
+            ]
+          }}
     ]
