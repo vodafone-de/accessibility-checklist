@@ -41,14 +41,13 @@ $(document).ready(function() {
             const passPercentage = totalSelected > 0 ? (passCount / totalSelected * 100).toFixed(2) : 0;
             const failPercentage = totalSelected > 0 ? (failCount / totalSelected * 100).toFixed(2) : 0;
             $('#counter').html(`
-                <p>Zu erledigende Tasks: ${Math.max(fieldsetCount, 0)}</p>
-                <p>Anzahl erledigte Tasks: ${selectedRadioCount}</p>
+                <p>${selectedRadioCount} tasks done | ${Math.max(fieldsetCount, 0)} tasks left</p>
                 <div class="progress">
                     <div class="progress-bar pass" style="width: ${passPercentage}%;">${passPercentage}%</div>
                     <div class="progress-bar fail" style="width: ${failPercentage}%;">${failPercentage}%</div>
                 </div>
-                <p>Pass: ${passCount}</p>
-                <p>Fail: ${failCount}</p>
+                <p>Pass checked: ${passCount} | Fail checked: ${failCount}</p>
+              
             `);
         }
     
