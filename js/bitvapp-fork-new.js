@@ -1,4 +1,6 @@
 $(document).ready(function() {
+
+    
     const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     if (prefersDark) {
         $('body').addClass('dark');
@@ -59,10 +61,11 @@ $(document).ready(function() {
                 $(`#${key}`).prop('checked', value).trigger('change');
             }
         }
+        console.log("loadState " + selectedRadioCount);
     }
 
     function clearState() {
-        if (confirm('Sind Sie sicher, dass Sie alle gespeicherten Einstellungen löschen möchten?')) {
+        if (confirm('All checked elements will be reset. Are you sure you want to proceed?')) {
             localStorage.removeItem('filterState');
             location.reload();
         }
@@ -93,6 +96,8 @@ $(document).ready(function() {
         fieldsetCount = newFieldsetCount;
         updateCounter();
     }
+
+
 
     function applyFilters() {
         const filters = $('#filter-options input[type="checkbox"]:checked').map(function() {
@@ -154,6 +159,7 @@ $(document).ready(function() {
         updateQueryString();
         updateFieldsetCountAfterFiltering();
         saveState();
+        console.log("applyFilters " + selectedRadioCount);
     }
 
     function adjustAccordionHeights() {
@@ -179,6 +185,7 @@ $(document).ready(function() {
             groupedByCategory[category].push(item);
         });
 
+
         const filterHtml = `
         <div class="filter">
             <h4>Filter:</h4>
@@ -199,10 +206,11 @@ $(document).ready(function() {
                     <label><input type="checkbox" value="filter_testing" data-filter_id="testing"><span class="ws10-text">Testing</span></label>
                 </div></li>
             </ul>
-            <button class="ws10-secondary-button" id="reset-filters">Filter zurücksetzen</button>
-            <button class="ws10-secondary-button" id="clear-state">Alle Einstellungen löschen</button>
+            <button class="ws10-secondary-button" id="reset-filters">Reset Filters</button>
             <div style="clear:both"></div>
-        </div>`;
+        </div>
+        <div class="toolBar"><button class="ws10-alt-button toolBarItem" id="clear-state">Clear checked</button></div>
+        `;
 
         $('#content-wrapper').prepend(filterHtml);
 
@@ -298,7 +306,7 @@ $(document).ready(function() {
                                         fieldset.data('isChecked', true);
                                     }
                                     if (previousValue === 'fail') {
-                                        failCount--;
+                                        failCount = failCount > 0 ? failCount - 1 : 0;  // Hinzufügen der Überprüfung
                                         passCount++;
                                     } else if (previousValue !== 'pass') {
                                         passCount++;
@@ -307,7 +315,7 @@ $(document).ready(function() {
                                     updateCounter();
                                     saveState();
                                 });
-
+                                
                                 failRadio.on('change', function() {
                                     const fieldset = $(this).closest('fieldset');
                                     const previousValue = fieldset.data('previousValue');
@@ -317,7 +325,7 @@ $(document).ready(function() {
                                         fieldset.data('isChecked', true);
                                     }
                                     if (previousValue === 'pass') {
-                                        passCount--;
+                                        passCount = passCount > 0 ? passCount - 1 : 0;  // Hinzufügen der Überprüfung
                                         failCount++;
                                     } else if (previousValue !== 'fail') {
                                         failCount++;
@@ -326,6 +334,7 @@ $(document).ready(function() {
                                     updateCounter();
                                     saveState();
                                 });
+                                
 
                                 const resetButton = $('<div class="reset-button-container"><button class="reset-button"><svg class="reset-button-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><path class="st0" d="M108.84,155.75a60,60,0,0,0,1.72-120l-1.88,0a60,60,0,0,0-59.92,60v27.36" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/><polyline class="st0" points="77.44 95.6 48.76 123.11 20.86 95.6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/></svg></button></div>');
 
@@ -362,7 +371,7 @@ $(document).ready(function() {
                                     const isChecked = $(this).is(':checked');
                                     const fieldset = $(this).closest('li').find('fieldset');
                                     const selectedRadio = fieldset.find('input[type="radio"]:checked').val();
-
+                                
                                     if (isChecked) {
                                         fieldset.prop('disabled', false);
                                         resetButton.removeClass('reset-button-icon-disabled');
@@ -384,17 +393,18 @@ $(document).ready(function() {
                                             fieldsetCount = Math.max(fieldsetCount - 1, 0);
                                         }
                                         if (selectedRadio) {
-                                            selectedRadioCount--;
+                                            selectedRadioCount = selectedRadioCount > 0 ? selectedRadioCount - 1 : 0;
                                             if (selectedRadio === 'pass') {
-                                                passCount--;
+                                                passCount = passCount > 0 ? passCount - 1 : 0;
                                             } else if (selectedRadio === 'fail') {
-                                                failCount--;
+                                                failCount = failCount > 0 ? failCount - 1 : 0;
                                             }
                                         }
                                     }
                                     updateCounter();
                                     saveState();
                                 });
+                                
 
                                 switchWrapper.on('click', function() {
                                     applicableCheckbox.prop('checked', !applicableCheckbox.prop('checked')).trigger('change');
@@ -434,28 +444,31 @@ $(document).ready(function() {
         loadState();  // Zustand der Radio-Buttons und Checkboxen laden
         applyFilters();  // Filter anwenden, um sicherzustellen, dass alles korrekt angezeigt wird
 
-        // Korrekte Initialisierung der Zähler nach dem Laden des Zustands
+        console.log("Hier " + fieldsetCount);
+
+     // Korrekte Initialisierung der Zähler nach dem Laden des Zustands
         $('input[type="radio"]:checked').each(function() {
             const fieldset = $(this).closest('fieldset');
             if ($(this).val() === 'pass') {
-                passCount++;
+                // passCount++;
             } else if ($(this).val() === 'fail') {
-                failCount++;
+                // failCount++;
             }
             if (!fieldset.data('isChecked')) {
-                selectedRadioCount++;
+                // selectedRadioCount++;
                 fieldsetCount = Math.max(fieldsetCount - 1, 0);
                 fieldset.data('isChecked', true);
             }
-        });
+        }); 
 
         $('input[type="checkbox"][id^="applicable_"]:not(:checked)').each(function() {
             const fieldset = $(this).closest('li').find('fieldset');
             if (!fieldset.data('isChecked')) {
                 fieldsetCount = Math.max(fieldsetCount - 1, 0);
             }
-        });
+        }); 
 
         updateCounter();
+        console.log("Am Ende " + fieldsetCount);
     });
 });

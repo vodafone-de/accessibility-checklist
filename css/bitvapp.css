@@ -176,6 +176,11 @@ noscript div.content {
 .ws10-notification--error .ws10-notification__sidebar {
   background-color: #bd0000;
 }
+
+.ws10-notification--warning .ws10-notification__sidebar {
+  background-color: #eb7800;
+}
+
 @media screen and (min-width: 600px) {
   .ws10-notification__sidebar {
       padding: 24px 12px 0;
@@ -193,6 +198,12 @@ noscript div.content {
 .ws10-notification--error .ws10-notification__content {
   border: 2px solid #bd0000;
 }
+
+.ws10-notification--warning .ws10-notification__content {
+  border: 2px solid #eb7800;
+}
+
+
 @media screen and (min-width: 600px) {
   .ws10-notification__content {
       padding: 24px 16px;
@@ -240,6 +251,16 @@ svg {
   }
 }
 
+#draftWarning {
+
+  padding-top: 130px;
+  padding-bottom: 50px;
+  margin: auto;
+  width: 100%;
+  min-width: 800px;
+  max-width: 1050px;
+
+}
 
 #content-wrapper {
 
@@ -247,7 +268,7 @@ svg {
   width: 100%;
   min-width: 800px;
   max-width: 1050px;
-  padding-top: 120px;
+
   }
 
   .mode { 
@@ -1070,6 +1091,7 @@ font-size:12px;
 
     grid-column-start: 1;
 
+
 }
 
 
@@ -1257,7 +1279,7 @@ font-size:12px;
     font-size: 18px;
     border-radius: 6px;
     color: #f4f4f4;
-    z-index: 100;
+    z-index: 1000;
 }
 
 .ws10-accordion-item__chevron {
@@ -1440,8 +1462,22 @@ stroke: #c40000;
 }
 
 
+.toolBar {
 
+display: grid;
+grid-template-columns: 85%;
+gap: 0px 8px;
 
+}
+
+.toolBarItem {
+
+  grid-column-start: 2;
+  grid-row-start: 1;
+  align-self: start;
+  margin-bottom: 22px;
+
+}
 
 
    .ws10-button-icon-only--transparent {
