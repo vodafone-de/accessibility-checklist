@@ -414,5 +414,86 @@
                     "testtool":"ARC Toolkit",
                     "testmethod": "Lorem ipsum"}
                   ]
-                }}
+                }},
+                {
+                  "id": "05-04",
+                  "category": "Zeitbasierte Medien",
+                  "bitv": "9.1.2.1",
+                  "title": "Alternativen für Audiodateien und stumme Videos",
+                  "applicable": "applicable",
+                  "roles": ["ux", "dev", "edt", "testing"],
+                  "dods": {
+                    "devtasks": [
+                      {"roletitle": "Frontend Development"},
+                      {"taskid": "05-01-dev-01",
+                      "taskdesc" : "Implement new video or audio player if hardcoded",
+                      "tasktype": "pattern",
+                      "taskcat": ["video", "alt-text"],
+                      "testtool":"Lorem ipsum",
+                      "testmethod": "Lorem ipsum"}
+                    ],
+                    "edttasks": [
+                      {"roletitle": "Editorial"},
+                      {"taskid": "05-01-edt-01",
+                      "taskdesc" : "<strong>Audio:</strong> Is the audio already a text alternative? If so, no additional transcription is needed. If not: Does the audio convey information?",
+                      "tasktype": "pattern",
+                      "taskcat": ["audio", "alt-text"],
+                      "testtool":"Lorem ipsum",
+                      "testmethod": "Lorem ipsum"},
+                      {"taskid": "05-01-edt-02",
+                      "taskdesc" : "<strong>Audio:</strong>Is the audio already a text alternative? If so, no additional transcription is needed. If yes: Transcription is offered",
+                      "tasktype": "pattern",
+                      "taskcat": ["audio", "alt-text"],
+                      "testtool":"Lorem ipsum",
+                      "testmethod": "Lorem ipsum"},
+                      {"taskid": "05-01-edt-03",
+                      "taskdesc" : "<strong>Audio:</strong>Is the audio already a text alternative? If so, no additional transcription is needed. If yes: Transcription conveys the same content as the audio file. In the case of audio files with different voices, there is a label of the person speaking in the transcription.",
+                      "tasktype": "pattern",
+                      "taskcat": ["audio", "alt-text"],
+                      "testtool":"Lorem ipsum",
+                      "testmethod": "Lorem ipsum"},
+                      {"taskid": "05-01-edt-04",
+                      "taskdesc" : "<strong>Silent film or image sequences:</strong> Is information conveyed by the silent film or image sequences? If yes: A media alternative is offered (e.g. text version, alternative audio track or additional audio file)",
+                      "tasktype": "pattern",
+                      "taskcat": ["audio", "alt-text"],
+                      "testtool":"Lorem ipsum",
+                      "testmethod": "Lorem ipsum"},
+                      {"taskid": "05-01-edt-05",
+                      "taskdesc" : "<strong>Silent film or image sequences:</strong> Is information conveyed by the silent film or image sequences? If yes: The media alternative conveys the same content as the silent film or image sequence",
+                      "tasktype": "pattern",
+                      "taskcat": ["audio", "alt-text"],
+                      "testtool":"Lorem ipsum",
+                      "testmethod": "Lorem ipsum"},
+                      {"taskid": "05-01-edt-06",
+                      "taskdesc" : "<strong>Accessibility of the alternatives for audio, silent film or image sequences</strong>The media alternatives are offered in the immediate context of the audio or video file",
+                      "tasktype": "pattern",
+                      "taskcat": ["audio", "alt-text"],
+                      "testtool":"Lorem ipsum",
+                      "testmethod": "Lorem ipsum"},
+                      {"taskid": "05-01-edt-07",
+                      "taskdesc" : "<strong>Accessibility of the alternatives for audio, silent film or image sequences</strong>If the media alternative is on a different page: There is a meaningful link to it in the immediate context of the audio or video file",
+                      "tasktype": "pattern",
+                      "taskcat": ["audio", "alt-text"],
+                      "testtool":"Lorem ipsum",
+                      "testmethod": "Lorem ipsum"}
+                    ],
+                    "cmtasks": [
+                      {"roletitle": "Channel Management"},
+                      {"taskid": "04-04-cm-01",
+                      "taskdesc" : "only visual inspection",
+                      "tasktype": "pattern",
+                      "taskcat": ["audio", "alt-text"],
+                      "testtool":"Browser",
+                      "testmethod": "Test Captcha"}
+                    ],
+                    "testingtasks": [
+                      {"roletitle": "Testing"},
+                      {"taskid": "05-01-test-01",
+                      "taskdesc" : "Audio files and silent video files that convey information must be provided with equivalent media alternatives - unless they already represent media alternatives for text.",
+                      "tasktype": "pattern",
+                      "taskcat": ["video", "alt-text"],
+                      "testtool":"Testtool",
+                      "testmethod": "Lorem ipsum"}
+                    ]
+                  }}
     ]
