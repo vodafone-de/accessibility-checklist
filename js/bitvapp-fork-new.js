@@ -1,17 +1,16 @@
 $(document).ready(function() {
 
     
-    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+/*     const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     if (prefersDark) {
         $('body').addClass('dark');
-        $('.dark-mode-switcher').text('Dark mode OFF');
+        $('.dark-mode-switcher').prop('checked', true);
     }
-
-    $('.dark-mode-switcher').on('click', function(e) {
+    
+    $('.dark-mode-switcher').on('change', function() {
         $('body').toggleClass('dark');
-        $('.dark-mode-switcher').text($('body').hasClass('dark') ? 'Dark mode OFF' : 'Dark mode ON');
-        e.preventDefault();
-    });
+    }); */
+    
 
     function updateQueryString() {
         const selectedFilters = $('#filter-options input[type="checkbox"]:checked').map(function() {

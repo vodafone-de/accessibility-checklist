@@ -273,7 +273,7 @@ svg {
 
   .mode { 
     position: absolute;
-    top: calc(50%);
+    top: calc(35%);
     transform: translateY(-50%);
     right: 0;
   } 

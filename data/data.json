@@ -320,7 +320,7 @@
                 ],
                 "edttasks": [
                   {"roletitle": "Editorial"},
-                  {"taskid": "04-01-edt-01",
+                  {"taskid": "04-03-edt-01",
                   "taskdesc" : "Im UX-Konzept und/oder auf der Seite wurde geprüft: Werden Bilder/Grafiken/Icons verwendet? Falls ja: Ggf. Unterstützung von UX bei der Bewertung, ob ein Bild dekorativ oder aussagekräftig/informativ ist eCare-Bereich: Alternativtexte sind im CMS-enabled und können so durch Editorials angepasst werden Alternativtexte im CMS sind kein Pflichtfeld. Wird das Feld leer gelassen, wird im Code ein leeres Alt-Attribut/Null-Alt-Attributwert ('') ausgegeben. Es ist sichergestellt, dass für dekorative Bilder leere Alt-Attribute/Null-Alt-Attributwerte ('') eingefügt wurden",
                   "tasktype": "page",
                   "taskcat": ["cms","eCare", "image", "alt-text"],
@@ -336,5 +336,83 @@
                   "testtool":"ARC Toolkit",
                   "testmethod": "Lorem ipsum"}
                 ]
-              }}
+              }},
+              {
+                "id": "04-04",
+                "category": "Textalternativen",
+                "bitv": "9.1.1.1d",
+                "title": "Alternativen für CAPTCHAs",
+                "applicable": "applicable",
+                "roles": ["ux", "dev", "edt", "testing"],
+                "dods": {
+                  "uxtasks": [
+                    {"roletitle": "User Experience"},
+                    {"taskid": "04-04-ux-01",
+                    "taskdesc" : "UX prüft gegen, ob Alternativen vorhanden und spricht Empfehlung aus (Verantwortung liegt bei PO)",
+                    "tasktype": "pattern",
+                    "taskcat": ["image", "alt-text", "captcha"],
+                    "testtool":"Lorem ipsum",
+                    "testmethod": "Lorem ipsum"}
+                  ],
+                  "devtasks": [
+                    {"roletitle": "Frontend Development"},
+                    {"taskid": "04-04-dev-01",
+                    "taskdesc" : "Implement/replace old captcha with new MTCaptcha",
+                    "tasktype": "pattern",
+                    "taskcat": ["image", "alt-text", "captcha"],
+                    "testtool":"Lorem ipsum",
+                    "testmethod": "Lorem ipsum"}
+                  ],
+                  "edttasks": [
+                    {"roletitle": "Editorial"},
+                    {"taskid": "04-04-edt-01",
+                    "taskdesc" : "Im UX-Konzept und/oder auf der Seite wurde geprüft: eCare-Bereich: Alternativtexte für CAPCHAs sind im CMS-enabled und können so durch Editorials angepasst werden.",
+                    "tasktype": "pattern",
+                    "taskcat": ["eCare", "image", "alt-text", "captcha"],
+                    "testtool":"Lorem ipsum",
+                    "testmethod": "Lorem ipsum"},
+                    {"taskid": "04-04-edt-02",
+                    "taskdesc" : "Im UX-Konzept und/oder auf der Seite wurde geprüft: Bei Bildbasierten CAPCHAs ist das alt-Attribut vorhanden und der dort hinterlegte Alternativtext beschreibt den Zweck des CAPTCHAs. Und es ist angegeben, wie/wo CAPTCHA-Alternativen zu finden sind.",
+                    "tasktype": "pattern",
+                    "taskcat": ["image", "alt-text", "captcha"],
+                    "testtool":"Lorem ipsum",
+                    "testmethod": "Lorem ipsum"},
+                    {"taskid": "04-04-edt-03",
+                    "taskdesc" : "Im UX-Konzept und/oder auf der Seite wurde geprüft: Es ist mindestens eine CAPTCHA-Alternative für ein Grafik-CAPTCHA oder Audio-CAPTCHA vorhanden.",
+                    "tasktype": "pattern",
+                    "taskcat": ["image", "alt-text", "captcha"],
+                    "testtool":"Lorem ipsum",
+                    "testmethod": "Lorem ipsum"}
+                  ],
+                  "cmtasks": [
+                    {"roletitle": "Channel Management"},
+                    {"taskid": "04-04-cm-01",
+                    "taskdesc" : "only visual inspection",
+                    "tasktype": "pattern",
+                    "taskcat": ["image", "alt-text", "captcha"],
+                    "testtool":"Browser",
+                    "testmethod": "Test Captcha"}
+                  ],
+                  "testingtasks": [
+                    {"roletitle": "Testing"},
+                    {"taskid": "04-04-test-01",
+                    "taskdesc" : "In image-based CAPTCHAs, the alternative text of the image should describe the purpose of the CAPTCHA and indicate how to find a non-image-based alternative. At least one CAPTCHA alternative must be provided for a graphic CAPTCHA or audio CAPTCHA.",
+                    "tasktype": "pattern",
+                    "taskcat": ["image", "alt-text", "captcha"],
+                    "testtool":"ARC Toolkit",
+                    "testmethod": "Lorem ipsum"},
+                    {"taskid": "04-04-test-02",
+                    "taskdesc" : "<strong>Subrequirement 9.1.1.1d.1:</strong>In image-based CAPTCHAs, the alternative text of the image should describe the purpose of the CAPTCHA and indicate how to find a non-image-based alternative.",
+                    "tasktype": "pattern",
+                    "taskcat": ["image", "alt-text", "captcha"],
+                    "testtool":"ARC Toolkit",
+                    "testmethod": "Lorem ipsum"},
+                    {"taskid": "04-04-test-03",
+                    "taskdesc" : "<strong>Subrequirement 9.1.1.1d.2:</strong>At least one CAPTCHA alternative must be provided for a graphic CAPTCHA or audio CAPTCHA.",
+                    "tasktype": "pattern",
+                    "taskcat": ["image", "alt-text", "captcha"],
+                    "testtool":"ARC Toolkit",
+                    "testmethod": "Lorem ipsum"}
+                  ]
+                }}
     ]
