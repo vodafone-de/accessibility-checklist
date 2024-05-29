@@ -1,9 +1,9 @@
 [
       {
         "id": "01-01",
-        "category": "Allgemeine Anforderungen",
+        "category": "Generic requirements",
         "bitv": "5.2",
-        "title": "Aktivierung von Barrierefreiheitsfunktionen",
+        "title": "Activation of accessibility features",
         "applicable": "applicable",
         "roles": ["ux", "dev", "edt", "testing"],
         "dods": {
@@ -52,9 +52,9 @@
         }},  
       {
         "id": "01-02",
-        "category": "Allgemeine Anforderungen",
+        "category": "Generic requirements",
         "bitv": "5.3",
-        "title": "Biometrie",
+        "title": "Biometrics",
         "applicable": "applicable",
         "roles": ["ux", "dev"],
         "dods": {
@@ -94,7 +94,7 @@
         }},
       {
         "id": "02-01",
-        "category": "Zwei-Wege-Sprachkommunikation",
+        "category": "Two-way voice communication",
         "bitv": "6.1",
         "title": "Audiobandbreite für Sprache",
         "applicable": "N/A",
@@ -102,9 +102,9 @@
       },
       {
         "id": "03-01",
-        "category": "Videofähigkeiten",
+        "category": "Video capabilities",
         "bitv": "7.1.1",
-        "title": "Wiedergabe von Untertiteln",
+        "title": "Captioning playback",
         "applicable": "applicable",
         "roles": ["ux", "dev", "edt", "testing"],
         "dods": {
@@ -150,9 +150,9 @@
         }},
         {
           "id": "04-01",
-          "category": "Textalternativen",
+          "category": "Text alternatives",
           "bitv": "9.1.1.1a",
-          "title": "Alternativtexte für Bedienelemente",
+          "title": "Text alternatives for Controls & Input",
           "applicable": "applicable",
           "roles": ["ux", "dev", "edt", "testing"],
           "dods": {
@@ -219,9 +219,9 @@
           }},
           {
             "id": "04-02",
-            "category": "Textalternativen",
+            "category": "Text alternatives",
             "bitv": "9.1.1.1b",
-            "title": "Alternativtexte für Grafiken und Objekte",
+            "title": "Text alternatives for images and objects",
             "applicable": "applicable",
             "roles": ["ux", "dev", "edt", "testing"],
             "dods": {
@@ -294,9 +294,9 @@
             }},
             {
               "id": "04-03",
-              "category": "Textalternativen",
+              "category": "Text alternatives",
               "bitv": "9.1.1.1c",
-              "title": "Leere alt-Attribute für Layoutgrafiken",
+              "title": "Empty alt attributes for decorative images and icons",
               "applicable": "applicable",
               "roles": ["ux", "dev", "edt", "testing"],
               "dods": {
@@ -339,9 +339,9 @@
               }},
               {
                 "id": "04-04",
-                "category": "Textalternativen",
+                "category": "Text alternatives",
                 "bitv": "9.1.1.1d",
-                "title": "Alternativen für CAPTCHAs",
+                "title": "Alternatives for CAPTCHAs",
                 "applicable": "applicable",
                 "roles": ["ux", "dev", "edt", "testing"],
                 "dods": {
@@ -417,9 +417,9 @@
                 }},
                 {
                   "id": "05-04",
-                  "category": "Zeitbasierte Medien",
+                  "category": "Time-based media",
                   "bitv": "9.1.2.1",
-                  "title": "Alternativen für Audiodateien und stumme Videos",
+                  "title": "Alternatives for Audio-only and video-only (pre-recorded)",
                   "applicable": "applicable",
                   "roles": ["ux", "dev", "edt", "testing"],
                   "dods": {
