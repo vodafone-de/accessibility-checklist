@@ -416,7 +416,7 @@
                   ]
                 }},
                 {
-                  "id": "05-04",
+                  "id": "05-01",
                   "category": "Time-based media",
                   "bitv": "9.1.2.1",
                   "title": "Alternatives for Audio-only and video-only (pre-recorded)",
@@ -479,7 +479,7 @@
                     ],
                     "cmtasks": [
                       {"roletitle": "Channel Management"},
-                      {"taskid": "04-04-cm-01",
+                      {"taskid": "05-01-cm-01",
                       "taskdesc" : "only visual inspection",
                       "tasktype": "pattern",
                       "taskcat": ["audio", "alt-text"],
@@ -495,5 +495,80 @@
                       "testtool":"Testtool",
                       "testmethod": "Lorem ipsum"}
                     ]
-                  }}
+                  }},
+                  {
+                    "id": "05-02",
+                    "category": "Time-based media",
+                    "bitv": "9.1.2.2",
+                    "title": "Captions (pre-recorded)",
+                    "applicable": "applicable",
+                    "roles": ["ux", "dev", "edt", "testing"],
+                    "dods": {
+                      "devtasks": [
+                        {"roletitle": "Frontend Development"},
+                        {"taskid": "05-02-dev-01",
+                        "taskdesc" : "Implement new video or audio player if hardcoded",
+                        "tasktype": "pattern",
+                        "taskcat": ["video", "alt-text"],
+                        "testtool":"Lorem ipsum",
+                        "testmethod": "Lorem ipsum"}
+                      ],
+                      "edttasks": [
+                        {"roletitle": "Editorial"},
+                        {"taskid": "05-02-edt-01",
+                        "taskdesc" : "In the UX concept and/or on the site, the following was checked: Does the video have an audio track? If yes: Is the video a text alternative? Then there is no need for subtitles.",
+                        "tasktype": "pattern",
+                        "taskcat": ["audio", "alt-text"],
+                        "testtool":"Lorem ipsum",
+                        "testmethod": "Lorem ipsum"},
+                        {"taskid": "05-01-edt-02",
+                        "taskdesc" : "<strong>Video for text alternative: </strong>The video caption clearly refers to a corresponding text version and this is available in the immediate vicinity or accessible via a meaningful link",
+                        "tasktype": "pattern",
+                        "taskcat": ["audio", "alt-text"],
+                        "testtool":"Lorem ipsum",
+                        "testmethod": "Lorem ipsum"},
+                        {"taskid": "05-01-edt-03",
+                        "taskdesc" : "<strong>Video for text alternative: </strong>The video transports all the essential content of the text via the sound",
+                        "tasktype": "pattern",
+                        "taskcat": ["audio", "alt-text"],
+                        "testtool":"Lorem ipsum",
+                        "testmethod": "Lorem ipsum"},
+                        {"taskid": "05-01-edt-04",
+                        "taskdesc" : "<strong>Video for text alternative: </strong>Is important information said in the video that is not in the text? Then it is not a media alternative. It needs subtitles and must be checked for audio description",
+                        "tasktype": "pattern",
+                        "taskcat": ["audio", "alt-text"],
+                        "testtool":"Lorem ipsum",
+                        "testmethod": "Lorem ipsum"},
+                        {"taskid": "05-01-edt-05",
+                        "taskdesc" : "<strong>Video is not a text alternative: </strong>Subtitles are automatically displayed parallel to the video or can be switched on",
+                        "tasktype": "pattern",
+                        "taskcat": ["audio", "alt-text"],
+                        "testtool":"Lorem ipsum",
+                        "testmethod": "Lorem ipsum"},
+                        {"taskid": "05-01-edt-06",
+                        "taskdesc" : "<strong>Video is not a text alternative: </strong>The subtitles correspond to the audible content",
+                        "tasktype": "pattern",
+                        "taskcat": ["audio", "alt-text"],
+                        "testtool":"Lorem ipsum",
+                        "testmethod": "Lorem ipsum"}
+                      ],
+                      "cmtasks": [
+                        {"roletitle": "Channel Management"},
+                        {"taskid": "05-02-cm-01",
+                        "taskdesc" : "only visual inspection",
+                        "tasktype": "pattern",
+                        "taskcat": ["video", "alt-text"],
+                        "testtool":"Browser",
+                        "testmethod": "Test Captcha"}
+                      ],
+                      "testingtasks": [
+                        {"roletitle": "Testing"},
+                        {"taskid": "05-02-test-01",
+                        "taskdesc" : "If the audio track of a recorded video contains information, subtitles must be provided as an alternative.",
+                        "tasktype": "pattern",
+                        "taskcat": ["video", "alt-text"],
+                        "testtool":"Testtool",
+                        "testmethod": "Lorem ipsum"}
+                      ]
+                    }}
     ]
