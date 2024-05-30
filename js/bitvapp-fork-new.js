@@ -1,17 +1,4 @@
 $(document).ready(function() {
-
-    
-/*     const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (prefersDark) {
-        $('body').addClass('dark');
-        $('.dark-mode-switcher').prop('checked', true);
-    }
-    
-    $('.dark-mode-switcher').on('change', function() {
-        $('body').toggleClass('dark');
-    }); */
-    
-
     function updateQueryString() {
         const selectedFilters = $('#filter-options input[type="checkbox"]:checked').map(function() {
             return $(this).data('filter_id');
@@ -96,11 +83,13 @@ $(document).ready(function() {
         updateCounter();
     }
 
-
-
     function applyFilters() {
         const filters = $('#filter-options input[type="checkbox"]:checked').map(function() {
             return $(this).data('filter_id');
+        }).get();
+
+        const taskCatFilters = $('#taskcat-dropdown input[type="checkbox"]:checked').map(function() {
+            return $(this).val();
         }).get();
 
         $('.badgegroup span').hide();
@@ -110,7 +99,7 @@ $(document).ready(function() {
         $('div.roletitle').hide();
         $('div.roletitle + ul').hide();
 
-        if (filters.length > 0) {
+        if (filters.length > 0 || taskCatFilters.length > 0) {
             filters.forEach(filter => {
                 $(`.badgegroup .${filter}_filter`).addClass("filteractive").show();
                 $(`.accordion-content .dods ul[class*="${filter}tasks"]`).each(function() {
@@ -130,12 +119,27 @@ $(document).ready(function() {
                 });
             });
 
+            taskCatFilters.forEach(taskCat => {
+                $(`.taglistitems:contains(${taskCat})`).each(function() {
+                    const li = $(this).closest('li');
+                    li.show();
+                    li.closest('.dods').show();
+                    li.closest('.ws10-card').show();
+                });
+            });
+
             $('.ws10-card').each(function() {
                 const card = $(this);
                 let showCard = false;
 
                 filters.forEach(filter => {
                     if (card.find(`.badgegroup .${filter}_filter`).length > 0 || card.find(`.dods ul[class*="${filter}tasks"]`).length > 0) {
+                        showCard = true;
+                    }
+                });
+
+                taskCatFilters.forEach(taskCat => {
+                    if (card.find(`.taglistitems:contains(${taskCat})`).length > 0) {
                         showCard = true;
                     }
                 });
@@ -169,6 +173,7 @@ $(document).ready(function() {
 
     function resetFilters() {
         $('#filter-options input[type="checkbox"]').prop('checked', false);
+        $('#taskcat-dropdown input[type="checkbox"]').prop('checked', false);
         applyFilters();
     }
 
@@ -176,14 +181,25 @@ $(document).ready(function() {
 
     $.getJSON('https://vodafone-de.github.io/accessibility-checklist/data/data.json', function(jsonArray) {
         const groupedByCategory = {};
+        const taskCategories = new Set();
+
         jsonArray.forEach(item => {
             const category = item.category;
             if (!groupedByCategory[category]) {
                 groupedByCategory[category] = [];
             }
             groupedByCategory[category].push(item);
-        });
 
+            if (item.dods) {
+                Object.values(item.dods).forEach(tasks => {
+                    tasks.forEach(task => {
+                        if (task.taskcat) {
+                            task.taskcat.forEach(cat => taskCategories.add(cat));
+                        }
+                    });
+                });
+            }
+        });
 
         const filterHtml = `
         <div class="filter">
@@ -204,16 +220,40 @@ $(document).ready(function() {
                 <li><div class="cat action" tabindex="0">
                     <label><input type="checkbox" value="filter_testing" data-filter_id="testing"><span class="ws10-text">Testing</span></label>
                 </div></li>
+                <li>
+                <div class="dropdown">
+                <button class="dropdown-button">Select Categories</button>
+                <div class="dropdown-content">
+                    <ul id="taskcat-dropdown">
+                    ${[...taskCategories].map(cat => `
+                    <li>
+                        <label>
+                            <input type="checkbox" value="${cat}">
+                            <span class="ws10-text">${cat}</span>
+                        </label>
+                    </li>`).join('')}
+                    </ul>
+                </div>
+            </div>
+            </li>
             </ul>
             <button class="ws10-secondary-button" id="reset-filters">Reset Filters</button>
             <div style="clear:both"></div>
         </div>
-        <div class="toolBar"><button class="ws10-alt-button toolBarItem" id="clear-state">Clear checked</button></div>
+        <div class="toolBar">
+            <button class="ws10-alt-button toolBarItem" id="clear-state">Clear checked</button>
+        </div>
+
+       
         `;
 
         $('#content-wrapper').prepend(filterHtml);
 
-        $('#filter-options input[type="checkbox"]').change(function() {
+        $('.dropdown-button').click(function() {
+            $('.dropdown-content').toggle();
+        });
+
+        $('#filter-options input[type="checkbox"], #taskcat-dropdown input[type="checkbox"]').change(function() {
             applyFilters();
         });
 
@@ -279,9 +319,11 @@ $(document).ready(function() {
                                 li.append($('<div>').addClass('tasktype').text(task.tasktype));
                                 const taskCatDiv = $('<div>').addClass('taskcat');
                                 taskCatDiv.append($('<div>').text('Tags:').addClass('roles'));
-                                task.taskcat.forEach(cat => {
-                                    taskCatDiv.append($('<div>').text(cat).addClass('taglistitems'));
-                                });
+                                if (task.taskcat) {
+                                    task.taskcat.forEach(cat => {
+                                        taskCatDiv.append($('<div>').text(cat).addClass('taglistitems'));
+                                    });
+                                }
                                 taskCatDiv.append($('<div style="clear:both"></div>'));
                                 li.append(taskCatDiv);
                                 li.append($('<div>').addClass('testtool').text(task.testtool));
@@ -305,7 +347,7 @@ $(document).ready(function() {
                                         fieldset.data('isChecked', true);
                                     }
                                     if (previousValue === 'fail') {
-                                        failCount = failCount > 0 ? failCount - 1 : 0;  // Hinzufügen der Überprüfung
+                                        failCount = failCount > 0 ? failCount - 1 : 0;
                                         passCount++;
                                     } else if (previousValue !== 'pass') {
                                         passCount++;
@@ -324,7 +366,7 @@ $(document).ready(function() {
                                         fieldset.data('isChecked', true);
                                     }
                                     if (previousValue === 'pass') {
-                                        passCount = passCount > 0 ? passCount - 1 : 0;  // Hinzufügen der Überprüfung
+                                        passCount = passCount > 0 ? passCount - 1 : 0;
                                         failCount++;
                                     } else if (previousValue !== 'fail') {
                                         failCount++;
@@ -403,7 +445,6 @@ $(document).ready(function() {
                                     updateCounter();
                                     saveState();
                                 });
-                                
 
                                 switchWrapper.on('click', function() {
                                     applicableCheckbox.prop('checked', !applicableCheckbox.prop('checked')).trigger('change');
@@ -440,12 +481,10 @@ $(document).ready(function() {
         updateCounter();
 
         setFiltersFromQueryString();
-        loadState();  // Zustand der Radio-Buttons und Checkboxen laden
-        applyFilters();  // Filter anwenden, um sicherzustellen, dass alles korrekt angezeigt wird
+        loadState();
+        applyFilters();
 
-        console.log("Hier " + fieldsetCount);
 
-     // Korrekte Initialisierung der Zähler nach dem Laden des Zustands
         $('input[type="radio"]:checked').each(function() {
             const fieldset = $(this).closest('fieldset');
             if ($(this).val() === 'pass') {
@@ -458,16 +497,18 @@ $(document).ready(function() {
                 fieldsetCount = Math.max(fieldsetCount - 1, 0);
                 fieldset.data('isChecked', true);
             }
-        }); 
+        });
 
         $('input[type="checkbox"][id^="applicable_"]:not(:checked)').each(function() {
             const fieldset = $(this).closest('li').find('fieldset');
             if (!fieldset.data('isChecked')) {
                 fieldsetCount = Math.max(fieldsetCount - 1, 0);
             }
-        }); 
+        });
 
         updateCounter();
         console.log("Am Ende " + fieldsetCount);
+    }).fail(function(jqxhr, textStatus, error) {
+        console.error("Request Failed: " + textStatus + ", " + error);
     });
 });

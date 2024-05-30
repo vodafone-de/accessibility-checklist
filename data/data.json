@@ -1,574 +1,1034 @@
 [
-      {
-        "id": "01-01",
-        "category": "Generic requirements",
-        "bitv": "5.2",
-        "title": "Activation of accessibility features",
-        "applicable": "applicable",
-        "roles": ["ux", "dev", "edt", "testing"],
-        "dods": {
-          "uxtasks": [
-            {"roletitle": "User Experience"},
-            {"taskid": "01-01-ux-01",
-            "taskdesc" : "UX Task 1",
-            "tasktype": "pattern",
-            "taskcat": ["design", "color", "button"],
-            "testtool":"Figma Plugin xyz",
-            "testmethod": "Test it like it's hot"},
-            {"taskid": "01-01-ux-02",
-            "taskdesc" : "Lorem ipsum task 2 UX",
-            "tasktype": "page",
-            "taskcat": ["forms", "contrast"],
-            "testtool":"Browser Plugin xyz",
-            "testmethod": "Test it like it's hot"}
-          ],
-          "devtasks": [
-            {"roletitle": "Frontend Development"},
-            {"taskid": "01-01-dev-01",
-            "taskdesc" : "Dev Lorem ipsum task 1",
-            "tasktype": "pattern",
-            "taskcat": ["color", "button"],
-            "testtool":"Chrome Plugin xyz",
-            "testmethod": "Test it like it's hot"}
-          ],
-          "edttasks": [
-            {"roletitle": "Editorial"},
-            {"taskid": "01-01-edt-01",
-            "taskdesc" : "Editorial lorem ipsum task 1",
-            "tasktype": "page",
-            "taskcat": ["cms", "button", "text"],
-            "testtool":"Figma Plugin xyz",
-            "testmethod": "Test it like it's hot"}
-          ],
-          "testingtasks": [
-            {"roletitle": "Testing"},
-            {"taskid": "01-01-test-01",
-            "taskdesc" : "Testing Lorem ipsum task 1",
-            "tasktype": "pattern",
-            "taskcat": ["color", "button"],
-            "testtool":"Chrome Plugin xyz",
-            "testmethod": "Test it like it's hot"}
-          ]
-        }},  
-      {
-        "id": "01-02",
-        "category": "Generic requirements",
-        "bitv": "5.3",
-        "title": "Biometrics",
-        "applicable": "applicable",
-        "roles": ["ux", "dev"],
-        "dods": {
-          "uxtasks": [
-            {"roletitle": "User Experience"},
-            {"taskid": "01-02-ux-01",
-            "taskdesc" : "UX Lorem ipsum task 1",
-            "tasktype": "pattern",
-            "taskcat": ["design", "color", "button"],
-            "testtool":"Figma Plugin xyz",
-            "testmethod": "Test it like it's hot"},
-            {"taskid": "01-02-ux-02",
-            "taskdesc" : "Lorem ipsum task 2 UX",
-            "tasktype": "page",
-            "taskcat": ["forms", "contrast"],
-            "testtool":"Browser Plugin xyz",
-            "testmethod": "Test it like it's hot"}
-          ],
-          "devtasks": [
-            {"roletitle": "Frontend Development"},
-            {"taskid": "01-02-dev-01",
-            "taskdesc" : "Dev Lorem ipsum task 1",
-            "tasktype": "pattern",
-            "taskcat": ["color", "button"],
-            "testtool":"Chrome Plugin xyz",
-            "testmethod": "Test it like it's hot"}
-          ],
-          "edttasks": [
-            {"roletitle": "Editorial"},
-            {"taskid": "01-02-edt-01",
-            "taskdesc" : "Editorial lorem ipsum task 1",
-            "tasktype": "page",
-            "taskcat": ["cms", "button", "text"],
-            "testtool":"Figma Plugin xyz",
-            "testmethod": "Test it like it's hot"}
-          ]
-        }},
-      {
-        "id": "02-01",
-        "category": "Two-way voice communication",
-        "bitv": "6.1",
-        "title": "Audiobandbreite für Sprache",
-        "applicable": "N/A",
-        "roles": []
-      },
-      {
-        "id": "03-01",
-        "category": "Video capabilities",
-        "bitv": "7.1.1",
-        "title": "Captioning playback",
-        "applicable": "applicable",
-        "roles": ["ux", "dev", "edt", "testing"],
-        "dods": {
-          "uxtasks": [
-            {"roletitle": "User Experience"},
-            {"taskid": "03-01-ux-01",
-            "taskdesc" : "UX ist toll",
-            "tasktype": "pattern",
-            "taskcat": ["design", "color", "button"],
-            "testtool":"Figma Plugin xyz",
-            "testmethod": "Test it like it's hot"},
-            {"taskid": "03-01-ux-02",
-            "taskdesc" : "Lorem ipsum task 2 UX",
-            "tasktype": "page",
-            "taskcat": ["forms", "contrast"],
-            "testtool":"Browser Plugin xyz",
-            "testmethod": "Test it like it's hot"},
-            {"taskid": "01-01-ux-3",
-            "taskdesc" : "Task 3",
-            "tasktype": "pattern",
-            "taskcat": ["forms"],
-            "testtool":"Browser Plugin xyz",
-            "testmethod": "Test it like it's hot"}
-          ],
-          "cmtasks": [
-            {"roletitle": "Channel Management"},
-            {"taskid": "03-01-cm-01",
-            "taskdesc" : "Channel Management task 1",
-            "tasktype": "page",
-            "taskcat": ["video", "button", "text"],
-            "testtool":"Figma Plugin xyz",
-            "testmethod": "Test it like it's hot"}
-          ],
-          "testingtasks": [
-            {"roletitle": "Testing"},
-            {"taskid": "03-01-test-01",
-            "taskdesc" : "Testing Lorem ipsum task 1",
-            "tasktype": "pattern",
-            "taskcat": ["color", "button"],
-            "testtool":"Chrome Plugin xyz",
-            "testmethod": "Test it like it's hot"}
-          ]
-        }},
-        {
-          "id": "04-01",
-          "category": "Text alternatives",
-          "bitv": "9.1.1.1a",
-          "title": "Text alternatives for Controls & Input",
-          "applicable": "applicable",
-          "roles": ["ux", "dev", "edt", "testing"],
-          "dods": {
-            "uxtasks": [
-              {"roletitle": "User Experience"},
-              {"taskid": "04-01-ux-01",
-              "taskdesc" : "UX hat spezifiziert, dass ein Alternativtext pflegbar ist (Verantwortung der Implementierung liegt bei Dev)",
-              "tasktype": "pattern",
-              "taskcat": ["image", "alt-text"],
-              "testtool":"Lorem ipsum",
-              "testmethod": "Lorem ipsum"},
-              {"taskid": "04-01-ux-02",
-              "taskdesc" : "tbd: Screen Reader Handoff wurde erstellt (Sinnhaftigkeit (was soll vorgelesen werden) wurde durch UX spezifiziert (z.B. Icon Button Suche oder Schließen Button))",
-              "tasktype": "page",
-              "taskcat": ["screen reader", "alt-text", "Figma"],
-              "testtool":"Lorem ipsum",
-              "testmethod": "Lorem ipsum"}
-            ],
-            "devtasks": [
-              {"roletitle": "Frontend Development"},
-              {"taskid": "04-01-dev-01",
-              "taskdesc" : "Add alt attribute to all linked, interactive images and icons with meaningful texts",
-              "tasktype": "pattern",
-              "taskcat": ["image", "alt-text"],
-              "testtool":"Lorem ipsum",
-              "testmethod": "Lorem ipsum"},
-              {"taskid": "04-01-dev-02",
-              "taskdesc" : "We need UX & Editorial support for the required information (example:text, images)",
-              "tasktype": "pattern",
-              "taskcat": ["image", "alt-text"],
-              "testtool":"Lorem ipsum",
-              "testmethod": "Lorem ipsum"}
-            ],
-            "edttasks": [
-              {"roletitle": "Editorial"},
-              {"taskid": "04-01-edt-01",
-              "taskdesc" : "Im UX-Konzept und/oder auf der Seite wurde geprüft: Werden verlinkte Icons/Grafiken/(Teaser-)Bilder verwendet (Beispiel: Vodafone-Icon oben links auf all unseren Seiten)? Falls ja: eCare-Bereich: Alternativtexte sind im CMS-enabled und können so durch Editorials angepasst werden Editorial hat einen Alternativtext erstellt & eingefügt Alternativtext enthält das Ziel des Links",
-              "tasktype": "page",
-              "taskcat": ["cms","eCare", "image", "alt-text"],
-              "testtool":"Lorem ipsum",
-              "testmethod": "Lorem ipsum"}
-            ],
-            "testingtasks": [
-              {"roletitle": "Testing"},
-              {"taskid": "04-01-test-01",
-              "taskdesc" : "Graphical user interface elements (all linked/interactive graphics and images) must be provided with alternative texts (non-linked/non-interactive graphics and images will be checked in audit step 9.1.1.1b 'Alternative text for graphics and objects'). The alternative texts for user interface elements (such as icons or logos) or teaser images should indicate the target of the link. Alternative texts for graphical buttons should indicate the action that the button triggers. If image maps are used, their areas (area elements) should have meaningful alternative texts. This audit step also covers text links that are replaced by background images through CSS, as well as text alternatives for icon fonts and SVGs.",
-              "tasktype": "pattern",
-              "taskcat": ["image", "alt-text"],
-              "testtool":"ARC Toolkit",
-              "testmethod": "Lorem ipsum"},
-              {"taskid": "04-01-test-02",
-              "taskdesc" : "<strong>Subrequirement 9.1.1.1a.1:</strong> Graphical user interface elements (all linked/interactive graphics and images) must be provided with alternative texts [...]",
-              "tasktype": "pattern",
-              "taskcat": ["image", "alt-text"],
-              "testtool":"ARC Toolkit",
-              "testmethod": "Lorem ipsum"},
-              {"taskid": "04-01-test-03",
-              "taskdesc" : "<strong>Subrequirement 9.1.1.1a.2:</strong> The alternative texts for user interface elements (such as icons or logos) or teaser images should indicate the target of the link. Alternative texts for graphical buttons should indicate the action that the button triggers. If image maps are used, their areas (area elements) should have meaningful alternative texts.",
-              "tasktype": "pattern",
-              "taskcat": ["image", "alt-text"],
-              "testtool":"ARC Toolkit",
-              "testmethod": "Lorem ipsum"}
-            ]
-          }},
-          {
-            "id": "04-02",
-            "category": "Text alternatives",
-            "bitv": "9.1.1.1b",
-            "title": "Text alternatives for images and objects",
-            "applicable": "applicable",
-            "roles": ["ux", "dev", "edt", "testing"],
-            "dods": {
-              "uxtasks": [
-                {"roletitle": "User Experience"},
-                {"taskid": "04-02-ux-01",
-                "taskdesc" : "Bildinhalt wird durch UX bewertet und als dekorativ oder aussagekräftig spezifiziert",
-                "tasktype": "pattern",
-                "taskcat": ["image", "alt-text"],
-                "testtool":"Lorem ipsum",
-                "testmethod": "Lorem ipsum"},
-                {"taskid": "04-02-ux-02",
-                "taskdesc" : "UX hat Alternativtext bei entsprechenden AP angefordert (z.B. CL, Edt, etc.)",
-                "tasktype": "pattern",
-                "taskcat": ["screen reader", "alt-text", "Figma"],
-                "testtool":"Lorem ipsum",
-                "testmethod": "Lorem ipsum"}
-              ],
-              "devtasks": [
-                {"roletitle": "Frontend Development"},
-                {"taskid": "04-02-dev-01",
-                "taskdesc" : "Images that are included via the <img> tag have the attribute <code>Alt=''</code>",
-                "tasktype": "pattern",
-                "taskcat": ["image", "alt-text"],
-                "testtool":"Lorem ipsum",
-                "testmethod": "Lorem ipsum"},
-                {"taskid": "04-02-dev-02",
-                "taskdesc" : "For editorially maintainable images, it is possible to maintain the alt attribute",
-                "tasktype": "pattern",
-                "taskcat": ["image", "alt-text"],
-                "testtool":"Lorem ipsum",
-                "testmethod": "Lorem ipsum"},
-                {"taskid": "04-02-dev-03",
-                "taskdesc" : "Interactive <area> elements have the option of including alternative text.",
-                "tasktype": "pattern",
-                "taskcat": ["image", "alt-text"],
-                "testtool":"Lorem ipsum",
-                "testmethod": "Lorem ipsum"}
-              ],
-              "edttasks": [
-                {"roletitle": "Editorial"},
-                {"taskid": "04-01-edt-01",
-                "taskdesc" : "Im UX-Konzept und/oder auf der Seite wurde geprüft: Werden Bilder/Grafiken/Icons verwendet? Falls ja: Ggf. Unterstützung von UX bei der Bewertung, ob ein Bild dekorativ oder aussagekräftig/informativ is. Bei aussagekräftigen/informativen Bildern: Enthalten sie Informationen, die nicht durch den zugehörigen Text auf der Seite abgedeckt sind? → Dann, falls sinnvoll, Text ergänzen oder es braucht einen Alternativtext. Bei letzterem: eCare-Bereich: Alternativtexte sind im CMS-enabled und können so durch Editorials angepasst werden Editorial hat einen Alternativtext erstellt & eingefügt",
-                "tasktype": "page",
-                "taskcat": ["cms","eCare", "image", "alt-text"],
-                "testtool":"Lorem ipsum",
-                "testmethod": "Lorem ipsum"}
-              ],
-              "testingtasks": [
-                {"roletitle": "Testing"},
-                {"taskid": "04-02-test-01",
-                "taskdesc" : "Non-linked informative graphics and images must be provided with alternative text (linked graphics are checked in success criterion 9.1.1.1a 'Alternative for Controls'). The alternative text replaces the image and should therefore fulfill the same function as the image, if possible. For embedded multimedia objects, video or audio files, or applets, the alternative text should at least enable a descriptive identification of the content. This success criterion also addresses text alternatives for background images, icon fonts, and SVGs, if they are not linked.",
-                "tasktype": "pattern",
-                "taskcat": ["image", "alt-text"],
-                "testtool":"ARC Toolkit",
-                "testmethod": "Lorem ipsum"},
-                {"taskid": "04-02-test-02",
-                "taskdesc" : "<strong>Subrequirement 9.1.1.1b.1:</strong> Non-linked informative graphics and images must be provided with alternative text (linked graphics are checked in success criterion 9.1.1.1a 'Alternative for Controls'). [...]",
-                "tasktype": "pattern",
-                "taskcat": ["image", "alt-text"],
-                "testtool":"ARC Toolkit",
-                "testmethod": "Lorem ipsum"},
-                {"taskid": "04-02-test-03",
-                "taskdesc" : "<strong>Subrequirement 9.1.1.1b.2:</strong> The alternative text replaces the image and should therefore fulfill the same function as the image, if possible.",
-                "tasktype": "pattern",
-                "taskcat": ["image", "alt-text"],
-                "testtool":"ARC Toolkit",
-                "testmethod": "Lorem ipsum"}
-              ]
-            }},
-            {
-              "id": "04-03",
-              "category": "Text alternatives",
-              "bitv": "9.1.1.1c",
-              "title": "Empty alt attributes for decorative images and icons",
-              "applicable": "applicable",
-              "roles": ["ux", "dev", "edt", "testing"],
-              "dods": {
-                "uxtasks": [
-                  {"roletitle": "User Experience"},
-                  {"taskid": "04-03-ux-01",
-                  "taskdesc" : "Bildinhalt wird durch UX bewertet und als dekorativ oder aussagekräftig spezifiziert",
-                  "tasktype": "pattern",
-                  "taskcat": ["image", "alt-text"],
-                  "testtool":"Lorem ipsum",
-                  "testmethod": "Lorem ipsum"}
-                ],
-                "devtasks": [
-                  {"roletitle": "Frontend Development"},
-                  {"taskid": "04-03-dev-01",
-                  "taskdesc" : "add empty alt attributes to decorative images and icons",
-                  "tasktype": "pattern",
-                  "taskcat": ["image", "alt-text"],
-                  "testtool":"Lorem ipsum",
-                  "testmethod": "Lorem ipsum"}
-                ],
-                "edttasks": [
-                  {"roletitle": "Editorial"},
-                  {"taskid": "04-03-edt-01",
-                  "taskdesc" : "Im UX-Konzept und/oder auf der Seite wurde geprüft: Werden Bilder/Grafiken/Icons verwendet? Falls ja: Ggf. Unterstützung von UX bei der Bewertung, ob ein Bild dekorativ oder aussagekräftig/informativ ist eCare-Bereich: Alternativtexte sind im CMS-enabled und können so durch Editorials angepasst werden Alternativtexte im CMS sind kein Pflichtfeld. Wird das Feld leer gelassen, wird im Code ein leeres Alt-Attribut/Null-Alt-Attributwert ('') ausgegeben. Es ist sichergestellt, dass für dekorative Bilder leere Alt-Attribute/Null-Alt-Attributwerte ('') eingefügt wurden",
-                  "tasktype": "page",
-                  "taskcat": ["cms","eCare", "image", "alt-text"],
-                  "testtool":"Lorem ipsum",
-                  "testmethod": "Lorem ipsum"}
-                ],
-                "testingtasks": [
-                  {"roletitle": "Testing"},
-                  {"taskid": "04-03-test-01",
-                  "taskdesc" : "A graphic that does not have an informative function does not require alternative text. Examples of graphics without an informative function are placeholders, color blocks, patterns, or purely decorative photos. Such graphics should be marked with an empty alt attribute (alt=''). The topic of the testing step also includes icons that are included using an icon font and SVGs.",
-                  "tasktype": "pattern",
-                  "taskcat": ["image", "alt-text"],
-                  "testtool":"ARC Toolkit",
-                  "testmethod": "Lorem ipsum"}
-                ]
-              }},
-              {
-                "id": "04-04",
-                "category": "Text alternatives",
-                "bitv": "9.1.1.1d",
-                "title": "Alternatives for CAPTCHAs",
-                "applicable": "applicable",
-                "roles": ["ux", "dev", "edt", "testing"],
-                "dods": {
-                  "uxtasks": [
-                    {"roletitle": "User Experience"},
-                    {"taskid": "04-04-ux-01",
-                    "taskdesc" : "UX prüft gegen, ob Alternativen vorhanden und spricht Empfehlung aus (Verantwortung liegt bei PO)",
-                    "tasktype": "pattern",
-                    "taskcat": ["image", "alt-text", "captcha"],
-                    "testtool":"Lorem ipsum",
-                    "testmethod": "Lorem ipsum"}
-                  ],
-                  "devtasks": [
-                    {"roletitle": "Frontend Development"},
-                    {"taskid": "04-04-dev-01",
-                    "taskdesc" : "Implement/replace old captcha with new MTCaptcha",
-                    "tasktype": "pattern",
-                    "taskcat": ["image", "alt-text", "captcha"],
-                    "testtool":"Lorem ipsum",
-                    "testmethod": "Lorem ipsum"}
-                  ],
-                  "edttasks": [
-                    {"roletitle": "Editorial"},
-                    {"taskid": "04-04-edt-01",
-                    "taskdesc" : "Im UX-Konzept und/oder auf der Seite wurde geprüft: eCare-Bereich: Alternativtexte für CAPCHAs sind im CMS-enabled und können so durch Editorials angepasst werden.",
-                    "tasktype": "pattern",
-                    "taskcat": ["eCare", "image", "alt-text", "captcha"],
-                    "testtool":"Lorem ipsum",
-                    "testmethod": "Lorem ipsum"},
-                    {"taskid": "04-04-edt-02",
-                    "taskdesc" : "Im UX-Konzept und/oder auf der Seite wurde geprüft: Bei Bildbasierten CAPCHAs ist das alt-Attribut vorhanden und der dort hinterlegte Alternativtext beschreibt den Zweck des CAPTCHAs. Und es ist angegeben, wie/wo CAPTCHA-Alternativen zu finden sind.",
-                    "tasktype": "pattern",
-                    "taskcat": ["image", "alt-text", "captcha"],
-                    "testtool":"Lorem ipsum",
-                    "testmethod": "Lorem ipsum"},
-                    {"taskid": "04-04-edt-03",
-                    "taskdesc" : "Im UX-Konzept und/oder auf der Seite wurde geprüft: Es ist mindestens eine CAPTCHA-Alternative für ein Grafik-CAPTCHA oder Audio-CAPTCHA vorhanden.",
-                    "tasktype": "pattern",
-                    "taskcat": ["image", "alt-text", "captcha"],
-                    "testtool":"Lorem ipsum",
-                    "testmethod": "Lorem ipsum"}
-                  ],
-                  "cmtasks": [
-                    {"roletitle": "Channel Management"},
-                    {"taskid": "04-04-cm-01",
-                    "taskdesc" : "only visual inspection",
-                    "tasktype": "pattern",
-                    "taskcat": ["image", "alt-text", "captcha"],
-                    "testtool":"Browser",
-                    "testmethod": "Test Captcha"}
-                  ],
-                  "testingtasks": [
-                    {"roletitle": "Testing"},
-                    {"taskid": "04-04-test-01",
-                    "taskdesc" : "In image-based CAPTCHAs, the alternative text of the image should describe the purpose of the CAPTCHA and indicate how to find a non-image-based alternative. At least one CAPTCHA alternative must be provided for a graphic CAPTCHA or audio CAPTCHA.",
-                    "tasktype": "pattern",
-                    "taskcat": ["image", "alt-text", "captcha"],
-                    "testtool":"ARC Toolkit",
-                    "testmethod": "Lorem ipsum"},
-                    {"taskid": "04-04-test-02",
-                    "taskdesc" : "<strong>Subrequirement 9.1.1.1d.1:</strong>In image-based CAPTCHAs, the alternative text of the image should describe the purpose of the CAPTCHA and indicate how to find a non-image-based alternative.",
-                    "tasktype": "pattern",
-                    "taskcat": ["image", "alt-text", "captcha"],
-                    "testtool":"ARC Toolkit",
-                    "testmethod": "Lorem ipsum"},
-                    {"taskid": "04-04-test-03",
-                    "taskdesc" : "<strong>Subrequirement 9.1.1.1d.2:</strong>At least one CAPTCHA alternative must be provided for a graphic CAPTCHA or audio CAPTCHA.",
-                    "tasktype": "pattern",
-                    "taskcat": ["image", "alt-text", "captcha"],
-                    "testtool":"ARC Toolkit",
-                    "testmethod": "Lorem ipsum"}
-                  ]
-                }},
-                {
-                  "id": "05-01",
-                  "category": "Time-based media",
-                  "bitv": "9.1.2.1",
-                  "title": "Alternatives for Audio-only and video-only (pre-recorded)",
-                  "applicable": "applicable",
-                  "roles": ["ux", "dev", "edt", "testing"],
-                  "dods": {
-                    "devtasks": [
-                      {"roletitle": "Frontend Development"},
-                      {"taskid": "05-01-dev-01",
-                      "taskdesc" : "Implement new video or audio player if hardcoded",
-                      "tasktype": "pattern",
-                      "taskcat": ["video", "alt-text"],
-                      "testtool":"Lorem ipsum",
-                      "testmethod": "Lorem ipsum"}
-                    ],
-                    "edttasks": [
-                      {"roletitle": "Editorial"},
-                      {"taskid": "05-01-edt-01",
-                      "taskdesc" : "<strong>Audio:</strong> Is the audio already a text alternative? If so, no additional transcription is needed. If not: Does the audio convey information?",
-                      "tasktype": "pattern",
-                      "taskcat": ["audio", "alt-text"],
-                      "testtool":"Lorem ipsum",
-                      "testmethod": "Lorem ipsum"},
-                      {"taskid": "05-01-edt-02",
-                      "taskdesc" : "<strong>Audio:</strong>Is the audio already a text alternative? If so, no additional transcription is needed. If yes: Transcription is offered",
-                      "tasktype": "pattern",
-                      "taskcat": ["audio", "alt-text"],
-                      "testtool":"Lorem ipsum",
-                      "testmethod": "Lorem ipsum"},
-                      {"taskid": "05-01-edt-03",
-                      "taskdesc" : "<strong>Audio:</strong>Is the audio already a text alternative? If so, no additional transcription is needed. If yes: Transcription conveys the same content as the audio file. In the case of audio files with different voices, there is a label of the person speaking in the transcription.",
-                      "tasktype": "pattern",
-                      "taskcat": ["audio", "alt-text"],
-                      "testtool":"Lorem ipsum",
-                      "testmethod": "Lorem ipsum"},
-                      {"taskid": "05-01-edt-04",
-                      "taskdesc" : "<strong>Silent film or image sequences:</strong> Is information conveyed by the silent film or image sequences? If yes: A media alternative is offered (e.g. text version, alternative audio track or additional audio file)",
-                      "tasktype": "pattern",
-                      "taskcat": ["audio", "alt-text"],
-                      "testtool":"Lorem ipsum",
-                      "testmethod": "Lorem ipsum"},
-                      {"taskid": "05-01-edt-05",
-                      "taskdesc" : "<strong>Silent film or image sequences:</strong> Is information conveyed by the silent film or image sequences? If yes: The media alternative conveys the same content as the silent film or image sequence",
-                      "tasktype": "pattern",
-                      "taskcat": ["audio", "alt-text"],
-                      "testtool":"Lorem ipsum",
-                      "testmethod": "Lorem ipsum"},
-                      {"taskid": "05-01-edt-06",
-                      "taskdesc" : "<strong>Accessibility of the alternatives for audio, silent film or image sequences</strong>The media alternatives are offered in the immediate context of the audio or video file",
-                      "tasktype": "pattern",
-                      "taskcat": ["audio", "alt-text"],
-                      "testtool":"Lorem ipsum",
-                      "testmethod": "Lorem ipsum"},
-                      {"taskid": "05-01-edt-07",
-                      "taskdesc" : "<strong>Accessibility of the alternatives for audio, silent film or image sequences</strong>If the media alternative is on a different page: There is a meaningful link to it in the immediate context of the audio or video file",
-                      "tasktype": "pattern",
-                      "taskcat": ["audio", "alt-text"],
-                      "testtool":"Lorem ipsum",
-                      "testmethod": "Lorem ipsum"}
-                    ],
-                    "cmtasks": [
-                      {"roletitle": "Channel Management"},
-                      {"taskid": "05-01-cm-01",
-                      "taskdesc" : "only visual inspection",
-                      "tasktype": "pattern",
-                      "taskcat": ["audio", "alt-text"],
-                      "testtool":"Browser",
-                      "testmethod": "Test Captcha"}
-                    ],
-                    "testingtasks": [
-                      {"roletitle": "Testing"},
-                      {"taskid": "05-01-test-01",
-                      "taskdesc" : "Audio files and silent video files that convey information must be provided with equivalent media alternatives - unless they already represent media alternatives for text.",
-                      "tasktype": "pattern",
-                      "taskcat": ["video", "alt-text"],
-                      "testtool":"Testtool",
-                      "testmethod": "Lorem ipsum"}
-                    ]
-                  }},
-                  {
-                    "id": "05-02",
-                    "category": "Time-based media",
-                    "bitv": "9.1.2.2",
-                    "title": "Captions (pre-recorded)",
-                    "applicable": "applicable",
-                    "roles": ["ux", "dev", "edt", "testing"],
-                    "dods": {
-                      "devtasks": [
-                        {"roletitle": "Frontend Development"},
-                        {"taskid": "05-02-dev-01",
-                        "taskdesc" : "Implement new video or audio player if hardcoded",
-                        "tasktype": "pattern",
-                        "taskcat": ["video", "alt-text"],
-                        "testtool":"Lorem ipsum",
-                        "testmethod": "Lorem ipsum"}
-                      ],
-                      "edttasks": [
-                        {"roletitle": "Editorial"},
-                        {"taskid": "05-02-edt-01",
-                        "taskdesc" : "In the UX concept and/or on the site, the following was checked: Does the video have an audio track? If yes: Is the video a text alternative? Then there is no need for subtitles.",
-                        "tasktype": "pattern",
-                        "taskcat": ["audio", "alt-text"],
-                        "testtool":"Lorem ipsum",
-                        "testmethod": "Lorem ipsum"},
-                        {"taskid": "05-01-edt-02",
-                        "taskdesc" : "<strong>Video for text alternative: </strong>The video caption clearly refers to a corresponding text version and this is available in the immediate vicinity or accessible via a meaningful link",
-                        "tasktype": "pattern",
-                        "taskcat": ["audio", "alt-text"],
-                        "testtool":"Lorem ipsum",
-                        "testmethod": "Lorem ipsum"},
-                        {"taskid": "05-01-edt-03",
-                        "taskdesc" : "<strong>Video for text alternative: </strong>The video transports all the essential content of the text via the sound",
-                        "tasktype": "pattern",
-                        "taskcat": ["audio", "alt-text"],
-                        "testtool":"Lorem ipsum",
-                        "testmethod": "Lorem ipsum"},
-                        {"taskid": "05-01-edt-04",
-                        "taskdesc" : "<strong>Video for text alternative: </strong>Is important information said in the video that is not in the text? Then it is not a media alternative. It needs subtitles and must be checked for audio description",
-                        "tasktype": "pattern",
-                        "taskcat": ["audio", "alt-text"],
-                        "testtool":"Lorem ipsum",
-                        "testmethod": "Lorem ipsum"},
-                        {"taskid": "05-01-edt-05",
-                        "taskdesc" : "<strong>Video is not a text alternative: </strong>Subtitles are automatically displayed parallel to the video or can be switched on",
-                        "tasktype": "pattern",
-                        "taskcat": ["audio", "alt-text"],
-                        "testtool":"Lorem ipsum",
-                        "testmethod": "Lorem ipsum"},
-                        {"taskid": "05-01-edt-06",
-                        "taskdesc" : "<strong>Video is not a text alternative: </strong>The subtitles correspond to the audible content",
-                        "tasktype": "pattern",
-                        "taskcat": ["audio", "alt-text"],
-                        "testtool":"Lorem ipsum",
-                        "testmethod": "Lorem ipsum"}
-                      ],
-                      "cmtasks": [
-                        {"roletitle": "Channel Management"},
-                        {"taskid": "05-02-cm-01",
-                        "taskdesc" : "only visual inspection",
-                        "tasktype": "pattern",
-                        "taskcat": ["video", "alt-text"],
-                        "testtool":"Browser",
-                        "testmethod": "Test Captcha"}
-                      ],
-                      "testingtasks": [
-                        {"roletitle": "Testing"},
-                        {"taskid": "05-02-test-01",
-                        "taskdesc" : "If the audio track of a recorded video contains information, subtitles must be provided as an alternative.",
-                        "tasktype": "pattern",
-                        "taskcat": ["video", "alt-text"],
-                        "testtool":"Testtool",
-                        "testmethod": "Lorem ipsum"}
-                      ]
-                    }}
-    ]
+	{
+		"id": "01-01",
+		"category": "Generic requirements",
+		"bitv": "5.2",
+		"title": "Activation of accessibility features",
+		"applicable": "applicable",
+		"roles": [
+			"ux",
+			"dev",
+			"edt",
+			"testing"
+		],
+		"dods": {
+			"uxtasks": [
+				{
+					"roletitle": "User Experience"
+				},
+				{
+					"taskid": "01-01-ux-01",
+					"taskdesc": "UX Task 1",
+					"tasktype": "pattern",
+					"taskcat": [
+						"design",
+						"color",
+						"button"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				},
+				{
+					"taskid": "01-01-ux-02",
+					"taskdesc": "Lorem ipsum task 2 UX",
+					"tasktype": "page",
+					"taskcat": [
+						"forms",
+						"contrast"
+					],
+					"testtool": "Browser Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			],
+			"devtasks": [
+				{
+					"roletitle": "Frontend Development"
+				},
+				{
+					"taskid": "01-01-dev-01",
+					"taskdesc": "Dev Lorem ipsum task 1",
+					"tasktype": "pattern",
+					"taskcat": [
+						"color",
+						"button"
+					],
+					"testtool": "Chrome Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			],
+			"edttasks": [
+				{
+					"roletitle": "Editorial"
+				},
+				{
+					"taskid": "01-01-edt-01",
+					"taskdesc": "Editorial lorem ipsum task 1",
+					"tasktype": "page",
+					"taskcat": [
+						"cms",
+						"button",
+						"text"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			],
+			"testingtasks": [
+				{
+					"roletitle": "Testing"
+				},
+				{
+					"taskid": "01-01-test-01",
+					"taskdesc": "Testing Lorem ipsum task 1",
+					"tasktype": "pattern",
+					"taskcat": [
+						"color",
+						"button"
+					],
+					"testtool": "Chrome Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "01-02",
+		"category": "Generic requirements",
+		"bitv": "5.3",
+		"title": "Biometrics",
+		"applicable": "applicable",
+		"roles": [
+			"ux",
+			"dev"
+		],
+		"dods": {
+			"uxtasks": [
+				{
+					"roletitle": "User Experience"
+				},
+				{
+					"taskid": "01-02-ux-01",
+					"taskdesc": "UX Lorem ipsum task 1",
+					"tasktype": "pattern",
+					"taskcat": [
+						"design",
+						"color",
+						"button"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				},
+				{
+					"taskid": "01-02-ux-02",
+					"taskdesc": "Lorem ipsum task 2 UX",
+					"tasktype": "page",
+					"taskcat": [
+						"forms",
+						"contrast"
+					],
+					"testtool": "Browser Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			],
+			"devtasks": [
+				{
+					"roletitle": "Frontend Development"
+				},
+				{
+					"taskid": "01-02-dev-01",
+					"taskdesc": "Dev Lorem ipsum task 1",
+					"tasktype": "pattern",
+					"taskcat": [
+						"color",
+						"button"
+					],
+					"testtool": "Chrome Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			],
+			"edttasks": [
+				{
+					"roletitle": "Editorial"
+				},
+				{
+					"taskid": "01-02-edt-01",
+					"taskdesc": "Editorial lorem ipsum task 1",
+					"tasktype": "page",
+					"taskcat": [
+						"cms",
+						"button",
+						"text"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "02-01",
+		"category": "Two-way voice communication",
+		"bitv": "6.1",
+		"title": "Audiobandbreite für Sprache",
+		"applicable": "N/A",
+		"roles": []
+	},
+	{
+		"id": "03-01",
+		"category": "Video capabilities",
+		"bitv": "7.1.1",
+		"title": "Captioning playback",
+		"applicable": "applicable",
+		"roles": [
+			"ux",
+			"dev",
+			"edt",
+			"testing"
+		],
+		"dods": {
+			"uxtasks": [
+				{
+					"roletitle": "User Experience"
+				},
+				{
+					"taskid": "03-01-ux-01",
+					"taskdesc": "UX ist toll",
+					"tasktype": "pattern",
+					"taskcat": [
+						"design",
+						"color",
+						"button"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				},
+				{
+					"taskid": "03-01-ux-02",
+					"taskdesc": "Lorem ipsum task 2 UX",
+					"tasktype": "page",
+					"taskcat": [
+						"forms",
+						"contrast"
+					],
+					"testtool": "Browser Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				},
+				{
+					"taskid": "01-01-ux-3",
+					"taskdesc": "Task 3",
+					"tasktype": "pattern",
+					"taskcat": [
+						"forms"
+					],
+					"testtool": "Browser Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			],
+			"cmtasks": [
+				{
+					"roletitle": "Channel Management"
+				},
+				{
+					"taskid": "03-01-cm-01",
+					"taskdesc": "Channel Management task 1",
+					"tasktype": "page",
+					"taskcat": [
+						"video",
+						"button",
+						"text"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			],
+			"testingtasks": [
+				{
+					"roletitle": "Testing"
+				},
+				{
+					"taskid": "03-01-test-01",
+					"taskdesc": "Testing Lorem ipsum task 1",
+					"tasktype": "pattern",
+					"taskcat": [
+						"color",
+						"button"
+					],
+					"testtool": "Chrome Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "04-01",
+		"category": "Text alternatives",
+		"bitv": "9.1.1.1a",
+		"title": "Text alternatives for Controls & Input",
+		"applicable": "applicable",
+		"roles": [
+			"ux",
+			"dev",
+			"edt",
+			"testing"
+		],
+		"dods": {
+			"uxtasks": [
+				{
+					"roletitle": "User Experience"
+				},
+				{
+					"taskid": "04-01-ux-01",
+					"taskdesc": "UX hat spezifiziert, dass ein Alternativtext pflegbar ist (Verantwortung der Implementierung liegt bei Dev)",
+					"tasktype": "pattern",
+					"taskcat": [
+						"image",
+						"alt-text"
+					],
+					"testtool": "Lorem ipsum",
+					"testmethod": "Lorem ipsum"
+				},
+				{
+					"taskid": "04-01-ux-02",
+					"taskdesc": "tbd: Screen Reader Handoff wurde erstellt (Sinnhaftigkeit (was soll vorgelesen werden) wurde durch UX spezifiziert (z.B. Icon Button Suche oder Schließen Button))",
+					"tasktype": "page",
+					"taskcat": [
+						"screen reader",
+						"alt-text",
+						"Figma"
+					],
+					"testtool": "Lorem ipsum",
+					"testmethod": "Lorem ipsum"
+				}
+			],
+			"devtasks": [
+				{
+					"roletitle": "Frontend Development"
+				},
+				{
+					"taskid": "04-01-dev-01",
+					"taskdesc": "Add alt attribute to all linked, interactive images and icons with meaningful texts",
+					"tasktype": "pattern",
+					"taskcat": [
+						"image",
+						"alt-text"
+					],
+					"testtool": "Lorem ipsum",
+					"testmethod": "Lorem ipsum"
+				},
+				{
+					"taskid": "04-01-dev-02",
+					"taskdesc": "We need UX & Editorial support for the required information (example:text, images)",
+					"tasktype": "pattern",
+					"taskcat": [
+						"image",
+						"alt-text"
+					],
+					"testtool": "Lorem ipsum",
+					"testmethod": "Lorem ipsum"
+				}
+			],
+			"edttasks": [
+				{
+					"roletitle": "Editorial"
+				},
+				{
+					"taskid": "04-01-edt-01",
+					"taskdesc": "Im UX-Konzept und/oder auf der Seite wurde geprüft: Werden verlinkte Icons/Grafiken/(Teaser-)Bilder verwendet (Beispiel: Vodafone-Icon oben links auf all unseren Seiten)? Falls ja: eCare-Bereich: Alternativtexte sind im CMS-enabled und können so durch Editorials angepasst werden Editorial hat einen Alternativtext erstellt & eingefügt Alternativtext enthält das Ziel des Links",
+					"tasktype": "page",
+					"taskcat": [
+						"cms",
+						"eCare",
+						"image",
+						"alt-text"
+					],
+					"testtool": "Lorem ipsum",
+					"testmethod": "Lorem ipsum"
+				}
+			],
+			"testingtasks": [
+				{
+					"roletitle": "Testing"
+				},
+				{
+					"taskid": "04-01-test-01",
+					"taskdesc": "Graphical user interface elements (all linked/interactive graphics and images) must be provided with alternative texts (non-linked/non-interactive graphics and images will be checked in audit step 9.1.1.1b 'Alternative text for graphics and objects'). The alternative texts for user interface elements (such as icons or logos) or teaser images should indicate the target of the link. Alternative texts for graphical buttons should indicate the action that the button triggers. If image maps are used, their areas (area elements) should have meaningful alternative texts. This audit step also covers text links that are replaced by background images through CSS, as well as text alternatives for icon fonts and SVGs.",
+					"tasktype": "pattern",
+					"taskcat": [
+						"image",
+						"alt-text"
+					],
+					"testtool": "ARC Toolkit",
+					"testmethod": "Lorem ipsum"
+				},
+				{
+					"taskid": "04-01-test-02",
+					"taskdesc": "<strong>Subrequirement 9.1.1.1a.1:</strong> Graphical user interface elements (all linked/interactive graphics and images) must be provided with alternative texts [...]",
+					"tasktype": "pattern",
+					"taskcat": [
+						"image",
+						"alt-text"
+					],
+					"testtool": "ARC Toolkit",
+					"testmethod": "Lorem ipsum"
+				},
+				{
+					"taskid": "04-01-test-03",
+					"taskdesc": "<strong>Subrequirement 9.1.1.1a.2:</strong> The alternative texts for user interface elements (such as icons or logos) or teaser images should indicate the target of the link. Alternative texts for graphical buttons should indicate the action that the button triggers. If image maps are used, their areas (area elements) should have meaningful alternative texts.",
+					"tasktype": "pattern",
+					"taskcat": [
+						"image",
+						"alt-text"
+					],
+					"testtool": "ARC Toolkit",
+					"testmethod": "Lorem ipsum"
+				}
+			]
+		}
+	},
+	{
+		"id": "04-02",
+		"category": "Text alternatives",
+		"bitv": "9.1.1.1b",
+		"title": "Text alternatives for images and objects",
+		"applicable": "applicable",
+		"roles": [
+			"ux",
+			"dev",
+			"edt",
+			"testing"
+		],
+		"dods": {
+			"uxtasks": [
+				{
+					"roletitle": "User Experience"
+				},
+				{
+					"taskid": "04-02-ux-01",
+					"taskdesc": "Bildinhalt wird durch UX bewertet und als dekorativ oder aussagekräftig spezifiziert",
+					"tasktype": "pattern",
+					"taskcat": [
+						"image",
+						"alt-text"
+					],
+					"testtool": "Lorem ipsum",
+					"testmethod": "Lorem ipsum"
+				},
+				{
+					"taskid": "04-02-ux-02",
+					"taskdesc": "UX hat Alternativtext bei entsprechenden AP angefordert (z.B. CL, Edt, etc.)",
+					"tasktype": "pattern",
+					"taskcat": [
+						"screen reader",
+						"alt-text",
+						"Figma"
+					],
+					"testtool": "Lorem ipsum",
+					"testmethod": "Lorem ipsum"
+				}
+			],
+			"devtasks": [
+				{
+					"roletitle": "Frontend Development"
+				},
+				{
+					"taskid": "04-02-dev-01",
+					"taskdesc": "Images that are included via the <img> tag have the attribute <code>Alt=''</code>",
+					"tasktype": "pattern",
+					"taskcat": [
+						"image",
+						"alt-text"
+					],
+					"testtool": "Lorem ipsum",
+					"testmethod": "Lorem ipsum"
+				},
+				{
+					"taskid": "04-02-dev-02",
+					"taskdesc": "For editorially maintainable images, it is possible to maintain the alt attribute",
+					"tasktype": "pattern",
+					"taskcat": [
+						"image",
+						"alt-text"
+					],
+					"testtool": "Lorem ipsum",
+					"testmethod": "Lorem ipsum"
+				},
+				{
+					"taskid": "04-02-dev-03",
+					"taskdesc": "Interactive <area> elements have the option of including alternative text.",
+					"tasktype": "pattern",
+					"taskcat": [
+						"image",
+						"alt-text"
+					],
+					"testtool": "Lorem ipsum",
+					"testmethod": "Lorem ipsum"
+				}
+			],
+			"edttasks": [
+				{
+					"roletitle": "Editorial"
+				},
+				{
+					"taskid": "04-01-edt-01",
+					"taskdesc": "Im UX-Konzept und/oder auf der Seite wurde geprüft: Werden Bilder/Grafiken/Icons verwendet? Falls ja: Ggf. Unterstützung von UX bei der Bewertung, ob ein Bild dekorativ oder aussagekräftig/informativ is. Bei aussagekräftigen/informativen Bildern: Enthalten sie Informationen, die nicht durch den zugehörigen Text auf der Seite abgedeckt sind? → Dann, falls sinnvoll, Text ergänzen oder es braucht einen Alternativtext. Bei letzterem: eCare-Bereich: Alternativtexte sind im CMS-enabled und können so durch Editorials angepasst werden Editorial hat einen Alternativtext erstellt & eingefügt",
+					"tasktype": "page",
+					"taskcat": [
+						"cms",
+						"eCare",
+						"image",
+						"alt-text"
+					],
+					"testtool": "Lorem ipsum",
+					"testmethod": "Lorem ipsum"
+				}
+			],
+			"testingtasks": [
+				{
+					"roletitle": "Testing"
+				},
+				{
+					"taskid": "04-02-test-01",
+					"taskdesc": "Non-linked informative graphics and images must be provided with alternative text (linked graphics are checked in success criterion 9.1.1.1a 'Alternative for Controls'). The alternative text replaces the image and should therefore fulfill the same function as the image, if possible. For embedded multimedia objects, video or audio files, or applets, the alternative text should at least enable a descriptive identification of the content. This success criterion also addresses text alternatives for background images, icon fonts, and SVGs, if they are not linked.",
+					"tasktype": "pattern",
+					"taskcat": [
+						"image",
+						"alt-text"
+					],
+					"testtool": "ARC Toolkit",
+					"testmethod": "Lorem ipsum"
+				},
+				{
+					"taskid": "04-02-test-02",
+					"taskdesc": "<strong>Subrequirement 9.1.1.1b.1:</strong> Non-linked informative graphics and images must be provided with alternative text (linked graphics are checked in success criterion 9.1.1.1a 'Alternative for Controls'). [...]",
+					"tasktype": "pattern",
+					"taskcat": [
+						"image",
+						"alt-text"
+					],
+					"testtool": "ARC Toolkit",
+					"testmethod": "Lorem ipsum"
+				},
+				{
+					"taskid": "04-02-test-03",
+					"taskdesc": "<strong>Subrequirement 9.1.1.1b.2:</strong> The alternative text replaces the image and should therefore fulfill the same function as the image, if possible.",
+					"tasktype": "pattern",
+					"taskcat": [
+						"image",
+						"alt-text"
+					],
+					"testtool": "ARC Toolkit",
+					"testmethod": "Lorem ipsum"
+				}
+			]
+		}
+	},
+	{
+		"id": "04-03",
+		"category": "Text alternatives",
+		"bitv": "9.1.1.1c",
+		"title": "Empty alt attributes for decorative images and icons",
+		"applicable": "applicable",
+		"roles": [
+			"ux",
+			"dev",
+			"edt",
+			"testing"
+		],
+		"dods": {
+			"uxtasks": [
+				{
+					"roletitle": "User Experience"
+				},
+				{
+					"taskid": "04-03-ux-01",
+					"taskdesc": "Bildinhalt wird durch UX bewertet und als dekorativ oder aussagekräftig spezifiziert",
+					"tasktype": "pattern",
+					"taskcat": [
+						"image",
+						"alt-text"
+					],
+					"testtool": "Lorem ipsum",
+					"testmethod": "Lorem ipsum"
+				}
+			],
+			"devtasks": [
+				{
+					"roletitle": "Frontend Development"
+				},
+				{
+					"taskid": "04-03-dev-01",
+					"taskdesc": "add empty alt attributes to decorative images and icons",
+					"tasktype": "pattern",
+					"taskcat": [
+						"image",
+						"alt-text"
+					],
+					"testtool": "Lorem ipsum",
+					"testmethod": "Lorem ipsum"
+				}
+			],
+			"edttasks": [
+				{
+					"roletitle": "Editorial"
+				},
+				{
+					"taskid": "04-03-edt-01",
+					"taskdesc": "Im UX-Konzept und/oder auf der Seite wurde geprüft: Werden Bilder/Grafiken/Icons verwendet? Falls ja: Ggf. Unterstützung von UX bei der Bewertung, ob ein Bild dekorativ oder aussagekräftig/informativ ist eCare-Bereich: Alternativtexte sind im CMS-enabled und können so durch Editorials angepasst werden Alternativtexte im CMS sind kein Pflichtfeld. Wird das Feld leer gelassen, wird im Code ein leeres Alt-Attribut/Null-Alt-Attributwert ('') ausgegeben. Es ist sichergestellt, dass für dekorative Bilder leere Alt-Attribute/Null-Alt-Attributwerte ('') eingefügt wurden",
+					"tasktype": "page",
+					"taskcat": [
+						"cms",
+						"eCare",
+						"image",
+						"alt-text"
+					],
+					"testtool": "Lorem ipsum",
+					"testmethod": "Lorem ipsum"
+				}
+			],
+			"testingtasks": [
+				{
+					"roletitle": "Testing"
+				},
+				{
+					"taskid": "04-03-test-01",
+					"taskdesc": "A graphic that does not have an informative function does not require alternative text. Examples of graphics without an informative function are placeholders, color blocks, patterns, or purely decorative photos. Such graphics should be marked with an empty alt attribute (alt=''). The topic of the testing step also includes icons that are included using an icon font and SVGs.",
+					"tasktype": "pattern",
+					"taskcat": [
+						"image",
+						"alt-text"
+					],
+					"testtool": "ARC Toolkit",
+					"testmethod": "Lorem ipsum"
+				}
+			]
+		}
+	},
+	{
+		"id": "04-04",
+		"category": "Text alternatives",
+		"bitv": "9.1.1.1d",
+		"title": "Alternatives for CAPTCHAs",
+		"applicable": "applicable",
+		"roles": [
+			"ux",
+			"dev",
+			"edt",
+			"testing"
+		],
+		"dods": {
+			"uxtasks": [
+				{
+					"roletitle": "User Experience"
+				},
+				{
+					"taskid": "04-04-ux-01",
+					"taskdesc": "UX prüft gegen, ob Alternativen vorhanden und spricht Empfehlung aus (Verantwortung liegt bei PO)",
+					"tasktype": "pattern",
+					"taskcat": [
+						"image",
+						"alt-text",
+						"captcha"
+					],
+					"testtool": "Lorem ipsum",
+					"testmethod": "Lorem ipsum"
+				}
+			],
+			"devtasks": [
+				{
+					"roletitle": "Frontend Development"
+				},
+				{
+					"taskid": "04-04-dev-01",
+					"taskdesc": "Implement/replace old captcha with new MTCaptcha",
+					"tasktype": "pattern",
+					"taskcat": [
+						"image",
+						"alt-text",
+						"captcha"
+					],
+					"testtool": "Lorem ipsum",
+					"testmethod": "Lorem ipsum"
+				}
+			],
+			"edttasks": [
+				{
+					"roletitle": "Editorial"
+				},
+				{
+					"taskid": "04-04-edt-01",
+					"taskdesc": "Im UX-Konzept und/oder auf der Seite wurde geprüft: eCare-Bereich: Alternativtexte für CAPCHAs sind im CMS-enabled und können so durch Editorials angepasst werden.",
+					"tasktype": "pattern",
+					"taskcat": [
+						"eCare",
+						"image",
+						"alt-text",
+						"captcha"
+					],
+					"testtool": "Lorem ipsum",
+					"testmethod": "Lorem ipsum"
+				},
+				{
+					"taskid": "04-04-edt-02",
+					"taskdesc": "Im UX-Konzept und/oder auf der Seite wurde geprüft: Bei Bildbasierten CAPCHAs ist das alt-Attribut vorhanden und der dort hinterlegte Alternativtext beschreibt den Zweck des CAPTCHAs. Und es ist angegeben, wie/wo CAPTCHA-Alternativen zu finden sind.",
+					"tasktype": "pattern",
+					"taskcat": [
+						"image",
+						"alt-text",
+						"captcha"
+					],
+					"testtool": "Lorem ipsum",
+					"testmethod": "Lorem ipsum"
+				},
+				{
+					"taskid": "04-04-edt-03",
+					"taskdesc": "Im UX-Konzept und/oder auf der Seite wurde geprüft: Es ist mindestens eine CAPTCHA-Alternative für ein Grafik-CAPTCHA oder Audio-CAPTCHA vorhanden.",
+					"tasktype": "pattern",
+					"taskcat": [
+						"image",
+						"alt-text",
+						"captcha"
+					],
+					"testtool": "Lorem ipsum",
+					"testmethod": "Lorem ipsum"
+				}
+			],
+			"cmtasks": [
+				{
+					"roletitle": "Channel Management"
+				},
+				{
+					"taskid": "04-04-cm-01",
+					"taskdesc": "only visual inspection",
+					"tasktype": "pattern",
+					"taskcat": [
+						"image",
+						"alt-text",
+						"captcha"
+					],
+					"testtool": "Browser",
+					"testmethod": "Test Captcha"
+				}
+			],
+			"testingtasks": [
+				{
+					"roletitle": "Testing"
+				},
+				{
+					"taskid": "04-04-test-01",
+					"taskdesc": "In image-based CAPTCHAs, the alternative text of the image should describe the purpose of the CAPTCHA and indicate how to find a non-image-based alternative. At least one CAPTCHA alternative must be provided for a graphic CAPTCHA or audio CAPTCHA.",
+					"tasktype": "pattern",
+					"taskcat": [
+						"image",
+						"alt-text",
+						"captcha"
+					],
+					"testtool": "ARC Toolkit",
+					"testmethod": "Lorem ipsum"
+				},
+				{
+					"taskid": "04-04-test-02",
+					"taskdesc": "<strong>Subrequirement 9.1.1.1d.1:</strong>In image-based CAPTCHAs, the alternative text of the image should describe the purpose of the CAPTCHA and indicate how to find a non-image-based alternative.",
+					"tasktype": "pattern",
+					"taskcat": [
+						"image",
+						"alt-text",
+						"captcha"
+					],
+					"testtool": "ARC Toolkit",
+					"testmethod": "Lorem ipsum"
+				},
+				{
+					"taskid": "04-04-test-03",
+					"taskdesc": "<strong>Subrequirement 9.1.1.1d.2:</strong>At least one CAPTCHA alternative must be provided for a graphic CAPTCHA or audio CAPTCHA.",
+					"tasktype": "pattern",
+					"taskcat": [
+						"image",
+						"alt-text",
+						"captcha"
+					],
+					"testtool": "ARC Toolkit",
+					"testmethod": "Lorem ipsum"
+				}
+			]
+		}
+	},
+	{
+		"id": "05-01",
+		"category": "Time-based media",
+		"bitv": "9.1.2.1",
+		"title": "Alternatives for Audio-only and video-only (pre-recorded)",
+		"applicable": "applicable",
+		"roles": [
+			"ux",
+			"dev",
+			"edt",
+			"testing"
+		],
+		"dods": {
+			"devtasks": [
+				{
+					"roletitle": "Frontend Development"
+				},
+				{
+					"taskid": "05-01-dev-01",
+					"taskdesc": "Implement new video or audio player if hardcoded",
+					"tasktype": "pattern",
+					"taskcat": [
+						"video",
+						"alt-text"
+					],
+					"testtool": "Lorem ipsum",
+					"testmethod": "Lorem ipsum"
+				}
+			],
+			"edttasks": [
+				{
+					"roletitle": "Editorial"
+				},
+				{
+					"taskid": "05-01-edt-01",
+					"taskdesc": "<strong>Audio:</strong> Is the audio already a text alternative? If so, no additional transcription is needed. If not: Does the audio convey information?",
+					"tasktype": "pattern",
+					"taskcat": [
+						"audio",
+						"alt-text"
+					],
+					"testtool": "Lorem ipsum",
+					"testmethod": "Lorem ipsum"
+				},
+				{
+					"taskid": "05-01-edt-02",
+					"taskdesc": "<strong>Audio:</strong>Is the audio already a text alternative? If so, no additional transcription is needed. If yes: Transcription is offered",
+					"tasktype": "pattern",
+					"taskcat": [
+						"audio",
+						"alt-text"
+					],
+					"testtool": "Lorem ipsum",
+					"testmethod": "Lorem ipsum"
+				},
+				{
+					"taskid": "05-01-edt-03",
+					"taskdesc": "<strong>Audio:</strong>Is the audio already a text alternative? If so, no additional transcription is needed. If yes: Transcription conveys the same content as the audio file. In the case of audio files with different voices, there is a label of the person speaking in the transcription.",
+					"tasktype": "pattern",
+					"taskcat": [
+						"audio",
+						"alt-text"
+					],
+					"testtool": "Lorem ipsum",
+					"testmethod": "Lorem ipsum"
+				},
+				{
+					"taskid": "05-01-edt-04",
+					"taskdesc": "<strong>Silent film or image sequences:</strong> Is information conveyed by the silent film or image sequences? If yes: A media alternative is offered (e.g. text version, alternative audio track or additional audio file)",
+					"tasktype": "pattern",
+					"taskcat": [
+						"audio",
+						"alt-text"
+					],
+					"testtool": "Lorem ipsum",
+					"testmethod": "Lorem ipsum"
+				},
+				{
+					"taskid": "05-01-edt-05",
+					"taskdesc": "<strong>Silent film or image sequences:</strong> Is information conveyed by the silent film or image sequences? If yes: The media alternative conveys the same content as the silent film or image sequence",
+					"tasktype": "pattern",
+					"taskcat": [
+						"audio",
+						"alt-text"
+					],
+					"testtool": "Lorem ipsum",
+					"testmethod": "Lorem ipsum"
+				},
+				{
+					"taskid": "05-01-edt-06",
+					"taskdesc": "<strong>Accessibility of the alternatives for audio, silent film or image sequences</strong>The media alternatives are offered in the immediate context of the audio or video file",
+					"tasktype": "pattern",
+					"taskcat": [
+						"audio",
+						"alt-text"
+					],
+					"testtool": "Lorem ipsum",
+					"testmethod": "Lorem ipsum"
+				},
+				{
+					"taskid": "05-01-edt-07",
+					"taskdesc": "<strong>Accessibility of the alternatives for audio, silent film or image sequences</strong>If the media alternative is on a different page: There is a meaningful link to it in the immediate context of the audio or video file",
+					"tasktype": "pattern",
+					"taskcat": [
+						"audio",
+						"alt-text"
+					],
+					"testtool": "Lorem ipsum",
+					"testmethod": "Lorem ipsum"
+				}
+			],
+			"cmtasks": [
+				{
+					"roletitle": "Channel Management"
+				},
+				{
+					"taskid": "05-01-cm-01",
+					"taskdesc": "only visual inspection",
+					"tasktype": "pattern",
+					"taskcat": [
+						"audio",
+						"alt-text"
+					],
+					"testtool": "Browser",
+					"testmethod": "Test Captcha"
+				}
+			],
+			"testingtasks": [
+				{
+					"roletitle": "Testing"
+				},
+				{
+					"taskid": "05-01-test-01",
+					"taskdesc": "Audio files and silent video files that convey information must be provided with equivalent media alternatives - unless they already represent media alternatives for text.",
+					"tasktype": "pattern",
+					"taskcat": [
+						"video",
+						"alt-text"
+					],
+					"testtool": "Testtool",
+					"testmethod": "Lorem ipsum"
+				}
+			]
+		}
+	},
+	{
+		"id": "05-02",
+		"category": "Time-based media",
+		"bitv": "9.1.2.2",
+		"title": "Captions (pre-recorded)",
+		"applicable": "applicable",
+		"roles": [
+			"ux",
+			"dev",
+			"edt",
+			"testing"
+		],
+		"dods": {
+			"devtasks": [
+				{
+					"roletitle": "Frontend Development"
+				},
+				{
+					"taskid": "05-02-dev-01",
+					"taskdesc": "Implement new video or audio player if hardcoded",
+					"tasktype": "pattern",
+					"taskcat": [
+						"video",
+						"alt-text"
+					],
+					"testtool": "Lorem ipsum",
+					"testmethod": "Lorem ipsum"
+				}
+			],
+			"edttasks": [
+				{
+					"roletitle": "Editorial"
+				},
+				{
+					"taskid": "05-02-edt-01",
+					"taskdesc": "In the UX concept and/or on the site, the following was checked: Does the video have an audio track? If yes: Is the video a text alternative? Then there is no need for subtitles.",
+					"tasktype": "pattern",
+					"taskcat": [
+						"audio",
+						"alt-text"
+					],
+					"testtool": "Lorem ipsum",
+					"testmethod": "Lorem ipsum"
+				},
+				{
+					"taskid": "05-01-edt-02",
+					"taskdesc": "<strong>Video for text alternative: </strong>The video caption clearly refers to a corresponding text version and this is available in the immediate vicinity or accessible via a meaningful link",
+					"tasktype": "pattern",
+					"taskcat": [
+						"audio",
+						"alt-text"
+					],
+					"testtool": "Lorem ipsum",
+					"testmethod": "Lorem ipsum"
+				},
+				{
+					"taskid": "05-01-edt-03",
+					"taskdesc": "<strong>Video for text alternative: </strong>The video transports all the essential content of the text via the sound",
+					"tasktype": "pattern",
+					"taskcat": [
+						"audio",
+						"alt-text"
+					],
+					"testtool": "Lorem ipsum",
+					"testmethod": "Lorem ipsum"
+				},
+				{
+					"taskid": "05-01-edt-04",
+					"taskdesc": "<strong>Video for text alternative: </strong>Is important information said in the video that is not in the text? Then it is not a media alternative. It needs subtitles and must be checked for audio description",
+					"tasktype": "pattern",
+					"taskcat": [
+						"audio",
+						"alt-text"
+					],
+					"testtool": "Lorem ipsum",
+					"testmethod": "Lorem ipsum"
+				},
+				{
+					"taskid": "05-01-edt-05",
+					"taskdesc": "<strong>Video is not a text alternative: </strong>Subtitles are automatically displayed parallel to the video or can be switched on",
+					"tasktype": "pattern",
+					"taskcat": [
+						"audio",
+						"alt-text"
+					],
+					"testtool": "Lorem ipsum",
+					"testmethod": "Lorem ipsum"
+				},
+				{
+					"taskid": "05-01-edt-06",
+					"taskdesc": "<strong>Video is not a text alternative: </strong>The subtitles correspond to the audible content",
+					"tasktype": "pattern",
+					"taskcat": [
+						"audio",
+						"alt-text"
+					],
+					"testtool": "Lorem ipsum",
+					"testmethod": "Lorem ipsum"
+				}
+			],
+			"cmtasks": [
+				{
+					"roletitle": "Channel Management"
+				},
+				{
+					"taskid": "05-02-cm-01",
+					"taskdesc": "only visual inspection",
+					"tasktype": "pattern",
+					"taskcat": [
+						"video",
+						"alt-text"
+					],
+					"testtool": "Browser",
+					"testmethod": "Test Captcha"
+				}
+			],
+			"testingtasks": [
+				{
+					"roletitle": "Testing"
+				},
+				{
+					"taskid": "05-02-test-01",
+					"taskdesc": "If the audio track of a recorded video contains information, subtitles must be provided as an alternative.",
+					"tasktype": "pattern",
+					"taskcat": [
+						"video",
+						"alt-text"
+					],
+					"testtool": "Testtool",
+					"testmethod": "Lorem ipsum"
+				}
+			]
+		}
+	}
+]
