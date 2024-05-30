@@ -192,7 +192,7 @@
 				},
 				{
 					"taskid": "03-01-ux-01",
-					"taskdesc": "UX ist toll",
+					"taskdesc": "UX task for Lorem ipsum task 1",
 					"tasktype": "pattern",
 					"taskcat": [
 						"design",

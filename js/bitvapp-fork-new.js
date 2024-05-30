@@ -51,7 +51,7 @@ $(document).ready(function() {
     }
 
     function clearState() {
-        if (confirm('All checked elements will be reset. Are you sure you want to proceed?')) {
+        if (confirm('All checked elements will be reset. This can not be undone. Are you sure you want to proceed?')) {
             localStorage.removeItem('filterState');
             location.reload();
         }
@@ -240,9 +240,7 @@ $(document).ready(function() {
             <button class="ws10-secondary-button" id="reset-filters">Reset Filters</button>
             <div style="clear:both"></div>
         </div>
-        <div class="toolBar">
-            <button class="ws10-alt-button toolBarItem" id="clear-state">Clear checked</button>
-        </div>
+        
 
        
         `;
