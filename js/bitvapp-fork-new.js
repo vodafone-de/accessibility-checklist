@@ -17,6 +17,7 @@ $(document).ready(function() {
             });
         }
     }
+    
 
     function saveState() {
         const state = {
@@ -177,6 +178,8 @@ $(document).ready(function() {
         applyFilters();
     }
 
+    
+
     setFiltersFromQueryString();
 
     $.getJSON('https://vodafone-de.github.io/accessibility-checklist/data/data.json', function(jsonArray) {
@@ -251,6 +254,42 @@ $(document).ready(function() {
             $('.dropdown-content').toggle();
         });
 
+        const dropdownButton = document.querySelector('.dropdown-button');
+        const dropdownContent = document.querySelector('.dropdown-content');
+
+        function toggleDropdown() {
+            dropdownContent.classList.toggle('open');
+        }
+
+        function openDropdown() {
+            dropdownContent.classList.add('open');
+        }
+
+        function closeDropdown() {
+            dropdownContent.classList.remove('open');
+        }
+
+        dropdownButton.addEventListener('click', (event) => {
+            event.stopPropagation(); // Prevent the click from bubbling up to the document
+            if (dropdownContent.classList.contains('open')) {
+                closeDropdown();
+            } else {
+                openDropdown();
+            }
+        });
+
+        document.addEventListener('click', (event) => {
+            if (!dropdownContent.contains(event.target) && !dropdownButton.contains(event.target)) {
+                closeDropdown();
+            }
+        });
+
+        document.addEventListener('keydown', (event) => {
+            if (event.key === 'Escape') {
+                closeDropdown();
+            }
+        });
+        
         $('#filter-options input[type="checkbox"], #taskcat-dropdown input[type="checkbox"]').change(function() {
             applyFilters();
         });
@@ -262,6 +301,8 @@ $(document).ready(function() {
         $('#clear-state').click(function() {
             clearState();
         });
+        
+       
 
         Object.keys(groupedByCategory).forEach(category => {
             const container = $('<div>').addClass('ws10-card');
@@ -509,4 +550,8 @@ $(document).ready(function() {
     }).fail(function(jqxhr, textStatus, error) {
         console.error("Request Failed: " + textStatus + ", " + error);
     });
+
+
+
+    
 });

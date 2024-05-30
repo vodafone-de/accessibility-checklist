@@ -399,7 +399,42 @@ font-weight: var(--ws10-font-weight-bold);
 #taskcat-dropdown li {
   margin: 5px 0;
 }
+ /* Dropdown container */
+ #taskcat-dropdown {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  overflow: scroll;
+  max-height: 300px;
+  display: none; /* Initially hidden */
+}
 
+#taskcat-dropdown li {
+  margin: 5px 0;
+}
+
+/* Dropdown label */
+#taskcat-dropdown label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+#taskcat-dropdown input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+#taskcat-dropdown .ws10-text {
+  font-size: 14px;
+}
+
+.dropdown-content {
+  position: relative;
+}
+
+.dropdown-content.open #taskcat-dropdown {
+  display: block;
+}
 /* Dropdown label */
 #taskcat-dropdown label {
   display: flex;
@@ -515,7 +550,34 @@ font-weight: var(--ws10-font-weight-bold);
 }
 
 
+@media screen and (min-width: 600px) {
+  .ws10-form-select .ws10-form-select__select {
+      font-size: 20px;
+      line-height: 32px;
+  }
+}
 
+.ws10-form-select .ws10-form-select__select {
+  width: 100%;
+  display: block;
+  padding: 11px 56px 11px 16px;
+  background-color: #fff;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: #0d0d0d;
+  font-weight: 400;
+  font-family: "Vodafone", "Arial", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+}
+.ws10-form-select .ws10-form-select__select {
+  border-radius: 6px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #262626;
+}
 
 
 
