@@ -225,7 +225,7 @@ $(document).ready(function() {
                 </div></li>
                 <li>
                 <div class="dropdown">
-                <button class="dropdown-button">Select Categories</button>
+                <button class="dropdown-button">Select Categories <svg aria-hidden="true" class="dropdown-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"></polyline></svg></button>
                 <div class="dropdown-content">
                     <ul id="taskcat-dropdown">
                     ${[...taskCategories].map(cat => `
@@ -250,45 +250,29 @@ $(document).ready(function() {
 
         $('#content-wrapper').prepend(filterHtml);
 
-        $('.dropdown-button').click(function() {
-            $('.dropdown-content').toggle();
-        });
+// Toggle dropdown on button click
+$('.dropdown-button').click(function() {
+    $('.dropdown-content').toggle().toggleClass('open');
+});
 
-        const dropdownButton = document.querySelector('.dropdown-button');
-        const dropdownContent = document.querySelector('.dropdown-content');
+// Close dropdown on escape key press and focus the button only if the dropdown was open
+$(document).keydown(function(e) {
+    if (e.key === "Escape" && $('.dropdown-content').hasClass('open')) {
+        $('.dropdown-content').hide().removeClass('open');
+        $('.dropdown-button').focus();
+    }
+});
 
-        function toggleDropdown() {
-            dropdownContent.classList.toggle('open');
-        }
+// Close dropdown when clicking outside of the dropdown
+$(document).click(function(e) {
+    if (!$(e.target).closest('.dropdown-button, .dropdown-content').length) {
+        $('.dropdown-content').hide().removeClass('open');
+    }
+});
 
-        function openDropdown() {
-            dropdownContent.classList.add('open');
-        }
 
-        function closeDropdown() {
-            dropdownContent.classList.remove('open');
-        }
 
-        dropdownButton.addEventListener('click', (event) => {
-            event.stopPropagation(); // Prevent the click from bubbling up to the document
-            if (dropdownContent.classList.contains('open')) {
-                closeDropdown();
-            } else {
-                openDropdown();
-            }
-        });
 
-        document.addEventListener('click', (event) => {
-            if (!dropdownContent.contains(event.target) && !dropdownButton.contains(event.target)) {
-                closeDropdown();
-            }
-        });
-
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape') {
-                closeDropdown();
-            }
-        });
         
         $('#filter-options input[type="checkbox"], #taskcat-dropdown input[type="checkbox"]').change(function() {
             applyFilters();

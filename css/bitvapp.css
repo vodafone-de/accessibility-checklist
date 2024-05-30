@@ -506,16 +506,40 @@ font-weight: var(--ws10-font-weight-bold);
 
 /* Dropdown button */
 .dropdown-button {
-  background-color: #007bff;
-  color: white;
-  padding: 10px 20px;
-  border: none;
+  background-color: var(--ws10-color-monochrome-100);
+  color: var(--ws10-color-monochrome-600);
+  border-radius: var(--ws10-border-radius-medium);
   cursor: pointer;
-  font-size: 16px;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: "Vodafone", "Arial", sans-serif;
+  padding: 10px 24px 10px 14px;
+  display: flex;
 }
 
-.dropdown-button:hover {
-  background-color: #0056b3;
+.dropdown-button :target {
+
+  border: 2px var(--ws10-color-secondary-600) solid;
+
+}
+
+.dropdown-button :focus-visible {
+
+  border: 2px var(--ws10-color-secondary-600) solid;
+
+}
+
+.dropdown-item__chevron {
+  stroke: currentColor;
+  width: 22px;
+  height: 22px;
+  background-color: transparent;
+  transform: rotate(0deg);
+  transform-origin: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  padding-left: 20px;
+    margin-right: -12px;
 }
 
 /* Dropdown content (hidden by default) */
