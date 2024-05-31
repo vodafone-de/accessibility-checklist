@@ -88,63 +88,65 @@ $(document).ready(function() {
         const filters = $('#filter-options input[type="checkbox"]:checked').map(function() {
             return $(this).data('filter_id');
         }).get();
-
+    
         const taskCatFilters = $('#taskcat-dropdown input[type="checkbox"]:checked').map(function() {
             return $(this).val();
         }).get();
-
-        $('.badgegroup span').hide();
+    
+        $('.badgegroup span').removeClass("filteractive").show();
         $('.accordion-content .dods ul').hide();
         $('.accordion-content .dods ul li').hide();
         $('.ws10-card').hide();
         $('div.roletitle').hide();
         $('div.roletitle + ul').hide();
-
+    
         if (filters.length > 0 || taskCatFilters.length > 0) {
             filters.forEach(filter => {
                 $(`.badgegroup .${filter}_filter`).addClass("filteractive").show();
                 $(`.accordion-content .dods ul[class*="${filter}tasks"]`).each(function() {
                     $(this).show().find('li').show();
                 });
-
+    
                 $(`.accordion-content:has(.dods ul[class*="${filter}tasks"])`).each(function() {
                     const accordionContent = $(this);
                     const accordionHeader = accordionContent.prev('.accordion-header');
                     accordionContent.addClass('open').css('max-height', accordionContent[0].scrollHeight + 'px');
                     accordionHeader.find('.ws10-accordion-item__chevron').addClass('rotate');
                 });
-
+    
                 $(`div.roletitle + ul[class*="${filter}tasks"]`).each(function() {
                     $(this).show();
                     $(this).prev('div.roletitle').show();
                 });
             });
-
+    
             taskCatFilters.forEach(taskCat => {
                 $(`.taglistitems:contains(${taskCat})`).each(function() {
                     const li = $(this).closest('li');
                     li.show();
+                    li.closest('ul').show();
                     li.closest('.dods').show();
                     li.closest('.ws10-card').show();
+                    li.closest('ul').prev('div.roletitle').show();
                 });
             });
-
+    
             $('.ws10-card').each(function() {
                 const card = $(this);
                 let showCard = false;
-
+    
                 filters.forEach(filter => {
                     if (card.find(`.badgegroup .${filter}_filter`).length > 0 || card.find(`.dods ul[class*="${filter}tasks"]`).length > 0) {
                         showCard = true;
                     }
                 });
-
+    
                 taskCatFilters.forEach(taskCat => {
                     if (card.find(`.taglistitems:contains(${taskCat})`).length > 0) {
                         showCard = true;
                     }
                 });
-
+    
                 if (showCard) {
                     card.show();
                 }
@@ -158,13 +160,15 @@ $(document).ready(function() {
             $('.accordion-content').removeClass('open').css('max-height', '0');
             $('.accordion-header .ws10-accordion-item__chevron').removeClass('rotate');
         }
-
+    
         adjustAccordionHeights();
         updateQueryString();
         updateFieldsetCountAfterFiltering();
         saveState();
         console.log("applyFilters " + selectedRadioCount);
     }
+    
+    
 
     function adjustAccordionHeights() {
         $('.accordion-content.open').each(function() {
