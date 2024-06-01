@@ -18,7 +18,6 @@ $(document).ready(function() {
         }
     }
     
-
     function saveState() {
         const state = {
             selectedRadios: {},
@@ -161,14 +160,62 @@ $(document).ready(function() {
             $('.accordion-header .ws10-accordion-item__chevron').removeClass('rotate');
         }
     
+        updateFilterNumberBadge();
         adjustAccordionHeights();
         updateQueryString();
         updateFieldsetCountAfterFiltering();
         saveState();
+        updateDisplayedFilters();
         console.log("applyFilters " + selectedRadioCount);
     }
     
+    function updateFilterNumberBadge() {
+        $('.dropdown').each(function() {
+            const dropdown = $(this);
+            const checkedCount = dropdown.find('.dropdown-content input[type="checkbox"]:checked').length;
+            let badge = dropdown.find('.filter-number-badge');
     
+            if (checkedCount > 0) {
+                if (badge.length === 0) {
+                    badge = $('<div class="filter-number-badge"></div>');
+                    dropdown.append(badge);
+                }
+                badge.text(checkedCount).show();
+            } else {
+                badge.hide();
+            }
+        });
+    }
+
+    function updateDisplayedFilters() {
+        const filterDiv = $('.filter');
+        const selectedFilters = $('#filter-options input[type="checkbox"]:checked').map(function() {
+            return { id: $(this).data('filter_id'), label: $(this).next('span').text() };
+        }).get();
+        const taskCatFilters = $('#taskcat-dropdown input[type="checkbox"]:checked').map(function() {
+            return { id: $(this).val(), label: $(this).next('span').text() };
+        }).get();
+
+        const allSelectedFilters = [...new Map(selectedFilters.concat(taskCatFilters).map(filter => [filter.id, filter])).values()];
+
+        const filterButtonsHtml = allSelectedFilters.map(filter => `
+            <button class="filter-button" data-filter_id="${filter.id}">
+            <span class="remove-filter"><svg id="filter-del-icon" class="ws10-button-icon-only__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+  
+            <line class="st0" x1="44" y1="148" x2="148" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.67"></line>
+            <line class="st0" x1="148" y1="148" x2="44" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.67"></line>
+      </svg></span>   ${filter.label} 
+            </button>
+        `).join('');
+
+        $('#selected-filters').html(filterButtonsHtml);
+
+        $('.filter-button').click(function() {
+            const filterId = $(this).data('filter_id');
+            $(`#filter-options input[data-filter_id="${filterId}"], #taskcat-dropdown input[value="${filterId}"]`).prop('checked', false);
+            applyFilters();
+        });
+    }
 
     function adjustAccordionHeights() {
         $('.accordion-content.open').each(function() {
@@ -181,8 +228,6 @@ $(document).ready(function() {
         $('#taskcat-dropdown input[type="checkbox"]').prop('checked', false);
         applyFilters();
     }
-
-    
 
     setFiltersFromQueryString();
 
@@ -235,7 +280,7 @@ $(document).ready(function() {
                     ${[...taskCategories].map(cat => `
                     <li>
                         <label>
-                            <input type="checkbox" value="${cat}">
+                            <input type="checkbox" value="${cat}" data-filter_id="${cat}">
                             <span class="ws10-text">${cat}</span>
                         </label>
                     </li>`).join('')}
@@ -243,43 +288,36 @@ $(document).ready(function() {
                 </div>
             </div>
             </li>
+            <li><button class="ws10-secondary-button" id="reset-filters">Reset Filters</button></li>
             </ul>
-            <button class="ws10-secondary-button" id="reset-filters">Reset Filters</button>
+            
             <div style="clear:both"></div>
         </div>
-        
-
-       
+        <div id="selected-filters"></div>
         `;
 
         $('#content-wrapper').prepend(filterHtml);
 
-// Toggle dropdown on button click
-$('.dropdown-button').click(function() {
-    $('.dropdown-content').toggle().toggleClass('open');
-});
+        $('.dropdown-button').click(function() {
+            $('.dropdown-content').toggle().toggleClass('open');
+        });
 
-// Close dropdown on escape key press and focus the button only if the dropdown was open
-$(document).keydown(function(e) {
-    if (e.key === "Escape" && $('.dropdown-content').hasClass('open')) {
-        $('.dropdown-content').hide().removeClass('open');
-        $('.dropdown-button').focus();
-    }
-});
+        $(document).keydown(function(e) {
+            if (e.key === "Escape" && $('.dropdown-content').hasClass('open')) {
+                $('.dropdown-content').hide().removeClass('open');
+                $('.dropdown-button').focus();
+            }
+        });
 
-// Close dropdown when clicking outside of the dropdown
-$(document).click(function(e) {
-    if (!$(e.target).closest('.dropdown-button, .dropdown-content').length) {
-        $('.dropdown-content').hide().removeClass('open');
-    }
-});
+        $(document).click(function(e) {
+            if (!$(e.target).closest('.dropdown-button, .dropdown-content').length) {
+                $('.dropdown-content').hide().removeClass('open');
+            }
+        });
 
-
-
-
-        
         $('#filter-options input[type="checkbox"], #taskcat-dropdown input[type="checkbox"]').change(function() {
             applyFilters();
+            updateFilterNumberBadge();
         });
 
         $('#reset-filters').click(function() {
@@ -289,8 +327,6 @@ $(document).click(function(e) {
         $('#clear-state').click(function() {
             clearState();
         });
-        
-       
 
         Object.keys(groupedByCategory).forEach(category => {
             const container = $('<div>').addClass('ws10-card');
@@ -538,8 +574,4 @@ $(document).click(function(e) {
     }).fail(function(jqxhr, textStatus, error) {
         console.error("Request Failed: " + textStatus + ", " + error);
     });
-
-
-
-    
 });
