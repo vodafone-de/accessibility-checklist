@@ -177,7 +177,7 @@ $(document).ready(function() {
     
             if (checkedCount > 0) {
                 if (badge.length === 0) {
-                    badge = $('<div class="filter-number-badge"></div>');
+                    badge = $('<div class="filter-number-badge" aria-label="amount of active tag-filter: ' + checkedCount + '" aria-live="polite"></div>');
                     dropdown.append(badge);
                 }
                 badge.text(checkedCount).show();
@@ -199,12 +199,11 @@ $(document).ready(function() {
         const allSelectedFilters = [...new Map(selectedFilters.concat(taskCatFilters).map(filter => [filter.id, filter])).values()];
 
         const filterButtonsHtml = allSelectedFilters.map(filter => `
-            <button class="filter-button" data-filter_id="${filter.id}">
-            <span class="remove-filter"><svg id="filter-del-icon" class="ws10-button-icon-only__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
-  
+            <button aria-label="delete filter ${filter.label}" class="filter-button" data-filter_id="${filter.id}">
+            <span class="remove-filter"><svg aria-hidden="true" id="filter-del-icon" class="ws10-button-icon-only__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
             <line class="st0" x1="44" y1="148" x2="148" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.67"></line>
-            <line class="st0" x1="148" y1="148" x2="44" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.67"></line>
-      </svg></span>   ${filter.label} 
+            <line class="st0" x1="148" y1="148" x2="44" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.67"></line></svg>
+            </span>   ${filter.label} 
             </button>
         `).join('');
 

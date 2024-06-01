@@ -506,6 +506,7 @@ font-weight: var(--ws10-font-weight-bold);
   font-family: "Vodafone", "Arial", sans-serif;
   padding: 10px 24px 10px 14px;
   display: flex;
+
 }
 
 .dropdown-button :target {
@@ -518,6 +519,10 @@ font-weight: var(--ws10-font-weight-bold);
 
   border: 2px var(--ws10-color-secondary-600) solid;
 
+}
+
+.dropdown-button:hover {
+  box-shadow: inset 0 0 0 1px #0d0d0d;
 }
 
 .dropdown-item__chevron {
@@ -1403,6 +1408,9 @@ font-size:12px;
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
+  font-family: 'Vodafone';
+  font-size: 14px;
+  font-weight: 700;
 }
 
 .filter-button:hover {
