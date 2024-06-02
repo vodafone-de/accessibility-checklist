@@ -98,6 +98,7 @@ $(document).ready(function() {
         $('.ws10-card').hide();
         $('div.roletitle').hide();
         $('div.roletitle + ul').hide();
+        $('.bitvcontainer').show();  // Show all bitvcontainer elements initially
     
         if (filters.length > 0 || taskCatFilters.length > 0) {
             filters.forEach(filter => {
@@ -121,12 +122,21 @@ $(document).ready(function() {
     
             taskCatFilters.forEach(taskCat => {
                 $(`.taglistitems:contains(${taskCat})`).each(function() {
-                    const li = $(this).closest('li');
+                    const li = $(this).closest('li.taskContainer');
                     li.show();
                     li.closest('ul').show();
                     li.closest('.dods').show();
                     li.closest('.ws10-card').show();
                     li.closest('ul').prev('div.roletitle').show();
+                    li.closest('.bitvcontainer').show(); // Show the bitvcontainer containing the li
+                });
+    
+                // Hide li elements that do not contain the corresponding taskCat value
+                $('li.taskContainer').each(function() {
+                    const li = $(this);
+                    if (li.find(`.taglistitems:contains(${taskCat})`).length === 0) {
+                        li.hide();
+                    }
                 });
             });
     
@@ -150,6 +160,31 @@ $(document).ready(function() {
                     card.show();
                 }
             });
+    
+            // Ensure bitvcontainer visibility is updated based on taskCatFilters
+            $('.bitvcontainer').each(function() {
+                const container = $(this);
+                let showContainer = false;
+    
+                filters.forEach(filter => {
+                    if (container.find(`.badgegroup .${filter}_filter`).length > 0) {
+                        showContainer = true;
+                    }
+                });
+    
+                taskCatFilters.forEach(taskCat => {
+                    if (container.find(`.taglistitems:contains(${taskCat})`).length > 0) {
+                        showContainer = true;
+                    }
+                });
+    
+                if (!showContainer) {
+                    container.hide();
+                } else {
+                    container.show();
+                }
+            });
+    
         } else {
             $('.badgegroup span').removeClass("filteractive").show();
             $('.accordion-content .dods ul').show().find('li').show();
@@ -158,6 +193,7 @@ $(document).ready(function() {
             $('div.roletitle + ul').show();
             $('.accordion-content').removeClass('open').css('max-height', '0');
             $('.accordion-header .ws10-accordion-item__chevron').removeClass('rotate');
+            $('.bitvcontainer').show();  // Show all bitvcontainer elements when no filters are selected
         }
     
         updateFilterNumberBadge();
@@ -168,6 +204,11 @@ $(document).ready(function() {
         updateDisplayedFilters();
         console.log("applyFilters " + selectedRadioCount);
     }
+    
+    
+    
+    
+    
     
     function updateFilterNumberBadge() {
         $('.dropdown').each(function() {
@@ -252,6 +293,11 @@ $(document).ready(function() {
             }
         });
 
+        // Konvertiere das Set in ein Array und sortiere es alphabetisch
+        const sortedTaskCategories = [...taskCategories].sort((a, b) => {
+            return a.toLowerCase().localeCompare(b.toLowerCase());
+        });
+
         const filterHtml = `
         <div class="filter">
             <h4>Filter:</h4>
@@ -276,7 +322,7 @@ $(document).ready(function() {
                 <button class="dropdown-button">Select Categories <svg aria-hidden="true" class="dropdown-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"></polyline></svg></button>
                 <div class="dropdown-content">
                     <ul id="taskcat-dropdown">
-                    ${[...taskCategories].map(cat => `
+                    ${[...sortedTaskCategories].map(cat => `
                     <li>
                         <label>
                             <input type="checkbox" value="${cat}" data-filter_id="${cat}">
