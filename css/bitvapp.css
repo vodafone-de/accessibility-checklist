@@ -402,11 +402,19 @@ font-weight: var(--ws10-font-weight-bold);
   overflow-x: hidden;
   max-height: 300px;
   display: none; /* Initially hidden */
+  display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 
 }
 
 #taskcat-dropdown li {
   margin: 5px 0;
+  width: 100%;
 }
 
 /* Dropdown label */
@@ -421,7 +429,7 @@ font-weight: var(--ws10-font-weight-bold);
 }
 
 #taskcat-dropdown .ws10-text {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .dropdown-content {
@@ -442,9 +450,6 @@ font-weight: var(--ws10-font-weight-bold);
   margin-right: 10px;
 }
 
-#taskcat-dropdown .ws10-text {
-  font-size: 14px;
-}
 
 /* Dropdown styling */
 
@@ -561,7 +566,7 @@ font-weight: var(--ws10-font-weight-bold);
 }
 
 .dropdown-content li:hover {
-  background-color: #ddd;
+  background-color: var(--ws10-color-monochrome-200);
 }
 
 /* Checkbox styles */
@@ -1416,6 +1421,7 @@ font-size:12px;
 .filter-button:hover {
   box-shadow: inset 0 0 0 2px #0d0d0d;
   background-color: var(--ws10-color-monochrome-200);
+  filter: brightness(90%);
 }
 
 .filter-button:focus {
