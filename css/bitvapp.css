@@ -640,6 +640,7 @@ font-weight: var(--ws10-font-weight-bold);
     background: url(../img/tag-system.svg);
     background-position: left 0px;
     background-repeat: no-repeat;
+    background-size: 20px;
     padding: 2px 0px 0px 22px;
     float: left;
     margin: 0px 8px 0 0px;
@@ -1393,6 +1394,9 @@ font-size:12px;
   font-size: 10px;
   text-align: center;
   font-weight: 700;
+  display: flex; /* Hinzugefügte Eigenschaft */
+  align-items: center; /* Hinzugefügte Eigenschaft */
+  justify-content: center; /* Hinzugefügte Eigenschaft */
 }
 
 #filter-del-icon {
@@ -1513,6 +1517,22 @@ font-size:12px;
   stroke: #fff;
   fill: #fff;
 }
+
+.categoryfilteractive {
+  background: url(../img/tag-system-white.svg);
+    background-position: 4px 0px;
+    background-repeat: no-repeat;
+    background-size: 20px;
+  background-color: #00697c!important;
+  color: #fff!important;
+  stroke: #fff;
+  fill: #fff;
+  border-radius: 100px;
+  padding: 2px 9px 3px 28px;
+}
+
+
+
 
 .action input:checked + span {
     

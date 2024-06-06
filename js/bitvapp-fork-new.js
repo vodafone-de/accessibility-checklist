@@ -3,21 +3,53 @@ $(document).ready(function() {
         const selectedFilters = $('#filter-options input[type="checkbox"]:checked').map(function() {
             return $(this).data('filter_id');
         }).get();
-        const queryString = selectedFilters.length > 0 ? `?filters=${selectedFilters.join(',')}` : '';
+        console.log('Selected Filters:', selectedFilters); // Debug-Ausgabe
+    
+        const selectedTaskFilters = $('#taskcat-dropdown input[type="checkbox"]:checked').map(function() {
+            return $(this).data('filter_id');
+        }).get();
+        console.log('Selected Task Filters:', selectedTaskFilters); // Debug-Ausgabe
+    
+        let queryString = '';
+    
+        if (selectedFilters.length > 0) {
+            queryString += `?role=${selectedFilters.join(',')}`;
+        }
+    
+        if (selectedTaskFilters.length > 0) {
+            if (queryString) {
+                queryString += '&';
+            } else {
+                queryString += '?';
+            }
+            queryString += `category=${selectedTaskFilters.join(',')}`;
+        }
+    
+        console.log('Query String:', queryString); // Debug-Ausgabe
+    
         history.replaceState(null, '', `${location.pathname}${queryString}`);
     }
+    
+    
 
     function setFiltersFromQueryString() {
         const params = new URLSearchParams(window.location.search);
-        const filters = params.get('filters');
+        const filters = params.get('role');
+        const taskfilters = params.get('category');
         if (filters) {
             const filterArray = filters.split(',');
             filterArray.forEach(filterId => {
                 $(`#filter-options input[data-filter_id="${filterId}"]`).prop('checked', true);
             });
         }
+        if (taskfilters) {
+            const taskfilterArray = taskfilters.split(',');
+            taskfilterArray.forEach(taskfilterId => {
+                $(`#taskcat-dropdown input[data-filter_id="${taskfilterId}"]`).prop('checked', true);
+            });
+        }
     }
-    
+     
     function saveState() {
         const state = {
             selectedRadios: {},
@@ -93,12 +125,15 @@ $(document).ready(function() {
         }).get();
     
         $('.badgegroup span').removeClass("filteractive").show();
+        $('.taglistitems').removeClass("categoryfilteractive").show();;
         $('.accordion-content .dods ul').hide();
         $('.accordion-content .dods ul li').hide();
         $('.ws10-card').hide();
         $('div.roletitle').hide();
         $('div.roletitle + ul').hide();
-        $('.bitvcontainer').show();  // Show all bitvcontainer elements initially
+        $('.bitvcontainer').hide();  // Hide all bitvcontainer elements initially
+    
+        const bothFiltersSelected = filters.length > 0 && taskCatFilters.length > 0;
     
         if (filters.length > 0 || taskCatFilters.length > 0) {
             filters.forEach(filter => {
@@ -120,72 +155,140 @@ $(document).ready(function() {
                 });
             });
     
-            taskCatFilters.forEach(taskCat => {
-                $(`.taglistitems:contains(${taskCat})`).each(function() {
-                    const li = $(this).closest('li.taskContainer');
-                    li.show();
-                    li.closest('ul').show();
-                    li.closest('.dods').show();
-                    li.closest('.ws10-card').show();
-                    li.closest('ul').prev('div.roletitle').show();
-                    li.closest('.bitvcontainer').show(); // Show the bitvcontainer containing the li
-                });
-    
-                // Hide li elements that do not contain the corresponding taskCat value
-                $('li.taskContainer').each(function() {
-                    const li = $(this);
-                    if (li.find(`.taglistitems:contains(${taskCat})`).length === 0) {
-                        li.hide();
-                    }
-                });
-            });
-    
+            // Show ws10-card elements based on combined filters
             $('.ws10-card').each(function() {
                 const card = $(this);
-                let showCard = false;
+                let showCard = true;
     
-                filters.forEach(filter => {
-                    if (card.find(`.badgegroup .${filter}_filter`).length > 0 || card.find(`.dods ul[class*="${filter}tasks"]`).length > 0) {
-                        showCard = true;
-                    }
-                });
+                if (filters.length > 0) {
+                    let hasFilter = false;
+                    filters.forEach(filter => {
+                        if (card.find(`.badgegroup .${filter}_filter`).length > 0 || card.find(`.dods ul[class*="${filter}tasks"]`).length > 0) {
+                            hasFilter = true;
+                        }
+                    });
+                    showCard = hasFilter;
+                }
     
-                taskCatFilters.forEach(taskCat => {
-                    if (card.find(`.taglistitems:contains(${taskCat})`).length > 0) {
-                        showCard = true;
+                if (taskCatFilters.length > 0) {
+                    let hasTaskCatFilter = false;
+                    taskCatFilters.forEach(taskCat => {
+                        const containsExactText = card.find(`.taglistitems`).filter(function() {
+                            return $(this).text().trim() === taskCat;
+                           
+                        }).each(function() {
+                            $(this).addClass("categoryfilteractive");
+                        }).length > 0;
+                        if (containsExactText) {
+                            hasTaskCatFilter = true;
+                        }
+                    });
+                    if (bothFiltersSelected) {
+                        showCard = showCard && hasTaskCatFilter; // AND logic
+                    } else {
+                        showCard = hasTaskCatFilter; // OR logic if only taskCatFilters are selected
                     }
-                });
+                }
     
                 if (showCard) {
                     card.show();
                 }
             });
     
-            // Ensure bitvcontainer visibility is updated based on taskCatFilters
+            // Additional filtering for task containers inside cards
+            $('li.taskContainer').each(function() {
+                const li = $(this);
+                let showLi = true;
+    
+                if (filters.length > 0) {
+                    let hasFilter = false;
+                    filters.forEach(filter => {
+                        if (li.closest(`ul[class*="${filter}tasks"]`).length > 0) {
+                            hasFilter = true;
+                        }
+                    });
+                    showLi = hasFilter;
+                }
+    
+                if (taskCatFilters.length > 0) {
+                    let hasTaskCatFilter = false;
+                    taskCatFilters.forEach(taskCat => {
+                        const containsExactText = li.find(`.taglistitems`).filter(function() {
+                            return $(this).text().trim() === taskCat;
+                        }).length > 0;
+                        if (containsExactText) {
+                            hasTaskCatFilter = true;
+                        }
+                    });
+                    if (bothFiltersSelected) {
+                        showLi = showLi && hasTaskCatFilter; // AND logic
+                    } else {
+                        showLi = hasTaskCatFilter; // OR logic if only taskCatFilters are selected
+                    }
+                }
+    
+                if (showLi) {
+                    li.show();
+                    li.closest('ul').show();
+                    li.closest('.dods').show();
+                    li.closest('.ws10-card').show();
+                    li.closest('ul').prev('div.roletitle').show();
+                    li.closest('.bitvcontainer').show(); // Show the bitvcontainer containing the li
+                } else {
+                    li.hide();
+                }
+            });
+    
+            // Ensure bitvcontainer visibility is updated based on filters and taskCatFilters
             $('.bitvcontainer').each(function() {
                 const container = $(this);
                 let showContainer = false;
     
-                filters.forEach(filter => {
-                    if (container.find(`.badgegroup .${filter}_filter`).length > 0) {
+                container.find('li.taskContainer').each(function() {
+                    const li = $(this);
+                    let showLi = true;
+    
+                    if (filters.length > 0) {
+                        let hasFilter = false;
+                        filters.forEach(filter => {
+                            if (li.closest(`ul[class*="${filter}tasks"]`).length > 0) {
+                                hasFilter = true;
+                            }
+                        });
+                        showLi = hasFilter;
+                    }
+    
+                    if (taskCatFilters.length > 0) {
+                        let hasTaskCatFilter = false;
+                        taskCatFilters.forEach(taskCat => {
+                            const containsExactText = li.find(`.taglistitems`).filter(function() {
+                                return $(this).text().trim() === taskCat;
+                            }).length > 0;
+                            if (containsExactText) {
+                                hasTaskCatFilter = true;
+                            }
+                        });
+                        if (bothFiltersSelected) {
+                            showLi = showLi && hasTaskCatFilter; // AND logic
+                        } else {
+                            showLi = hasTaskCatFilter; // OR logic if only taskCatFilters are selected
+                        }
+                    }
+    
+                    if (showLi) {
                         showContainer = true;
                     }
                 });
     
-                taskCatFilters.forEach(taskCat => {
-                    if (container.find(`.taglistitems:contains(${taskCat})`).length > 0) {
-                        showContainer = true;
-                    }
-                });
-    
-                if (!showContainer) {
-                    container.hide();
-                } else {
+                if (showContainer) {
                     container.show();
+                } else {
+                    container.hide();
                 }
             });
     
         } else {
+            // If no filters are selected, show all elements
             $('.badgegroup span').removeClass("filteractive").show();
             $('.accordion-content .dods ul').show().find('li').show();
             $('.ws10-card').show();
@@ -196,6 +299,7 @@ $(document).ready(function() {
             $('.bitvcontainer').show();  // Show all bitvcontainer elements when no filters are selected
         }
     
+        // Additional functions to update UI
         updateFilterNumberBadge();
         adjustAccordionHeights();
         updateQueryString();
@@ -208,7 +312,9 @@ $(document).ready(function() {
     
     
     
+    /**Ende Filterlogik */
     
+   
     
     function updateFilterNumberBadge() {
         $('.dropdown').each(function() {
@@ -240,7 +346,7 @@ $(document).ready(function() {
         const allSelectedFilters = [...new Map(selectedFilters.concat(taskCatFilters).map(filter => [filter.id, filter])).values()];
 
         const filterButtonsHtml = allSelectedFilters.map(filter => `
-            <button aria-label="delete filter ${filter.label}" class="filter-button" data-filter_id="${filter.id}">
+            <button aria-label="delete filter ${filter.label}" class="filter-button" data-filter_id="${filter.id}" aria-live="polite">
             <span class="remove-filter"><svg aria-hidden="true" id="filter-del-icon" class="ws10-button-icon-only__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
             <line class="st0" x1="44" y1="148" x2="148" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.67"></line>
             <line class="st0" x1="148" y1="148" x2="44" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.67"></line></svg>
@@ -317,6 +423,8 @@ $(document).ready(function() {
                 <li><div class="cat action" tabindex="0">
                     <label><input type="checkbox" value="filter_testing" data-filter_id="testing"><span class="ws10-text">Testing</span></label>
                 </div></li>
+                </ul>
+                <ul>
                 <li>
                 <div class="dropdown">
                 <button class="dropdown-button">Select Categories <svg aria-hidden="true" class="dropdown-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"></polyline></svg></button>
@@ -516,6 +624,10 @@ $(document).ready(function() {
                                 switchWrapper.append(applicableCheckbox, slider, applicableLabel);
                                 li.append(switchWrapper);
 
+                                const openButton = $('<button id="open-overlay" style="margin-top: 10px;">Open Overlay</button>');
+                                li.append(openButton);
+                                
+
                                 applicableCheckbox.on('change', function() {
                                     const isChecked = $(this).is(':checked');
                                     const fieldset = $(this).closest('li').find('fieldset');
@@ -557,6 +669,7 @@ $(document).ready(function() {
                                 switchWrapper.on('click', function() {
                                     applicableCheckbox.prop('checked', !applicableCheckbox.prop('checked')).trigger('change');
                                 });
+                                
 
                                 ul.append(li);
                                 fieldsetCount++;
@@ -592,6 +705,7 @@ $(document).ready(function() {
         loadState();
         applyFilters();
 
+        
 
         $('input[type="radio"]:checked').each(function() {
             const fieldset = $(this).closest('fieldset');
@@ -613,10 +727,16 @@ $(document).ready(function() {
                 fieldsetCount = Math.max(fieldsetCount - 1, 0);
             }
         });
+        
+         // Code für den Button und das Overlay
+    const overlay = $('<div id="slide-in-overlay" style="display:none; position:fixed; top:0; right:0; width:300px; height:100%; background:#fff; box-shadow:-2px 0 5px rgba(0,0,0,0.5); z-index:1000; transform:translateX(100%); transition:transform 0.3s ease-in-out;"><button id="close-overlay" style="position:absolute; top:10px; left:10px;">Close</button><div style="padding:20px;">Overlay Content</div></div>');
+    $('body').append(overlay);
 
         updateCounter();
         console.log("Am Ende " + fieldsetCount);
     }).fail(function(jqxhr, textStatus, error) {
         console.error("Request Failed: " + textStatus + ", " + error);
     });
+
+    
 });
