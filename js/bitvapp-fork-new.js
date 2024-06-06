@@ -30,8 +30,6 @@ $(document).ready(function() {
         history.replaceState(null, '', `${location.pathname}${queryString}`);
     }
     
-    
-
     function setFiltersFromQueryString() {
         const params = new URLSearchParams(window.location.search);
         const filters = params.get('role');
@@ -49,7 +47,7 @@ $(document).ready(function() {
             });
         }
     }
-     
+    
     function saveState() {
         const state = {
             selectedRadios: {},
@@ -125,7 +123,7 @@ $(document).ready(function() {
         }).get();
     
         $('.badgegroup span').removeClass("filteractive").show();
-        $('.taglistitems').removeClass("categoryfilteractive").show();;
+        $('.taglistitems').removeClass("categoryfilteractive").show();
         $('.accordion-content .dods ul').hide();
         $('.accordion-content .dods ul li').hide();
         $('.ws10-card').hide();
@@ -175,7 +173,6 @@ $(document).ready(function() {
                     taskCatFilters.forEach(taskCat => {
                         const containsExactText = card.find(`.taglistitems`).filter(function() {
                             return $(this).text().trim() === taskCat;
-                           
                         }).each(function() {
                             $(this).addClass("categoryfilteractive");
                         }).length > 0;
@@ -309,12 +306,7 @@ $(document).ready(function() {
         console.log("applyFilters " + selectedRadioCount);
     }
     
-    
-    
-    
     /**Ende Filterlogik */
-    
-   
     
     function updateFilterNumberBadge() {
         $('.dropdown').each(function() {
@@ -592,7 +584,6 @@ $(document).ready(function() {
                                     saveState();
                                 });
                                 
-
                                 const resetButton = $('<div class="reset-button-container"><button class="reset-button"><svg class="reset-button-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><path class="st0" d="M108.84,155.75a60,60,0,0,0,1.72-120l-1.88,0a60,60,0,0,0-59.92,60v27.36" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/><polyline class="st0" points="77.44 95.6 48.76 123.11 20.86 95.6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/></svg></button></div>');
 
                                 resetButton.on('click', function() {
@@ -624,10 +615,9 @@ $(document).ready(function() {
                                 switchWrapper.append(applicableCheckbox, slider, applicableLabel);
                                 li.append(switchWrapper);
 
-                                const openButton = $('<button id="open-overlay" style="margin-top: 10px;">Open Overlay</button>');
+                                const openButton = $('<button class="open-overlay ws10-alt-button" style="margin-top: 10px;grid-column-start: 1; max-width: 110px;">add issue</button>');
                                 li.append(openButton);
                                 
-
                                 applicableCheckbox.on('change', function() {
                                     const isChecked = $(this).is(':checked');
                                     const fieldset = $(this).closest('li').find('fieldset');
@@ -670,7 +660,6 @@ $(document).ready(function() {
                                     applicableCheckbox.prop('checked', !applicableCheckbox.prop('checked')).trigger('change');
                                 });
                                 
-
                                 ul.append(li);
                                 fieldsetCount++;
                             }
@@ -705,8 +694,6 @@ $(document).ready(function() {
         loadState();
         applyFilters();
 
-        
-
         $('input[type="radio"]:checked').each(function() {
             const fieldset = $(this).closest('fieldset');
             if ($(this).val() === 'pass') {
@@ -728,15 +715,31 @@ $(document).ready(function() {
             }
         });
         
-         // Code für den Button und das Overlay
-    const overlay = $('<div id="slide-in-overlay" style="display:none; position:fixed; top:0; right:0; width:300px; height:100%; background:#fff; box-shadow:-2px 0 5px rgba(0,0,0,0.5); z-index:1000; transform:translateX(100%); transition:transform 0.3s ease-in-out;"><button id="close-overlay" style="position:absolute; top:10px; left:10px;">Close</button><div style="padding:20px;">Overlay Content</div></div>');
-    $('body').append(overlay);
+        // Ensure the overlay is initially hidden using transform, not display
+const overlay = $('<div id="slide-in-overlay" style="position:fixed; top:0; right:0; width:300px; height:100%; background:#fff; box-shadow:-2px 0 5px rgba(0,0,0,0.5); z-index:1000; transform:translateX(100%); transition:transform 0.3s ease-in-out;"><button id="close-overlay" class="ws10-alt-button" style="position:absolute; top:10px; right:10px;">Close</button><div id="overlay-content" style="padding:20px;">Overlay Content</div></div>');
+$('body').append(overlay);
+
+$('#content-wrapper').on('click', '.open-overlay', function() {
+    const li = $(this).closest('li');
+    const taskDesc = li.find('.taskdesc').html();
+    const overlayContent = $('#overlay-content');
+    
+    if (taskDesc) {
+        overlayContent.html(taskDesc);
+        $('#slide-in-overlay').css('transform', 'translateX(0)');
+    } else {
+        console.error('No content found for overlay.');
+    }
+});
+
+$('#slide-in-overlay #close-overlay').click(function() {
+    $('#slide-in-overlay').css('transform', 'translateX(100%)');
+});
+
 
         updateCounter();
         console.log("Am Ende " + fieldsetCount);
     }).fail(function(jqxhr, textStatus, error) {
         console.error("Request Failed: " + textStatus + ", " + error);
     });
-
-    
 });
