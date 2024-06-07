@@ -415,6 +415,15 @@ $(document).ready(function() {
                 <li><div class="cat action" tabindex="0">
                     <label><input type="checkbox" value="filter_testing" data-filter_id="testing"><span class="ws10-text">Testing</span></label>
                 </div></li>
+                <li><div class="cat action" tabindex="0">
+                    <label><input type="checkbox" value="filter_testingwftooltasks" data-filter_id="testingwftooltasks"><span class="ws10-text">WF Testing: Tool supported</span></label>
+                </div></li>
+                <li><div class="cat action" tabindex="0">
+                <label><input type="checkbox" value="filter_testingwfmantasks" data-filter_id="testingwfmantasks"><span class="ws10-text">WF Testing: Manual without additional info</span></label>
+            </div></li>
+            <li><div class="cat action" tabindex="0">
+            <label><input type="checkbox" value="filter_testingwfmanexttasks" data-filter_id="testingwfmanexttasks"><span class="ws10-text">WF Testing: Manual with additional info</span></label>
+        </div></li>
                 </ul>
                 <ul>
                 <li>
@@ -715,26 +724,97 @@ $(document).ready(function() {
             }
         });
         
-        // Ensure the overlay is initially hidden using transform, not display
-const overlay = $('<div id="slide-in-overlay" style="position:fixed; top:0; right:0; width:300px; height:100%; background:#fff; box-shadow:-2px 0 5px rgba(0,0,0,0.5); z-index:1000; transform:translateX(100%); transition:transform 0.3s ease-in-out;"><button id="close-overlay" class="ws10-alt-button" style="position:absolute; top:10px; right:10px;">Close</button><div id="overlay-content" style="padding:20px;">Overlay Content</div></div>');
-$('body').append(overlay);
-
-$('#content-wrapper').on('click', '.open-overlay', function() {
-    const li = $(this).closest('li');
-    const taskDesc = li.find('.taskdesc').html();
-    const overlayContent = $('#overlay-content');
+       
+        const overlay = $(`<div>
+        <div class="ws10-overlay__backdrop ws10-fade ws10-in" style="display: none;">
+            <div id="slide-in-overlay" aria-modal="true" role="dialog" class="ws10-overlay ws10-fade ws10-overlay--slide ws10-overlay--spacing ws10-overlay--align-left" style="display: none; transform: translateX(100%);">
+                <div class="ws10-overlay__container">
+                    <div class="ws10-overlay__close">
+                        <button id="close-overlay" aria-label="Close" class="tabenable ws10-button-icon-only ws10-button-icon-only--tertiary ws10-button-icon-only--floating ws10-button-icon-only--standard close">
+                            <svg id="close-icon" class="ws10-button-icon-only__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+                                <line class="st0" x1="44" y1="148" x2="148" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.67"/>
+                                <line class="st0" x1="148" y1="148" x2="44" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.67"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="ws10-overlay__content"></div>
+                </div>
+            </div>
+        </div>
+    </div>`);
     
-    if (taskDesc) {
-        overlayContent.html(taskDesc);
-        $('#slide-in-overlay').css('transform', 'translateX(0)');
-    } else {
-        console.error('No content found for overlay.');
+    $('body').append(overlay);
+    
+    let lastFocusedElement;
+    
+    $('#content-wrapper').on('click', '.open-overlay', function() {
+        lastFocusedElement = $(this);
+        const li = $(this).closest('li');
+        const taskDesc = li.find('.taskdesc').html();
+        const overlayContent = $('.ws10-overlay__content');
+        
+        if (taskDesc) {
+            overlayContent.html(taskDesc);
+            $('#slide-in-overlay').css('display', 'block').addClass('ws10-in').css('transform', 'translateX(0)');
+            $('.ws10-overlay__backdrop').css('display', 'block').addClass('ws10-in').css('transform', 'translateX(0)');
+            $('#close-overlay').focus();
+            trapFocus();
+        } else {
+            console.error('No content found for overlay.');
+        }
+    });
+    
+    function closeOverlay() {
+        $('#slide-in-overlay').css('transform', 'translateX(100%)').removeClass('ws10-in').css('display', 'none');
+        $('.ws10-overlay__backdrop').css('transform', 'translateX(100%)').removeClass('ws10-in').css('display', 'none');
+        lastFocusedElement.focus();
+        untrapFocus();
     }
-});
-
-$('#slide-in-overlay #close-overlay').click(function() {
-    $('#slide-in-overlay').css('transform', 'translateX(100%)');
-});
+    
+    $('#slide-in-overlay').on('click', '#close-overlay', function() {
+        closeOverlay();
+    });
+    
+    $('body').on('click', '.ws10-overlay__backdrop', function(e) {
+        if ($(e.target).is('.ws10-overlay__backdrop')) {
+            closeOverlay();
+        }
+    });
+    
+    $(document).on('keydown', function(e) {
+        if (e.key === 'Escape') {
+            closeOverlay();
+        }
+    });
+    
+    function trapFocus() {
+        const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+        const firstFocusableElement = $('#slide-in-overlay').find(focusableElements).filter(':visible').first();
+        const lastFocusableElement = $('#slide-in-overlay').find(focusableElements).filter(':visible').last();
+    
+        $('#slide-in-overlay').on('keydown.trapFocus', function(e) {
+            if (e.key === 'Tab') {
+                if (e.shiftKey) {
+                    if ($(document.activeElement).is(firstFocusableElement)) {
+                        e.preventDefault();
+                        lastFocusableElement.focus();
+                    }
+                } else {
+                    if ($(document.activeElement).is(lastFocusableElement)) {
+                        e.preventDefault();
+                        firstFocusableElement.focus();
+                    }
+                }
+            }
+        });
+    }
+    
+    function untrapFocus() {
+        $('#slide-in-overlay').off('keydown.trapFocus');
+    }
+    
+    
+        
 
 
         updateCounter();

@@ -811,12 +811,237 @@ font-weight: var(--ws10-font-weight-bold);
 
 
 
+.ws10-fade.ws10-in {
+  opacity: 1;
+}
+
+@media screen and (min-width: 600px) {
+  .ws10-overlay {
+      font-size: 18px;
+  }
+}
+
+.ws10-overlay {
+  font-weight: 400;
+  line-height: 1.5;
+  color: #0d0d0d;
+  font-size: 16px;
+  display: none; /* Start with display: none */
+  z-index: 1001;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  z-index: 1001; /* Soll über dem Backdrop liegen */
+}
 
 
 
+.ws10-fade {
+  opacity: 0;
+  transition: opacity .5s;
+}
+
+.ws10-overlay.ws10-fade.ws10-overlay--slide.ws10-in .ws10-overlay__container {
+  border-radius: 0;
+}
+
+@media screen and (min-width: 1024px) {
+  .ws10-fade.ws10-overlay--slide.ws10-in .ws10-overlay__container {
+      transform: none;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .ws10-fade.ws10-overlay--slide.ws10-in .ws10-overlay__container {
+      right: 0;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .ws10-fade.ws10-in .ws10-overlay__container {
+      transform: translateX(-50%) translateY(-50%);
+  }
+}
+
+.ws10-fade.ws10-in .ws10-overlay__container {
+  transform: translateX(0) translateY(0);
+}
+
+@media screen and (min-width: 1024px) {
+  .ws10-fade.ws10-overlay--slide .ws10-overlay__container {
+      top: 0;
+      left: auto;
+      height: 100%;
+      transform: none;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .ws10-fade.ws10-overlay--slide .ws10-overlay__container {
+      position: absolute;
+      right: -419px;
+      width: 419px;
+      transition: right .5s cubic-bezier(0.47, 0, 0.745, 0.715);
+      transform: none;
+  }
+}
+
+.ws10-fade.ws10-overlay--slide .ws10-overlay__container {
+  transform: translateX(100%) translateY(0);
+}
+
+@media screen and (min-width: 1024px) {
+  .ws10-fade .ws10-overlay__container {
+      transform: translateX(-50%) translateY(-25%);
+  }
+}
+
+.ws10-fade .ws10-overlay__container {
+  transform: translateX(0) translateY(50%);
+}
+
+@media screen and (min-width: 1024px) {
+  .ws10-overlay__container {
+      border-radius: 6px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      width: 900px;
+      height: auto;
+  }
+}
+
+.ws10-overlay__container {
+  position: relative;
+  background-color: #fff;
+  overflow: hidden;
+  z-index: 2;
+  height: 100%;
+  transition: transform .5s cubic-bezier(0.47, 0, 0.745, 0.715);
+  transform: translateX(0) translateY(0);
+}
+
+@media screen and (min-width: 600px) {
+  .ws10-overlay__close {
+      right: 32px;
+  }
+}
+
+.ws10-overlay__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 21;
+}
+
+.ws10-button-icon-only--tertiary.ws10-button-icon-only--floating:not(:hover):not(:active):not(:focus) {
+  background: #fff;
+}
+
+.ws10-button-icon-only--floating {
+  border-radius: 50%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, .2);
+}
+
+@media screen and (min-width: 1024px) {
+  .ws10-fade.ws10-overlay--slide .ws10-overlay__content {
+      height: 100%;
+      max-height: 100vh;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .ws10-overlay--spacing .ws10-overlay__content {
+      min-height: 108px;
+      max-height: 90vh;
+  }
+}
+
+@media screen and (min-width: 600px) {
+  .ws10-overlay--spacing .ws10-overlay__content {
+      padding-bottom: 32px;
+      padding-left: 32px;
+      padding-right: 32px;
+  }
+}
+
+.ws10-overlay--spacing .ws10-overlay__content {
+  margin: 0;
+  height: 100%;
+  padding: 76px 24px 24px;
+}
+
+@media screen and (min-width: 1024px) {
+  .ws10-overlay__content {
+      height: auto;
+      min-height: 104px;
+      max-height: 90vh;
+  }
+}
+
+.ws10-overlay__content {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+
+.ws10-fade.ws10-in {
+  opacity: 1;
+}
+
+
+.ws10-overlay__backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  content: "";
+  background-color: rgba(0, 0, 0, 0.5); /* Optional: halbtransparenter Hintergrund */
+  display: none; /* Start with display: none */
+  z-index: 1000; /* Soll unter dem Overlay-Container liegen */
+}
 
 
 
+.ws10-button-icon-only--tertiary .ws10-button-icon-only__icon {
+  stroke: #0d0d0d;
+}
+
+.ws10-button-icon-only--tertiary:hover .ws10-button-icon-only__icon, .ws10-button-icon-only--tertiary:focus .ws10-button-icon-only__icon {
+  stroke: #fff;
+}
+
+.ws10-button-icon-only__icon {
+  width: 32px;
+  height: 32px;
+}
+
+.ws10-button-icon-only--tertiary:hover, .ws10-button-icon-only--tertiary:focus {
+  background: #313131;
+  cursor: pointer;
+}
+.ws10-button-icon-only {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ws10-button-icon-only--tertiary {
+  background: transparent;
+  border: 2px solid #0d0d0d;
+}
+.ws10-button-icon-only--standard {
+  width: 48px;
+  height: 48px;
+}
 
 
 
