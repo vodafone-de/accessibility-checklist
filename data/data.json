@@ -75,7 +75,7 @@
 			],
 			"testingtasks": [
 				{
-					"roletitle": "Testing"
+					"roletitle": "WF Testing: Tool supported WF"
 				},
 				{
 					"taskid": "01-01-test-01",
@@ -85,8 +85,8 @@
 						"color",
 						"button"
 					],
-					"testtool": "Chrome Plugin xyz",
-					"testmethod": "Test it like it's hot"
+					"testtool": "ARC Tool Kit",
+					"testmethod": "Graphical user interface elements (all linked/interactive graphics and images) must be provided with alternative texts [...][...]"
 				}
 			]
 		}
