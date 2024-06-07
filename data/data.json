@@ -88,6 +88,54 @@
 					"testtool": "ARC Tool Kit",
 					"testmethod": "Graphical user interface elements (all linked/interactive graphics and images) must be provided with alternative texts [...][...]"
 				}
+			],
+			"testingwftooltasks": [
+				{
+					"roletitle": "WF Testing: Tool supported WF"
+				},
+				{
+					"taskid": "01-01-testwft-01",
+					"taskdesc": "Testing Lorem ipsum task 1",
+					"tasktype": "pattern",
+					"taskcat": [
+						"color",
+						"button"
+					],
+					"testtool": "ARC Tool Kit",
+					"testmethod": "Graphical user interface elements (all linked/interactive graphics and images) must be provided with alternative texts [...][...]"
+				}
+			],
+			"testingwfmantasks": [
+				{
+					"roletitle": "WF Testing: Manual without additional info"
+				},
+				{
+					"taskid": "01-01-testwfm0-01",
+					"taskdesc": "Testing Lorem ipsum task 1",
+					"tasktype": "pattern",
+					"taskcat": [
+						"color",
+						"button"
+					],
+					"testtool": "ARC Tool Kit",
+					"testmethod": "Graphical user interface elements (all linked/interactive graphics and images) must be provided with alternative texts [...][...]"
+				}
+			],
+			"testingwfmanexttasks": [
+				{
+					"roletitle": "WF Testing: Manual with additional info"
+				},
+				{
+					"taskid": "01-01-testwfm1-01",
+					"taskdesc": "Testing Lorem ipsum task 1",
+					"tasktype": "pattern",
+					"taskcat": [
+						"color",
+						"button"
+					],
+					"testtool": "ARC Tool Kit",
+					"testmethod": "Graphical user interface elements (all linked/interactive graphics and images) must be provided with alternative texts [...][...]"
+				}
 			]
 		}
 	},
