@@ -499,7 +499,7 @@ $(document).ready(function() {
             groupedByCategory[category].forEach(item => {
                 const innerDiv = $('<div>').attr('id', item.id).addClass('bitvcontainer');
                 innerDiv.append(`<span class="bitvnr">${item.bitv}</span>`);
-                innerDiv.append(`<h5>${item.title}</h5>`);
+                innerDiv.append(`<h5>${item.title}</h5>`).addClass('itemtitle');
 
                 const badgeGroup = $('<div>').addClass('badgegroup');
                 if (item.dods) {
@@ -543,8 +543,8 @@ $(document).ready(function() {
                                 }
                                 taskCatDiv.append($('<div style="clear:both"></div>'));
                                 li.append(taskCatDiv);
-                                li.append($('<div>').addClass('testtool').text(task.testtool));
-                                li.append($('<div>').addClass('testmethod').text(task.testmethod));
+                                li.append($('<div>').addClass('testtool').text(task.testtool).hide());
+                                li.append($('<div>').addClass('testmethod').text(task.testmethod).hide());
                                
                                 const fieldset = $('<fieldset>').addClass('status-options');
                                 const radioLegend = $('<legend>').text('compliance').addClass('status-optionslegend');
@@ -624,7 +624,7 @@ $(document).ready(function() {
                                 switchWrapper.append(applicableCheckbox, slider, applicableLabel);
                                 li.append(switchWrapper);
 
-                                const openButton = $('<button class="open-overlay ws10-alt-button" style="margin-top: 10px;grid-column-start: 1; max-width: 110px;">add issue</button>');
+                                const openButton = $('<button class="open-overlay ws10-alt-button" style="margin-top: 10px;grid-column-start: 1; max-width: 130px;">how to test</button>');
                                 li.append(openButton);
                                 
                                 applicableCheckbox.on('change', function() {
@@ -725,93 +725,121 @@ $(document).ready(function() {
         });
         
        
-        const overlay = $(`<div>
-        <div class="ws10-overlay__backdrop ws10-fade ws10-in" style="display: none;">
-            <div id="slide-in-overlay" aria-modal="true" role="dialog" class="ws10-overlay ws10-fade ws10-overlay--slide ws10-overlay--spacing ws10-overlay--align-left" style="display: none; transform: translateX(100%);">
-                <div class="ws10-overlay__container">
-                    <div class="ws10-overlay__close">
-                        <button id="close-overlay" aria-label="Close" class="tabenable ws10-button-icon-only ws10-button-icon-only--tertiary ws10-button-icon-only--floating ws10-button-icon-only--standard close">
-                            <svg id="close-icon" class="ws10-button-icon-only__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
-                                <line class="st0" x1="44" y1="148" x2="148" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.67"/>
-                                <line class="st0" x1="148" y1="148" x2="44" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.67"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <div class="ws10-overlay__content"></div>
+        const overlay = $(`<div class="slide-in-overlay-container">
+        
+        <div id="slide-in-overlay" aria-modal="true" role="dialog" class="ws10-overlay ws10-fade ws10-overlay--slide ws10-overlay--spacing ws10-overlay--align-left" style="display: none;"> //transform: translateX(100%);
+            <div class="ws10-overlay__container">
+                <div class="ws10-overlay__close">
+                <button id="close-overlay" aria-label="Close" class="tabenable ws10-button-icon-only ws10-button-icon-only--tertiary ws10-button-icon-only--floating ws10-button-icon-only--standard close">
+                <svg id="close-icon" class="ws10-button-icon-only__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+            
+                        <line class="st0" x1="44" y1="148" x2="148" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.67"/>
+                        <line class="st0" x1="148" y1="148" x2="44" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.67"/>
+                  </svg>
+                  
+            </button>
                 </div>
+                <div class="ws10-overlay__content"></div>
             </div>
         </div>
+        <div class="ws10-overlay__backdrop ws10-fade ws10-in" style="display: none;">
     </div>`);
     
     $('body').append(overlay);
     
-    let lastFocusedElement;
-    
     $('#content-wrapper').on('click', '.open-overlay', function() {
-        lastFocusedElement = $(this);
         const li = $(this).closest('li');
+        const head5 = li.closest('.bitvcontainer').find('h5'); // li in der Nähe der .bitvcontainer suchen
         const taskDesc = li.find('.taskdesc').html();
+        const itemTitle = head5.html(); // Den Inhalt des <h5> Elements holen
+        const testTool = li.find('.testtool').html();
+        const testMethod = li.find('.testmethod').html();
+    
         const overlayContent = $('.ws10-overlay__content');
-        
-        if (taskDesc) {
-            overlayContent.html(taskDesc);
-            $('#slide-in-overlay').css('display', 'block').addClass('ws10-in').css('transform', 'translateX(0)');
+    
+        if (itemTitle && taskDesc && testTool && testMethod) {
+            overlayContent.html(`
+                <div>
+                    <h5>${itemTitle}</h5>
+                    <p>${taskDesc}</p>
+                    <p>Test Tool: ${testTool}</p>
+                    <p>Test Method: ${testMethod}</p>
+                </div>
+            `);
+            $('#slide-in-overlay').css('display', 'block').addClass('ws10-in'); /*.css('transform', 'translateX(0)')*/
             $('.ws10-overlay__backdrop').css('display', 'block').addClass('ws10-in').css('transform', 'translateX(0)');
-            $('#close-overlay').focus();
-            trapFocus();
+            $('body').attr('aria-hidden', 'true').attr("tabindex", -1).addClass('ws10-no-scroll');
+            $('footer').css('display', 'none');
+            $('#close-overlay').attr("tabindex", 1);
+            $('.tabenable').attr("tabindex", 1);
+            $('.toolBarItem').attr("tabindex", -1);
+            $('.action').attr("tabindex", -1);
+            $('.dropdown-button').attr("tabindex", -1);
+            $('.reset-button').attr("tabindex", -1);
+            $('.open-overlay').attr("tabindex", -1);
+            $('#reset-filters').attr("tabindex", -1);
+            $('a').attr("tabindex", -1);
+            $('input').attr("tabindex", -1);
         } else {
             console.error('No content found for overlay.');
         }
     });
     
-    function closeOverlay() {
-        $('#slide-in-overlay').css('transform', 'translateX(100%)').removeClass('ws10-in').css('display', 'none');
-        $('.ws10-overlay__backdrop').css('transform', 'translateX(100%)').removeClass('ws10-in').css('display', 'none');
-        lastFocusedElement.focus();
-        untrapFocus();
-    }
     
-    $('#slide-in-overlay').on('click', '#close-overlay', function() {
-        closeOverlay();
+
+    $('.slide-in-overlay-container').on('click', '.ws10-overlay__backdrop', function() {
+        console.log("Backdrop clicked"); // Debug-Ausgabe
+        $('#slide-in-overlay').removeClass('ws10-in').css('display', 'none'); /*.css('transform', 'translateX(100%)') */
+        $('.ws10-overlay__backdrop').css('transform', 'translateX(100%)').removeClass('ws10-in').css('display', 'none');
+        $('body').removeAttr('aria-hidden', 'true').removeAttr("tabindex", -1).removeClass('ws10-no-scroll');
+        $('footer').css('display', 'flex');
+        $('#close-overlay').removeAttr("tabindex", 1);
+        $('.tabenable').removeAttr("tabindex", 1);
+        $('.toolBarItem').removeAttr("tabindex", -1);
+            $('.action').removeAttr("tabindex", -1);
+            $('.dropdown-button').removeAttr("tabindex", -1);
+            $('.reset-button').removeAttr("tabindex", -1);
+            $('.open-overlay').removeAttr("tabindex", -1);
+            $('#reset-filters').removeAttr("tabindex", -1);
+            $('a').removeAttr("tabindex", -1);
+            $('input').removeAttr("tabindex", -1);
     });
     
-    $('body').on('click', '.ws10-overlay__backdrop', function(e) {
-        if ($(e.target).is('.ws10-overlay__backdrop')) {
-            closeOverlay();
-        }
+    $('#slide-in-overlay').on('click', '#close-overlay', function() {
+        $('#slide-in-overlay').removeClass('ws10-in').css('display', 'none');
+        $('.ws10-overlay__backdrop').css('transform', 'translateX(100%)').removeClass('ws10-in').css('display', 'none');
+        $('body').removeAttr('aria-hidden', 'true').removeAttr("tabindex", -1).removeClass('ws10-no-scroll');
+        $('footer').css('display', 'flex');
+        $('#close-overlay').removeAttr("tabindex", 1);
+        $('.tabenable').removeAttr("tabindex", 1);
+        $('.toolBarItem').removeAttr("tabindex", -1);
+        $('.action').removeAttr("tabindex", -1);
+        $('.dropdown-button').removeAttr("tabindex", -1);
+        $('.reset-button').removeAttr("tabindex", -1);
+        $('.open-overlay').removeAttr("tabindex", -1);
+        $('#reset-filters').removeAttr("tabindex", -1);
+        $('a').removeAttr("tabindex", -1);
+        $('input').removeAttr("tabindex", -1);
     });
     
     $(document).on('keydown', function(e) {
         if (e.key === 'Escape') {
-            closeOverlay();
+            $('#slide-in-overlay').css('transform', 'translateX(100%)').removeClass('ws10-in').css('display', 'none');
+            $('.ws10-overlay__backdrop').removeClass('ws10-in').css('display', 'none');
+            $('body').removeAttr('aria-hidden', 'true').removeAttr("tabindex", -1).removeClass('ws10-no-scroll');
+            $('footer').css('display', 'flex');
+            $('#close-overlay').removeAttr("tabindex", 1);
+            $('.tabenable').removeAttr("tabindex", 1);
+            $('.toolBarItem').removeAttr("tabindex", -1);
+            $('.action').removeAttr("tabindex", -1);
+            $('.dropdown-button').removeAttr("tabindex", -1);
+            $('.reset-button').removeAttr("tabindex", -1);
+            $('.open-overlay').removeAttr("tabindex", -1);
+            $('#reset-filters').removeAttr("tabindex", -1);
+            $('a').removeAttr("tabindex", -1);
+            $('input').removeAttr("tabindex", -1);
         }
     });
-    
-    function trapFocus() {
-        const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
-        const firstFocusableElement = $('#slide-in-overlay').find(focusableElements).filter(':visible').first();
-        const lastFocusableElement = $('#slide-in-overlay').find(focusableElements).filter(':visible').last();
-    
-        $('#slide-in-overlay').on('keydown.trapFocus', function(e) {
-            if (e.key === 'Tab') {
-                if (e.shiftKey) {
-                    if ($(document.activeElement).is(firstFocusableElement)) {
-                        e.preventDefault();
-                        lastFocusableElement.focus();
-                    }
-                } else {
-                    if ($(document.activeElement).is(lastFocusableElement)) {
-                        e.preventDefault();
-                        firstFocusableElement.focus();
-                    }
-                }
-            }
-        });
-    }
-    
-    function untrapFocus() {
-        $('#slide-in-overlay').off('keydown.trapFocus');
-    }
     
     
         

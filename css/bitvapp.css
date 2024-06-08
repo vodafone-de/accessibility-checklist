@@ -144,6 +144,12 @@ body {
   font-family:Vodafone; font-style:normal;font-weight:100; src:url(https://www.vodafone.de/simplicity/assets/css/fonts/VodafoneLt.eot);src:url(https://www.vodafone.de/simplicity/assets/css/fonts/VodafoneLt.woff2) format("woff2"),url(https://www.vodafone.de/simplicity/assets/css/fonts/VodafoneLt.woff) format("woff");
 }
 
+.ws10-no-scroll {
+  /* position: fixed; */
+  overflow: hidden;
+  width: 100%;
+}
+
 noscript div.content {
   margin: auto;
   width: 100%;
@@ -832,10 +838,11 @@ font-weight: var(--ws10-font-weight-bold);
   top: 0;
   right: 0;
   bottom: 0;
-  left: 0;
-  overflow: hidden;
+  width: 419px;
+  margin-left: auto; /* Aligns the container to the right */
   z-index: 1001; /* Soll über dem Backdrop liegen */
 }
+
 
 
 
@@ -889,9 +896,9 @@ font-weight: var(--ws10-font-weight-bold);
   }
 }
 
-.ws10-fade.ws10-overlay--slide .ws10-overlay__container {
+/* .ws10-fade.ws10-overlay--slide .ws10-overlay__container {
   transform: translateX(100%) translateY(0);
-}
+} */
 
 @media screen and (min-width: 1024px) {
   .ws10-fade .ws10-overlay__container {
@@ -1043,6 +1050,12 @@ font-weight: var(--ws10-font-weight-bold);
   height: 48px;
 }
 
+/* 
+.ws10-no-scroll {
+  position: fixed;
+  overflow: hidden;
+  width: 100%;
+} */
 
 
 /* .ws10-form-selection-control__label {
@@ -2411,12 +2424,6 @@ color:#e60000;
     gap: 0px 8px;
   }
 
-  .ws10-no-scroll {
-    position:initial;
-    overflow: hidden;
-    width: 100%;
-  }
-
   .ws10-card {
     width: 100%;
     padding: 24px 16px 32px 16px;
@@ -2622,11 +2629,11 @@ padding-right:16px;
     gap: 0px 8px;
   }
 
-  .ws10-no-scroll {
+/*   .ws10-no-scroll {
     position:initial;
     overflow: hidden;
     width: 100%;
-  }
+  } */
 
   .brix-gn__level-one-item
 {
@@ -2718,11 +2725,11 @@ padding-right:16px;
   
   }
 
-  .ws10-no-scroll {
+/*   .ws10-no-scroll {
     position:initial;
     overflow: hidden;
     width: 100%;
-  }
+  } */
 
   .brix-gn__level-one-item
 {
