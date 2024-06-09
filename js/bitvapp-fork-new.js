@@ -624,7 +624,7 @@ $(document).ready(function() {
                                 switchWrapper.append(applicableCheckbox, slider, applicableLabel);
                                 li.append(switchWrapper);
 
-                                const openButton = $('<button class="open-overlay ws10-alt-button" style="margin-top: 10px;grid-column-start: 1; max-width: 130px;">how to test</button>');
+                                const openButton = $('<button class="open-overlay ws10-alt-button" style="margin-top: 10px;grid-column-start: 1; max-width: 130px;">test instructions</button>');
                                 li.append(openButton);
                                 
                                 applicableCheckbox.on('change', function() {

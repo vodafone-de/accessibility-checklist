@@ -102,7 +102,7 @@
 						"button"
 					],
 					"testtool": "ARC Tool Kit",
-					"testmethod": "Graphical user interface elements (all linked/interactive graphics and images) must be provided with alternative texts [...][...]"
+					"testmethod": "<img src='img/arc-toolkit-screen.png' width='100%' alt='Screenshot of ARC Toolkit'> <p>Graphical user interface elements (all linked/interactive graphics and images) must be provided with alternative texts [...][...]</p>"
 				}
 			],
 			"testingwfmantasks": [
