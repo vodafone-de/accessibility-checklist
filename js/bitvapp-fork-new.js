@@ -51,7 +51,8 @@ $(document).ready(function() {
     function saveState() {
         const state = {
             selectedRadios: {},
-            applicableCheckboxes: {}
+            applicableCheckboxes: {},
+            comments: {}
         };
 
         $('input[type="radio"]:checked').each(function() {
@@ -60,6 +61,19 @@ $(document).ready(function() {
 
         $('input[type="checkbox"][id^="applicable_"]').each(function() {
             state.applicableCheckboxes[this.id] = this.checked;
+        });
+
+        $('li.taskContainer').each(function() {
+            const taskId = $(this).attr('id');
+            const comments = $(this).find('.comment-item').map(function() {
+                return {
+                    title: $(this).find('.comment-title').text().trim(),
+                    text: $(this).data('comment-text')
+                };
+            }).get();
+            if (comments.length > 0) {
+                state.comments[taskId] = comments;
+            }
         });
 
         localStorage.setItem('filterState', JSON.stringify(state));
@@ -76,6 +90,19 @@ $(document).ready(function() {
             for (const [key, value] of Object.entries(state.applicableCheckboxes)) {
                 $(`#${key}`).prop('checked', value).trigger('change');
             }
+
+            for (const [taskId, comments] of Object.entries(state.comments)) {
+                const container = $(`li.taskContainer#${taskId}`);
+                comments.forEach(comment => {
+                    container.find('.comments').append(`
+                        <div class="comment-item" data-comment-text="${comment.text}">
+                            <div class="comment-title">${comment.title}</div>
+                            <button class="edit-comment-button">Edit</button>
+                            <button class="delete-comment-button">Delete</button>
+                        </div>
+                    `);
+                });
+            }
         }
         console.log("loadState " + selectedRadioCount);
     }
@@ -84,6 +111,13 @@ $(document).ready(function() {
         if (confirm('All checked elements will be reset. This can not be undone. Are you sure you want to proceed?')) {
             localStorage.removeItem('filterState');
             location.reload();
+        }
+    }
+
+    function adjustAccordionHeight(element) {
+        const accordionContent = element.closest('.accordion-content');
+        if (accordionContent.hasClass('open')) {
+            accordionContent.css('max-height', accordionContent[0].scrollHeight + 'px');
         }
     }
 
@@ -369,6 +403,211 @@ $(document).ready(function() {
 
     setFiltersFromQueryString();
 
+
+        
+       
+    const overlay = $(`<div class="slide-in-overlay-container">
+        
+        <div id="slide-in-overlay" aria-modal="true" role="dialog" class="ws10-overlay ws10-fade ws10-overlay--slide ws10-overlay--spacing ws10-overlay--align-left" style="display: none;"> //transform: translateX(100%);
+            <div class="ws10-overlay__container">
+                <div class="ws10-overlay__close">
+                <button id="close-overlay" aria-label="Close" class="tabenable ws10-button-icon-only ws10-button-icon-only--tertiary ws10-button-icon-only--floating ws10-button-icon-only--standard close">
+                <svg id="close-icon" class="ws10-button-icon-only__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+            
+                        <line class="st0" x1="44" y1="148" x2="148" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.67"/>
+                        <line class="st0" x1="148" y1="148" x2="44" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.67"/>
+                  </svg>
+                  
+            </button>
+                </div>
+                <div class="ws10-overlay__content"></div>
+            </div>
+        </div>
+        <div class="ws10-overlay__backdrop ws10-fade ws10-in" style="display: none;">
+    </div>`);
+    
+    $('body').append(overlay);
+    
+    $('#content-wrapper').on('click', '.open-overlay', function() {
+        const li = $(this).closest('li');
+        const head5 = li.closest('.bitvcontainer').find('h5'); // li in der Nähe der .bitvcontainer suchen
+        const taskDesc = li.find('.taskdesc').html();
+        const itemTitle = head5.html(); // Den Inhalt des <h5> Elements holen
+        const testTool = li.find('.testtool').html();
+        const testMethod = li.find('.testmethod').html();
+        const testToolLink = li.find('.testtoollink').html();
+    
+        const overlayContent = $('.ws10-overlay__content');
+    
+        if (itemTitle) {
+            overlayContent.html(`
+                <div>
+                    <h5>${itemTitle}</h5>
+                    <p>${taskDesc}</p>
+                    <p>Test Tool: ${testTool}</p>
+                    <p>Test Method: ${testMethod}</p>
+                    <p>Test Tool Link: ${testToolLink}</p>
+                </div>
+            `);
+            $('#slide-in-overlay').css('display', 'block').addClass('ws10-in'); /*.css('transform', 'translateX(0)')*/
+            $('.ws10-overlay__backdrop').css('display', 'block').addClass('ws10-in').css('transform', 'translateX(0)');
+            $('body').attr('aria-hidden', 'true').attr("tabindex", -1).addClass('ws10-no-scroll');
+            $('footer').css('display', 'none');
+            $('#close-overlay').attr("tabindex", 1);
+            $('.tabenable').attr("tabindex", 1);
+            $('.toolBarItem').attr("tabindex", -1);
+            $('.action').attr("tabindex", -1);
+            $('.dropdown-button').attr("tabindex", -1);
+            $('.reset-button').attr("tabindex", -1);
+            $('.open-overlay').attr("tabindex", -1);
+            $('#reset-filters').attr("tabindex", -1);
+            $('a').attr("tabindex", -1);
+            $('input').attr("tabindex", -1);
+        } else {
+            console.error('No content found for overlay.');
+        }
+    });
+    
+    
+
+    $('.slide-in-overlay-container').on('click', '.ws10-overlay__backdrop', function() {
+        console.log("Backdrop clicked"); // Debug-Ausgabe
+        $('#slide-in-overlay').removeClass('ws10-in').css('display', 'none'); /*.css('transform', 'translateX(100%)') */
+        $('.ws10-overlay__backdrop').css('transform', 'translateX(100%)').removeClass('ws10-in').css('display', 'none');
+        $('body').removeAttr('aria-hidden', 'true').removeAttr("tabindex", -1).removeClass('ws10-no-scroll');
+        $('footer').css('display', 'flex');
+        $('#close-overlay').removeAttr("tabindex", 1);
+        $('.tabenable').removeAttr("tabindex", 1);
+        $('.toolBarItem').removeAttr("tabindex", -1);
+            $('.action').removeAttr("tabindex", -1);
+            $('.dropdown-button').removeAttr("tabindex", -1);
+            $('.reset-button').removeAttr("tabindex", -1);
+            $('.open-overlay').removeAttr("tabindex", -1);
+            $('#reset-filters').removeAttr("tabindex", -1);
+            $('a').removeAttr("tabindex", -1);
+            $('input').removeAttr("tabindex", -1);
+    });
+    
+    $('#slide-in-overlay').on('click', '#close-overlay', function() {
+        $('#slide-in-overlay').removeClass('ws10-in').css('display', 'none');
+        $('.ws10-overlay__backdrop').css('transform', 'translateX(100%)').removeClass('ws10-in').css('display', 'none');
+        $('body').removeAttr('aria-hidden', 'true').removeAttr("tabindex", -1).removeClass('ws10-no-scroll');
+        $('footer').css('display', 'flex');
+        $('#close-overlay').removeAttr("tabindex", 1);
+        $('.tabenable').removeAttr("tabindex", 1);
+        $('.toolBarItem').removeAttr("tabindex", -1);
+        $('.action').removeAttr("tabindex", -1);
+        $('.dropdown-button').removeAttr("tabindex", -1);
+        $('.reset-button').removeAttr("tabindex", -1);
+        $('.open-overlay').removeAttr("tabindex", -1);
+        $('#reset-filters').removeAttr("tabindex", -1);
+        $('a').removeAttr("tabindex", -1);
+        $('input').removeAttr("tabindex", -1);
+    });
+    
+    $(document).on('keydown', function(e) {
+        if (e.key === 'Escape') {
+            $('#slide-in-overlay').css('transform', 'translateX(100%)').removeClass('ws10-in').css('display', 'none');
+            $('.ws10-overlay__backdrop').removeClass('ws10-in').css('display', 'none');
+            $('body').removeAttr('aria-hidden', 'true').removeAttr("tabindex", -1).removeClass('ws10-no-scroll');
+            $('footer').css('display', 'flex');
+            $('#close-overlay').removeAttr("tabindex", 1);
+            $('.tabenable').removeAttr("tabindex", 1);
+            $('.toolBarItem').removeAttr("tabindex", -1);
+            $('.action').removeAttr("tabindex", -1);
+            $('.dropdown-button').removeAttr("tabindex", -1);
+            $('.reset-button').removeAttr("tabindex", -1);
+            $('.open-overlay').removeAttr("tabindex", -1);
+            $('#reset-filters').removeAttr("tabindex", -1);
+            $('a').removeAttr("tabindex", -1);
+            $('input').removeAttr("tabindex", -1);
+        }
+    });
+    
+  
+    const commentOverlay = $(`
+        <div id="comment-overlay" class="comment-overlay" style="display: none;">
+            <div class="comment-overlay-content">
+                <h3>Add/Edit Comment</h3>
+                <label for="comment-title">Title:</label>
+                <input type="text" id="comment-title">
+                <label for="comment-text">Comment:</label>
+                <textarea id="comment-text"></textarea>
+                <button id="save-comment">Save</button>
+                <button id="cancel-comment">Cancel</button>
+            </div>
+        </div>
+    `);
+
+    $('body').append(commentOverlay);
+
+    let currentTaskContainer;
+    let currentCommentItem;
+
+    $(document).on('click', '.add-comment-button', function() {
+        currentTaskContainer = $(this).closest('li.taskContainer');
+        currentCommentItem = null;
+        $('#comment-title').val('');
+        $('#comment-text').val('');
+        $('#comment-overlay').show();
+    });
+
+    $(document).on('click', '.edit-comment-button', function() {
+        currentTaskContainer = $(this).closest('li.taskContainer');
+        currentCommentItem = $(this).closest('.comment-item');
+        const title = currentCommentItem.find('.comment-title').text();
+        const text = currentCommentItem.data('comment-text');
+        $('#comment-title').val(title);
+        $('#comment-text').val(text);
+        $('#comment-overlay').show();
+    });
+
+    $(document).on('click', '#save-comment', function() {
+        const title = $('#comment-title').val().trim();
+        const text = $('#comment-text').val().trim();
+
+        if (title && text) {
+            if (currentCommentItem) {
+                currentCommentItem.find('.comment-title').text(title);
+                currentCommentItem.data('comment-text', text);
+            } else {
+                currentTaskContainer.find('.comments').append(`
+                    <div class="comment-item" data-comment-text="${text}">
+                        <div class="comment-title">${title}</div>
+                        <button class="edit-comment-button">Edit</button>
+                        <button class="delete-comment-button">Delete</button>
+                    </div>
+                `);
+            }
+            adjustAccordionHeight(currentTaskContainer);
+            saveState();
+            $('#comment-overlay').hide();
+        } else {
+            alert('Both title and comment text are required.');
+        }
+    });
+
+    $(document).on('click', '#cancel-comment', function() {
+        $('#comment-overlay').hide();
+    });
+
+    $(document).on('click', '.delete-comment-button', function() {
+        if (confirm('Are you sure you want to delete this comment?')) {
+            const commentItem = $(this).closest('.comment-item');
+            commentItem.remove();
+            adjustAccordionHeight(commentItem);
+            saveState();
+        }
+    });
+
+    $(document).on('keydown', function(e) {
+        if (e.key === 'Escape' && $('#comment-overlay').is(':visible')) {
+            $('#comment-overlay').hide();
+        }
+    });
+
+
+
     $.getJSON('https://vodafone-de.github.io/accessibility-checklist/data/data.json', function(jsonArray) {
         const groupedByCategory = {};
         const taskCategories = new Set();
@@ -625,7 +864,7 @@ $(document).ready(function() {
                                 switchWrapper.append(applicableCheckbox, slider, applicableLabel);
                                 li.append(switchWrapper);
 
-                                const openButton = $('<button class="open-overlay ws10-alt-button" style="margin-top: 10px;grid-column-start: 1; max-width: 130px;">test instructions</button>');
+                                const openButton = $('<button class="open-overlay ws10-button-link ws10-button-link--color-primary-200" style="margin-top: 10px;grid-column-start: 1;">test instructions<svg id="icon" class="ws10-button-link__icon ws10-button-link__icon--right ws10-system-icon ws10-system-icon--size-150 ws10-system-icon--color-primary-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><polyline class="st0" points="62 28 130 96 62 164" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/></svg></button>');
                                 li.append(openButton);
                                 
                                 applicableCheckbox.on('change', function() {
@@ -669,6 +908,11 @@ $(document).ready(function() {
                                 switchWrapper.on('click', function() {
                                     applicableCheckbox.prop('checked', !applicableCheckbox.prop('checked')).trigger('change');
                                 });
+
+                              // Kommentarfunktion
+                              const commentsDiv = $('<div>').addClass('comments');
+                              const addCommentButton = $('<button>').addClass('add-comment-button').text('Add Comment');
+                              li.append(commentsDiv).append(addCommentButton);
                                 
                                 ul.append(li);
                                 fieldsetCount++;
@@ -724,131 +968,16 @@ $(document).ready(function() {
                 fieldsetCount = Math.max(fieldsetCount - 1, 0);
             }
         });
-        
-       
-        const overlay = $(`<div class="slide-in-overlay-container">
-        
-        <div id="slide-in-overlay" aria-modal="true" role="dialog" class="ws10-overlay ws10-fade ws10-overlay--slide ws10-overlay--spacing ws10-overlay--align-left" style="display: none;"> //transform: translateX(100%);
-            <div class="ws10-overlay__container">
-                <div class="ws10-overlay__close">
-                <button id="close-overlay" aria-label="Close" class="tabenable ws10-button-icon-only ws10-button-icon-only--tertiary ws10-button-icon-only--floating ws10-button-icon-only--standard close">
-                <svg id="close-icon" class="ws10-button-icon-only__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
-            
-                        <line class="st0" x1="44" y1="148" x2="148" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.67"/>
-                        <line class="st0" x1="148" y1="148" x2="44" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.67"/>
-                  </svg>
-                  
-            </button>
-                </div>
-                <div class="ws10-overlay__content"></div>
-            </div>
-        </div>
-        <div class="ws10-overlay__backdrop ws10-fade ws10-in" style="display: none;">
-    </div>`);
-    
-    $('body').append(overlay);
-    
-    $('#content-wrapper').on('click', '.open-overlay', function() {
-        const li = $(this).closest('li');
-        const head5 = li.closest('.bitvcontainer').find('h5'); // li in der Nähe der .bitvcontainer suchen
-        const taskDesc = li.find('.taskdesc').html();
-        const itemTitle = head5.html(); // Den Inhalt des <h5> Elements holen
-        const testTool = li.find('.testtool').html();
-        const testMethod = li.find('.testmethod').html();
-    
-        const overlayContent = $('.ws10-overlay__content');
-    
-        if (itemTitle && taskDesc && testTool && testMethod) {
-            overlayContent.html(`
-                <div>
-                    <h5>${itemTitle}</h5>
-                    <p>${taskDesc}</p>
-                    <p>Test Tool: ${testTool}</p>
-                    <p>Test Method: ${testMethod}</p>
-                </div>
-            `);
-            $('#slide-in-overlay').css('display', 'block').addClass('ws10-in'); /*.css('transform', 'translateX(0)')*/
-            $('.ws10-overlay__backdrop').css('display', 'block').addClass('ws10-in').css('transform', 'translateX(0)');
-            $('body').attr('aria-hidden', 'true').attr("tabindex", -1).addClass('ws10-no-scroll');
-            $('footer').css('display', 'none');
-            $('#close-overlay').attr("tabindex", 1);
-            $('.tabenable').attr("tabindex", 1);
-            $('.toolBarItem').attr("tabindex", -1);
-            $('.action').attr("tabindex", -1);
-            $('.dropdown-button').attr("tabindex", -1);
-            $('.reset-button').attr("tabindex", -1);
-            $('.open-overlay').attr("tabindex", -1);
-            $('#reset-filters').attr("tabindex", -1);
-            $('a').attr("tabindex", -1);
-            $('input').attr("tabindex", -1);
-        } else {
-            console.error('No content found for overlay.');
-        }
-    });
-    
-    
-
-    $('.slide-in-overlay-container').on('click', '.ws10-overlay__backdrop', function() {
-        console.log("Backdrop clicked"); // Debug-Ausgabe
-        $('#slide-in-overlay').removeClass('ws10-in').css('display', 'none'); /*.css('transform', 'translateX(100%)') */
-        $('.ws10-overlay__backdrop').css('transform', 'translateX(100%)').removeClass('ws10-in').css('display', 'none');
-        $('body').removeAttr('aria-hidden', 'true').removeAttr("tabindex", -1).removeClass('ws10-no-scroll');
-        $('footer').css('display', 'flex');
-        $('#close-overlay').removeAttr("tabindex", 1);
-        $('.tabenable').removeAttr("tabindex", 1);
-        $('.toolBarItem').removeAttr("tabindex", -1);
-            $('.action').removeAttr("tabindex", -1);
-            $('.dropdown-button').removeAttr("tabindex", -1);
-            $('.reset-button').removeAttr("tabindex", -1);
-            $('.open-overlay').removeAttr("tabindex", -1);
-            $('#reset-filters').removeAttr("tabindex", -1);
-            $('a').removeAttr("tabindex", -1);
-            $('input').removeAttr("tabindex", -1);
-    });
-    
-    $('#slide-in-overlay').on('click', '#close-overlay', function() {
-        $('#slide-in-overlay').removeClass('ws10-in').css('display', 'none');
-        $('.ws10-overlay__backdrop').css('transform', 'translateX(100%)').removeClass('ws10-in').css('display', 'none');
-        $('body').removeAttr('aria-hidden', 'true').removeAttr("tabindex", -1).removeClass('ws10-no-scroll');
-        $('footer').css('display', 'flex');
-        $('#close-overlay').removeAttr("tabindex", 1);
-        $('.tabenable').removeAttr("tabindex", 1);
-        $('.toolBarItem').removeAttr("tabindex", -1);
-        $('.action').removeAttr("tabindex", -1);
-        $('.dropdown-button').removeAttr("tabindex", -1);
-        $('.reset-button').removeAttr("tabindex", -1);
-        $('.open-overlay').removeAttr("tabindex", -1);
-        $('#reset-filters').removeAttr("tabindex", -1);
-        $('a').removeAttr("tabindex", -1);
-        $('input').removeAttr("tabindex", -1);
-    });
-    
-    $(document).on('keydown', function(e) {
-        if (e.key === 'Escape') {
-            $('#slide-in-overlay').css('transform', 'translateX(100%)').removeClass('ws10-in').css('display', 'none');
-            $('.ws10-overlay__backdrop').removeClass('ws10-in').css('display', 'none');
-            $('body').removeAttr('aria-hidden', 'true').removeAttr("tabindex", -1).removeClass('ws10-no-scroll');
-            $('footer').css('display', 'flex');
-            $('#close-overlay').removeAttr("tabindex", 1);
-            $('.tabenable').removeAttr("tabindex", 1);
-            $('.toolBarItem').removeAttr("tabindex", -1);
-            $('.action').removeAttr("tabindex", -1);
-            $('.dropdown-button').removeAttr("tabindex", -1);
-            $('.reset-button').removeAttr("tabindex", -1);
-            $('.open-overlay').removeAttr("tabindex", -1);
-            $('#reset-filters').removeAttr("tabindex", -1);
-            $('a').removeAttr("tabindex", -1);
-            $('input').removeAttr("tabindex", -1);
-        }
-    });
-    
-    
-        
-
 
         updateCounter();
         console.log("Am Ende " + fieldsetCount);
     }).fail(function(jqxhr, textStatus, error) {
         console.error("Request Failed: " + textStatus + ", " + error);
+
+  
+        
+
+
+
     });
 });
