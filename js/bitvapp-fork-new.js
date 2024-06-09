@@ -545,6 +545,7 @@ $(document).ready(function() {
                                 li.append(taskCatDiv);
                                 li.append($('<div>').addClass('testtool').html(task.testtool).hide());
                                 li.append($('<div>').addClass('testmethod').html(task.testmethod).hide());
+                                li.append($('<div>').addClass('testtoollink').html(task.testtoollink).hide());
                                
                                 const fieldset = $('<fieldset>').addClass('status-options');
                                 const radioLegend = $('<legend>').text('compliance').addClass('status-optionslegend');

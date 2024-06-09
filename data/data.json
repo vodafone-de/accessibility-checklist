@@ -86,7 +86,8 @@
 						"button"
 					],
 					"testtool": "ARC Tool Kit",
-					"testmethod": "Graphical user interface elements (all linked/interactive graphics and images) must be provided with alternative texts [...][...]"
+					"testmethod": "Graphical user interface elements (all linked/interactive graphics and images) must be provided with alternative texts [...][...]",
+					"testtoollink": "<a href='https://www.tpgi.com/arc-platform/arc-toolkit/' target='_blank'>Download ARCToolKit</a>"
 				}
 			],
 			"testingwftooltasks": [
