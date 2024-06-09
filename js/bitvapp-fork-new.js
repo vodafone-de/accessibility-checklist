@@ -3,19 +3,19 @@ $(document).ready(function() {
         const selectedFilters = $('#filter-options input[type="checkbox"]:checked').map(function() {
             return $(this).data('filter_id');
         }).get();
-        console.log('Selected Filters:', selectedFilters); // Debug-Ausgabe
-    
+        console.log('Selected Filters:', selectedFilters);
+
         const selectedTaskFilters = $('#taskcat-dropdown input[type="checkbox"]:checked').map(function() {
             return $(this).data('filter_id');
         }).get();
-        console.log('Selected Task Filters:', selectedTaskFilters); // Debug-Ausgabe
-    
+        console.log('Selected Task Filters:', selectedTaskFilters);
+
         let queryString = '';
-    
+
         if (selectedFilters.length > 0) {
             queryString += `?role=${selectedFilters.join(',')}`;
         }
-    
+
         if (selectedTaskFilters.length > 0) {
             if (queryString) {
                 queryString += '&';
@@ -24,12 +24,12 @@ $(document).ready(function() {
             }
             queryString += `category=${selectedTaskFilters.join(',')}`;
         }
-    
-        console.log('Query String:', queryString); // Debug-Ausgabe
-    
+
+        console.log('Query String:', queryString);
+
         history.replaceState(null, '', `${location.pathname}${queryString}`);
     }
-    
+
     function setFiltersFromQueryString() {
         const params = new URLSearchParams(window.location.search);
         const filters = params.get('role');
@@ -47,7 +47,7 @@ $(document).ready(function() {
             });
         }
     }
-    
+
     function saveState() {
         const state = {
             selectedRadios: {},
@@ -68,7 +68,8 @@ $(document).ready(function() {
             const comments = $(this).find('.comment-item').map(function() {
                 return {
                     title: $(this).find('.comment-title').text().trim(),
-                    text: $(this).data('comment-text')
+                    text: $(this).data('comment-text'),
+                    images: $(this).data('images') || []
                 };
             }).get();
             if (comments.length > 0) {
@@ -95,7 +96,7 @@ $(document).ready(function() {
                 const container = $(`li.taskContainer#${taskId}`);
                 comments.forEach(comment => {
                     container.find('.comments').append(`
-                        <div class="comment-item" data-comment-text="${comment.text}">
+                        <div class="comment-item" data-comment-text="${comment.text}" data-images='${JSON.stringify(comment.images)}'>
                             <div class="comment-title">${comment.title}</div>
                             <button class="edit-comment-button">Edit</button>
                             <button class="delete-comment-button">Delete</button>
@@ -104,7 +105,6 @@ $(document).ready(function() {
                 });
             }
         }
-        console.log("loadState " + selectedRadioCount);
     }
 
     function clearState() {
@@ -151,11 +151,11 @@ $(document).ready(function() {
         const filters = $('#filter-options input[type="checkbox"]:checked').map(function() {
             return $(this).data('filter_id');
         }).get();
-    
+
         const taskCatFilters = $('#taskcat-dropdown input[type="checkbox"]:checked').map(function() {
             return $(this).val();
         }).get();
-    
+
         $('.badgegroup span').removeClass("filteractive").show();
         $('.taglistitems').removeClass("categoryfilteractive").show();
         $('.accordion-content .dods ul').hide();
@@ -163,35 +163,34 @@ $(document).ready(function() {
         $('.ws10-card').hide();
         $('div.roletitle').hide();
         $('div.roletitle + ul').hide();
-        $('.bitvcontainer').hide();  // Hide all bitvcontainer elements initially
-    
+        $('.bitvcontainer').hide();
+
         const bothFiltersSelected = filters.length > 0 && taskCatFilters.length > 0;
-    
+
         if (filters.length > 0 || taskCatFilters.length > 0) {
             filters.forEach(filter => {
                 $(`.badgegroup .${filter}_filter`).addClass("filteractive").show();
                 $(`.accordion-content .dods ul[class*="${filter}tasks"]`).each(function() {
                     $(this).show().find('li').show();
                 });
-    
+
                 $(`.accordion-content:has(.dods ul[class*="${filter}tasks"])`).each(function() {
                     const accordionContent = $(this);
                     const accordionHeader = accordionContent.prev('.accordion-header');
                     accordionContent.addClass('open').css('max-height', accordionContent[0].scrollHeight + 'px');
                     accordionHeader.find('.ws10-accordion-item__chevron').addClass('rotate');
                 });
-    
+
                 $(`div.roletitle + ul[class*="${filter}tasks"]`).each(function() {
                     $(this).show();
                     $(this).prev('div.roletitle').show();
                 });
             });
-    
-            // Show ws10-card elements based on combined filters
+
             $('.ws10-card').each(function() {
                 const card = $(this);
                 let showCard = true;
-    
+
                 if (filters.length > 0) {
                     let hasFilter = false;
                     filters.forEach(filter => {
@@ -201,7 +200,7 @@ $(document).ready(function() {
                     });
                     showCard = hasFilter;
                 }
-    
+
                 if (taskCatFilters.length > 0) {
                     let hasTaskCatFilter = false;
                     taskCatFilters.forEach(taskCat => {
@@ -215,22 +214,21 @@ $(document).ready(function() {
                         }
                     });
                     if (bothFiltersSelected) {
-                        showCard = showCard && hasTaskCatFilter; // AND logic
+                        showCard = showCard && hasTaskCatFilter;
                     } else {
-                        showCard = hasTaskCatFilter; // OR logic if only taskCatFilters are selected
+                        showCard = hasTaskCatFilter;
                     }
                 }
-    
+
                 if (showCard) {
                     card.show();
                 }
             });
-    
-            // Additional filtering for task containers inside cards
+
             $('li.taskContainer').each(function() {
                 const li = $(this);
                 let showLi = true;
-    
+
                 if (filters.length > 0) {
                     let hasFilter = false;
                     filters.forEach(filter => {
@@ -240,7 +238,7 @@ $(document).ready(function() {
                     });
                     showLi = hasFilter;
                 }
-    
+
                 if (taskCatFilters.length > 0) {
                     let hasTaskCatFilter = false;
                     taskCatFilters.forEach(taskCat => {
@@ -252,33 +250,32 @@ $(document).ready(function() {
                         }
                     });
                     if (bothFiltersSelected) {
-                        showLi = showLi && hasTaskCatFilter; // AND logic
+                        showLi = showLi && hasTaskCatFilter;
                     } else {
-                        showLi = hasTaskCatFilter; // OR logic if only taskCatFilters are selected
+                        showLi = hasTaskCatFilter;
                     }
                 }
-    
+
                 if (showLi) {
                     li.show();
                     li.closest('ul').show();
                     li.closest('.dods').show();
                     li.closest('.ws10-card').show();
                     li.closest('ul').prev('div.roletitle').show();
-                    li.closest('.bitvcontainer').show(); // Show the bitvcontainer containing the li
+                    li.closest('.bitvcontainer').show();
                 } else {
                     li.hide();
                 }
             });
-    
-            // Ensure bitvcontainer visibility is updated based on filters and taskCatFilters
+
             $('.bitvcontainer').each(function() {
                 const container = $(this);
                 let showContainer = false;
-    
+
                 container.find('li.taskContainer').each(function() {
                     const li = $(this);
                     let showLi = true;
-    
+
                     if (filters.length > 0) {
                         let hasFilter = false;
                         filters.forEach(filter => {
@@ -288,7 +285,7 @@ $(document).ready(function() {
                         });
                         showLi = hasFilter;
                     }
-    
+
                     if (taskCatFilters.length > 0) {
                         let hasTaskCatFilter = false;
                         taskCatFilters.forEach(taskCat => {
@@ -300,26 +297,25 @@ $(document).ready(function() {
                             }
                         });
                         if (bothFiltersSelected) {
-                            showLi = showLi && hasTaskCatFilter; // AND logic
+                            showLi = showLi && hasTaskCatFilter;
                         } else {
-                            showLi = hasTaskCatFilter; // OR logic if only taskCatFilters are selected
+                            showLi = hasTaskCatFilter;
                         }
                     }
-    
+
                     if (showLi) {
                         showContainer = true;
                     }
                 });
-    
+
                 if (showContainer) {
                     container.show();
                 } else {
                     container.hide();
                 }
             });
-    
+
         } else {
-            // If no filters are selected, show all elements
             $('.badgegroup span').removeClass("filteractive").show();
             $('.accordion-content .dods ul').show().find('li').show();
             $('.ws10-card').show();
@@ -327,27 +323,23 @@ $(document).ready(function() {
             $('div.roletitle + ul').show();
             $('.accordion-content').removeClass('open').css('max-height', '0');
             $('.accordion-header .ws10-accordion-item__chevron').removeClass('rotate');
-            $('.bitvcontainer').show();  // Show all bitvcontainer elements when no filters are selected
+            $('.bitvcontainer').show();
         }
-    
-        // Additional functions to update UI
+
         updateFilterNumberBadge();
         adjustAccordionHeights();
         updateQueryString();
         updateFieldsetCountAfterFiltering();
         saveState();
         updateDisplayedFilters();
-        console.log("applyFilters " + selectedRadioCount);
     }
-    
-    /**Ende Filterlogik */
-    
+
     function updateFilterNumberBadge() {
         $('.dropdown').each(function() {
             const dropdown = $(this);
             const checkedCount = dropdown.find('.dropdown-content input[type="checkbox"]:checked').length;
             let badge = dropdown.find('.filter-number-badge');
-    
+
             if (checkedCount > 0) {
                 if (badge.length === 0) {
                     badge = $('<div class="filter-number-badge" aria-label="amount of active tag-filter: ' + checkedCount + '" aria-live="polite"></div>');
@@ -403,21 +395,15 @@ $(document).ready(function() {
 
     setFiltersFromQueryString();
 
-
-        
-       
     const overlay = $(`<div class="slide-in-overlay-container">
-        
-        <div id="slide-in-overlay" aria-modal="true" role="dialog" class="ws10-overlay ws10-fade ws10-overlay--slide ws10-overlay--spacing ws10-overlay--align-left" style="display: none;"> //transform: translateX(100%);
+        <div id="slide-in-overlay" aria-modal="true" role="dialog" class="ws10-overlay ws10-fade ws10-overlay--slide ws10-overlay--spacing ws10-overlay--align-left" style="display: none;">
             <div class="ws10-overlay__container">
                 <div class="ws10-overlay__close">
                 <button id="close-overlay" aria-label="Close" class="tabenable ws10-button-icon-only ws10-button-icon-only--tertiary ws10-button-icon-only--floating ws10-button-icon-only--standard close">
                 <svg id="close-icon" class="ws10-button-icon-only__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
-            
                         <line class="st0" x1="44" y1="148" x2="148" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.67"/>
                         <line class="st0" x1="148" y1="148" x2="44" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.67"/>
                   </svg>
-                  
             </button>
                 </div>
                 <div class="ws10-overlay__content"></div>
@@ -425,20 +411,20 @@ $(document).ready(function() {
         </div>
         <div class="ws10-overlay__backdrop ws10-fade ws10-in" style="display: none;">
     </div>`);
-    
+
     $('body').append(overlay);
-    
+
     $('#content-wrapper').on('click', '.open-overlay', function() {
         const li = $(this).closest('li');
-        const head5 = li.closest('.bitvcontainer').find('h5'); // li in der Nähe der .bitvcontainer suchen
+        const head5 = li.closest('.bitvcontainer').find('h5');
         const taskDesc = li.find('.taskdesc').html();
-        const itemTitle = head5.html(); // Den Inhalt des <h5> Elements holen
+        const itemTitle = head5.html();
         const testTool = li.find('.testtool').html();
         const testMethod = li.find('.testmethod').html();
         const testToolLink = li.find('.testtoollink').html();
-    
+
         const overlayContent = $('.ws10-overlay__content');
-    
+
         if (itemTitle) {
             overlayContent.html(`
                 <div>
@@ -449,7 +435,7 @@ $(document).ready(function() {
                     <p>Test Tool Link: ${testToolLink}</p>
                 </div>
             `);
-            $('#slide-in-overlay').css('display', 'block').addClass('ws10-in'); /*.css('transform', 'translateX(0)')*/
+            $('#slide-in-overlay').css('display', 'block').addClass('ws10-in');
             $('.ws10-overlay__backdrop').css('display', 'block').addClass('ws10-in').css('transform', 'translateX(0)');
             $('body').attr('aria-hidden', 'true').attr("tabindex", -1).addClass('ws10-no-scroll');
             $('footer').css('display', 'none');
@@ -467,27 +453,25 @@ $(document).ready(function() {
             console.error('No content found for overlay.');
         }
     });
-    
-    
 
     $('.slide-in-overlay-container').on('click', '.ws10-overlay__backdrop', function() {
-        console.log("Backdrop clicked"); // Debug-Ausgabe
-        $('#slide-in-overlay').removeClass('ws10-in').css('display', 'none'); /*.css('transform', 'translateX(100%)') */
+        console.log("Backdrop clicked");
+        $('#slide-in-overlay').removeClass('ws10-in').css('display', 'none');
         $('.ws10-overlay__backdrop').css('transform', 'translateX(100%)').removeClass('ws10-in').css('display', 'none');
         $('body').removeAttr('aria-hidden', 'true').removeAttr("tabindex", -1).removeClass('ws10-no-scroll');
         $('footer').css('display', 'flex');
         $('#close-overlay').removeAttr("tabindex", 1);
         $('.tabenable').removeAttr("tabindex", 1);
         $('.toolBarItem').removeAttr("tabindex", -1);
-            $('.action').removeAttr("tabindex", -1);
-            $('.dropdown-button').removeAttr("tabindex", -1);
-            $('.reset-button').removeAttr("tabindex", -1);
-            $('.open-overlay').removeAttr("tabindex", -1);
-            $('#reset-filters').removeAttr("tabindex", -1);
-            $('a').removeAttr("tabindex", -1);
-            $('input').removeAttr("tabindex", -1);
+        $('.action').removeAttr("tabindex", -1);
+        $('.dropdown-button').removeAttr("tabindex", -1);
+        $('.reset-button').removeAttr("tabindex", -1);
+        $('.open-overlay').removeAttr("tabindex", -1);
+        $('#reset-filters').removeAttr("tabindex", -1);
+        $('a').removeAttr("tabindex", -1);
+        $('input').removeAttr("tabindex", -1);
     });
-    
+
     $('#slide-in-overlay').on('click', '#close-overlay', function() {
         $('#slide-in-overlay').removeClass('ws10-in').css('display', 'none');
         $('.ws10-overlay__backdrop').css('transform', 'translateX(100%)').removeClass('ws10-in').css('display', 'none');
@@ -504,7 +488,7 @@ $(document).ready(function() {
         $('a').removeAttr("tabindex", -1);
         $('input').removeAttr("tabindex", -1);
     });
-    
+
     $(document).on('keydown', function(e) {
         if (e.key === 'Escape') {
             $('#slide-in-overlay').css('transform', 'translateX(100%)').removeClass('ws10-in').css('display', 'none');
@@ -523,8 +507,7 @@ $(document).ready(function() {
             $('input').removeAttr("tabindex", -1);
         }
     });
-    
-  
+
     const commentOverlay = $(`
         <div id="comment-overlay" class="comment-overlay" style="display: none;">
             <div class="comment-overlay-content">
@@ -533,6 +516,12 @@ $(document).ready(function() {
                 <input type="text" id="comment-title">
                 <label for="comment-text">Comment:</label>
                 <textarea id="comment-text"></textarea>
+                <h4>Upload screenshots</h4>
+                <div class="upload-area" id="upload-area">
+                    <div class="upload-placeholder">+</div>
+                    <input type="file" id="file-input" accept="image/jpeg, image/png" style="display: none;" multiple>
+                </div>
+                <div id="uploaded-images" class="uploaded-images"></div>
                 <button id="save-comment">Save</button>
                 <button id="cancel-comment">Cancel</button>
             </div>
@@ -549,6 +538,7 @@ $(document).ready(function() {
         currentCommentItem = null;
         $('#comment-title').val('');
         $('#comment-text').val('');
+        $('#uploaded-images').empty();
         $('#comment-overlay').show();
     });
 
@@ -559,20 +549,55 @@ $(document).ready(function() {
         const text = currentCommentItem.data('comment-text');
         $('#comment-title').val(title);
         $('#comment-text').val(text);
+        $('#uploaded-images').empty();
+        const images = currentCommentItem.data('images') || [];
+        images.forEach(image => {
+            $('#uploaded-images').append(`<img src="${image}" alt="Uploaded Image">`);
+        });
         $('#comment-overlay').show();
+    });
+
+    $(document).off('click', '#upload-area');
+    $(document).on('click', '#upload-area', function() {
+        console.log('Upload area clicked');
+        $('#file-input').click();
+    });
+
+    $('#file-input').off('change');
+    $('#file-input').on('change', function(event) {
+        console.log('File input changed');
+        const files = event.target.files;
+        const validImageTypes = ['image/jpeg', 'image/png'];
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            if (validImageTypes.includes(file.type)) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    console.log('File loaded');
+                    $('#uploaded-images').append(`<img src="${e.target.result}" alt="Uploaded Image">`);
+                }
+                reader.readAsDataURL(file);
+            } else {
+                alert('Only JPG and PNG files are allowed.');
+            }
+        }
     });
 
     $(document).on('click', '#save-comment', function() {
         const title = $('#comment-title').val().trim();
         const text = $('#comment-text').val().trim();
+        const images = $('#uploaded-images img').map(function() {
+            return $(this).attr('src');
+        }).get();
 
         if (title && text) {
             if (currentCommentItem) {
                 currentCommentItem.find('.comment-title').text(title);
                 currentCommentItem.data('comment-text', text);
+                currentCommentItem.data('images', images);
             } else {
                 currentTaskContainer.find('.comments').append(`
-                    <div class="comment-item" data-comment-text="${text}">
+                    <div class="comment-item" data-comment-text="${text}" data-images='${JSON.stringify(images)}'>
                         <div class="comment-title">${title}</div>
                         <button class="edit-comment-button">Edit</button>
                         <button class="delete-comment-button">Delete</button>
@@ -606,8 +631,6 @@ $(document).ready(function() {
         }
     });
 
-
-
     $.getJSON('https://vodafone-de.github.io/accessibility-checklist/data/data.json', function(jsonArray) {
         const groupedByCategory = {};
         const taskCategories = new Set();
@@ -630,7 +653,6 @@ $(document).ready(function() {
             }
         });
 
-        // Konvertiere das Set in ein Array und sortiere es alphabetisch
         const sortedTaskCategories = [...taskCategories].sort((a, b) => {
             return a.toLowerCase().localeCompare(b.toLowerCase());
         });
@@ -765,16 +787,16 @@ $(document).ready(function() {
                             const roletitleDiv = $('<div>').addClass('roletitle').text(roletitle);
                             dodsDiv.append(roletitleDiv);
                         }
-                        
+
                         const ul = $('<ul>').addClass(taskType + 'tasks');
                         tasks.forEach(task => {
                             if (task.taskid) {
                                 const li = $('<li>').attr('id', task.taskid).addClass('taskContainer');
                                 li.append($('<div>').addClass('taskdesc').html(task.taskdesc));
-                                li.append($('<div>Type:</div>').addClass('tasktype-desc'));
+                                li.append($('<div><strong>Type:</strong></div>').addClass('tasktype-desc'));
                                 li.append($('<div>').addClass('tasktype').text(task.tasktype));
                                 const taskCatDiv = $('<div>').addClass('taskcat');
-                                taskCatDiv.append($('<div>').text('Tags:').addClass('roles'));
+                                taskCatDiv.append($('<div>').html('<strong>Tags:</strong>').addClass('roles'));
                                 if (task.taskcat) {
                                     task.taskcat.forEach(cat => {
                                         taskCatDiv.append($('<div>').text(cat).addClass('taglistitems'));
@@ -785,7 +807,7 @@ $(document).ready(function() {
                                 li.append($('<div>').addClass('testtool').html(task.testtool).hide());
                                 li.append($('<div>').addClass('testmethod').html(task.testmethod).hide());
                                 li.append($('<div>').addClass('testtoollink').html(task.testtoollink).hide());
-                               
+
                                 const fieldset = $('<fieldset>').addClass('status-options');
                                 const radioLegend = $('<legend>').text('compliance').addClass('status-optionslegend');
                                 const passRadio = $('<input>').attr({ type: 'radio', name: 'status_' + task.taskid, id: 'pass_' + task.taskid, value: 'pass' }).addClass('ws10-form-selection-control__input');
@@ -813,7 +835,7 @@ $(document).ready(function() {
                                     updateCounter();
                                     saveState();
                                 });
-                                
+
                                 failRadio.on('change', function() {
                                     const fieldset = $(this).closest('fieldset');
                                     const previousValue = fieldset.data('previousValue');
@@ -832,7 +854,7 @@ $(document).ready(function() {
                                     updateCounter();
                                     saveState();
                                 });
-                                
+
                                 const resetButton = $('<div class="reset-button-container"><button class="reset-button"><svg class="reset-button-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><path class="st0" d="M108.84,155.75a60,60,0,0,0,1.72-120l-1.88,0a60,60,0,0,0-59.92,60v27.36" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/><polyline class="st0" points="77.44 95.6 48.76 123.11 20.86 95.6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/></svg></button></div>');
 
                                 resetButton.on('click', function() {
@@ -866,12 +888,12 @@ $(document).ready(function() {
 
                                 const openButton = $('<button class="open-overlay ws10-button-link ws10-button-link--color-primary-200" style="margin-top: 10px;grid-column-start: 1;">test instructions<svg id="icon" class="ws10-button-link__icon ws10-button-link__icon--right ws10-system-icon ws10-system-icon--size-150 ws10-system-icon--color-primary-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><polyline class="st0" points="62 28 130 96 62 164" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/></svg></button>');
                                 li.append(openButton);
-                                
+
                                 applicableCheckbox.on('change', function() {
                                     const isChecked = $(this).is(':checked');
                                     const fieldset = $(this).closest('li').find('fieldset');
                                     const selectedRadio = fieldset.find('input[type="radio"]:checked').val();
-                                
+
                                     if (isChecked) {
                                         fieldset.prop('disabled', false);
                                         resetButton.removeClass('reset-button-icon-disabled');
@@ -909,11 +931,10 @@ $(document).ready(function() {
                                     applicableCheckbox.prop('checked', !applicableCheckbox.prop('checked')).trigger('change');
                                 });
 
-                              // Kommentarfunktion
-                              const commentsDiv = $('<div>').addClass('comments');
-                              const addCommentButton = $('<button>').addClass('add-comment-button').text('Add Comment');
-                              li.append(commentsDiv).append(addCommentButton);
-                                
+                                const commentsDiv = $('<div>').addClass('comments');
+                                const addCommentButton = $('<button>add comment<svg id="icon" class="ws10-button-link__icon ws10-button-link__icon--right ws10-system-icon ws10-system-icon--size-150 ws10-system-icon--color-primary-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><polyline class="st0" points="62 28 130 96 62 164" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/></svg></button>').addClass('add-comment-button ws10-button-link ws10-button-link--color-primary-200');
+                                li.append(commentsDiv).append(addCommentButton);
+
                                 ul.append(li);
                                 fieldsetCount++;
                             }
@@ -951,12 +972,12 @@ $(document).ready(function() {
         $('input[type="radio"]:checked').each(function() {
             const fieldset = $(this).closest('fieldset');
             if ($(this).val() === 'pass') {
-                // passCount++;
+                passCount++;
             } else if ($(this).val() === 'fail') {
-                // failCount++;
+                failCount++;
             }
             if (!fieldset.data('isChecked')) {
-                // selectedRadioCount++;
+                selectedRadioCount++;
                 fieldsetCount = Math.max(fieldsetCount - 1, 0);
                 fieldset.data('isChecked', true);
             }
@@ -970,14 +991,7 @@ $(document).ready(function() {
         });
 
         updateCounter();
-        console.log("Am Ende " + fieldsetCount);
     }).fail(function(jqxhr, textStatus, error) {
         console.error("Request Failed: " + textStatus + ", " + error);
-
-  
-        
-
-
-
     });
 });
