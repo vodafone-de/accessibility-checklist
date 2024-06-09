@@ -543,8 +543,8 @@ $(document).ready(function() {
                                 }
                                 taskCatDiv.append($('<div style="clear:both"></div>'));
                                 li.append(taskCatDiv);
-                                li.append($('<div>').addClass('testtool').text(task.testtool).hide());
-                                li.append($('<div>').addClass('testmethod').text(task.testmethod).hide());
+                                li.append($('<div>').addClass('testtool').html(task.testtool).hide());
+                                li.append($('<div>').addClass('testmethod').html(task.testmethod).hide());
                                
                                 const fieldset = $('<fieldset>').addClass('status-options');
                                 const radioLegend = $('<legend>').text('compliance').addClass('status-optionslegend');
