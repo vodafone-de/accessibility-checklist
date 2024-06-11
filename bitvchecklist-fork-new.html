@@ -278,7 +278,18 @@
 
       <ul class="brix-gn-footer__legal-nav">
           <li class="brix-gn-footer__legal-item">
-              <span class="brix-gn-footer__copy-text">© 2024 Vodafone GmbH | 3.0.4</span>
+              <span class="brix-gn-footer__copy-text" style="display:flex; justify-content: center;">© 2024 Vodafone GmbH | <span id="version" style="margin-left: 2px"> Version: 0.0.0</span></span>
+              <p> <h5 class="white-text">Changelog</h5>
+                
+                
+                <label for="order">Sort order:</label>
+                <select id="order">
+                    <option value="newest">Newest First</option>
+                    <option value="oldest">Oldest First</option>
+                </select>
+              
+                <ul id="changelog" style="margin-top: 16px;"></ul>
+                <script src="js/changelog.js"></script></p>
           </li>
            <!-- <li class="brix-gn-footer__legal-item">
               <a class="brix-gn-footer__legal-link" href="#">Preise &amp; AGB</a>
@@ -300,6 +311,8 @@
           </li>  -->
       </ul>
   </div>
+
+ 
 </footer>
 
 </body>

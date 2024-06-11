@@ -1,5 +1,6 @@
 $(document).ready(function() {
-    function updateQueryString() {
+
+        function updateQueryString() {
         const selectedFilters = $('#filter-options input[type="checkbox"]:checked').map(function() {
             return $(this).data('filter_id');
         }).get();
@@ -524,124 +525,232 @@ $(document).ready(function() {
             $('input').removeAttr("tabindex", -1);
         }
     });
+
+    class CommentOverlay {
+        constructor() {
+            this.initOverlay();
+            this.bindEvents();
+            this.loadState();
+        }
     
-  
-    const commentOverlay = $(`
-        <div id="comment-overlay" class="comment-overlay" style="display: none;">
-            <div class="comment-overlay-content">
-                <h3>Add/Edit Comment</h3>
-                <label for="comment-title">Title:</label>
-                <input type="text" id="comment-title">
-                <label for="comment-text">Comment:</label>
-                <textarea id="comment-text"></textarea>
-                <h4>Upload screenshots</h4>
-        <div class="upload-area" id="upload-area">
-            <div class="upload-placeholder">+</div>
-            <input type="file" id="file-input" accept="image/jpeg, image/png" style="display: none;" multiple>
-        </div>
-        <div id="uploaded-images" class="uploaded-images"></div>
-        <button id="save-comment">Save</button>
-        <button id="cancel-comment">Cancel</button>
-            </div>
-        </div>
-    `);
-
-    $('body').append(commentOverlay);
-
-    let currentTaskContainer;
-    let currentCommentItem;
-
-    $(document).on('click', '.add-comment-button', function() {
-        currentTaskContainer = $(this).closest('li.taskContainer');
-        currentCommentItem = null;
-        $('#comment-title').val('');
-        $('#comment-text').val('');
-        $('#uploaded-images').empty();
-        $('#comment-overlay').show();
-    });
-
-    $(document).on('click', '.edit-comment-button', function() {
-        currentTaskContainer = $(this).closest('li.taskContainer');
-        currentCommentItem = $(this).closest('.comment-item');
-        const title = currentCommentItem.find('.comment-title').text();
-        const text = currentCommentItem.data('comment-text');
-        $('#comment-title').val(title);
-        $('#comment-text').val(text);
-        $('#uploaded-images').empty();
-        const images = currentCommentItem.data('images') || [];
-        images.forEach(image => {
-            $('#uploaded-images').append(`<img src="${image}" alt="Uploaded Image">`);
-        });
-        $('#comment-overlay').show();
-    });
-$(document).on('click', '#upload-area', function() {
-    $('#file-input').click();
-});
-
-$('#file-input').on('change', function(event) {
-    const files = event.target.files;
-    const validImageTypes = ['image/jpeg', 'image/png'];
-    for (let i = 0; i < files.length; i++) {
-        const file = files[i];
-        if (validImageTypes.includes(file.type)) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                $('#uploaded-images').append(`<img src="${e.target.result}" alt="Uploaded Image">`);
+        initOverlay() {
+            this.commentOverlay = $(`
+                <div id="comment-overlay" class="comment-overlay" style="display: none;">
+                    <div class="comment-overlay-content">
+                        <h3>Add/Edit Comment</h3>
+                        <label for="comment-title">Title:</label>
+                        <input type="text" id="comment-title">
+                        <label for="comment-text">Comment:</label>
+                        <textarea id="comment-text"></textarea>
+                        <h4>Upload screenshots</h4>
+                        <div id="image-upload-container">
+                            <input type="file" id="image-upload-input" accept=".jpg,.png" style="display: none;">
+                            <div id="image-upload-area">
+                                <span>+</span>
+                            </div>
+                        </div>
+                        <div id="image-thumbnails" class="image-thumbnails"></div>
+                        <button id="save-comment">Save</button>
+                        <button id="cancel-comment">Cancel</button>
+                    </div>
+                </div>
+            `);
+            $('body').append(this.commentOverlay);
+        }
+    
+        bindEvents() {
+            $(document).on('click', '.add-comment-button', (e) => this.showAddCommentOverlay(e));
+            $(document).on('click', '.edit-comment-button', (e) => this.showEditCommentOverlay(e));
+            $(document).on('click', '#save-comment', (e) => this.saveComment(e));
+            $(document).on('click', '#cancel-comment', (e) => this.hideOverlay(e));
+            $(document).on('click', '.delete-comment-button', (e) => this.deleteComment(e));
+            $(document).on('keydown', (e) => this.handleEscapeKey(e));
+            $(document).on('click', '#image-upload-area', () => $('#image-upload-input').click());
+            $(document).on('change', '#image-upload-input', (e) => this.handleImageUpload(e));
+            $(document).on('click', '.delete-image-button', (e) => this.deleteImage(e));
+        }
+    
+        showAddCommentOverlay(e) {
+            e.stopPropagation();
+            this.currentTaskContainer = $(e.currentTarget).closest('li.taskContainer');
+            this.currentCommentItem = null;
+            $('#comment-title').val('');
+            $('#comment-text').val('');
+            $('#image-upload-area').empty().append('<span>+</span>');
+            $('#image-thumbnails').empty();
+            $('#comment-overlay').show();
+        }
+    
+        showEditCommentOverlay(e) {
+            e.stopPropagation();
+            this.currentTaskContainer = $(e.currentTarget).closest('li.taskContainer');
+            this.currentCommentItem = $(e.currentTarget).closest('.comment-item');
+            const title = this.currentCommentItem.find('.comment-title').text();
+            const text = this.currentCommentItem.data('comment-text');
+            $('#comment-title').val(title);
+            $('#comment-text').val(text);
+            $('#image-upload-area').empty().append('<span>+</span>');
+            $('#image-thumbnails').empty();
+            const images = this.currentCommentItem.data('images') || [];
+            images.forEach((src) => {
+                $('#image-thumbnails').append(this.createImageThumbnail(src));
+            });
+            $('#comment-overlay').show();
+        }
+    
+        saveComment(e) {
+            e.stopPropagation();
+            const title = $('#comment-title').val().trim();
+            const text = $('#comment-text').val().trim();
+            const images = [];
+            $('#image-thumbnails img').each(function() {
+                images.push($(this).attr('src'));
+            });
+    
+            if (title && text) {
+                if (this.currentCommentItem) {
+                    this.currentCommentItem.find('.comment-title').text(title);
+                    this.currentCommentItem.data('comment-text', text);
+                    this.currentCommentItem.data('images', images);
+                } else {
+                    this.currentTaskContainer.find('.comments').append(`
+                        <div class="comment-item" data-comment-text="${text}" data-images='${JSON.stringify(images)}'>
+                            <div class="comment-title">${title}</div>
+                            <button class="edit-comment-button">Edit</button>
+                            <button class="delete-comment-button">Delete</button>
+                        </div>
+                    `);
+                }
+                this.adjustAccordionHeight(this.currentTaskContainer);
+                this.saveState();
+                $('#comment-overlay').hide();
+            } else {
+                alert('Both title and comment text are required.');
             }
-            reader.readAsDataURL(file);
-        } else {
-            alert('Only JPG and PNG files are allowed.');
+        }
+    
+        hideOverlay(e) {
+            e.stopPropagation();
+            $('#comment-overlay').hide();
+        }
+    
+        deleteComment(e) {
+            e.stopPropagation();
+            if (confirm('Are you sure you want to delete this comment?')) {
+                const commentItem = $(e.currentTarget).closest('.comment-item');
+                const taskContainer = commentItem.closest('li.taskContainer');
+                commentItem.remove();
+                this.adjustAccordionHeight(taskContainer);
+                this.saveState();
+            }
+        }
+    
+        handleEscapeKey(e) {
+            if (e.key === 'Escape' && $('#comment-overlay').is(':visible')) {
+                $('#comment-overlay').hide();
+            }
+        }
+    
+        handleImageUpload(e) {
+            const files = e.target.files;
+            if (files.length > 0) {
+                const file = files[0];
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    $('#image-thumbnails').append(this.createImageThumbnail(event.target.result));
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+    
+        createImageThumbnail(src) {
+            return `
+                <div class="image-thumbnail-container">
+                    <img src="${src}" class="uploaded-image-thumbnail">
+                    <button class="delete-image-button">Delete</button>
+                </div>
+            `;
+        }
+    
+        deleteImage(e) {
+            e.stopPropagation();
+            $(e.currentTarget).closest('.image-thumbnail-container').remove();
+        }
+    
+        adjustAccordionHeight(taskContainer) {
+            const commentsContainer = taskContainer.find('.comments');
+            const height = commentsContainer.prop('scrollHeight');
+            commentsContainer.height(height);
+        }
+    
+        saveState() {
+            const state = {
+                selectedRadios: {},
+                applicableCheckboxes: {},
+                comments: {}
+            };
+    
+            $('input[type="radio"]:checked').each(function() {
+                state.selectedRadios[this.id] = this.checked;
+            });
+    
+            $('input[type="checkbox"][id^="applicable_"]').each(function() {
+                state.applicableCheckboxes[this.id] = this.checked;
+            });
+    
+            $('li.taskContainer').each(function() {
+                const taskId = $(this).attr('id');
+                const comments = $(this).find('.comment-item').map(function() {
+                    return {
+                        title: $(this).find('.comment-title').text().trim(),
+                        text: $(this).data('comment-text'),
+                        images: $(this).data('images') || []
+                    };
+                }).get();
+                if (comments.length > 0) {
+                    state.comments[taskId] = comments;
+                }
+            });
+    
+            localStorage.setItem('filterState', JSON.stringify(state));
+        }
+    
+        loadState() {
+            const state = JSON.parse(localStorage.getItem('filterState'));
+    
+            if (state) {
+                for (const [key, value] of Object.entries(state.selectedRadios)) {
+                    $(`#${key}`).prop('checked', value);
+                }
+    
+                for (const [key, value] of Object.entries(state.applicableCheckboxes)) {
+                    $(`#${key}`).prop('checked', value).trigger('change');
+                }
+    
+                for (const [taskId, comments] of Object.entries(state.comments)) {
+                    const container = $(`li.taskContainer#${taskId}`);
+                    comments.forEach(comment => {
+                        const commentItem = $(`
+                            <div class="comment-item" data-comment-text="${comment.text}" data-images='${JSON.stringify(comment.images)}'>
+                                <div class="comment-title">${comment.title}</div>
+                                <button class="edit-comment-button">Edit</button>
+                                <button class="delete-comment-button">Delete</button>
+                            </div>
+                        `);
+                        container.find('.comments').append(commentItem);
+                        comment.images.forEach((src) => {
+                            commentItem.append(this.createImageThumbnail(src));
+                        });
+                    });
+                }
+            }
         }
     }
-});
-
-    $(document).on('click', '#save-comment', function() {
-        const title = $('#comment-title').val().trim();
-        const text = $('#comment-text').val().trim();
-        const images = $('#uploaded-images img').map(function() {
-            return $(this).attr('src');
-        }).get();
-
-        if (title && text) {
-            if (currentCommentItem) {
-                currentCommentItem.find('.comment-title').text(title);
-                currentCommentItem.data('comment-text', text);
-                currentCommentItem.data('images', images);
-            } else {
-                currentTaskContainer.find('.comments').append(`
-                    <div class="comment-item" data-comment-text="${text}" data-images='${JSON.stringify(images)}'>
-                        <div class="comment-title">${title}</div>
-                        <button class="edit-comment-button">Edit</button>
-                        <button class="delete-comment-button">Delete</button>
-                    </div>
-                `);
-            }
-            adjustAccordionHeight(currentTaskContainer);
-            saveState();
-            $('#comment-overlay').hide();
-        } else {
-            alert('Both title and comment text are required.');
-        }
+    
+    $(document).ready(() => {
+        new CommentOverlay();
     });
-
-    $(document).on('click', '#cancel-comment', function() {
-        $('#comment-overlay').hide();
-    });
-
-    $(document).on('click', '.delete-comment-button', function() {
-        if (confirm('Are you sure you want to delete this comment?')) {
-            const commentItem = $(this).closest('.comment-item');
-            commentItem.remove();
-            adjustAccordionHeight(commentItem);
-            saveState();
-        }
-    });
-
-    $(document).on('keydown', function(e) {
-        if (e.key === 'Escape' && $('#comment-overlay').is(':visible')) {
-            $('#comment-overlay').hide();
-        }
-    });
+    
 
 
 
@@ -1013,7 +1122,8 @@ $('#file-input').on('change', function(event) {
 
   
         
-
+     
+        
 
 
     });
