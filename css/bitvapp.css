@@ -385,6 +385,9 @@ color: var(--ws10-color-monochrome-100);
 
  }     
 
+ .changelog-versions { margin-top: 20px;
+  margin-bottom: 8px; }
+
 .bitvnr {
 
 font-weight: var(--ws10-font-weight-bold);
