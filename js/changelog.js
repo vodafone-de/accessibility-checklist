@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let versions = [];
 
     const sortStrategies = {
-        oldest: (commits) => [...commits].reverse(),
+        newest: (commits) => commits,
         messageLength: (commits) => [...commits].sort((a, b) => a.commit.message.length - b.commit.message.length),
         customTag: (commits) => [...commits].sort((a, b) => {
             const aTag = a.commit.message.match(/#(\w+)/);
@@ -51,47 +51,54 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function createVersionHeader(version) {
         const versionHeader = document.createElement('h5');
-        versionHeader.textContent = `Version ${version.major}.${version.minor}`;
+        versionHeader.textContent = `Version ${version.major}.${version.minor}.${version.fix}`;
         versionHeader.classList.add('white-text');
         return versionHeader;
     }
 
-    function displayChangelog(commits, order = 'oldest') {
+    function displayChangelog(commits, order = 'newest') {
         changelogElement.innerHTML = '';
         const sortedCommits = sortCommits(commits, order);
 
-        let currentVersionIndex = -1;
+        let currentVersion = null;
+        let currentVersionCommits = [];
         let previousChanges = [];
-        let isPreviousChangesSectionAdded = false;
 
-        sortedCommits.forEach((commit, index) => {
+        sortedCommits.forEach((commit) => {
             const commitMessage = commit.commit.message;
 
             if (commitMessage.startsWith('Major') || commitMessage.startsWith('Minor')) {
-                currentVersionIndex++;
-                const versionHeader = createVersionHeader(versions[currentVersionIndex]);
-                changelogElement.appendChild(versionHeader);
+                if (currentVersion) {
+                    const versionHeader = createVersionHeader(currentVersion);
+                    changelogElement.appendChild(versionHeader);
+                    currentVersionCommits.forEach(li => changelogElement.appendChild(li));
+                }
+                currentVersion = versions.pop();
+                currentVersionCommits = [];
             }
 
             const li = document.createElement('li');
             li.textContent = commitMessage;
 
             if (commitMessage.startsWith('Major') || commitMessage.startsWith('Minor')) {
-                changelogElement.appendChild(li);
+                currentVersionCommits.push(li);
             } else {
                 previousChanges.push(li);
             }
         });
+
+        if (currentVersion) {
+            const versionHeader = createVersionHeader(currentVersion);
+            changelogElement.appendChild(versionHeader);
+            currentVersionCommits.forEach(li => changelogElement.appendChild(li));
+        }
 
         if (previousChanges.length > 0) {
             const previousHeader = document.createElement('h5');
             previousHeader.textContent = 'Previous changes';
             previousHeader.classList.add('white-text');
             changelogElement.appendChild(previousHeader);
-
-            previousChanges.forEach(li => {
-                changelogElement.appendChild(li);
-            });
+            previousChanges.forEach(li => changelogElement.appendChild(li));
         }
     }
 
