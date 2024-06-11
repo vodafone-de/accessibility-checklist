@@ -465,6 +465,13 @@ font-weight: var(--ws10-font-weight-bold);
   height: 24px;
 }
 
+.add-comment-button {
+
+  grid-column-start: 1;
+  grid-row-start: 5;
+
+
+}
 
 .comment-overlay {
   position: fixed;
