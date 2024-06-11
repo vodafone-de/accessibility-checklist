@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error('Error: Changelog container element not found');
         return;
     }
-
+   
     let major = 3;
     let minor = 0;
     let fix = 4;
@@ -15,6 +15,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         const response = await fetch(apiUrl);
         const commits = await response.json();
 
+
+        
         let versions = [];
         let currentVersionCommits = [];
         let previousChanges = [];
