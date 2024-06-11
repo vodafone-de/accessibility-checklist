@@ -1,119 +1,105 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const repoUrl = 'https://api.github.com/repos/vodafone-de/accessibility-checklist/commits';
-    const versionElement = document.getElementById('version');
-    const changelogElement = document.getElementById('changelog');
-    const orderSelect = document.getElementById('order');
+document.addEventListener('DOMContentLoaded', async () => {
+    const apiUrl = 'https://api.github.com/repos/vodafone-de/accessibility-checklist/commits';
+    const changelogContainer = document.getElementById('changelog-container');
 
-    let version = { major: 0, minor: 0, fix: 0 };
-    let commits = [];
-    let versions = [];
-
-    const sortStrategies = {
-        newest: (commits) => commits,
-        messageLength: (commits) => [...commits].sort((a, b) => a.commit.message.length - b.commit.message.length),
-        customTag: (commits) => [...commits].sort((a, b) => {
-            const aTag = a.commit.message.match(/#(\w+)/);
-            const bTag = b.commit.message.match(/#(\w+)/);
-            return (aTag ? aTag[1] : '').localeCompare(bTag ? bTag[1] : '');
-        })
-    };
-
-    async function fetchCommits() {
-        const response = await fetch(repoUrl);
-        return await response.json();
+    if (!changelogContainer) {
+        console.error('Error: Changelog container element not found');
+        return;
     }
 
-    function updateVersion(commitMessage) {
-        if (commitMessage.startsWith('Major')) {
-            version.major += 1;
-            version.minor = 0;
-            version.fix = 0;
-            versions.push({ ...version });
-        } else if (commitMessage.startsWith('Minor')) {
-            version.minor += 1;
-            version.fix = 0;
-            versions.push({ ...version });
-        } else if (commitMessage.startsWith('Fix')) {
-            version.fix += 1;
-        }
-    }
+    let major = 3;
+    let minor = 0;
+    let fix = 4;
 
-    function displayVersion() {
-        versionElement.textContent = `Version: ${version.major}.${version.minor}.${version.fix}`;
-    }
+    try {
+        const response = await fetch(apiUrl);
+        const commits = await response.json();
 
-    function sortCommits(commits, order) {
-        if (sortStrategies[order]) {
-            return sortStrategies[order](commits);
-        }
-        return commits;
-    }
-
-    function createVersionHeader(version) {
-        const versionHeader = document.createElement('h5');
-        versionHeader.textContent = `Version ${version.major}.${version.minor}.${version.fix}`;
-        versionHeader.classList.add('white-text');
-        return versionHeader;
-    }
-
-    function displayChangelog(commits, order = 'newest') {
-        changelogElement.innerHTML = '';
-        const sortedCommits = sortCommits(commits, order);
-
-        let currentVersion = null;
+        let versions = [];
         let currentVersionCommits = [];
         let previousChanges = [];
+        let currentVersionHeader = '';
 
-        sortedCommits.forEach((commit) => {
-            const commitMessage = commit.commit.message;
+        // Process commits in reverse order (oldest to newest)
+        commits.reverse().forEach(commit => {
+            const message = commit.commit.message;
 
-            if (commitMessage.startsWith('Major') || commitMessage.startsWith('Minor')) {
-                if (currentVersion) {
-                    const versionHeader = createVersionHeader(currentVersion);
-                    changelogElement.appendChild(versionHeader);
-                    currentVersionCommits.forEach(li => changelogElement.appendChild(li));
+            if (message.startsWith('Major')) {
+                if (currentVersionCommits.length > 0) {
+                    versions.push({ header: currentVersionHeader, commits: currentVersionCommits });
+                    currentVersionCommits = [];
                 }
-                currentVersion = versions.pop();
-                currentVersionCommits = [];
-            }
-
-            const li = document.createElement('li');
-            li.textContent = commitMessage;
-
-            if (commitMessage.startsWith('Major') || commitMessage.startsWith('Minor')) {
-                currentVersionCommits.push(li);
+                major++;
+                minor = 0;
+                fix = 0;
+                currentVersionHeader = `Version ${major}.${minor}.${fix}`;
+                currentVersionCommits.push(message);
+            } else if (message.startsWith('Minor')) {
+                if (currentVersionCommits.length > 0) {
+                    versions.push({ header: currentVersionHeader, commits: currentVersionCommits });
+                    currentVersionCommits = [];
+                }
+                minor++;
+                fix = 0;
+                currentVersionHeader = `Version ${major}.${minor}.${fix}`;
+                currentVersionCommits.push(message);
+            } else if (message.startsWith('Fix')) {
+                fix++;
+                currentVersionCommits.push(message);
             } else {
-                previousChanges.push(li);
+                if (currentVersionHeader === '') {
+                    previousChanges.push(message);
+                } else {
+                    currentVersionCommits.push(message);
+                }
             }
         });
 
-        if (currentVersion) {
-            const versionHeader = createVersionHeader(currentVersion);
-            changelogElement.appendChild(versionHeader);
-            currentVersionCommits.forEach(li => changelogElement.appendChild(li));
+        if (currentVersionCommits.length > 0) {
+            versions.push({ header: currentVersionHeader, commits: currentVersionCommits });
         }
 
-        if (previousChanges.length > 0) {
-            const previousHeader = document.createElement('h5');
-            previousHeader.textContent = 'Previous changes';
-            previousHeader.classList.add('white-text');
-            changelogElement.appendChild(previousHeader);
-            previousChanges.forEach(li => changelogElement.appendChild(li));
-        }
-    }
-
-    async function generateChangelog() {
-        commits = await fetchCommits();
-        commits.forEach(commit => {
-            updateVersion(commit.commit.message);
+        // Render versions in the correct order (newest first)
+        versions.reverse().forEach(version => {
+            renderVersion(version.header, version.commits.reverse());
         });
-        displayVersion();
-        displayChangelog(commits, orderSelect.value);
+
+        // Render previous changes last
+        if (previousChanges.length > 0) {
+            renderPreviousChanges(previousChanges.reverse());
+        }
+
+    } catch (error) {
+        console.error('Error fetching commit data:', error);
     }
 
-    orderSelect.addEventListener('change', () => {
-        displayChangelog(commits, orderSelect.value);
-    });
+    function renderVersion(version, commits) {
+        const versionHeader = document.createElement('div');
+        versionHeader.className = 'version-header';
+        versionHeader.textContent = version;
+        changelogContainer.appendChild(versionHeader);
 
-    generateChangelog();
+        // Render commits in correct order (newest first)
+        commits.forEach(message => {
+            const commitMessageElement = document.createElement('li');
+            commitMessageElement.className = 'commit-message';
+            commitMessageElement.textContent = message;
+            changelogContainer.appendChild(commitMessageElement);
+        });
+    }
+
+    function renderPreviousChanges(commits) {
+        const previousChangesHeader = document.createElement('div');
+        previousChangesHeader.className = 'version-header';
+        previousChangesHeader.textContent = 'Previous changes';
+        changelogContainer.appendChild(previousChangesHeader);
+
+        // Render commits in correct order (newest first)
+        commits.forEach(message => {
+            const commitMessageElement = document.createElement('li');
+            commitMessageElement.className = 'commit-message';
+            commitMessageElement.textContent = message;
+            changelogContainer.appendChild(commitMessageElement);
+        });
+    }
 });

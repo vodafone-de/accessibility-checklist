@@ -472,6 +472,24 @@ font-weight: var(--ws10-font-weight-bold);
 
 
 }
+ 
+
+
+  #changelog-container{
+    max-width: 600px;
+
+}
+
+
+
+.version-header {
+
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  margin-top: 20px;
+}
+
 
 .comment-overlay {
   position: fixed;

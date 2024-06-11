@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Accessibility Self Assessment – BITV Checklist</title>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="js/jquery-3.6.0.min.js"></script>
     
     <link rel="stylesheet" href="css/bitvapp.css">
     <link rel="stylesheet" href="css/a11y-checklist-dark.css">
@@ -278,18 +278,17 @@
 
       <ul class="brix-gn-footer__legal-nav">
           <li class="brix-gn-footer__legal-item">
-              <span class="brix-gn-footer__copy-text" style="display:flex; justify-content: center;">© 2024 Vodafone GmbH | <span id="version" style="margin-left: 2px"> Version: 0.0.0</span></span>
-              <p> <h5 class="white-text">Changelog</h5>
-                
-                
-                <label for="order">Sort order:</label>
-                <select id="order">
-                    <option value="newest">Newest First</option>
-                    <option value="oldest">Oldest First</option>
-                </select>
+              <span class="brix-gn-footer__copy-text" style="display:flex; justify-content: center;">© 2024 Vodafone GmbH |  <span id="version" style="margin-left: 2px"> Version: 0.0.0</span></span>
+
+              <h5 class="white-text">Changelog</h5>
               
-                <ul id="changelog" style="margin-top: 16px;width: 600px;"></ul>
-                <script src="js/changelog.js"></script></p>
+               
+                
+                
+
+              
+                <ul id="changelog-container" style="margin-top: 16px;width: 600px;"></ul></div>
+                <script src="js/changelog.js"></script>
           </li>
            <!-- <li class="brix-gn-footer__legal-item">
               <a class="brix-gn-footer__legal-link" href="#">Preise &amp; AGB</a>
