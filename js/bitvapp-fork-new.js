@@ -535,8 +535,21 @@ $(document).ready(function() {
     
         initOverlay() {
             this.commentOverlay = $(`
-                <div id="comment-overlay" class="comment-overlay" style="display: none;">
-                    <div class="comment-overlay-content">
+                <div class="slide-in-overlay-container"><div id="comment-overlay" class="ws10-overlay ws10-fade ws10-overlay--slide ws10-overlay--spacing ws10-overlay--align-left ws10-in" style="display: none;">
+                <div class="ws10-overlay__container">
+                <div class="ws10-overlay__close">
+                <button id="cancel-comment" aria-label="Close" class="tabenable ws10-button-icon-only ws10-button-icon-only--tertiary ws10-button-icon-only--floating ws10-button-icon-only--standard close" tabindex="1">
+                <svg id="close-icon" class="ws10-button-icon-only__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+            
+                        <line class="st0" x1="44" y1="148" x2="148" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.67"></line>
+                        <line class="st0" x1="148" y1="148" x2="44" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.67"></line>
+                  </svg>
+                  
+            </button>
+                </div>
+
+             
+                <div class="comment-overlay-content ws10-overlay__content">
                         <h3>Add/Edit Comment</h3>
                         <label for="comment-title">Title:</label>
                         <input type="text" id="comment-title">
@@ -553,6 +566,11 @@ $(document).ready(function() {
                         <button id="save-comment">Save</button>
                         <button id="cancel-comment">Cancel</button>
                     </div>
+                     </div>
+            </div> 
+                </div>
+                <div class="ws10-overlay__backdrop ws10-fade ws10-in" style="display: none;">
+    </div>
                 </div>
             `);
             $('body').append(this.commentOverlay);
@@ -579,6 +597,8 @@ $(document).ready(function() {
             $('#image-upload-area').empty().append('<span>+</span>');
             $('#image-thumbnails').empty();
             $('#comment-overlay').show();
+            $('.ws10-overlay__backdrop').css('display', 'block').addClass('ws10-in').css('transform', 'translateX(0)');
+
         }
     
         showEditCommentOverlay(e) {
@@ -632,6 +652,8 @@ $(document).ready(function() {
         hideOverlay(e) {
             e.stopPropagation();
             $('#comment-overlay').hide();
+            $('.ws10-overlay__backdrop').css('transform', 'translateX(100%)').removeClass('ws10-in').css('display', 'none');
+
         }
     
         deleteComment(e) {
