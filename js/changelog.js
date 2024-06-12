@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', async () => {
     const apiUrl = 'https://api.github.com/repos/vodafone-de/accessibility-checklist/commits';
     const changelogContainer = document.getElementById('changelog-container');
+    const latestVersionSpan = document.getElementById('latest-version');
 
     if (!changelogContainer) {
         console.error('Error: Changelog container element not found');
@@ -45,10 +46,19 @@ document.addEventListener('DOMContentLoaded', async () => {
                 fix = 0;
                 currentVersionHeader = `Version ${major}.${minor}.${fix}`;
                 currentVersionCommits.push(message);
-            } else if (message.startsWith('Fix')) {
+            }
+            else if (message.startsWith('Fix')) {
+                if (currentVersionCommits.length > 0) {
+                    versions.push({ header: currentVersionHeader, commits: currentVersionCommits });
+                    currentVersionCommits = [];
+                }
+               
                 fix++;
+                currentVersionHeader = `Version ${major}.${minor}.${fix}`;
                 currentVersionCommits.push(message);
-            } else {
+            }
+            
+             else {
                 if (currentVersionHeader === '') {
                     previousChanges.push(message);
                 } else {
@@ -60,6 +70,12 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (currentVersionCommits.length > 0) {
             versions.push({ header: currentVersionHeader, commits: currentVersionCommits });
         }
+
+        // Set the latest version number in the span element
+        if (latestVersionSpan) {
+            latestVersionSpan.textContent = currentVersionHeader;
+        }
+
 
         // Render versions in the correct order (newest first)
         versions.reverse().forEach(version => {
