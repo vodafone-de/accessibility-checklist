@@ -522,16 +522,19 @@ font-weight: var(--ws10-font-weight-bold);
 }
 
 #image-upload-area {
-  border: 1px dashed #ccc;
+  border: 2px dashed #0d0d0d;
   padding: 10px;
   text-align: center;
   cursor: pointer;
   margin-bottom: 10px;
+  border-radius: 6px;
 }
+
+
 
 #image-upload-area span {
   font-size: 24px;
-  color: #ccc;
+  color: #0d0d0d;
 }
 
 .image-thumbnails {
@@ -548,8 +551,8 @@ font-weight: var(--ws10-font-weight-bold);
 }
 
 .uploaded-image-thumbnail {
-  width: 50px;
-  height: 50px;
+  width: 300px;
+  height: 180px;
   object-fit: cover;
   border: 1px solid #ccc;
   padding: 2px;
@@ -565,24 +568,6 @@ font-weight: var(--ws10-font-weight-bold);
   cursor: pointer;
 }
 
-button {
-  padding: 5px 10px;
-  margin-top: 10px;
-  cursor: pointer;
-}
-
-button#save-comment {
-  background-color: #28a745;
-  color: white;
-  border: none;
-}
-
-button#cancel-comment {
-  background-color: #dc3545;
-  color: white;
-  border: none;
-  margin-left: 10px;
-}
 
 button.edit-comment-button, button.delete-comment-button {
   background-color: transparent;
@@ -597,22 +582,116 @@ button.edit-comment-button:hover, button.delete-comment-button:hover {
 }
 
 
-/* #file-input {
-  position: absolute;
-  z-index: 20;
-  opacity: 0;  
+.ws10-form-element-block {
+      font-size: 18px;
+  }
+
+.ws10-form-element-block {
+  font-weight: 400;
+  line-height: 1.5;
+  color: #0d0d0d;
+  font-size: 16px;
+  display: block;
+}
+
+
+.ws10-form-element-block .ws10-form-element-block__label-container {
+  display: block;
+  margin-bottom: 8px;
+}
+
+.ws10-form-element-block .ws10-form-element-block__input-container {
+  position: relative;
+}
+
+  .ws10-form-label {
+      font-size: 18px;
+  }
+
+
+.ws10-form-label {
+  font-weight: 400;
+  line-height: 1.5;
+  color: #0d0d0d;
+  font-size: 16px;
+  color: #0d0d0d;
+  transition: all .2s cubic-bezier(0.47, 0, 0.745, 0.715);
+}
+
+
+.ws10-form-textarea {
+  font-weight: 400;
+  line-height: 1.5;
+  color: #0d0d0d;
+  font-size: 16px;
+}
+
+.ws10-form-textarea .ws10-form-textarea__textarea {
+  resize: vertical;
+}
+
+.ws10-form-textarea .ws10-form-textarea__textarea {
   width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  cursor: pointer;
-} */
+  display: block;
+  padding: 11px 56px 11px 16px;
+  background-color: #fff;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: #0d0d0d;
+  font-weight: 400;
+  font-family: "Vodafone", "Arial", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+}
+.ws10-form-textarea .ws10-form-textarea__textarea {
+  border-radius: 6px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #262626;
+}
 
 
+.ws10-form-element-block .ws10-form-element-block__helper-text {
+  display: block;
+  color: #0d0d0d;
+}
+
+.ws10-text-smaller {
+  font-weight: 400;
+  line-height: 1.5;
+  color: #0d0d0d;
+  font-size: 14px;
+  margin-bottom: 0;
+}
+
+.ws10-form-textarea--error .ws10-notification-icon {
+  visibility: visible;
+}
 
 
+.ws10-form-textarea .ws10-notification-icon {
+  visibility: hidden;
+  pointer-events: none;
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  width: 24px;
+  height: 24px;
+}
+.ws10-notification-icon--error {
+  fill: #bd0000;
+}
 
-
+.ws10-notification-icon {
+  font-weight: 400;
+  line-height: 1.5;
+  color: #0d0d0d;
+  font-size: 16px;
+  width: 24px;
+  height: 24px;
+}
 
 
 
@@ -715,18 +794,6 @@ button.edit-comment-button:hover, button.delete-comment-button:hover {
     margin-bottom: 10px;
 }
 
-#image-upload-area {
-    border: 1px dashed #ccc;
-    padding: 10px;
-    text-align: center;
-    cursor: pointer;
-    margin-bottom: 10px;
-}
-
-#image-upload-area span {
-    font-size: 24px;
-    color: #ccc;
-}
 
 .image-thumbnails {
     display: flex;
@@ -734,32 +801,8 @@ button.edit-comment-button:hover, button.delete-comment-button:hover {
     gap: 10px;
 }
 
-.uploaded-image-thumbnail {
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
-    border: 1px solid #ccc;
-    padding: 2px;
-}
 
-button {
-    padding: 5px 10px;
-    margin-top: 10px;
-    cursor: pointer;
-}
 
-button#save-comment {
-    background-color: #28a745;
-    color: white;
-    border: none;
-}
-
-button#cancel-comment {
-    background-color: #dc3545;
-    color: white;
-    border: none;
-    margin-left: 10px;
-}
 
 button.edit-comment-button, button.delete-comment-button {
     background-color: transparent;
@@ -774,7 +817,9 @@ button.edit-comment-button:hover, button.delete-comment-button:hover {
 }
 
 
-
+.element50percentwidth {
+  width: 50%;
+}
 
 
 
@@ -1364,6 +1409,7 @@ button.edit-comment-button:hover, button.delete-comment-button:hover {
 .ws10-button-icon-only--standard {
   width: 48px;
   height: 48px;
+  padding: 5px 4px;
 }
 
 /* 
@@ -2330,6 +2376,86 @@ stroke: #c40000;
   cursor:not-allowed;
 
 }
+
+/* Container and Overlay Styling */
+.slide-in-overlay-container {
+  position: relative;
+}
+
+.ws10-overlay__container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.comment-overlay-content {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 60px; /* Ensure space for buttons */
+}
+
+.comment-overlay-content h5,
+.comment-overlay-content label,
+.comment-overlay-content input,
+.comment-overlay-content textarea,
+.comment-overlay-content h4,
+.comment-overlay-content #image-upload-container,
+.comment-overlay-content #image-thumbnails {
+  margin-bottom: 10px;
+}
+
+
+#image-thumbnails {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Buttons Container */
+.comment-buttons-container {
+  position: sticky;
+  bottom: 0;
+  background: #fff;
+  padding: 10px;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  box-shadow: 0 0 0 1px #ccc;
+}
+
+/* Image Thumbnail Container */
+.image-thumbnail-container {
+  position: relative;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+
+.delete-image-button {
+  position: relative;
+  border-radius: 50%;
+  background: transparent;
+  height: 48px;
+  width: 48px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+}
+
+.delete-image-button:hover {
+  background: #c40000;
+  stroke: #fff;
+}
+
+.delete-image-button:hover svg {
+  background: #c40000;
+  stroke: #fff !important;
+}
+
 
 
 .toolBar {

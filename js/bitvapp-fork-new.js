@@ -535,43 +535,52 @@ $(document).ready(function() {
     
         initOverlay() {
             this.commentOverlay = $(`
-                <div class="slide-in-overlay-container"><div id="comment-overlay" class="ws10-overlay ws10-fade ws10-overlay--slide ws10-overlay--spacing ws10-overlay--align-left ws10-in" style="display: none;">
-                <div class="ws10-overlay__container">
-                <div class="ws10-overlay__close">
+<div class="slide-in-overlay-container">
+    <div id="comment-overlay" class="ws10-overlay ws10-fade ws10-overlay--slide ws10-overlay--spacing ws10-overlay--align-left ws10-in" style="display: none;">
+        <div class="ws10-overlay__container">
+            <div class="ws10-overlay__close">
                 <button id="cancel-comment" aria-label="Close" class="tabenable ws10-button-icon-only ws10-button-icon-only--tertiary ws10-button-icon-only--floating ws10-button-icon-only--standard close" tabindex="1">
-                <svg id="close-icon" class="ws10-button-icon-only__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
-            
+                    <svg id="close-icon" class="ws10-button-icon-only__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
                         <line class="st0" x1="44" y1="148" x2="148" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.67"></line>
                         <line class="st0" x1="148" y1="148" x2="44" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.67"></line>
-                  </svg>
-                  
-            </button>
-                </div>
-
-             
-                <div class="comment-overlay-content ws10-overlay__content">
-                        <h3>Add/Edit Comment</h3>
-                        <label for="comment-title">Title:</label>
-                        <input type="text" id="comment-title">
-                        <label for="comment-text">Comment:</label>
-                        <textarea id="comment-text"></textarea>
-                        <h4>Upload screenshots</h4>
-                        <div id="image-upload-container">
-                            <input type="file" id="image-upload-input" accept=".jpg,.png" style="display: none;">
-                            <div id="image-upload-area">
-                                <span>+</span>
-                            </div>
-                        </div>
-                        <div id="image-thumbnails" class="image-thumbnails"></div>
-                        <button id="save-comment">Save</button>
-                        <button id="cancel-comment">Cancel</button>
+                    </svg>
+                </button>
+            </div>
+            <div class="comment-overlay-content ws10-overlay__content">
+                <h5>Add or edit comment</h5>
+                <label for="comment-title">Title:</label>
+                <input type="text" id="comment-title">
+<div class="ws10-form-element-block ws10-form-element-block--textarea">
+        <div class="ws10-form-element-block__label-container">
+            <label for="textarea-1" class="ws10-form-label ">Comment:</label>
+        </div>
+    <div class="ws10-form-element-block__input-container"><div class="ws10-form-textarea">
+    <textarea rows="5" id="comment-text" class="ws10-form-textarea__textarea" name=""></textarea>
+    <span class="ws10-form-textarea__notification_icon-container"><svg class="ws10-notification-icon ws10-notification-icon-- ">
+</svg>
+</span>
+</div>
+</div>
+ <span class="ws10-form-element-block__helper-text ws10-text-smaller" aria-label="Helper text">Helper text</span>
+<span class="ws10-form-element-block__error-message ws10-text-smaller"></span></div>
+                <label>Upload screenshots</label>
+                <div id="image-upload-container">
+                    <input type="file" id="image-upload-input" accept=".jpg,.png" style="display: none;">
+                    <div role="button" tabindex="0" class="ws10-alt-button" id="image-upload-area">
+                        <span>+</span>
                     </div>
-                     </div>
-            </div> 
                 </div>
-                <div class="ws10-overlay__backdrop ws10-fade ws10-in" style="display: none;">
+                <div id="image-thumbnails" class="image-thumbnails"></div>
+            </div>
+            <div class="comment-buttons-container">
+                <button id="save-comment" class="ws10-secondary-button element50percentwidth">Save</button>
+                <button id="cancel-comment" class="ws10-alt-button element50percentwidth">Cancel</button>
+            </div>
+        </div>
     </div>
-                </div>
+    <div class="ws10-overlay__backdrop ws10-fade ws10-in" style="display: none;"></div>
+</div>
+
             `);
             $('body').append(this.commentOverlay);
         }
@@ -689,7 +698,12 @@ $(document).ready(function() {
             return `
                 <div class="image-thumbnail-container">
                     <img src="${src}" class="uploaded-image-thumbnail">
-                    <button class="delete-image-button">Delete</button>
+                    <button aria-label="Delete image" class="delete-image-button"><svg id="icon" class="reset-button-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><line class="st0" x1="112.01" y1="144" x2="112.01" y2="72" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
+    <line class="st0" x1="80.01" y1="144" x2="80.01" y2="72" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
+    <line class="st0" x1="36" y1="44" x2="156" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
+    <path class="st0" d="M120,44V36a16,16,0,0,0-16-16H88A16,16,0,0,0,72,36v8" fill="none" stroke-linejoin="round" stroke-width="8"/>
+    <path class="st0" d="M148,44V156a16,16,0,0,1-16,16H60a16,16,0,0,1-16-16V44" fill="none" stroke-linejoin="round" stroke-width="8"/>
+</svg></button>
                 </div>
             `;
         }
