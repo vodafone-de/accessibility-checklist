@@ -378,6 +378,18 @@ h1, .ws10-h1 {
       }
 
 
+      .imageUploadLink:hover .iconRed {
+        fill: #e60000;}
+
+        .imageUploadLink:focus .iconRed {
+          fill: #e60000;}
+  
+
+  .imageUploadLink {
+
+    display: grid;
+
+  }
 
  .white-text {
 
@@ -512,7 +524,6 @@ font-weight: var(--ws10-font-weight-bold);
 
 #comment-title, #comment-text {
   width: 100%;
-  margin-bottom: 10px;
   box-sizing: border-box;
 }
 
@@ -523,7 +534,7 @@ font-weight: var(--ws10-font-weight-bold);
 }
 
 #image-upload-area {
-  border: 2px dashed #0d0d0d;
+  border: 1px dashed #0d0d0d;
   padding: 10px;
   text-align: center;
   cursor: pointer;
@@ -593,6 +604,7 @@ button.edit-comment-button:hover, button.delete-comment-button:hover {
   color: #0d0d0d;
   font-size: 16px;
   display: block;
+  margin-bottom: 16px;
 }
 
 
@@ -603,12 +615,13 @@ button.edit-comment-button:hover, button.delete-comment-button:hover {
 
 .ws10-form-element-block .ws10-form-element-block__input-container {
   position: relative;
+  margin-bottom: 8px;
 }
 
-  .ws10-form-label {
-      font-size: 18px;
-  }
-
+.ws10-form-element-block__label-container {
+  display: block;
+  margin-bottom: 8px;
+}
 
 .ws10-form-label {
   font-weight: 400;
@@ -617,7 +630,45 @@ button.edit-comment-button:hover, button.delete-comment-button:hover {
   font-size: 16px;
   color: #0d0d0d;
   transition: all .2s cubic-bezier(0.47, 0, 0.745, 0.715);
+  font-size: 18px;
 }
+
+.ws10-form-text-input {
+  font-size: 18px;
+}
+
+.ws10-form-text-input .ws10-form-text-input__input {
+  font-size: 20px;
+  line-height: 32px;
+}
+
+.ws10-form-text-input .ws10-form-text-input__input {
+  width: 100%;
+  display: block;
+  padding: 11px 56px 11px 16px;
+  background-color: #fff;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: #0d0d0d;
+  font-weight: 400;
+  font-family: "Vodafone", "Arial", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+}
+.ws10-form-text-input .ws10-form-text-input__input {
+  border-radius: 6px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #262626;
+  box-sizing: border-box;
+}
+input {
+  max-width: none;
+  box-shadow: none;
+}
+
 
 
 .ws10-form-textarea {
@@ -651,6 +702,7 @@ button.edit-comment-button:hover, button.delete-comment-button:hover {
   border-style: solid;
   border-width: 1px;
   border-color: #262626;
+  margin-bottom: 8px;
 }
 
 
@@ -786,7 +838,6 @@ button.edit-comment-button:hover, button.delete-comment-button:hover {
 
 #comment-title, #comment-text {
     width: 100%;
-    margin-bottom: 10px;
 }
 
 #image-upload-container {
@@ -1319,7 +1370,7 @@ button.edit-comment-button:hover, button.delete-comment-button:hover {
 @media screen and (min-width: 1024px) {
   .ws10-fade.ws10-overlay--slide .ws10-overlay__content {
       height: 100%;
-      max-height: 100vh;
+      max-height: 80vh;
   }
 }
 
@@ -2395,15 +2446,6 @@ stroke: #c40000;
   padding-bottom: 60px; /* Ensure space for buttons */
 }
 
-.comment-overlay-content h5,
-.comment-overlay-content label,
-.comment-overlay-content input,
-.comment-overlay-content textarea,
-.comment-overlay-content h4,
-.comment-overlay-content #image-upload-container,
-.comment-overlay-content #image-thumbnails {
-  margin-bottom: 10px;
-}
 
 
 #image-thumbnails {
@@ -2414,14 +2456,17 @@ stroke: #c40000;
 
 /* Buttons Container */
 .comment-buttons-container {
-  position: sticky;
+  position: absolute;
   bottom: 0;
   background: #fff;
-  padding: 10px;
+  padding: 8px 24px 8px 24px;
   display: flex;
   justify-content: flex-end;
   gap: 10px;
-  box-shadow: 0 0 0 1px #ccc;
+  z-index: 9;
+  width: 100%;
+  box-sizing: border-box;
+  border-top: solid 1px;
 }
 
 /* Image Thumbnail Container */
