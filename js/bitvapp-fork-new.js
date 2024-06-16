@@ -99,8 +99,8 @@ $(document).ready(function() {
                     container.find('.comments').append(`
                         <div class="comment-item" data-comment-text="${comment.text}" data-images='${JSON.stringify(comment.images)}'>
                             <div class="comment-title">${comment.title}</div>
-                            <button class="edit-comment-button">Edit</button>
-                            <button class="delete-comment-button">Delete</button>
+                            <button class="edit-comment-button overlayKeyOff">Edit</button>
+                            <button class="delete-comment-button overlayKeyOff">Delete</button>
                         </div>
                     `);
                 });
@@ -413,7 +413,7 @@ $(document).ready(function() {
         <div id="slide-in-overlay" aria-modal="true" role="dialog" class="ws10-overlay ws10-fade ws10-overlay--slide ws10-overlay--spacing ws10-overlay--align-left" style="display: none;"> //transform: translateX(100%);
             <div class="ws10-overlay__container">
                 <div class="ws10-overlay__close">
-                <button id="close-overlay" aria-label="Close" class="tabenable ws10-button-icon-only ws10-button-icon-only--tertiary ws10-button-icon-only--floating ws10-button-icon-only--standard close">
+                <button id="close-overlay overlayKeyOn" aria-label="Close" class="tabenable ws10-button-icon-only ws10-button-icon-only--tertiary ws10-button-icon-only--floating ws10-button-icon-only--standard close">
                 <svg id="close-icon" class="ws10-button-icon-only__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
             
                         <line class="st0" x1="44" y1="148" x2="148" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.67"/>
@@ -539,7 +539,7 @@ $(document).ready(function() {
     <div id="comment-overlay" class="ws10-overlay ws10-fade ws10-overlay--slide ws10-overlay--spacing ws10-overlay--align-left ws10-in" style="display: none;">
         <div class="ws10-overlay__container">
             <div class="ws10-overlay__close">
-                <button id="cancel-comment" aria-label="Cancel comment" class="tabenable ws10-button-icon-only ws10-button-icon-only--tertiary ws10-button-icon-only--floating ws10-button-icon-only--standard close" tabindex="1">
+                <button id="cancel-comment" aria-label="Cancel comment" class="ws10-button-icon-only ws10-button-icon-only--tertiary ws10-button-icon-only--floating ws10-button-icon-only--standard close overlayKeyOn" tabindex="1">
                     <svg id="close-icon" class="ws10-button-icon-only__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
                         <line class="st0" x1="44" y1="148" x2="148" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.67"></line>
                         <line class="st0" x1="148" y1="148" x2="44" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.67"></line>
@@ -558,7 +558,6 @@ $(document).ready(function() {
                       </div>
                  <div class="ws10-form-element-block__input-container"><div class="ws10-form-text-input">
                          <input id="comment-title" class="ws10-form-text-input__input" name="" type="select">
-
                     <span class="ws10-form-text-input__notification_icon-container" style="display:none;"><svg class="ws10-notification-icon ws10-notification-icon-- "></svg>
                     </span><span class="ws10-form-text-input__system_icon-container" style="display:none;"><svg class="ws10-system-icon ws10-system-icon--size-inherit ws10-system-icon--color-monochrome-600">
                         <use xlink:href="/simplicity/icons/.svg#icon"></use>
@@ -566,16 +565,8 @@ $(document).ready(function() {
                         </span>
                     </div>
                 </div>
-
         <span class="ws10-form-element-block__helper-text ws10-text-smaller" aria-label="Helper text">Required</span>
-
 <span class="ws10-form-element-block__error-message ws10-text-smaller"></span></div>
-
-              
-
-
-
-
 <div class="ws10-form-element-block ws10-form-element-block--textarea">
         <div class="ws10-form-element-block__label-container">
             <label for="textarea-1" class="ws10-form-label ">Comment:</label>
@@ -635,7 +626,10 @@ $(document).ready(function() {
             $('#image-thumbnails').empty();
             $('#comment-overlay').show();
             $('.ws10-overlay__backdrop').css('display', 'block').addClass('ws10-in').css('transform', 'translateX(0)');
-
+            $('body').attr('aria-hidden', 'true').attr("tabindex", -1).addClass('ws10-no-scroll');
+            $('footer').css('display', 'none');
+            $('.overlayKeyOn').attr("tabindex", 1);
+            $('.overlayKeyOff').attr("tabindex", -1);
         }
     
         showEditCommentOverlay(e) {
@@ -653,6 +647,11 @@ $(document).ready(function() {
                 $('#image-thumbnails').append(this.createImageThumbnail(src));
             });
             $('#comment-overlay').show();
+            $('.ws10-overlay__backdrop').css('display', 'block').addClass('ws10-in').css('transform', 'translateX(0)');
+            $('body').attr('aria-hidden', 'true').attr("tabindex", -1).addClass('ws10-no-scroll');
+            $('footer').css('display', 'none');
+            $('.overlayKeyOn').attr("tabindex", 1);
+            $('.overlayKeyOff').attr("tabindex", -1);
         }
     
         saveComment(e) {
@@ -673,14 +672,19 @@ $(document).ready(function() {
                     this.currentTaskContainer.find('.comments').append(`
                         <div class="comment-item" data-comment-text="${text}" data-images='${JSON.stringify(images)}'>
                             <div class="comment-title">${title}</div>
-                            <button class="edit-comment-button">Edit</button>
-                            <button class="delete-comment-button">Delete</button>
+                            <button class="edit-comment-button overlayKeyOff">Edit</button>
+                            <button class="delete-comment-button overlayKeyOff">Delete</button>
                         </div>
                     `);
                 }
                 this.adjustAccordionHeight(this.currentTaskContainer);
                 this.saveState();
                 $('#comment-overlay').hide();
+                $('.ws10-overlay__backdrop').css('transform', 'translateX(100%)').removeClass('ws10-in').css('display', 'none');
+                $('body').removeAttr('aria-hidden', 'true').removeAttr("tabindex", -1).removeClass('ws10-no-scroll');
+                $('footer').css('display', 'flex');
+                $('.overlayKeyOn').attr("tabindex", -1);
+                $('.overlayKeyOff').attr("tabindex", 1);
             } else {
                 alert('Both title and comment text are required.');
             }
@@ -690,7 +694,10 @@ $(document).ready(function() {
             e.stopPropagation();
             $('#comment-overlay').hide();
             $('.ws10-overlay__backdrop').css('transform', 'translateX(100%)').removeClass('ws10-in').css('display', 'none');
-
+            $('body').removeAttr('aria-hidden', 'true').removeAttr("tabindex", -1).removeClass('ws10-no-scroll');
+            $('footer').css('display', 'flex');
+            $('.overlayKeyOn').attr("tabindex", -1);
+            $('.overlayKeyOff').attr("tabindex", 1);
         }
     
         deleteComment(e) {
@@ -707,6 +714,11 @@ $(document).ready(function() {
         handleEscapeKey(e) {
             if (e.key === 'Escape' && $('#comment-overlay').is(':visible')) {
                 $('#comment-overlay').hide();
+                $('.ws10-overlay__backdrop').css('transform', 'translateX(100%)').removeClass('ws10-in').css('display', 'none');
+                $('body').removeAttr('aria-hidden', 'true').removeAttr("tabindex", -1).removeClass('ws10-no-scroll');
+                $('footer').css('display', 'flex');
+                $('.overlayKeyOn').attr("tabindex", -1);
+                $('.overlayKeyOff').attr("tabindex", 1);
             }
         }
     
@@ -797,8 +809,8 @@ $(document).ready(function() {
                         const commentItem = $(`
                             <div class="comment-item" data-comment-text="${comment.text}" data-images='${JSON.stringify(comment.images)}'>
                                 <div class="comment-title">${comment.title}</div>
-                                <button class="edit-comment-button">Edit</button>
-                                <button class="delete-comment-button">Delete</button>
+                                <button class="edit-comment-button overlayKeyOff">Edit</button>
+                                <button class="delete-comment-button overlayKeyOff">Delete</button>
                             </div>
                         `);
                         container.find('.comments').append(commentItem);
@@ -849,41 +861,41 @@ $(document).ready(function() {
         <div class="filter">
             <h4>Filter:</h4>
             <ul id="filter-options">
-                <li><div class="cat action" tabindex="0">
+                <li><div class="cat action overlayKeyOff" tabindex="0">
                     <label><input type="checkbox" value="filter_cm" data-filter_id="cm"><span class="ws10-text">Channel Management</span></label>
                 </div></li>
-                <li><div class="cat action" tabindex="0">
+                <li><div class="cat action overlayKeyOff" tabindex="0">
                     <label><input type="checkbox" value="filter_ux" data-filter_id="ux"><span class="ws10-text">User Experience</span></label>
                 </div></li>
-                <li><div class="cat action" tabindex="0">
+                <li><div class="cat action overlayKeyOff" tabindex="0">
                     <label><input type="checkbox" value="filter_dev" data-filter_id="dev"><span class="ws10-text">Frontend Development</span></label>
                 </div></li>
-                <li><div class="cat action" tabindex="0">
+                <li><div class="cat action overlayKeyOff" tabindex="0">
                     <label><input type="checkbox" value="filter_edt" data-filter_id="edt"><span class="ws10-text">Editorial</span></label>
                 </div></li>
-                <li><div class="cat action" tabindex="0">
+                <li><div class="cat action overlayKeyOff" tabindex="0">
                     <label><input type="checkbox" value="filter_testing" data-filter_id="testing"><span class="ws10-text">Testing</span></label>
                 </div></li>
-                <li><div class="cat action" tabindex="0">
+                <li><div class="cat action overlayKeyOff" tabindex="0">
                     <label><input type="checkbox" value="filter_testingwftooltasks" data-filter_id="testingwftooltasks"><span class="ws10-text">WF Testing: Tool supported</span></label>
                 </div></li>
-                <li><div class="cat action" tabindex="0">
+                <li><div class="cat action overlayKeyOff" tabindex="0">
                 <label><input type="checkbox" value="filter_testingwfmantasks" data-filter_id="testingwfmantasks"><span class="ws10-text">WF Testing: Manual without additional info</span></label>
             </div></li>
-            <li><div class="cat action" tabindex="0">
-            <label><input type="checkbox" value="filter_testingwfmanexttasks" data-filter_id="testingwfmanexttasks"><span class="ws10-text">WF Testing: Manual with additional info</span></label>
+            <li><div class="cat action overlayKeyOff" tabindex="0">
+            <label><input type="checkbox" class="overlayKeyOff" value="filter_testingwfmanexttasks" data-filter_id="testingwfmanexttasks"><span class="ws10-text">WF Testing: Manual with additional info</span></label>
         </div></li>
                 </ul>
                 <ul>
                 <li>
                 <div class="dropdown">
-                <button class="dropdown-button">Select Categories <svg aria-hidden="true" class="dropdown-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"></polyline></svg></button>
+                <button class="dropdown-button overlayKeyOff">Select Categories <svg aria-hidden="true" class="dropdown-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"></polyline></svg></button>
                 <div class="dropdown-content">
                     <ul id="taskcat-dropdown">
                     ${[...sortedTaskCategories].map(cat => `
                     <li>
                         <label>
-                            <input type="checkbox" value="${cat}" data-filter_id="${cat}">
+                            <input class="overlayKeyOff" type="checkbox" value="${cat}" data-filter_id="${cat}">
                             <span class="ws10-text">${cat}</span>
                         </label>
                     </li>`).join('')}
@@ -891,7 +903,7 @@ $(document).ready(function() {
                 </div>
             </div>
             </li>
-            <li><button class="ws10-secondary-button" id="reset-filters">Reset Filters</button></li>
+            <li><button class="ws10-secondary-button overlayKeyOff" id="reset-filters">Reset Filters</button></li>
             </ul>
             
             <div style="clear:both"></div>
@@ -998,10 +1010,10 @@ $(document).ready(function() {
                                
                                 const fieldset = $('<fieldset>').addClass('status-options');
                                 const radioLegend = $('<legend>').text('compliance').addClass('status-optionslegend');
-                                const passRadio = $('<input>').attr({ type: 'radio', name: 'status_' + task.taskid, id: 'pass_' + task.taskid, value: 'pass' }).addClass('ws10-form-selection-control__input');
+                                const passRadio = $('<input>').attr({ type: 'radio', name: 'status_' + task.taskid, id: 'pass_' + task.taskid, value: 'pass' }).addClass('ws10-form-selection-control__input overlayKeyOff');
                                 const passLabel = $('<label>').attr('for', 'pass_' + task.taskid).addClass('ws10-form-selection-control__label');
                                 passLabel.append($('<span>').addClass('ws10-form-selection-control__text').html('<p>pass</p>'));
-                                const failRadio = $('<input>').attr({ type: 'radio', name: 'status_' + task.taskid, id: 'fail_' + task.taskid, value: 'fail' }).addClass('ws10-form-selection-control__input');
+                                const failRadio = $('<input>').attr({ type: 'radio', name: 'status_' + task.taskid, id: 'fail_' + task.taskid, value: 'fail' }).addClass('ws10-form-selection-control__input overlayKeyOff');
                                 const failLabel = $('<label>').attr('for', 'fail_' + task.taskid).addClass('ws10-form-selection-control__label');
                                 failLabel.append($('<span>').addClass('ws10-form-selection-control__text').html('<p>fail</p>'));
 
@@ -1043,7 +1055,7 @@ $(document).ready(function() {
                                     saveState();
                                 });
                                 
-                                const resetButton = $('<div class="reset-button-container"><button class="reset-button"><svg class="reset-button-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><path class="st0" d="M108.84,155.75a60,60,0,0,0,1.72-120l-1.88,0a60,60,0,0,0-59.92,60v27.36" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/><polyline class="st0" points="77.44 95.6 48.76 123.11 20.86 95.6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/></svg></button></div>');
+                                const resetButton = $('<div class="reset-button-container"><button class="reset-button overlayKeyOff"><svg class="reset-button-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><path class="st0" d="M108.84,155.75a60,60,0,0,0,1.72-120l-1.88,0a60,60,0,0,0-59.92,60v27.36" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/><polyline class="st0" points="77.44 95.6 48.76 123.11 20.86 95.6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/></svg></button></div>');
 
                                 resetButton.on('click', function() {
                                     if (passRadio.is(':checked') || failRadio.is(':checked')) {
@@ -1066,7 +1078,7 @@ $(document).ready(function() {
                                 fieldset.append(radioLegend, passRadio, passLabel, failRadio, failLabel, resetButton);
                                 li.append(fieldset);
 
-                                const applicableCheckbox = $('<input>').attr({ type: 'checkbox', id: 'applicable_' + task.taskid, name: 'applicable_' + task.taskid, checked: true });
+                                const applicableCheckbox = $('<input>').attr({ type: 'checkbox', id: 'applicable_' + task.taskid, name: 'applicable_' + task.taskid, checked: true }).addClass("overlayKeyOff");
                                 const applicableLabel = $('<label>').attr('for', 'applicable_' + task.taskid).text('applicable');
 
                                 const switchWrapper = $('<div>').addClass('switch');
@@ -1074,7 +1086,7 @@ $(document).ready(function() {
                                 switchWrapper.append(applicableCheckbox, slider, applicableLabel);
                                 li.append(switchWrapper);
 
-                                const openButton = $('<button class="open-overlay ws10-button-link ws10-button-link--color-primary-200" style="margin-top: 10px;grid-column-start: 1;">test instructions<svg id="icon" class="ws10-button-link__icon ws10-button-link__icon--right ws10-system-icon ws10-system-icon--size-150 ws10-system-icon--color-primary-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><polyline class="st0" points="62 28 130 96 62 164" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/></svg></button>');
+                                const openButton = $('<button class="open-overlay ws10-button-link ws10-button-link--color-primary-200 overlayKeyOff" style="margin-top: 10px;grid-column-start: 1;">test instructions<svg id="icon" class="ws10-button-link__icon ws10-button-link__icon--right ws10-system-icon ws10-system-icon--size-150 ws10-system-icon--color-primary-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><polyline class="st0" points="62 28 130 96 62 164" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/></svg></button>');
                                 li.append(openButton);
                                 
                                 applicableCheckbox.on('change', function() {
@@ -1121,7 +1133,7 @@ $(document).ready(function() {
 
                               // Kommentarfunktion
                               const commentsDiv = $('<div>').addClass('comments');
-                              const addCommentButton = $('<button>add comment<svg id="icon" class="ws10-button-link__icon ws10-button-link__icon--right ws10-system-icon ws10-system-icon--size-150 ws10-system-icon--color-primary-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><polyline class="st0" points="62 28 130 96 62 164" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/></svg></button>').addClass('add-comment-button ws10-button-link ws10-button-link--color-primary-200');
+                              const addCommentButton = $('<button id="addComment" class="overlayKeyOff">add comment<svg id="icon" class="ws10-button-link__icon ws10-button-link__icon--right ws10-system-icon ws10-system-icon--size-150 ws10-system-icon--color-primary-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><polyline class="st0" points="62 28 130 96 62 164" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/></svg></button>').addClass('add-comment-button ws10-button-link ws10-button-link--color-primary-200');
                               li.append(commentsDiv).append(addCommentButton);
                                 
                                 ul.append(li);
