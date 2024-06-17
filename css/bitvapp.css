@@ -484,7 +484,15 @@ font-weight: var(--ws10-font-weight-bold);
 
 
 }
- 
+
+
+.comments {
+
+  background: #f4f4f4;
+  border-radius: 6px;
+  padding: 8px;
+
+}
 
 
   #changelog-container{
@@ -2290,15 +2298,15 @@ font-size:12px;
 
 
 .switch {
-    position: relative;
-    display: inline-block;
-    width: 56px;
-    height: 32px;
-    grid-column-start: 3;
-    grid-row-start: 1;
-    grid-row-start: 1;
-    align-self: start;
-    margin-top: 22px;
+  position: relative;
+  display: inline-block;
+  width: 56px;
+  height: 32px;
+  grid-row-start: 1;
+  grid-row-start: 1;
+  align-self: start;
+  margin-top: -8px;
+  margin-left: 8px;
 }
 
 .switch input {
@@ -2346,12 +2354,8 @@ input:checked + .slider:before {
 }
 
 
-.switch label {
-
-    position: absolute;
-    left: 70px;
-    top: 6px;
-    font-size: 18px;
+.applicableLabel {
+margin-left: 8px;
 }
 
 

@@ -1075,16 +1075,19 @@ $(document).ready(function() {
                                     }
                                 });
 
-                                fieldset.append(radioLegend, passRadio, passLabel, failRadio, failLabel, resetButton);
-                                li.append(fieldset);
+                                
 
                                 const applicableCheckbox = $('<input>').attr({ type: 'checkbox', id: 'applicable_' + task.taskid, name: 'applicable_' + task.taskid, checked: true }).addClass("overlayKeyOff");
-                                const applicableLabel = $('<label>').attr('for', 'applicable_' + task.taskid).text('applicable');
+                                const applicableLabel = $('<label>').attr('for', 'applicable_' + task.taskid).text('applicable').addClass("applicableLabel");
 
                                 const switchWrapper = $('<div>').addClass('switch');
                                 const slider = $('<span>').addClass('slider');
-                                switchWrapper.append(applicableCheckbox, slider, applicableLabel);
-                                li.append(switchWrapper);
+                                switchWrapper.append(applicableCheckbox, slider);
+                                
+
+
+                                fieldset.append(radioLegend, passRadio, passLabel, failRadio, failLabel, resetButton, switchWrapper, applicableLabel);
+                                li.append(fieldset);
 
                                 const openButton = $('<button class="open-overlay ws10-button-link ws10-button-link--color-primary-200 overlayKeyOff" style="margin-top: 10px;grid-column-start: 1;">test instructions<svg id="icon" class="ws10-button-link__icon ws10-button-link__icon--right ws10-system-icon ws10-system-icon--size-150 ws10-system-icon--color-primary-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><polyline class="st0" points="62 28 130 96 62 164" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/></svg></button>');
                                 li.append(openButton);
@@ -1132,10 +1135,11 @@ $(document).ready(function() {
                                 });
 
                               // Kommentarfunktion
-                              const commentsDiv = $('<div>').addClass('comments');
+                              
                               const addCommentButton = $('<button id="addComment" class="overlayKeyOff">add comment<svg id="icon" class="ws10-button-link__icon ws10-button-link__icon--right ws10-system-icon ws10-system-icon--size-150 ws10-system-icon--color-primary-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><polyline class="st0" points="62 28 130 96 62 164" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/></svg></button>').addClass('add-comment-button ws10-button-link ws10-button-link--color-primary-200');
-                              li.append(commentsDiv).append(addCommentButton);
-                                
+                              const commentsDiv = $('<div>').addClass('comments');
+                              li.append(addCommentButton).append(commentsDiv);
+            
                                 ul.append(li);
                                 fieldsetCount++;
                             }
