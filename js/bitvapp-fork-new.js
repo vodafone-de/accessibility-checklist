@@ -99,9 +99,19 @@ $(document).ready(function() {
                     container.find('.comments').append(`
                         <div class="comment-item" data-comment-text="${comment.text}" data-images='${JSON.stringify(comment.images)}'>
                             <div class="comment-title">${comment.title}</div>
-                            <button class="edit-comment-button overlayKeyOff">Edit</button>
-                            <button class="delete-comment-button overlayKeyOff">Delete</button>
+                            <button class="edit-comment-button overlayKeyOff commentFunctionsButtons" aria-label="Edit comment"><svg class="icon24" id="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+      <polyline class="st0" points="147.38 70.11 121.57 44.02 36.49 129.1 27.77 164 62.67 155.27 147.38 70.11" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
+      <path class="st0" d="M121.57,44l12.79-12.79a11,11,0,0,1,15.63,0l18,18.22L147.38,70.11" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/>
+      <line class="st0" x1="39.55" y1="126.1" x2="65.73" y2="152.28" fill="none" stroke-miterlimit="10" stroke-width="8"/>
+</svg></button>
+                            <button class="delete-comment-button overlayKeyOff commentFunctionsButtons"><svg id="icon" class="icon24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><line class="st0" x1="112.01" y1="144" x2="112.01" y2="72" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
+    <line class="st0" x1="80.01" y1="144" x2="80.01" y2="72" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
+    <line class="st0" x1="36" y1="44" x2="156" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
+    <path class="st0" d="M120,44V36a16,16,0,0,0-16-16H88A16,16,0,0,0,72,36v8" fill="none" stroke-linejoin="round" stroke-width="8"/>
+    <path class="st0" d="M148,44V156a16,16,0,0,1-16,16H60a16,16,0,0,1-16-16V44" fill="none" stroke-linejoin="round" stroke-width="8"/>
+</svg></button>
                         </div>
+                        <div style="margin-bottom: 12px;"></div>
                     `);
                 });
             }
@@ -413,7 +423,7 @@ $(document).ready(function() {
         <div id="slide-in-overlay" aria-modal="true" role="dialog" class="ws10-overlay ws10-fade ws10-overlay--slide ws10-overlay--spacing ws10-overlay--align-left" style="display: none;"> //transform: translateX(100%);
             <div class="ws10-overlay__container">
                 <div class="ws10-overlay__close">
-                <button id="close-overlay overlayKeyOn" aria-label="Close" class="tabenable ws10-button-icon-only ws10-button-icon-only--tertiary ws10-button-icon-only--floating ws10-button-icon-only--standard close">
+                <button id="close-overlay" aria-label="Close" class="tabenable overlayKeyOn ws10-button-icon-only ws10-button-icon-only--tertiary ws10-button-icon-only--floating ws10-button-icon-only--standard close">
                 <svg id="close-icon" class="ws10-button-icon-only__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
             
                         <line class="st0" x1="44" y1="148" x2="148" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.67"/>
@@ -422,7 +432,7 @@ $(document).ready(function() {
                   
             </button>
                 </div>
-                <div class="ws10-overlay__content"></div>
+                <div class="testingOverlay-content ws10-overlay__content"></div>
             </div>
         </div>
         <div class="ws10-overlay__backdrop ws10-fade ws10-in" style="display: none;">
@@ -430,7 +440,7 @@ $(document).ready(function() {
     
     $('body').append(overlay);
     
-    $('#content-wrapper').on('click', '.open-overlay', function() {
+    $('#content-wrapper').on('click', '#open-overlay', function() {
         const li = $(this).closest('li');
         const head5 = li.closest('.bitvcontainer').find('h5'); // li in der Nähe der .bitvcontainer suchen
         const taskDesc = li.find('.taskdesc').html();
@@ -439,7 +449,7 @@ $(document).ready(function() {
         const testMethod = li.find('.testmethod').html();
         const testToolLink = li.find('.testtoollink').html();
     
-        const overlayContent = $('.ws10-overlay__content');
+        const overlayContent = $('.testingOverlay-content');
     
         if (itemTitle) {
             overlayContent.html(`
@@ -640,7 +650,7 @@ $(document).ready(function() {
             const text = this.currentCommentItem.data('comment-text');
             $('#comment-title').val(title);
             $('#comment-text').val(text);
-            $('#image-upload-area').empty().append('<span>+</span>');
+            $('#image-upload-area').empty().append('<a class="imageUploadLink" href="#/"><div><svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="iconRed" d="M3.15753 14.6153C3.01548 14.8521 3.0923 15.1592 3.3291 15.3013C3.56591 15.4433 3.87303 15.3665 4.01508 15.1297L3.15753 14.6153ZM7.5288 8.29998L7.88236 7.94643C7.77348 7.83755 7.62051 7.78491 7.46768 7.80373C7.31486 7.82255 7.17923 7.91074 7.10003 8.04278L7.5288 8.29998ZM13.6763 14.4475L13.3227 14.801C13.518 14.9963 13.8346 14.9963 14.0299 14.801L13.6763 14.4475ZM15.9113 12.2125L16.2648 11.8589C16.0695 11.6637 15.753 11.6637 15.5577 11.8589L15.9113 12.2125ZM20.1465 17.1536C20.3418 17.3488 20.6584 17.3488 20.8537 17.1535C21.0489 16.9582 21.0488 16.6416 20.8536 16.4464L20.1465 17.1536ZM5.5 3.5V3V3.5ZM20.5 3.5H21C21 3.22386 20.7761 3 20.5 3V3.5ZM3.5 18.5H3H3.5ZM4.01508 15.1297L7.95758 8.55718L7.10003 8.04278L3.15753 14.6153L4.01508 15.1297ZM7.17525 8.65353L13.3227 14.801L14.0299 14.0939L7.88236 7.94643L7.17525 8.65353ZM14.0299 14.801L16.2649 12.566L15.5577 11.8589L13.3227 14.0939L14.0299 14.801ZM15.5578 12.5661L20.1465 17.1536L20.8536 16.4464L16.2648 11.8589L15.5578 12.5661ZM16.0625 8C16.0625 8.5868 15.5868 9.0625 15 9.0625V10.0625C16.1391 10.0625 17.0625 9.13909 17.0625 8H16.0625ZM15 9.0625C14.4132 9.0625 13.9375 8.5868 13.9375 8H12.9375C12.9375 9.13909 13.8609 10.0625 15 10.0625V9.0625ZM13.9375 8C13.9375 7.4132 14.4132 6.9375 15 6.9375V5.9375C13.8609 5.9375 12.9375 6.86091 12.9375 8H13.9375ZM15 6.9375C15.5868 6.9375 16.0625 7.4132 16.0625 8H17.0625C17.0625 6.86091 16.1391 5.9375 15 5.9375V6.9375ZM5.5 4H20.5V3H5.5V4ZM20 3.5V18.5H21V3.5H20ZM20 18.5C20 18.8978 19.842 19.2794 19.5607 19.5607L20.2678 20.2678C20.7366 19.7989 21 19.163 21 18.5H20ZM19.5607 19.5607C19.2794 19.842 18.8978 20 18.5 20V21C19.163 21 19.7989 20.7366 20.2678 20.2678L19.5607 19.5607ZM18.5 20H5.5V21H18.5V20ZM5.5 20C5.10218 20 4.72064 19.842 4.43934 19.5607L3.73223 20.2678C4.20107 20.7366 4.83696 21 5.5 21V20ZM4.43934 19.5607C4.15804 19.2794 4 18.8978 4 18.5H3C3 19.163 3.26339 19.7989 3.73223 20.2678L4.43934 19.5607ZM4 18.5V5.5H3V18.5H4ZM4 5.5C4 5.10218 4.15804 4.72064 4.43934 4.43934L3.73223 3.73223C3.26339 4.20107 3 4.83696 3 5.5H4ZM4.43934 4.43934C4.72064 4.15804 5.10218 4 5.5 4V3C4.83696 3 4.20107 3.26339 3.73223 3.73223L4.43934 4.43934Z" fill="#0D0D0D"/><circle class="iconRed" cx="20.5" cy="3.5" r="3.5" fill="#0D0D0D"/><path class="iconRed" d="M19 3.5H22M20.5 2V5" stroke="white" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Browse to add jpg/png</a>');
             $('#image-thumbnails').empty();
             const images = this.currentCommentItem.data('images') || [];
             images.forEach((src) => {
@@ -656,6 +666,7 @@ $(document).ready(function() {
     
         saveComment(e) {
             e.stopPropagation();
+            const commentHeadline = $('<div class="comment-headline"></div>');
             const title = $('#comment-title').val().trim();
             const text = $('#comment-text').val().trim();
             const images = [];
@@ -668,14 +679,25 @@ $(document).ready(function() {
                     this.currentCommentItem.find('.comment-title').text(title);
                     this.currentCommentItem.data('comment-text', text);
                     this.currentCommentItem.data('images', images);
+                    
                 } else {
                     this.currentTaskContainer.find('.comments').append(`
                         <div class="comment-item" data-comment-text="${text}" data-images='${JSON.stringify(images)}'>
                             <div class="comment-title">${title}</div>
-                            <button class="edit-comment-button overlayKeyOff">Edit</button>
-                            <button class="delete-comment-button overlayKeyOff">Delete</button>
+                            <button class="edit-comment-button overlayKeyOff commentFunctionsButtons"><svg class="icon24" id="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+      <polyline class="st0" points="147.38 70.11 121.57 44.02 36.49 129.1 27.77 164 62.67 155.27 147.38 70.11" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
+      <path class="st0" d="M121.57,44l12.79-12.79a11,11,0,0,1,15.63,0l18,18.22L147.38,70.11" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/>
+      <line class="st0" x1="39.55" y1="126.1" x2="65.73" y2="152.28" fill="none" stroke-miterlimit="10" stroke-width="8"/>
+</svg></button>
+                            <button class="delete-comment-button overlayKeyOff commentFunctionsButtons"><svg id="icon" class="icon24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><line class="st0" x1="112.01" y1="144" x2="112.01" y2="72" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
+    <line class="st0" x1="80.01" y1="144" x2="80.01" y2="72" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
+    <line class="st0" x1="36" y1="44" x2="156" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
+    <path class="st0" d="M120,44V36a16,16,0,0,0-16-16H88A16,16,0,0,0,72,36v8" fill="none" stroke-linejoin="round" stroke-width="8"/>
+    <path class="st0" d="M148,44V156a16,16,0,0,1-16,16H60a16,16,0,0,1-16-16V44" fill="none" stroke-linejoin="round" stroke-width="8"/>
+</svg></button>
                         </div>
                     `);
+                    
                 }
                 this.adjustAccordionHeight(this.currentTaskContainer);
                 this.saveState();
@@ -685,6 +707,7 @@ $(document).ready(function() {
                 $('footer').css('display', 'flex');
                 $('.overlayKeyOn').attr("tabindex", -1);
                 $('.overlayKeyOff').attr("tabindex", 1);
+                
             } else {
                 alert('Both title and comment text are required.');
             }
@@ -805,18 +828,31 @@ $(document).ready(function() {
     
                 for (const [taskId, comments] of Object.entries(state.comments)) {
                     const container = $(`li.taskContainer#${taskId}`);
+                    const commentsContainer = container.find('.comments');
                     comments.forEach(comment => {
                         const commentItem = $(`
                             <div class="comment-item" data-comment-text="${comment.text}" data-images='${JSON.stringify(comment.images)}'>
                                 <div class="comment-title">${comment.title}</div>
-                                <button class="edit-comment-button overlayKeyOff">Edit</button>
-                                <button class="delete-comment-button overlayKeyOff">Delete</button>
+                                <button class="edit-comment-button overlayKeyOff commentFunctionsButtons"><svg class="icon24" id="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+      <polyline class="st0" points="147.38 70.11 121.57 44.02 36.49 129.1 27.77 164 62.67 155.27 147.38 70.11" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
+      <path class="st0" d="M121.57,44l12.79-12.79a11,11,0,0,1,15.63,0l18,18.22L147.38,70.11" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/>
+      <line class="st0" x1="39.55" y1="126.1" x2="65.73" y2="152.28" fill="none" stroke-miterlimit="10" stroke-width="8"/>
+</svg></button>
+                                <button class="delete-comment-button overlayKeyOff commentFunctionsButtons"><svg id="icon" class="icon24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><line class="st0" x1="112.01" y1="144" x2="112.01" y2="72" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
+    <line class="st0" x1="80.01" y1="144" x2="80.01" y2="72" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
+    <line class="st0" x1="36" y1="44" x2="156" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
+    <path class="st0" d="M120,44V36a16,16,0,0,0-16-16H88A16,16,0,0,0,72,36v8" fill="none" stroke-linejoin="round" stroke-width="8"/>
+    <path class="st0" d="M148,44V156a16,16,0,0,1-16,16H60a16,16,0,0,1-16-16V44" fill="none" stroke-linejoin="round" stroke-width="8"/>
+</svg></button>
                             </div>
                         `);
-                        container.find('.comments').append(commentItem);
+                        commentsContainer.append(commentItem);
                         comment.images.forEach((src) => {
                             commentItem.append(this.createImageThumbnail(src));
                         });
+                        if (comments.length > 0) {
+                            commentsContainer.show(); // Kommentarcontainer einblenden, falls Kommentare vorhanden sind
+                        }
                     });
                 }
             }
@@ -1084,12 +1120,16 @@ $(document).ready(function() {
                                 const slider = $('<span>').addClass('slider');
                                 switchWrapper.append(applicableCheckbox, slider);
                                 
-
+                                const rightColumn = $('<div>').addClass('right-column');
 
                                 fieldset.append(radioLegend, passRadio, passLabel, failRadio, failLabel, resetButton, switchWrapper, applicableLabel);
-                                li.append(fieldset);
+                                
 
-                                const openButton = $('<button class="open-overlay ws10-button-link ws10-button-link--color-primary-200 overlayKeyOff" style="margin-top: 10px;grid-column-start: 1;">test instructions<svg id="icon" class="ws10-button-link__icon ws10-button-link__icon--right ws10-system-icon ws10-system-icon--size-150 ws10-system-icon--color-primary-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><polyline class="st0" points="62 28 130 96 62 164" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/></svg></button>');
+                                rightColumn.append(fieldset);
+
+                                li.append(rightColumn);
+
+                                const openButton = $('<button id="open-overlay" class="ws10-button-link ws10-button-link--color-primary-200 overlayKeyOff" style="grid-column-start: 1;">test instructions<svg id="icon" class="ws10-button-link__icon ws10-button-link__icon--right ws10-system-icon ws10-system-icon--size-150 ws10-system-icon--color-primary-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><polyline class="st0" points="62 28 130 96 62 164" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/></svg></button>');
                                 li.append(openButton);
                                 
                                 applicableCheckbox.on('change', function() {
@@ -1137,8 +1177,10 @@ $(document).ready(function() {
                               // Kommentarfunktion
                               
                               const addCommentButton = $('<button id="addComment" class="overlayKeyOff">add comment<svg id="icon" class="ws10-button-link__icon ws10-button-link__icon--right ws10-system-icon ws10-system-icon--size-150 ws10-system-icon--color-primary-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><polyline class="st0" points="62 28 130 96 62 164" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/></svg></button>').addClass('add-comment-button ws10-button-link ws10-button-link--color-primary-200');
-                              const commentsDiv = $('<div>').addClass('comments');
+                              const commentsDiv = $('<div><h5 class="comment-optionslegend">comments</h5>').addClass('comments');
                               li.append(addCommentButton).append(commentsDiv);
+
+                              rightColumn.append(commentsDiv);
             
                                 ul.append(li);
                                 fieldsetCount++;

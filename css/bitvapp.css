@@ -479,7 +479,7 @@ font-weight: var(--ws10-font-weight-bold);
 
 .add-comment-button {
 
-  grid-column-start: 1;
+  grid-column-start: 2;
   grid-row-start: 5;
 
 
@@ -487,13 +487,16 @@ font-weight: var(--ws10-font-weight-bold);
 
 
 .comments {
-
+  padding: 12px 16px 4px 19px;
   background: #f4f4f4;
   border-radius: 6px;
-  padding: 8px;
-
 }
 
+
+.showComments {
+display:block;
+
+}
 
   #changelog-container{
     max-width: 600px;
@@ -589,17 +592,7 @@ font-weight: var(--ws10-font-weight-bold);
 }
 
 
-button.edit-comment-button, button.delete-comment-button {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  margin-left: 5px;
-  color: #007bff;
-}
 
-button.edit-comment-button:hover, button.delete-comment-button:hover {
-  text-decoration: underline;
-}
 
 
 .ws10-form-element-block {
@@ -864,18 +857,6 @@ input {
 
 
 
-button.edit-comment-button, button.delete-comment-button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    margin-left: 5px;
-    color: #007bff;
-}
-
-button.edit-comment-button:hover, button.delete-comment-button:hover {
-    text-decoration: underline;
-}
-
 
 .element50percentwidth {
   width: 50%;
@@ -1053,14 +1034,12 @@ button.edit-comment-button:hover, button.delete-comment-button:hover {
 
   }
      
-  
- .taskcat {
-
+  .taskcat {
     grid-column-start: 1;
     margin: 16px 0 16px 0;
     display: flex;
-
- }
+    grid-column-end: span 2;
+  }
 
  .taglistitems {
 
@@ -1121,6 +1100,7 @@ button.edit-comment-button:hover, button.delete-comment-button:hover {
     display: block;
     border-radius: 50%;
     transition: all 0.2s ease-in;
+    background: #fff;
 }
 
 .ws10-form-selection-control__label::after {
@@ -1471,6 +1451,13 @@ button.edit-comment-button:hover, button.delete-comment-button:hover {
   height: 48px;
   padding: 5px 4px;
 }
+
+.icon24 {
+  width: 24px;
+  height: 24px;
+  stroke: #0d0d0d;
+}
+
 
 /* 
 .ws10-no-scroll {
@@ -2000,7 +1987,10 @@ font-size:12px;
     justify-self: end;
     align-self: start;
     display: flex;
-
+    background: #f4f4f4;
+    border-radius: 6px;
+    padding: 44px 16px 8px 18px;
+    margin-bottom: 16px;
 }
 
 .status-optionslegend {
@@ -2008,7 +1998,18 @@ font-size:12px;
     margin-bottom: 8px;
     font-weight: bold;
     font-size: 14px;
+    font-weight: bold;
+    position: absolute;
+    top: 12px;
+    left: 16px;
+}
 
+.comment-optionslegend {
+
+  margin-bottom: 8px;
+  font-weight: bold;
+  font-size: 14px;
+  font-weight: bold;
 }
 
 
@@ -2031,13 +2032,14 @@ font-size:12px;
     border-radius: 6px;
     background-color: #fff;
 }
-
 .taskdesc {
   font-size: 18px;
   margin: 0px 0px 16px 0;
   font-weight: normal;
   grid-column-start: 1;
   grid-row-start: 1;
+  grid-column-end: span 2;
+  display: grid;
 
 }
 
@@ -2214,7 +2216,7 @@ font-size:12px;
 
     display: grid;
     margin-bottom: 24px;
-    grid-template-columns: 50%;
+    grid-template-columns: 140px [col-start] 1fr 1fr;
 
 }
 
@@ -2356,6 +2358,7 @@ input:checked + .slider:before {
 
 .applicableLabel {
 margin-left: 8px;
+margin-top: -2px;
 }
 
 
@@ -2433,6 +2436,20 @@ stroke: #c40000;
 
 }
 
+
+.right-column {
+  grid-column-start: 3;
+  grid-row-start: 1;
+  align-self: start;
+  /* grid-row-start: 2; */
+  grid-row-end: span 6;
+  /* padding-left: 24px; */
+  justify-self: end;
+}
+
+
+
+
 /* Container and Overlay Styling */
 .slide-in-overlay-container {
   position: relative;
@@ -2506,6 +2523,63 @@ stroke: #c40000;
   stroke: #fff !important;
 }
 
+.comment-item {
+  display: grid;
+  background: #fff;
+  border-radius: 6px;
+  padding: 10px 8px 8px 12px;
+  border: solid 1px #bebebe;
+}
+
+.comment-title  {
+
+    grid-row-start: 1;
+    grid-column-start: 1;
+    overflow-wrap: break-word;
+    width: 210px;
+    grid-row: 1 / span 2;
+
+}
+
+.edit-comment-button {
+  grid-row-start: 1;
+  margin-left: 16px;
+    margin-right: 8px;
+
+}
+
+.commentFunctionsButtons {
+  grid-row-start: 1;
+    border-radius: 6px;
+    border: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    position: relative;
+    height: 44px;
+    width: 44px;
+    border-radius: 6px;
+    font-weight: 400;
+    background: rgb(255, 255, 255);
+    grid-row: 1 / span 2;
+    align-self: center;
+    cursor: pointer;
+    }
+
+    .commentFunctionsButtons:hover {
+      background: rgb(217, 217, 217);
+      border: 2px solid transparent;
+        }
+
+
+
+
+
+.delete-comment-button {
+  grid-row-start: 1;
+
+}
 
 
 .toolBar {
