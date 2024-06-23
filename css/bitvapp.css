@@ -575,8 +575,8 @@ display:block;
 }
 
 .uploaded-image-thumbnail {
-  width: 90px;
-  height: 50px;
+  width: 305px;
+  height: 190px;
   object-fit: cover;
   border: 1px solid #ccc;
   padding: 2px;

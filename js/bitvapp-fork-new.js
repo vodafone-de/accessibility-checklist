@@ -802,7 +802,7 @@ class CommentOverlay {
 
     createImageThumbnail(src, forComment = false) {
         if (forComment) {
-            return `<div class="image-thumbnail-container"><img src="${src}" class="uploaded-image-thumbnail" tabindex="0" aria-label="View image in lightbox"></div>`;
+            return `<div class="imageThumbnail"><img src="${src}" class="uploadedImageThumbnail" tabindex="0" aria-label="View image in lightbox"></div>`;
         } else {
             return `
                 <div class="image-thumbnail-container">
