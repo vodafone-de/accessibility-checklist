@@ -487,6 +487,7 @@ font-weight: var(--ws10-font-weight-bold);
 
 
 .comments {
+  height: auto!important;
   padding: 12px 16px 4px 19px;
   background: #f4f4f4;
   border-radius: 6px;
@@ -1990,7 +1991,7 @@ font-size:12px;
     background: #f4f4f4;
     border-radius: 6px;
     padding: 44px 16px 8px 18px;
-    margin-bottom: 16px;
+    margin: 0px 0px 16px 0px;
 }
 
 .status-optionslegend {
@@ -2441,10 +2442,9 @@ stroke: #c40000;
   grid-column-start: 3;
   grid-row-start: 1;
   align-self: start;
-  /* grid-row-start: 2; */
   grid-row-end: span 6;
-  /* padding-left: 24px; */
   justify-self: end;
+  width: 380px;
 }
 
 

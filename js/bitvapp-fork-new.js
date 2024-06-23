@@ -75,6 +75,7 @@ $(document).ready(function() {
             }).get();
             if (comments.length > 0) {
                 state.comments[taskId] = comments;
+               
             }
         });
 
@@ -83,41 +84,55 @@ $(document).ready(function() {
 
     function loadState() {
         const state = JSON.parse(localStorage.getItem('filterState'));
-
+    
         if (state) {
             for (const [key, value] of Object.entries(state.selectedRadios)) {
                 $(`#${key}`).prop('checked', value);
             }
-
+    
             for (const [key, value] of Object.entries(state.applicableCheckboxes)) {
                 $(`#${key}`).prop('checked', value).trigger('change');
             }
-
+    
             for (const [taskId, comments] of Object.entries(state.comments)) {
                 const container = $(`li.taskContainer#${taskId}`);
-                comments.forEach(comment => {
+                const commentsContainer = container.find('.comments');
+                comments.forEach((comment, index) => {
                     container.find('.comments').append(`
                         <div class="comment-item" data-comment-text="${comment.text}" data-images='${JSON.stringify(comment.images)}'>
                             <div class="comment-title">${comment.title}</div>
-                            <button class="edit-comment-button overlayKeyOff commentFunctionsButtons" aria-label="Edit comment"><svg class="icon24" id="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
-      <polyline class="st0" points="147.38 70.11 121.57 44.02 36.49 129.1 27.77 164 62.67 155.27 147.38 70.11" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
-      <path class="st0" d="M121.57,44l12.79-12.79a11,11,0,0,1,15.63,0l18,18.22L147.38,70.11" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/>
-      <line class="st0" x1="39.55" y1="126.1" x2="65.73" y2="152.28" fill="none" stroke-miterlimit="10" stroke-width="8"/>
-</svg></button>
-                            <button class="delete-comment-button overlayKeyOff commentFunctionsButtons"><svg id="icon" class="icon24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><line class="st0" x1="112.01" y1="144" x2="112.01" y2="72" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
-    <line class="st0" x1="80.01" y1="144" x2="80.01" y2="72" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
-    <line class="st0" x1="36" y1="44" x2="156" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
-    <path class="st0" d="M120,44V36a16,16,0,0,0-16-16H88A16,16,0,0,0,72,36v8" fill="none" stroke-linejoin="round" stroke-width="8"/>
-    <path class="st0" d="M148,44V156a16,16,0,0,1-16,16H60a16,16,0,0,1-16-16V44" fill="none" stroke-linejoin="round" stroke-width="8"/>
-</svg></button>
+                            <button class="edit-comment-button overlayKeyOff commentFunctionsButtons" aria-label="Edit comment">
+                                <svg class="icon24" id="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+                                    <polyline class="st0" points="147.38 70.11 121.57 44.02 36.49 129.1 27.77 164 62.67 155.27 147.38 70.11" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
+                                    <path class="st0" d="M121.57,44l12.79-12.79a11,11,0,0,1,15.63,0l18,18.22L147.38,70.11" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/>
+                                    <line class="st0" x1="39.55" y1="126.1" x2="65.73" y2="152.28" fill="none" stroke-miterlimit="10" stroke-width="8"/>
+                                </svg>
+                            </button>
+                            <button class="delete-comment-button overlayKeyOff commentFunctionsButtons">
+                                <svg id="icon" class="icon24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+                                    <line class="st0" x1="112.01" y1="144" x2="112.01" y2="72" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
+                                    <line class="st0" x1="80.01" y1="144" x2="80.01" y2="72" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
+                                    <line class="st0" x1="36" y1="44" x2="156" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
+                                    <path class="st0" d="M120,44V36a16,16,0,0,0-16-16H88A16,16,0,0,0,72,36v8" fill="none" stroke-linejoin="round" stroke-width="8"/>
+                                    <path class="st0" d="M148,44V156a16,16,0,0,1-16,16H60a16,16,0,0,1-16-16V44" fill="none" stroke-linejoin="round" stroke-width="8"/>
+                                </svg>
+                            </button>
                         </div>
                         <div style="margin-bottom: 12px;"></div>
                     `);
+                    if (comments.length > 0) {
+                        commentsContainer.show(); // Kommentarcontainer einblenden, falls Kommentare vorhanden sind
+                    }
+                    else {
+
+                        commentsContainer.hide();
+                    }
                 });
             }
         }
         console.log("loadState " + selectedRadioCount);
     }
+    
 
     function clearState() {
         if (confirm('All checked elements will be reset. This can not be undone. Are you sure you want to proceed?')) {
@@ -536,6 +551,11 @@ $(document).ready(function() {
         }
     });
 
+
+
+ /** Kommentar overlay */
+
+
     class CommentOverlay {
         constructor() {
             this.initOverlay();
@@ -562,15 +582,12 @@ $(document).ready(function() {
 
                 <div class="ws10-form-element-block ws10-form-element-block--text-input">
                      <div class="ws10-form-element-block__label-container">
-                         <label for="comment-title" class="ws10-form-label ">
-                       Title
-                      </label>
+                         <label for="comment-title" class="ws10-form-label ">Comment</label>
                       </div>
                  <div class="ws10-form-element-block__input-container"><div class="ws10-form-text-input">
                          <input id="comment-title" class="ws10-form-text-input__input" name="" type="select">
                     <span class="ws10-form-text-input__notification_icon-container" style="display:none;"><svg class="ws10-notification-icon ws10-notification-icon-- "></svg>
                     </span><span class="ws10-form-text-input__system_icon-container" style="display:none;"><svg class="ws10-system-icon ws10-system-icon--size-inherit ws10-system-icon--color-monochrome-600">
-                        <use xlink:href="/simplicity/icons/.svg#icon"></use>
                         </svg>
                         </span>
                     </div>
@@ -579,7 +596,7 @@ $(document).ready(function() {
 <span class="ws10-form-element-block__error-message ws10-text-smaller"></span></div>
 <div class="ws10-form-element-block ws10-form-element-block--textarea">
         <div class="ws10-form-element-block__label-container">
-            <label for="textarea-1" class="ws10-form-label ">Comment:</label>
+            <label for="textarea-1" class="ws10-form-label ">Description:</label>
         </div>
     <div class="ws10-form-element-block__input-container"><div class="ws10-form-textarea">
     <textarea rows="5" id="comment-text" class="ws10-form-textarea__textarea" name=""></textarea>
@@ -664,6 +681,8 @@ $(document).ready(function() {
             $('.overlayKeyOff').attr("tabindex", -1);
         }
     
+ /* Kommentar speichern */
+
         saveComment(e) {
             e.stopPropagation();
             const commentHeadline = $('<div class="comment-headline"></div>');
@@ -695,7 +714,7 @@ $(document).ready(function() {
     <path class="st0" d="M120,44V36a16,16,0,0,0-16-16H88A16,16,0,0,0,72,36v8" fill="none" stroke-linejoin="round" stroke-width="8"/>
     <path class="st0" d="M148,44V156a16,16,0,0,1-16,16H60a16,16,0,0,1-16-16V44" fill="none" stroke-linejoin="round" stroke-width="8"/>
 </svg></button>
-                        </div>
+                        </div><div style="margin-bottom: 12px;"></div>
                     `);
                     
                 }
@@ -713,6 +732,7 @@ $(document).ready(function() {
             }
         }
     
+         /* Kommentar Overlay schließen */
         hideOverlay(e) {
             e.stopPropagation();
             $('#comment-overlay').hide();
@@ -723,6 +743,7 @@ $(document).ready(function() {
             $('.overlayKeyOff').attr("tabindex", 1);
         }
     
+         /* Kommentar löschen */
         deleteComment(e) {
             e.stopPropagation();
             if (confirm('Are you sure you want to delete this comment?')) {
@@ -799,6 +820,7 @@ $(document).ready(function() {
     
             $('li.taskContainer').each(function() {
                 const taskId = $(this).attr('id');
+                const commentsContainer = $(this).find('.comments');
                 const comments = $(this).find('.comment-item').map(function() {
                     return {
                         title: $(this).find('.comment-title').text().trim(),
@@ -808,6 +830,11 @@ $(document).ready(function() {
                 }).get();
                 if (comments.length > 0) {
                     state.comments[taskId] = comments;
+                    commentsContainer.show();
+                }
+                else {
+
+                    commentsContainer.hide();
                 }
             });
     
@@ -844,7 +871,7 @@ $(document).ready(function() {
     <path class="st0" d="M120,44V36a16,16,0,0,0-16-16H88A16,16,0,0,0,72,36v8" fill="none" stroke-linejoin="round" stroke-width="8"/>
     <path class="st0" d="M148,44V156a16,16,0,0,1-16,16H60a16,16,0,0,1-16-16V44" fill="none" stroke-linejoin="round" stroke-width="8"/>
 </svg></button>
-                            </div>
+                            </div><div style="margin-bottom: 12px;"></div>
                         `);
                         commentsContainer.append(commentItem);
                         comment.images.forEach((src) => {
@@ -853,7 +880,11 @@ $(document).ready(function() {
                         if (comments.length > 0) {
                             commentsContainer.show(); // Kommentarcontainer einblenden, falls Kommentare vorhanden sind
                         }
-                    });
+                        else {
+
+                            commentsContainer.hide();
+                        }
+                                        });
                 }
             }
         }
@@ -1177,7 +1208,7 @@ $(document).ready(function() {
                               // Kommentarfunktion
                               
                               const addCommentButton = $('<button id="addComment" class="overlayKeyOff">add comment<svg id="icon" class="ws10-button-link__icon ws10-button-link__icon--right ws10-system-icon ws10-system-icon--size-150 ws10-system-icon--color-primary-200" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><polyline class="st0" points="62 28 130 96 62 164" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/></svg></button>').addClass('add-comment-button ws10-button-link ws10-button-link--color-primary-200');
-                              const commentsDiv = $('<div><h5 class="comment-optionslegend">comments</h5>').addClass('comments');
+                              const commentsDiv = $('<div><h5 class="comment-optionslegend">comments</h5>').addClass('comments').hide();
                               li.append(addCommentButton).append(commentsDiv);
 
                               rightColumn.append(commentsDiv);
