@@ -852,8 +852,35 @@ input {
     flex-direction: column;
 }
 
-#comment-title, #comment-text {
+#comment-title {
     width: 100%;
+    min-height: 48px; /* Initial height */
+    height: 48px;
+    resize: none; /* Disable manual resizing by the user */
+    overflow: hidden; /* Hide scrollbar */
+    box-sizing: border-box;
+    border-radius: 6px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #262626;
+    width: 100%;
+    display: block;
+    background-color: #fff;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    color: #0d0d0d;
+    font-weight: 400;
+    font-family: "Vodafone", "Arial", sans-serif;
+    font-size: 18px;
+    padding: 11px 56px 11px 16px;
+    font-size: 20px;
+        line-height: 24px;
+}
+
+#comment-text {
+  width: 100%;
 }
 
 #image-upload-container {
@@ -2590,7 +2617,7 @@ stroke: #c40000;
     overflow-wrap: break-word;
     width: 210px;
     grid-row: 1 / span 2;
-
+    margin-bottom: 8px;
 }
 
 .edit-comment-button {

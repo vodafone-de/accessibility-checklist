@@ -626,7 +626,7 @@ class CommentOverlay {
                                 </div>
                                 <div class="ws10-form-element-block__input-container">
                                     <div class="ws10-form-text-input">
-                                        <input id="comment-title" class="ws10-form-text-input__input" name="" type="select">
+                                        <textarea id="comment-title" name=""></textarea>
                                         <span class="ws10-form-text-input__notification_icon-container" style="display:none;">
                                             <svg class="ws10-notification-icon ws10-notification-icon-- "></svg>
                                         </span>
@@ -690,7 +690,21 @@ class CommentOverlay {
         $(document).on('click', '.uploadedImageThumbnail', (e) => this.openLightbox(e));
         $(document).on('click', '.close-lightbox', () => this.closeLightbox());
         $(document).on('click', '.delete-image-button', (e) => this.deleteImage(e));
+        // Add the textarea adjustment
+        const textarea = document.getElementById('comment-title');
+        if (textarea) {
+            textarea.addEventListener('input', () => this.adjustTextareaHeight(textarea));
+            this.adjustTextareaHeight(textarea); // Initial adjustment
+        }
     }
+    
+    adjustTextareaHeight(textarea) {
+        const minHeight = 48; // Set minimum height
+        textarea.style.height = minHeight + 'px'; // Reset to minimum height
+        const newHeight = textarea.scrollHeight > minHeight ? textarea.scrollHeight : minHeight;
+        textarea.style.height = newHeight + 'px'; // Set new height based on scroll height or minHeight
+    }
+    
 
     showAddCommentOverlay(e) {
         e.stopPropagation();
