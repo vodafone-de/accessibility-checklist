@@ -53,17 +53,18 @@ $(document).ready(function() {
         const state = {
             selectedRadios: {},
             applicableCheckboxes: {},
-            comments: {}
+            comments: {},
+            images: [] // Ensure this line is properly separated by a comma
         };
-
+    
         $('input[type="radio"]:checked').each(function() {
             state.selectedRadios[this.id] = this.checked;
         });
-
+    
         $('input[type="checkbox"][id^="applicable_"]').each(function() {
             state.applicableCheckboxes[this.id] = this.checked;
         });
-
+    
         $('li.taskContainer').each(function() {
             const taskId = $(this).attr('id');
             const comments = $(this).find('.comment-item').map(function() {
@@ -75,12 +76,20 @@ $(document).ready(function() {
             }).get();
             if (comments.length > 0) {
                 state.comments[taskId] = comments;
-               
             }
         });
-
+    
+        // Add this block to save images
+        $('.uploaded-image-thumbnail').each(function() {
+            const src = $(this).attr('src');
+            if (src) {
+                state.images.push(src);
+            }
+        });
+    
         localStorage.setItem('filterState', JSON.stringify(state));
     }
+    
 
     function loadState() {
         const state = JSON.parse(localStorage.getItem('filterState'));
@@ -97,11 +106,11 @@ $(document).ready(function() {
             for (const [taskId, comments] of Object.entries(state.comments)) {
                 const container = $(`li.taskContainer#${taskId}`);
                 const commentsContainer = container.find('.comments');
-                comments.forEach((comment, index) => {
-                    container.find('.comments').append(`
+                comments.forEach(comment => {
+                    const commentItem = $(`
                         <div class="comment-item" data-comment-text="${comment.text}" data-images='${JSON.stringify(comment.images)}'>
                             <div class="comment-title">${comment.title}</div>
-                            <button class="edit-comment-button overlayKeyOff commentFunctionsButtons" aria-label="Edit comment">
+                            <button class="edit-comment-button overlayKeyOff commentFunctionsButtons">
                                 <svg class="icon24" id="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
                                     <polyline class="st0" points="147.38 70.11 121.57 44.02 36.49 129.1 27.77 164 62.67 155.27 147.38 70.11" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
                                     <path class="st0" d="M121.57,44l12.79-12.79a11,11,0,0,1,15.63,0l18,18.22L147.38,70.11" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/>
@@ -118,20 +127,32 @@ $(document).ready(function() {
                                 </svg>
                             </button>
                         </div>
-                        <div style="margin-bottom: 12px;"></div>
                     `);
-                    if (comments.length > 0) {
-                        commentsContainer.show(); // Kommentarcontainer einblenden, falls Kommentare vorhanden sind
+                    if (comment.images.length > 0) {
+                        const imageThumbnailsContainer = $('<div class="comment-images-container"></div>');
+                        comment.images.forEach(src => {
+                            imageThumbnailsContainer.append(createImageThumbnail(src, true));
+                        });
+                        commentItem.append(imageThumbnailsContainer);
                     }
-                    else {
-
-                        commentsContainer.hide();
-                    }
+                    commentsContainer.append(commentItem);
+                });
+                if (comments.length > 0) {
+                    commentsContainer.show(); // Kommentarcontainer einblenden, falls Kommentare vorhanden sind
+                } else {
+                    commentsContainer.hide();
+                }
+            }
+    
+            // Add this block to load images
+            if (state.images && state.images.length > 0) {
+                state.images.forEach(src => {
+                    $('#image-thumbnails').append(createImageThumbnail(src));
                 });
             }
         }
-        console.log("loadState " + selectedRadioCount);
     }
+    
     
 
     function clearState() {
@@ -140,6 +161,28 @@ $(document).ready(function() {
             location.reload();
         }
     }
+
+    function createImageThumbnail(src, forComment = false) {
+        if (forComment) {
+            return `<div class="imageThumbnail"><img src="${src}" class="uploadedImageThumbnail" tabindex="0" aria-label="View image in lightbox"></div>`;
+        } else {
+            return `
+                <div class="image-thumbnail-container">
+                    <img src="${src}" class="uploaded-image-thumbnail" tabindex="0" aria-label="View image in lightbox">
+                    <button aria-label="Delete image" class="delete-image-button">
+                        <svg id="icon" class="reset-button-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+                            <line class="st0" x1="112.01" y1="144" x2="112.01" y2="72" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
+                            <line class="st0" x1="80.01" y1="144" x2="80.01" y2="72" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
+                            <line class="st0" x1="36" y1="44" x2="156" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
+                            <path class="st0" d="M120,44V36a16,16,0,0,0-16-16H88A16,16,0,0,0,72,36v8" fill="none" stroke-linejoin="round" stroke-width="8"/>
+                            <path class="st0" d="M148,44V156a16,16,0,0,1-16,16H60a16,16,0,0,1-16-16V44" fill="none" stroke-linejoin="round" stroke-width="8"/>
+                        </svg>
+                    </button>
+                </div>
+            `;
+        }
+    }
+    
 
     function adjustAccordionHeight(element) {
         const accordionContent = element.closest('.accordion-content');
