@@ -687,8 +687,9 @@ class CommentOverlay {
         $(document).on('keydown', (e) => this.handleEscapeKey(e));
         $(document).on('click', '#image-upload-area', () => $('#image-upload-input').click());
         $(document).on('change', '#image-upload-input', (e) => this.handleImageUpload(e));
-        $(document).on('click', '.uploaded-image-thumbnail', (e) => this.openLightbox(e));
+        $(document).on('click', '.uploadedImageThumbnail', (e) => this.openLightbox(e));
         $(document).on('click', '.close-lightbox', () => this.closeLightbox());
+        $(document).on('click', '.delete-image-button', (e) => this.deleteImage(e));
     }
 
     showAddCommentOverlay(e) {
@@ -862,6 +863,11 @@ class CommentOverlay {
                 </div>
             `;
         }
+    }
+
+    deleteImage(e) {
+        e.stopPropagation();
+        $(e.currentTarget).closest('.image-thumbnail-container').remove();
     }
 
     openLightbox(e) {

@@ -574,12 +574,26 @@ display:block;
   align-items: center;
 }
 
+.uploadedImageThumbnail {
+  width: 90px;
+  height: 60px;
+  object-fit: cover;
+  border: 1px solid #ccc;
+  padding: 2px;
+}
+
 .uploaded-image-thumbnail {
   width: 305px;
   height: 190px;
   object-fit: cover;
   border: 1px solid #ccc;
   padding: 2px;
+}
+
+.comment-images-container {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
 .delete-image-button {
@@ -2566,6 +2580,7 @@ stroke: #c40000;
   border-radius: 6px;
   padding: 10px 8px 8px 12px;
   border: solid 1px #bebebe;
+  margin-bottom: 12px;
 }
 
 .comment-title  {
