@@ -692,6 +692,7 @@ input {
   line-height: 1.5;
   color: #0d0d0d;
   font-size: 16px;
+  min-height: 48px;
 }
 
 .ws10-form-textarea .ws10-form-textarea__textarea {
@@ -712,6 +713,7 @@ input {
   font-family: "Vodafone", "Arial", sans-serif;
   font-size: 18px;
   line-height: 24px;
+  min-height: 48px;
 }
 .ws10-form-textarea .ws10-form-textarea__textarea {
   border-radius: 6px;
@@ -719,6 +721,7 @@ input {
   border-width: 1px;
   border-color: #262626;
   margin-bottom: 8px;
+  min-height: 48px;
 }
 
 
@@ -853,35 +856,160 @@ input {
 }
 
 #comment-title {
-    width: 100%;
-    min-height: 48px; /* Initial height */
-    height: 48px;
-    resize: none; /* Disable manual resizing by the user */
-    overflow: hidden; /* Hide scrollbar */
-    box-sizing: border-box;
-    border-radius: 6px;
-    border-style: solid;
-    border-width: 1px;
-    border-color: #262626;
-    width: 100%;
-    display: block;
-    background-color: #fff;
-    outline: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    color: #0d0d0d;
-    font-weight: 400;
-    font-family: "Vodafone", "Arial", sans-serif;
-    font-size: 18px;
-    padding: 11px 56px 11px 16px;
-    font-size: 20px;
-        line-height: 24px;
+  width: 100%;
+  min-height: 48px;
+  resize: none;
+  overflow: hidden;
+  box-sizing: border-box;
+  border-radius: 6px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #262626;
+  width: 100%;
+  display: block;
+  background-color: #fff;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: #0d0d0d;
+  font-weight: 400;
+  font-family: "Vodafone", "Arial", sans-serif;
+  font-size: 18px;
+  padding: 11px 56px 11px 16px;
+  font-size: 20px;
+  line-height: 24px;
 }
+
+
+
+
 
 #comment-text {
   width: 100%;
 }
+
+.ws10-form-select  {
+  font-size: 20px;
+  line-height: 32px;
+}
+
+.ws10-form-select  {
+  width: 100%;
+  display: block;
+  padding: 11px 56px 11px 16px;
+  background-color: #fff;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: #0d0d0d;
+  font-weight: 400;
+  font-family: "Vodafone", "Arial", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.ws10-form-select  {
+  border-radius: 6px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #262626;
+}
+
+.ws10-form-select__chevron {
+  stroke: #262626;
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  transform: rotate(0deg);
+  transform-origin: center;
+  cursor: pointer;
+  position: absolute;
+  top: 8px;
+  right: 16px;
+  pointer-events: none;
+}
+
+.custom-select-container {
+  position: relative;
+  display: inline-block;
+}
+
+.custom-select-container select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #fff;
+  background-image: url('data:image/svg+xml;base64,...'); /* Default icon */
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+}
+
+.custom-select-container[data-icon="violation-icon"] select {
+  background-image: url('data:image/svg+xml;base64,...'); /* Violation icon */
+}
+
+.custom-select-container[data-icon="recommendation-icon"] select {
+  background-image: url('data:image/svg+xml;base64,...'); /* Recommendation icon */
+}
+
+.custom-select-container[data-icon="other-comment-icon"] select {
+  background-image: url('data:image/svg+xml;base64,...'); /* Other comment icon */
+}
+
+.violationBadge {
+  background-color: #bd0000;
+  margin-right: 8px;
+  padding: 4px 8px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: bold;
+  width: fit-content;
+  color: #fff;
+}
+
+.comment-type-display.violation {
+  background-color: #bd0000;
+  margin-right: 8px;
+  padding: 4px 8px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: bold;
+  width: fit-content;
+  color: #fff;
+}
+
+.comment-type-display.recommendation {
+  background-color: #eb7800;
+  margin-right: 8px;
+  padding: 4px 8px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: bold;
+  width: fit-content;
+  color: #fff;
+}
+
+.comment-type-display.other-comment {
+  background-color: #005ea5;
+  margin-right: 8px;
+  padding: 4px 8px;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: bold;
+  width: fit-content;
+  color: #fff;
+}
+
+
 
 #image-upload-container {
     display: flex;
@@ -1024,13 +1152,6 @@ input {
   margin-right: 10px;
 }
 
-
-@media screen and (min-width: 600px) {
-  .ws10-form-select .ws10-form-select__select {
-      font-size: 20px;
-      line-height: 32px;
-  }
-}
 
 .ws10-form-select .ws10-form-select__select {
   width: 100%;
