@@ -694,7 +694,7 @@ class CommentOverlay {
                     <select id="comment-type" class="ws10-form-select ws10-form-select__select">
                         <option value="violation" data-icon="violation-icon">Violation</option>
                         <option value="recommendation" data-icon="recommendation-icon">Recommendation</option>
-                        <option value="other-comment" data-icon="other-comment-icon">Other Comment</option>
+                        <option value="info" data-icon="info-icon">Info</option>
                     </select>
                     <span class="ws10-form-select__notification_icon-container"><svg aria-hidden="true" class="ws10-form-select__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"></polyline></svg></span>
                     </div>
