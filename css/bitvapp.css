@@ -258,15 +258,22 @@ svg {
 }
 
 #draftWarning {
-
-  padding-top: 130px;
-  padding-bottom: 50px;
+  padding-top: 120px;
   margin: auto;
   width: 100%;
   min-width: 800px;
   max-width: 1050px;
-
 }
+
+
+.headlineWrapper {
+
+  margin: 24px auto;
+  width: 100%;
+  min-width: 800px;
+  max-width: 1050px;
+
+  }
 
 #content-wrapper {
 
@@ -1234,8 +1241,7 @@ input {
     grid-column-end: span 2;
   }
 
- .taglistitems {
-
+  .taglistitems {
     background: url(../img/tag-system.svg);
     background-position: left 0px;
     background-repeat: no-repeat;
@@ -1243,6 +1249,7 @@ input {
     padding: 2px 0px 0px 22px;
     float: left;
     margin: 0px 8px 0 0px;
+    align-self: center;
 }
 
 
@@ -2372,19 +2379,28 @@ font-size:12px;
   stroke: #fff;
   fill: #fff;
 }
+.filterTextCat {
+  font-weight: 700;
+  font-size: 16px;
+  align-self: center;
+}
+
+
 
 .categoryfilteractive {
   background: url(../img/tag-system-white.svg);
-    background-position: 4px 0px;
-    background-repeat: no-repeat;
-    background-size: 20px;
-  background-color: #00697c!important;
-  color: #fff!important;
+  background-position: 4px 4px;
+  background-repeat: no-repeat;
+  background-size: 20px;
+  background-color: #00697c !important;
+  color: #fff !important;
   stroke: #fff;
   fill: #fff;
   border-radius: 100px;
-  padding: 2px 9px 3px 28px;
+  padding: 5px 9px 6px 28px;
 }
+
+
 
 
 
@@ -2783,6 +2799,7 @@ stroke: #c40000;
     border-radius: 6px;
     border: 0;
     display: inline-flex;
+    align-items: center;
     justify-content: center;
     box-sizing: border-box;
     position: relative;
@@ -2792,7 +2809,6 @@ stroke: #c40000;
     font-weight: 400;
     background: rgb(255, 255, 255);
     grid-row: 1 / span 2;
-    align-self: center;
     cursor: pointer;
     }
 
