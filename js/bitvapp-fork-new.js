@@ -23,7 +23,7 @@ $(document).ready(function() {
             } else {
                 queryString += '?';
             }
-            queryString += `category=${selectedTaskFilters.join(',')}`;
+            queryString += `tag=${selectedTaskFilters.join(',')}`;
         }
     
         console.log('Query String:', queryString); // Debug-Ausgabe
@@ -34,7 +34,7 @@ $(document).ready(function() {
     function setFiltersFromQueryString() {
         const params = new URLSearchParams(window.location.search);
         const filters = params.get('role');
-        const taskfilters = params.get('category');
+        const taskfilters = params.get('tag');
         if (filters) {
             const filterArray = filters.split(',');
             filterArray.forEach(filterId => {
@@ -1295,7 +1295,7 @@ $(document).ready(() => {
                 <ul>
                 <li>
                 <div class="dropdown">
-                    <button class="dropdown-button overlayKeyOff">Select Categories <svg aria-hidden="true" class="dropdown-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"></polyline></svg></button>
+                    <button class="dropdown-button overlayKeyOff">Select Tags <svg aria-hidden="true" class="dropdown-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"></polyline></svg></button>
                         <div class="dropdown-content">
                             <ul id="taskcat-dropdown" class="dropdownContainer">
                             ${[...sortedTaskCategories].map(cat => `
@@ -1309,7 +1309,7 @@ $(document).ready(() => {
                         </div>
                 </div>
             </li>
-            <li><button class="ws10-secondary-button overlayKeyOff" id="reset-filters">Reset Filters</button></li>
+            <li><button class="ws10-secondary-button overlayKeyOff" id="reset-filters">Reset all filters</button></li>
             </ul>
             
             <div style="clear:both"></div>
