@@ -776,11 +776,12 @@ input {
 
 
 
-#taskcat-dropdown li {
+.dropdownContainer  li {
   margin: 5px 0;
 }
+
  /* Dropdown container */
- #taskcat-dropdown {
+ .dropdownContainer {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -802,23 +803,23 @@ input {
 
 
 
-#taskcat-dropdown li {
+.dropdownContainer li {
   margin: 5px 0;
   width: 100%;
 }
 
 /* Dropdown label */
-#taskcat-dropdown label {
+.dropdownContainer  label {
   display: flex;
   align-items: center;
   cursor: pointer;
 }
 
-#taskcat-dropdown input[type="checkbox"] {
+.dropdownContainer input[type="checkbox"] {
   margin-right: 10px;
 }
 
-#taskcat-dropdown .ws10-text {
+.dropdownContainer  .ws10-text {
   font-size: 16px;
 }
 
@@ -826,17 +827,22 @@ input {
   position: relative;
 }
 
-.dropdown-content.open #taskcat-dropdown {
+.dropdown-content.open .dropdownContainer  {
   display: block;
 }
+
+.dropdown-content-roles.open .dropdownContainer  {
+  display: block;
+}
+
 /* Dropdown label */
-#taskcat-dropdown label {
+.dropdownContainer label {
   display: flex;
   align-items: center;
   cursor: pointer;
 }
 
-#taskcat-dropdown input[type="checkbox"] {
+.dropdownContainer  input[type="checkbox"] {
   margin-right: 10px;
 }
 
@@ -1075,6 +1081,9 @@ input {
   padding: 0;
   margin: 0;
   list-style-type: none;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
 .filter li {
@@ -1096,7 +1105,6 @@ input {
   color: white;
   border: none;
   padding: 10px 20px;
-  margin: 10px 0;
   cursor: pointer;
 }
 
@@ -1145,6 +1153,36 @@ input {
   box-shadow: inset 0 0 0 1px #0d0d0d;
 }
 
+.dropdown-button-roles {
+  background-color: var(--ws10-color-monochrome-100);
+  color: var(--ws10-color-monochrome-600);
+  border-radius: var(--ws10-border-radius-medium);
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 400;
+  font-family: "Vodafone", "Arial", sans-serif;
+  padding: 10px 24px 10px 14px;
+  display: flex;
+
+}
+
+.dropdown-button-roles :target {
+
+  border: 2px var(--ws10-color-secondary-600) solid;
+
+}
+
+.dropdown-button-roles :focus-visible {
+
+  border: 2px var(--ws10-color-secondary-600) solid;
+
+}
+
+.dropdown-button-roles:hover {
+  box-shadow: inset 0 0 0 1px #0d0d0d;
+}
+
+
 .dropdown-item__chevron {
   stroke: currentColor;
   width: 22px;
@@ -1186,6 +1224,37 @@ input {
 
 /* Checkbox styles */
 .dropdown-content input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+
+.dropdown-content-roles {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 10;
+}
+
+/* Dropdown items */
+.dropdown-content-roles ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-content-roles li {
+  padding: 12px 16px;
+  cursor: pointer;
+}
+
+.dropdown-content-roles li:hover {
+  background-color: var(--ws10-color-monochrome-200);
+}
+
+/* Checkbox styles */
+.dropdown-content-roles input[type="checkbox"] {
   margin-right: 10px;
 }
 
@@ -2261,6 +2330,26 @@ font-size:12px;
   justify-content: center; /* Hinzugefügte Eigenschaft */
 }
 
+.filter-number-badge-roles {
+  position: absolute;
+  background: #00697c;
+  border-radius: 100px;
+  padding: 1px;
+  width: 15px;
+  height: 15px;
+  right: -6px;
+  top: -6px;
+  color: #fff;
+  font-size: 10px;
+  text-align: center;
+  font-weight: 700;
+  display: flex; /* Hinzugefügte Eigenschaft */
+  align-items: center; /* Hinzugefügte Eigenschaft */
+  justify-content: center; /* Hinzugefügte Eigenschaft */
+}
+
+
+
 #filter-del-icon {
   stroke: #0d0d0d;
   width: 20px;
@@ -2920,8 +3009,13 @@ gap: 0px 8px;
     fill: #fff;
 }
 
+.filterGroup {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
 
-#filter-options {
+/* #filter-options {
 
     float:left;
     list-style-type: none;
@@ -2940,7 +3034,7 @@ gap: 0px 8px;
     #filter-options li{
       display: inline-block;
     }
-  
+   */
     .filter {
   
       margin-bottom: 16px;

@@ -417,6 +417,7 @@ $(document).ready(function() {
     
         // Additional functions to update UI
         updateFilterNumberBadge();
+        updateFilterNumberBadgeRoles();
         adjustAccordionHeights();
         updateQueryString();
         updateFieldsetCountAfterFiltering();
@@ -436,6 +437,24 @@ $(document).ready(function() {
             if (checkedCount > 0) {
                 if (badge.length === 0) {
                     badge = $('<div class="filter-number-badge" aria-label="amount of active tag-filter: ' + checkedCount + '" aria-live="polite"></div>');
+                    dropdown.append(badge);
+                }
+                badge.text(checkedCount).show();
+            } else {
+                badge.hide();
+            }
+        });
+    }
+
+    function updateFilterNumberBadgeRoles() {
+        $('.dropdown').each(function() {
+            const dropdown = $(this);
+            const checkedCount = dropdown.find('.dropdown-content-roles input[type="checkbox"]:checked').length;
+            let badge = dropdown.find('.filter-number-badge-roles');
+    
+            if (checkedCount > 0) {
+                if (badge.length === 0) {
+                    badge = $('<div class="filter-number-badge-roles" aria-label="amount of active tag-filter: ' + checkedCount + '" aria-live="polite"></div>');
                     dropdown.append(badge);
                 }
                 badge.text(checkedCount).show();
@@ -1215,48 +1234,80 @@ $(document).ready(() => {
         const filterHtml = `
         <div class="filter">
             <h4>Filter:</h4>
-            <ul id="filter-options">
-                <li><div class="cat action overlayKeyOff" tabindex="0">
-                    <label><input type="checkbox" value="filter_cm" data-filter_id="cm"><span class="ws10-text">Channel Management</span></label>
-                </div></li>
-                <li><div class="cat action overlayKeyOff" tabindex="0">
-                    <label><input type="checkbox" value="filter_ux" data-filter_id="ux"><span class="ws10-text">User Experience</span></label>
-                </div></li>
-                <li><div class="cat action overlayKeyOff" tabindex="0">
-                    <label><input type="checkbox" value="filter_dev" data-filter_id="dev"><span class="ws10-text">Frontend Development</span></label>
-                </div></li>
-                <li><div class="cat action overlayKeyOff" tabindex="0">
-                    <label><input type="checkbox" value="filter_edt" data-filter_id="edt"><span class="ws10-text">Editorial</span></label>
-                </div></li>
-                <li><div class="cat action overlayKeyOff" tabindex="0">
-                    <label><input type="checkbox" value="filter_testing" data-filter_id="testing"><span class="ws10-text">Testing</span></label>
-                </div></li>
-                <li><div class="cat action overlayKeyOff" tabindex="0">
-                    <label><input type="checkbox" value="filter_testingwftooltasks" data-filter_id="testingwftooltasks"><span class="ws10-text">WF Testing: Tool supported</span></label>
-                </div></li>
-                <li><div class="cat action overlayKeyOff" tabindex="0">
-                <label><input type="checkbox" value="filter_testingwfmantasks" data-filter_id="testingwfmantasks"><span class="ws10-text">WF Testing: Manual without additional info</span></label>
-            </div></li>
-            <li><div class="cat action overlayKeyOff" tabindex="0">
-            <label><input type="checkbox" class="overlayKeyOff" value="filter_testingwfmanexttasks" data-filter_id="testingwfmanexttasks"><span class="ws10-text">WF Testing: Manual with additional info</span></label>
-        </div></li>
-                </ul>
+            <ul>
+                <li>
+                <div class="dropdown">
+                <button class="dropdown-button-roles overlayKeyOff">Select Roles <svg aria-hidden="true" class="dropdown-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"></polyline></svg></button>
+                <div class="dropdown-content-roles">
+                    <ul id="filter-options" class="dropdownContainer">
+                        <li>
+                            <label>
+                            <input type="checkbox" value="filter_cm" data-filter_id="cm">
+                            <span class="ws10-text">Channel Management</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                            <input type="checkbox" value="filter_ux" data-filter_id="ux">
+                            <span class="ws10-text">User Experience</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                            <input type="checkbox" value="filter_dev" data-filter_id="dev">
+                            <span class="ws10-text">Frontend Development</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                            <input type="checkbox" value="filter_edt" data-filter_id="edt">
+                            <span class="ws10-text">Editorial</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                            <input type="checkbox" value="filter_testing" data-filter_id="testing">
+                            <span class="ws10-text">Testing</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                            <input type="checkbox" value="filter_testingwftooltasks" data-filter_id="testingwftooltasks">
+                            <span class="ws10-text">WF Testing: Tool supported</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                            <input type="checkbox" value="filter_testingwfmantasks" data-filter_id="testingwfmantasks">
+                            <span class="ws10-text">WF Testing: Manual without additional info</span>
+                            </label>
+                        </li>
+                        <li>
+                            <label>
+                            <input type="checkbox" class="overlayKeyOff" value="filter_testingwfmanexttasks" data-filter_id="testingwfmanexttasks">
+                            <span class="ws10-text">WF Testing: Manual with additional info</span>
+                            </label>
+                        </li>
+                    </ul>
+                    </div>
+                </div>
+                </li>
                 <ul>
                 <li>
                 <div class="dropdown">
-                <button class="dropdown-button overlayKeyOff">Select Categories <svg aria-hidden="true" class="dropdown-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"></polyline></svg></button>
-                <div class="dropdown-content">
-                    <ul id="taskcat-dropdown">
-                    ${[...sortedTaskCategories].map(cat => `
-                    <li>
-                        <label>
-                            <input class="overlayKeyOff" type="checkbox" value="${cat}" data-filter_id="${cat}">
-                            <span class="ws10-text">${cat}</span>
-                        </label>
-                    </li>`).join('')}
-                    </ul>
+                    <button class="dropdown-button overlayKeyOff">Select Categories <svg aria-hidden="true" class="dropdown-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"></polyline></svg></button>
+                        <div class="dropdown-content">
+                            <ul id="taskcat-dropdown" class="dropdownContainer">
+                            ${[...sortedTaskCategories].map(cat => `
+                                <li>
+                                    <label>
+                                    <input class="overlayKeyOff" type="checkbox" value="${cat}" data-filter_id="${cat}">
+                                    <span class="ws10-text">${cat}</span>
+                                    </label>
+                                </li>`).join('')}
+                            </ul>
+                        </div>
                 </div>
-            </div>
             </li>
             <li><button class="ws10-secondary-button overlayKeyOff" id="reset-filters">Reset Filters</button></li>
             </ul>
@@ -1272,10 +1323,21 @@ $(document).ready(() => {
             $('.dropdown-content').toggle().toggleClass('open');
         });
 
+        $('.dropdown-button-roles').click(function() {
+            $('.dropdown-content-roles').toggle().toggleClass('open');
+        });
+
         $(document).keydown(function(e) {
             if (e.key === "Escape" && $('.dropdown-content').hasClass('open')) {
                 $('.dropdown-content').hide().removeClass('open');
                 $('.dropdown-button').focus();
+            }
+        });
+
+        $(document).keydown(function(e) {
+            if (e.key === "Escape" && $('.dropdown-content-roles').hasClass('open')) {
+                $('.dropdown-content-roles').hide().removeClass('open');
+                $('.dropdown-button-roles').focus();
             }
         });
 
@@ -1285,9 +1347,16 @@ $(document).ready(() => {
             }
         });
 
+        $(document).click(function(e) {
+            if (!$(e.target).closest('.dropdown-button-roles, .dropdown-content-roles').length) {
+                $('.dropdown-content-roles').hide().removeClass('open');
+            }
+        });
+
         $('#filter-options input[type="checkbox"], #taskcat-dropdown input[type="checkbox"]').change(function() {
             applyFilters();
             updateFilterNumberBadge();
+            updateFilterNumberBadgeRoles();
         });
 
         $('#reset-filters').click(function() {
