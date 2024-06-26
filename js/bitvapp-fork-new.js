@@ -1,5 +1,7 @@
 $(document).ready(function() {
 
+    
+
         function updateQueryString() {
         const selectedFilters = $('#filter-options input[type="checkbox"]:checked').map(function() {
             return $(this).data('filter_id');
