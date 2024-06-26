@@ -95,7 +95,7 @@ $(document).ready(function() {
                 state.images.push(src);
             }
         });
-    
+        
         localStorage.setItem('filterState', JSON.stringify(state));
     }
     
@@ -499,6 +499,9 @@ $(document).ready(function() {
         });
     }
 
+
+    
+
     function resetFilters() {
         $('#filter-options input[type="checkbox"]').prop('checked', false);
         $('#taskcat-dropdown input[type="checkbox"]').prop('checked', false);
@@ -625,6 +628,7 @@ $(document).ready(function() {
             $('#reset-filters').removeAttr("tabindex", -1);
             $('a').removeAttr("tabindex", -1);
             $('input').removeAttr("tabindex", -1);
+            adjustAccordionHeights(); // Adjust heights after closing the overlay
         }
     });
 
@@ -843,7 +847,7 @@ class CommentOverlay {
         this.toggleBackdrop(true);
     }
 
-    saveComment(e) {
+/*     saveComment(e) {
         e.stopPropagation();
         const title = $('#comment-title').val().trim();
         const text = $('#comment-text').val().trim();
@@ -864,8 +868,32 @@ class CommentOverlay {
         } else {
             alert('Both title and comment text are required.');
         }
-    }
+    } */
 
+        saveComment(e) {
+            e.stopPropagation();
+            const title = $('#comment-title').val().trim();
+            const text = $('#comment-text').val().trim();
+            const type = $('#comment-type').val();
+            const images = this.getUploadedImages();
+        
+            if (title && text) {
+                localStorage.setItem('comment-title', title);
+                localStorage.setItem('comment-type', type);
+                if (this.currentCommentItem) {
+                    this.updateExistingComment(title, text, type, images);
+                } else {
+                    this.addNewComment(title, text, type, images);
+                }
+                this.adjustAccordionHeight(this.currentTaskContainer);
+                adjustAccordionHeights(); // Adjust heights after saving the comment
+                this.saveState();
+                this.hideOverlay();
+            } else {
+                alert('Both title and comment text are required.');
+            }
+        }
+/* 
     updateExistingComment(title, text, type, images) {
         this.currentCommentItem.find('.comment-title').text(title);
         this.currentCommentItem.find('.comment-type-display').text(type).attr('class', `comment-type-display ${type}`);
@@ -880,9 +908,26 @@ class CommentOverlay {
             });
             this.currentCommentItem.append(imageThumbnailsContainer);
         }
-    }
+    } */
 
-    addNewComment(title, text, type, images) {
+        updateExistingComment(title, text, type, images) {
+            this.currentCommentItem.find('.comment-title').text(title);
+            this.currentCommentItem.find('.comment-type-display').text(type).attr('class', `comment-type-display ${type}`);
+            this.currentCommentItem.data('comment-text', text);
+            this.currentCommentItem.data('comment-type', type);
+            this.currentCommentItem.data('images', images);
+            this.currentCommentItem.find('.comment-images-container').remove();
+            if (images.length > 0) {
+                const imageThumbnailsContainer = $('<div class="comment-images-container"></div>');
+                images.forEach(src => {
+                    imageThumbnailsContainer.append(this.createImageThumbnail(src, true));
+                });
+                this.currentCommentItem.append(imageThumbnailsContainer);
+            }
+            adjustAccordionHeights(); // Adjust heights after updating the comment
+        }
+
+    /* addNewComment(title, text, type, images) {
         const commentItem = $(`
             <div class="comment-item" data-comment-text="${text}" data-comment-type="${type}" data-images='${JSON.stringify(images)}'>
                 <div class="comment-title">${title}</div>
@@ -898,7 +943,26 @@ class CommentOverlay {
             commentItem.append(imageThumbnailsContainer);
         }
         this.currentTaskContainer.find('.comments').append(commentItem);
-    }
+    } */
+
+        addNewComment(title, text, type, images) {
+            const commentItem = $(`
+                <div class="comment-item" data-comment-text="${text}" data-comment-type="${type}" data-images='${JSON.stringify(images)}'>
+                    <div class="comment-title">${title}</div>
+                    <span class="comment-type-display ${type}">${type}</span>
+                    ${this.getCommentButtonsTemplate()}
+                </div>
+            `);
+            if (images.length > 0) {
+                const imageThumbnailsContainer = $('<div class="comment-images-container"></div>');
+                images.forEach(src => {
+                    imageThumbnailsContainer.append(this.createImageThumbnail(src, true));
+                });
+                commentItem.append(imageThumbnailsContainer);
+            }
+            this.currentTaskContainer.find('.comments').append(commentItem);
+            adjustAccordionHeights(); // Adjust heights after adding the comment
+        }
 
     getUploadedImages() {
         const images = [];
@@ -1016,6 +1080,7 @@ class CommentOverlay {
             } else {
                 commentsContainer.hide();
             }
+            adjustAccordionHeight(commentsContainer);
         });
 
         localStorage.setItem('filterState', JSON.stringify(state));
@@ -1360,14 +1425,17 @@ $(document).ready(() => {
             applyFilters();
             updateFilterNumberBadge();
             updateFilterNumberBadgeRoles();
+            adjustAccordionHeights();
         });
 
         $('#reset-filters').click(function() {
             resetFilters();
+            adjustAccordionHeights();
         });
 
         $('#clear-state').click(function() {
             clearState();
+            adjustAccordionHeights();
         });
 
         Object.keys(groupedByCategory).forEach(category => {
@@ -1423,7 +1491,7 @@ $(document).ready(() => {
                                 li.append($('<div><strong>Type:</strong></div>').addClass('tasktype-desc'));
                                 li.append($('<div>').addClass('tasktype').text(task.tasktype));
                                 const taskCatDiv = $('<div>').addClass('taskcat');
-                                taskCatDiv.append($('<div>').html('<strong>Tags:</strong>').addClass('roles'));
+                                taskCatDiv.append($('<div>').text('Tags:').addClass('filterTextCat'));
                                 if (task.taskcat) {
                                     task.taskcat.forEach(cat => {
                                         taskCatDiv.append($('<div>').text(cat).addClass('taglistitems'));
@@ -1559,6 +1627,7 @@ $(document).ready(() => {
                                     }
                                     updateCounter();
                                     saveState();
+                                    adjustAccordionHeights();
                                 });
 
                                 switchWrapper.on('click', function() {
@@ -1602,7 +1671,7 @@ $(document).ready(() => {
 
         $('#content-wrapper').append($('<div>').attr('id', 'counter'));
         updateCounter();
-
+        adjustAccordionHeights();
         setFiltersFromQueryString();
         loadState();
         applyFilters();

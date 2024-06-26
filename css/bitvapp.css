@@ -498,7 +498,17 @@ font-weight: var(--ws10-font-weight-bold);
   padding: 12px 16px 4px 19px;
   background: #f4f4f4;
   border-radius: 6px;
+  transition: max-height 0.2s ease-out; /* Smooth transition for height change */
 }
+
+/* .comments {
+  overflow: hidden; 
+  padding: 12px 16px 4px 19px;
+  background: #f4f4f4;
+  border-radius: 6px;
+  transition: max-height 0.2s ease-out; 
+} */
+
 
 
 .showComments {
@@ -1360,7 +1370,7 @@ input {
     background-size: 20px;
     padding: 2px 0px 0px 22px;
     float: left;
-    margin: 0px 8px 0 0px;
+    margin: 0px 0px 0 8px;
     align-self: center;
 }
 
