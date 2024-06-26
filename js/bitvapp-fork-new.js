@@ -1289,10 +1289,13 @@ $(document).ready(() => {
                             </label>
                         </li>
                     </ul>
+                  <!--  <div class="scroll-arrow">↓</div> -->
                     </div>
+                    
                 </div>
+                
                 </li>
-                <ul>
+                
                 <li>
                 <div class="dropdown">
                     <button class="dropdown-button overlayKeyOff">Select Tags <svg aria-hidden="true" class="dropdown-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"></polyline></svg></button>
@@ -1305,7 +1308,7 @@ $(document).ready(() => {
                                     <span class="ws10-text">${cat}</span>
                                     </label>
                                 </li>`).join('')}
-                            </ul>
+            </ul>
                         </div>
                 </div>
             </li>
