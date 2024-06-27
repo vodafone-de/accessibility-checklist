@@ -2980,12 +2980,9 @@ gap: 0px 8px;
 }
 
 .toolBarItem {
-
   grid-column-start: 2;
   grid-row-start: 1;
-  align-self: start;
-  margin-bottom: 22px;
-
+  align-self: center;
 }
 
 
