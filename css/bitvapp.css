@@ -266,9 +266,9 @@ svg {
 }
 
 
-.headlineWrapper {
+.wrapper {
 
-  margin: 24px auto;
+  margin: auto;
   width: 100%;
   min-width: 800px;
   max-width: 1050px;
@@ -2356,6 +2356,19 @@ font-size:12px;
     border-radius: 6px;
     background-color: #fff;
 }
+
+.cardFlat {
+  padding: 20px;
+  margin-bottom: 32px;
+      background: #fff;
+      border-radius: 6px;
+  }
+
+  .headlineWrapper
+
+  {margin-top: 24px;
+  margin-bottom:24px;}
+
 .taskdesc {
   font-size: 18px;
   margin: 0px 0px 16px 0;
