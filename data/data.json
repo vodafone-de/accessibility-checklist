@@ -774,6 +774,206 @@
 		}
 	},
 	{
+		"id": "03-02",
+		"category": "Video capabilities",
+		"bitv": "7.1.2",
+		"title": "Synchrone Untertitel",
+		"applicable": "N/A",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "03-02-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "03-03",
+		"category": "Video capabilities",
+		"bitv": "7.1.3",
+		"title": "Erhaltung von Untertiteln",
+		"applicable": "N/A",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "03-03-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "03-04",
+		"category": "Video capabilities",
+		"bitv": "7.1.4",
+		"title": "Untertitel-Anpassungen",
+		"applicable": "N/A",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "03-04-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "03-05",
+		"category": "Video capabilities",
+		"bitv": "7.1.5",
+		"title": "Gesprochene Untertitel",
+		"applicable": "N/A",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "03-05-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "03-06",
+		"category": "Video capabilities",
+		"bitv": "7.2.1",
+		"title": "Wiedergabe von Audiodeskription",
+		"applicable": "N/A",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "03-06-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "03-07",
+		"category": "Video capabilities",
+		"bitv": "7.2.2",
+		"title": "Synchrone Audiodeskription",
+		"applicable": "N/A",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "03-07-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "03-08",
+		"category": "Video capabilities",
+		"bitv": "7.2.3",
+		"title": "Erhaltung von Audiodeskription",
+		"applicable": "N/A",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "03-08-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "03-09",
+		"category": "Video capabilities",
+		"bitv": "7.3",
+		"title": "Bedienelemente für Untertitel und Audiodeskription",
+		"applicable": "N/A",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "03-09-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
 		"id": "04-01",
 		"category": "Text alternatives",
 		"bitv": "9.1.1.1a",
@@ -1546,7 +1746,7 @@
 					"testmethod": "Lorem ipsum"
 				},
 				{
-					"taskid": "05-01-edt-02",
+					"taskid": "05-02-edt-02",
 					"taskdesc": "<strong>Video for text alternative: </strong>The video caption clearly refers to a corresponding text version and this is available in the immediate vicinity or accessible via a meaningful link",
 					"tasktype": "pattern",
 					"taskcat": [
@@ -1557,7 +1757,7 @@
 					"testmethod": "Lorem ipsum"
 				},
 				{
-					"taskid": "05-01-edt-03",
+					"taskid": "05-02-edt-03",
 					"taskdesc": "<strong>Video for text alternative: </strong>The video transports all the essential content of the text via the sound",
 					"tasktype": "pattern",
 					"taskcat": [
@@ -1568,7 +1768,7 @@
 					"testmethod": "Lorem ipsum"
 				},
 				{
-					"taskid": "05-01-edt-04",
+					"taskid": "05-02-edt-04",
 					"taskdesc": "<strong>Video for text alternative: </strong>Is important information said in the video that is not in the text? Then it is not a media alternative. It needs subtitles and must be checked for audio description",
 					"tasktype": "pattern",
 					"taskcat": [
@@ -1579,7 +1779,7 @@
 					"testmethod": "Lorem ipsum"
 				},
 				{
-					"taskid": "05-01-edt-05",
+					"taskid": "05-02-edt-05",
 					"taskdesc": "<strong>Video is not a text alternative: </strong>Subtitles are automatically displayed parallel to the video or can be switched on",
 					"tasktype": "pattern",
 					"taskcat": [
@@ -1590,7 +1790,7 @@
 					"testmethod": "Lorem ipsum"
 				},
 				{
-					"taskid": "05-01-edt-06",
+					"taskid": "05-02-edt-06",
 					"taskdesc": "<strong>Video is not a text alternative: </strong>The subtitles correspond to the audible content",
 					"tasktype": "pattern",
 					"taskcat": [
@@ -1631,6 +1831,1756 @@
 					],
 					"testtool": "Testtool",
 					"testmethod": "Lorem ipsum"
+				}
+			]
+		}
+	},
+	{
+		"id": "05-03",
+		"category": "Time-based media",
+		"bitv": "9.1.2.3",
+		"title": "Audiodeskription oder Volltext-Alternative für Videos",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "05-03-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "05-04",
+		"category": "Time-based media",
+		"bitv": "9.1.2.4",
+		"title": "Videos (live) mit Untertiteln",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "05-04-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "05-05",
+		"category": "Time-based media",
+		"bitv": "9.1.2.5",
+		"title": "Audiodeskription für Videos",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "05-05-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "06-01",
+		"category": "Adaptable",
+		"bitv": "9.1.3.1a",
+		"title": "HTML-Strukturelemente für Überschriften",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "06-01-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "06-02",
+		"category": "Adaptable",
+		"bitv": "9.1.3.1b",
+		"title": "HTML-Strukturelemente für Listen",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "06-02-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "06-03",
+		"category": "Adaptable",
+		"bitv": "9.1.3.1c",
+		"title": "HTML-Strukturelemente für Zitate",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "06-03-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "06-04",
+		"category": "Adaptable",
+		"bitv": "9.1.3.1d",
+		"title": "Inhalt gegliedert",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "06-04-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "06-05",
+		"category": "Adaptable",
+		"bitv": "9.1.3.1e",
+		"title": "Datentabellen richtig aufgebaut",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "06-05-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "06-06",
+		"category": "Adaptable",
+		"bitv": "9.1.3.1f",
+		"title": "Zuordnung von Tabellenzellen",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "06-06-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "06-07",
+		"category": "Adaptable",
+		"bitv": "9.1.3.1g",
+		"title": "Kein Strukturmarkup für Layouttabellen",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "06-07-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "06-08",
+		"category": "Adaptable",
+		"bitv": "9.1.3.1h",
+		"title": "Beschriftung von Formularelementen programmatisch ermittelbar",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "06-08-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "06-09",
+		"category": "Adaptable",
+		"bitv": "9.1.3.2",
+		"title": "Sinnvolle Reihenfolge",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "06-09-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "06-10",
+		"category": "Adaptable",
+		"bitv": "9.1.3.3",
+		"title": "Ohne Bezug auf sensorische Merkmale nutzbar",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "06-10-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "06-11",
+		"category": "Adaptable",
+		"bitv": "9.1.3.4",
+		"title": "Keine Beschränkung der Bildschirmausrichtung",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "06-11-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "06-12",
+		"category": "Adaptable",
+		"bitv": "9.1.3.5",
+		"title": "Eingabefelder zu Nutzerdaten vermitteln den Zweck",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "06-11-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "07-01",
+		"category": "Distinguishable",
+		"bitv": "9.1.4.1",
+		"title": "Ohne Farben nutzbar",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "07-01-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit", "color"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "07-02",
+		"category": "Distinguishable",
+		"bitv": "9.1.4.2",
+		"title": "Ton abschaltbar",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "07-02-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit", "sound"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "07-03",
+		"category": "Distinguishable",
+		"bitv": "9.1.4.3",
+		"title": "Kontraste von Texten ausreichend",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "07-03-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit", "contrast", "text"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "07-04",
+		"category": "Distinguishable",
+		"bitv": "9.1.4.4",
+		"title": "Text auf 200% vergrößerbar",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "07-04-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit", "responsive", "text"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "07-05",
+		"category": "Distinguishable",
+		"bitv": "9.1.4.5",
+		"title": "Schriftgrafiken",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "07-05-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit", "alt-text"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "07-06",
+		"category": "Distinguishable",
+		"bitv": "9.1.4.10",
+		"title": "Inhalte brechen um",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "07-06-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit", "responsive"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "07-07",
+		"category": "Distinguishable",
+		"bitv": "9.1.4.11",
+		"title": "Kontraste von Grafiken und grafischen Bedienelementen ausreichend",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "07-07-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit", "contrast", "ui-element", "image"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "07-08",
+		"category": "Distinguishable",
+		"bitv": "9.1.4.12",
+		"title": "Textabstände anpassbar",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "07-08-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit", "text"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "07-09",
+		"category": "Distinguishable",
+		"bitv": "9.1.4.13",
+		"title": "Eingeblendete Inhalte bedienbar",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "07-09-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit", "tooltip", "ui-element"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "08-01",
+		"category": "Keyboard operable",
+		"bitv": "9.2.1.1",
+		"title": "Ohne Maus nutzbar",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "08-01-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit", "keyboard"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "08-02",
+		"category": "Keyboard operable",
+		"bitv": "9.2.1.2",
+		"title": "No keyboard trap",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "08-02-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit", "keyboard", "overlay"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "08-03",
+		"category": "Keyboard operable",
+		"bitv": "9.2.1.4",
+		"title": "Tastatur-Kurzbefehle abschaltbar oder anpassbar",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "08-03-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit", "keyboard"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "09-01",
+		"category": "Enough time",
+		"bitv": "9.2.2.1",
+		"title": "Zeitbegrenzungen anpassbar",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "09-01-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit", "time-out"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "09-02",
+		"category": "Enough time",
+		"bitv": "9.2.2.2",
+		"title": "Bewegte Inhalte abschaltbar",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "09-02-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "10-01",
+		"category": "Seizure",
+		"bitv": "9.2.3.1",
+		"title": "Verzicht auf Flackern",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "10-01-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "11-01",
+		"category": "Navigierbar",
+		"bitv": "9.2.4.1",
+		"title": "Bereiche überspringbar",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "11-01-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "11-02",
+		"category": "Navigierbar",
+		"bitv": "9.2.4.2",
+		"title": "Sinnvolle Dokumenttitel",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "11-02-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "11-03",
+		"category": "Navigierbar",
+		"bitv": "9.2.4.3",
+		"title": "Schlüssige Reihenfolge bei der Tastaturbedienung",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "11-03-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit", "keyboard"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "11-04",
+		"category": "Navigierbar",
+		"bitv": "9.2.4.4",
+		"title": "Aussagekräftige Linktexte",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "11-04-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "11-05",
+		"category": "Navigierbar",
+		"bitv": "9.2.4.5",
+		"title": "Alternative Zugangswege",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "11-05-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "11-06",
+		"category": "Navigierbar",
+		"bitv": "9.2.4.6",
+		"title": "Aussagekräftige Überschriften und Beschriftungen",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "11-06-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit", "headline", "meaningful"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "11-07",
+		"category": "Navigierbar",
+		"bitv": "9.2.4.7",
+		"title": "Aktuelle Position des Fokus deutlich",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "11-07-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit", "keyboard", "contrast"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "11-08",
+		"category": "Navigierbar",
+		"bitv": "9.2.4.11",
+		"title": "Fokus nicht verdeckt (Minimum)",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "11-08-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit", "keyboard"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "12-01",
+		"category": "Input modalities",
+		"bitv": "9.2.5.1",
+		"title": "Alternativen für komplexe Zeiger-Gesten",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "12-01-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "12-02",
+		"category": "Input modalities",
+		"bitv": "9.2.5.2",
+		"title": "Zeigergesten-Eingaben können abgebrochen oder widerrufen werden",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "12-02-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit", "mouse"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "12-03",
+		"category": "Input modalities",
+		"bitv": "9.2.5.3",
+		"title": "Sichtbare Beschriftung Teil des zugänglichen Namens",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "12-03-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit", "forms", "button", "links"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "12-04",
+		"category": "Input modalities",
+		"bitv": "9.2.5.4",
+		"title": "Alternativen für Bewegungsaktivierung",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "12-04-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "12-05",
+		"category": "Input modalities",
+		"bitv": "9.2.5.7",
+		"title": "Ziehbewegungen",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "12-05-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "12-06",
+		"category": "Input modalities",
+		"bitv": "9.2.5.8",
+		"title": "Zielgröße (Minimum)",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "12-06-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit", "ui-element"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "13-01",
+		"category": "Readable",
+		"bitv": "9.3.1.1",
+		"title": "Hauptsprache angegeben",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "13-01-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit", "language"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "13-02",
+		"category": "Readable",
+		"bitv": "9.3.1.2",
+		"title": "Anderssprachige Wörter und Abschnitte ausgezeichnet",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "13-02-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit", "language"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "14-01",
+		"category": "Predictable",
+		"bitv": "9.3.2.1",
+		"title": "Keine unerwartete Kontextänderung bei Fokus",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "14-01-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit", "keyboard", "forms"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "14-02",
+		"category": "Predictable",
+		"bitv": "9.3.2.2",
+		"title": "Keine unerwartete Kontextänderung bei Eingabe",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "14-02-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit", "keyboard", "forms"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "14-03",
+		"category": "Predictable",
+		"bitv": "9.3.2.3",
+		"title": "Konsistente Navigation",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "14-03-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "14-04",
+		"category": "Predictable",
+		"bitv": "9.3.2.4",
+		"title": "Konsistente Bezeichnung",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "14-04-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "14-05",
+		"category": "Predictable",
+		"bitv": "9.3.2.6",
+		"title": "Konsistente Hilfe",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "14-05-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "15-01",
+		"category": "Eingabeunterstützung",
+		"bitv": "9.3.3.1",
+		"title": "Fehlererkennung",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "15-01-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit", "forms"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "15-02",
+		"category": "Eingabeunterstützung",
+		"bitv": "9.3.3.2",
+		"title": "Beschriftungen von Formularelementen vorhanden",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "15-02-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit", "forms"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "15-03",
+		"category": "Eingabeunterstützung",
+		"bitv": "9.3.3.3",
+		"title": "Hilfe bei Fehlern",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "15-03-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit", "forms"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "15-04",
+		"category": "Eingabeunterstützung",
+		"bitv": "9.3.3.4",
+		"title": "Fehlervermeidung wird unterstützt",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "15-04-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit", "forms"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "15-05",
+		"category": "Eingabeunterstützung",
+		"bitv": "9.3.3.7",
+		"title": "Redundanter Eintrag",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "15-05-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit", "forms"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "15-06",
+		"category": "Eingabeunterstützung",
+		"bitv": "9.3.3.8",
+		"title": "Zugängliche Authentifizierung (Minimum)",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "15-06-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit", "forms"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "16-01",
+		"category": "Kompatibel",
+		"bitv": "9.4.1.1",
+		"title": "Korrekte Syntax",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "16-01-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "16-02",
+		"category": "Kompatibel",
+		"bitv": "9.4.1.2",
+		"title": "Name, Rolle, Wert verfügbar",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "16-02-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "16-03",
+		"category": "Kompatibel",
+		"bitv": "9.4.1.3",
+		"title": "Statusmeldungen programmatisch verfügbar",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "16-03-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "17-01",
+		"category": "Benutzerpräferenzen",
+		"bitv": "11.7",
+		"title": "Benutzerdefinierte Einstellungen",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "17-01-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "18-01",
+		"category": "Autorenwerkzeuge",
+		"bitv": "11.8.2",
+		"title": "Barrierefreie Erstellung von Inhalten",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "18-01-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "18-02",
+		"category": "Autorenwerkzeuge",
+		"bitv": "11.8.3",
+		"title": "Erhaltung von Barrierefreiheitsinformationen bei Transformation",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "18-02-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "18-03",
+		"category": "Autorenwerkzeuge",
+		"bitv": "11.8.4",
+		"title": "Reparaturassistenz",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "18-03-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "18-04",
+		"category": "Autorenwerkzeuge",
+		"bitv": "11.8.5",
+		"title": "Vorlagen",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "18-04-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "19-01",
+		"category": "Dokumentation und Support",
+		"bitv": "12.1.1",
+		"title": "Dokumentation von Kompatibilität und Barrierefreiheit",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "19-01-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "19-02",
+		"category": "Dokumentation und Support",
+		"bitv": "12.1.2",
+		"title": "Barrierefreie Dokumentation",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "19-02-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "19-03",
+		"category": "Dokumentation und Support",
+		"bitv": "12.2.2",
+		"title": "Technischer Support",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "19-03-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "19-04",
+		"category": "Dokumentation und Support",
+		"bitv": "12.2.3",
+		"title": "Effektive Kommunikation",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "19-04-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "19-05",
+		"category": "Dokumentation und Support",
+		"bitv": "12.2.4",
+		"title": "Vom Support bereitgestellte Dokumentation",
+		"applicable": "applicable",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "19-05-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
 				}
 			]
 		}
