@@ -12,6 +12,21 @@
 			"testing"
 		],
 		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "01-01-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			],
 			"uxtasks": [
 				{
 					"roletitle": "User Experience"
