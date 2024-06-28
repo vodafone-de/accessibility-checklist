@@ -245,12 +245,432 @@
 		}
 	},
 	{
+		"id": "01-03",
+		"category": "Generic requirements",
+		"bitv": "5.4",
+		"title": "Erhaltung von Barrierefreiheitsinformationen bei Konvertierung",
+		"applicable": "applicable",
+		"roles": [
+			"ux",
+			"dev"
+		],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "01-03-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
 		"id": "02-01",
 		"category": "Two-way voice communication",
 		"bitv": "6.1",
 		"title": "Audiobandbreite für Sprache",
 		"applicable": "N/A",
-		"roles": []
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "02-01-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "02-02",
+		"category": "Two-way voice communication",
+		"bitv": "6.2.1.1",
+		"title": "Textkommunikation in Echtzeit",
+		"applicable": "N/A",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "02-02-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "02-03",
+		"category": "Two-way voice communication",
+		"bitv": "6.2.1.2",
+		"title": "Gleichzeitige Sprache und Text",
+		"applicable": "N/A",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "02-03-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "02-04",
+		"category": "Two-way voice communication",
+		"bitv": "6.2.2.1",
+		"title": "Visuell unterscheidbare Anzeige von Textnachrichten",
+		"applicable": "N/A",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "02-04-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "02-05",
+		"category": "Two-way voice communication",
+		"bitv": "6.2.2.2",
+		"title": "Programmatisch unterscheidbare Anzeige von Textnachrichten",
+		"applicable": "N/A",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "02-05-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "02-06",
+		"category": "Two-way voice communication",
+		"bitv": "6.2.2.3",
+		"title": "Sprecheridentifizierung",
+		"applicable": "N/A",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "02-06-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "02-07",
+		"category": "Two-way voice communication",
+		"bitv": "6.2.2.4",
+		"title": "Echtzeitindikation von Sprachkommunikation",
+		"applicable": "N/A",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "02-07-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "02-08",
+		"category": "Two-way voice communication",
+		"bitv": "6.2.3",
+		"title": "Interoperabilität von Echtzeit-Textkommunikation",
+		"applicable": "N/A",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "02-08-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "02-09",
+		"category": "Two-way voice communication",
+		"bitv": "6.2.4",
+		"title": "Reaktionsgeschwindigkeit der Echtzeit-Textkommunikation",
+		"applicable": "N/A",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "02-09-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "02-10",
+		"category": "Two-way voice communication",
+		"bitv": "6.3",
+		"title": "Anrufer-Identifizierung",
+		"applicable": "N/A",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "02-10-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "02-11",
+		"category": "Two-way voice communication",
+		"bitv": "6.4",
+		"title": "Alternativen zu sprachbasierten Diensten",
+		"applicable": "N/A",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "02-11-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "02-12",
+		"category": "Two-way voice communication",
+		"bitv": "6.5.2",
+		"title": "Auflösung bei Videotelefonie",
+		"applicable": "N/A",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "02-12-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "02-13",
+		"category": "Two-way voice communication",
+		"bitv": "6.5.3",
+		"title": "Bildwiederholfrequenz bei Videotelefonie",
+		"applicable": "N/A",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "02-13-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "02-14",
+		"category": "Two-way voice communication",
+		"bitv": "6.5.4",
+		"title": "Synchronität bei Videotelefonie",
+		"applicable": "N/A",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "02-14-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "02-15",
+		"category": "Two-way voice communication",
+		"bitv": "6.5.5",
+		"title": "Visuelle Anzeige von Audio-Aktivität",
+		"applicable": "N/A",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "02-15-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
+	},
+	{
+		"id": "02-16",
+		"category": "Two-way voice communication",
+		"bitv": "6.5.6",
+		"title": "Sprecher-Anzeige für Gebärdensprachen-Kommunikation",
+		"applicable": "N/A",
+		"roles": [],
+		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "02-16-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			]
+		}
 	},
 	{
 		"id": "03-01",

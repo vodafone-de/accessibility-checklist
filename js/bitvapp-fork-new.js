@@ -1307,6 +1307,12 @@ $(document).ready(() => {
                 <button class="dropdown-button-roles overlayKeyOff">Select Roles <svg aria-hidden="true" class="dropdown-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"></polyline></svg></button>
                 <div class="dropdown-content-roles">
                     <ul id="filter-options" class="dropdownContainer">
+                    <li>
+                            <label>
+                            <input type="checkbox" value="filter_audit" data-filter_id="audit">
+                            <span class="ws10-text">Accessibility Audit</span>
+                            </label>
+                        </li>
                         <li>
                             <label>
                             <input type="checkbox" value="filter_cm" data-filter_id="cm">
