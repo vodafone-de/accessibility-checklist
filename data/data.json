@@ -166,6 +166,21 @@
 			"dev"
 		],
 		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "01-02-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			],
 			"uxtasks": [
 				{
 					"roletitle": "User Experience"
@@ -250,6 +265,21 @@
 			"testing"
 		],
 		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "03-01-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			],
 			"uxtasks": [
 				{
 					"roletitle": "User Experience"
@@ -336,6 +366,21 @@
 			"testing"
 		],
 		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "04-01-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			],
 			"uxtasks": [
 				{
 					"roletitle": "User Experience"
@@ -462,6 +507,21 @@
 			"testing"
 		],
 		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "04-02-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			],
 			"uxtasks": [
 				{
 					"roletitle": "User Experience"
@@ -599,6 +659,21 @@
 			"testing"
 		],
 		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "04-03-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			],
 			"uxtasks": [
 				{
 					"roletitle": "User Experience"
@@ -680,6 +755,21 @@
 			"testing"
 		],
 		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "04-04-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			],
 			"uxtasks": [
 				{
 					"roletitle": "User Experience"
@@ -829,6 +919,21 @@
 			"testing"
 		],
 		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "05-01-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			],
 			"devtasks": [
 				{
 					"roletitle": "Frontend Development"
@@ -974,6 +1079,21 @@
 			"testing"
 		],
 		"dods": {
+			"audittasks": [
+				{
+					"roletitle": "Audit"
+				},
+				{
+					"taskid": "05-02-audit-01",
+					"taskdesc": "",
+					"tasktype": "",
+					"taskcat": [
+						"audit"
+					],
+					"testtool": "Figma Plugin xyz",
+					"testmethod": "Test it like it's hot"
+				}
+			],
 			"devtasks": [
 				{
 					"roletitle": "Frontend Development"
