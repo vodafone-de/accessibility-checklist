@@ -573,6 +573,39 @@ display:block;
   border-radius: 6px;
 }
 
+#audit-image-upload-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+#audit-image-upload-area {
+  border: 1px dashed #0d0d0d;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 10px;
+  border-radius: 6px;
+}
+
+
+#audit-image-upload-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
+#audit-image-upload-area {
+  border: 1px dashed #0d0d0d;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  margin-bottom: 10px;
+  border-radius: 6px;
+}
+
+
+
 
 
 #image-upload-area span {
@@ -609,6 +642,44 @@ display:block;
   padding: 2px;
 }
 
+
+
+
+#audit-image-upload-area span {
+  font-size: 24px;
+  color: #0d0d0d;
+}
+
+.audit-image-thumbnails {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.audit-image-thumbnail-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.audit-image-thumbnail {
+  width: 90px;
+  height: 60px;
+  object-fit: cover;
+  border: 1px solid #ccc;
+  padding: 2px;
+}
+
+.audit-image-thumbnail {
+  width: 305px;
+  height: 190px;
+  object-fit: cover;
+  border: 1px solid #ccc;
+  padding: 2px;
+}
+
+
 .comment-images-container {
   display: flex;
   gap: 8px;
@@ -628,7 +699,31 @@ display:block;
 }
 
 
-
+.form-text-input {
+  width: 100%;
+  min-height: 48px;
+  resize: none;
+  overflow: hidden;
+  box-sizing: border-box;
+  border-radius: 6px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #262626;
+  width: 100%;
+  display: block;
+  background-color: #fff;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: #0d0d0d;
+  font-weight: 400;
+  font-family: "Vodafone", "Arial", sans-serif;
+  font-size: 18px;
+  padding: 11px 56px 11px 16px;
+  font-size: 20px;
+  line-height: 24px;
+}
 
 
 .ws10-form-element-block {
@@ -708,6 +803,7 @@ input {
 
 
 
+
 .ws10-form-textarea {
   font-weight: 400;
   line-height: 1.5;
@@ -718,6 +814,7 @@ input {
 
 .ws10-form-textarea .ws10-form-textarea__textarea {
   resize: vertical;
+  box-sizing: border-box;
 }
 
 .ws10-form-textarea .ws10-form-textarea__textarea {
@@ -2985,11 +3082,9 @@ stroke: #c40000;
 
 
 .toolBar {
-
-display: grid;
-grid-template-columns: 85%;
-gap: 0px 8px;
-
+  display:flex;
+  align-self: center;
+ gap:8px;
 }
 
 .toolBarItem {
