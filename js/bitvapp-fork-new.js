@@ -97,11 +97,14 @@ $(document).ready(function() {
                 state.images.push(src);
             }
         });
-        
+
+
         localStorage.setItem('filterState', JSON.stringify(state));
+
     }
     
     function loadState() {
+        const auditInfo = JSON.parse(localStorage.getItem('auditInfo'));
         const state = JSON.parse(localStorage.getItem('filterState'));
         const savedText = localStorage.getItem('comment-title');
     
@@ -174,6 +177,7 @@ $(document).ready(function() {
 
     function clearState() {
         if (confirm('All checked elements will be reset. This can not be undone. Are you sure you want to proceed?')) {
+            localStorage.removeItem('auditInfo');
             localStorage.removeItem('filterState');
             location.reload();
         }
