@@ -6,6 +6,7 @@
     <title>Accessibility Self Assessment – BITV Checklist</title>
     <script src="js/jquery-3.6.0.min.js"></script>
     <script src="js/bitvapp-fork-new.js"></script>
+    <!-- <script src="js/controls.js"></script> -->
     <script src="js/projectInfoOverlay.js"></script>
     <link rel="stylesheet" href="css/bitvapp.css">
     <link rel="stylesheet" href="css/a11y-checklist-dark.css">
@@ -95,15 +96,31 @@
                 </ul>
                 
         </div>
-        <div class="toolBar">
-        <button class="ws10-alt-button toolBarItem overlayKeyOff" id="clear-state">Reset session</button>
-        <button class="ws10-secondary-button toolBarItem overlayKeyOff" id="addAuditInfo">+ Add audit info</button>
-        <input type="file" id="load-file-input" style="display: none;">
+<!--         <div class="toolBar">
+            <button id="dropdownButton" aria-haspopup="true" aria-expanded="false">Menü öffnen</button>
+               <div id="dropdownMenu" class="dropdown-content" role="menu" aria-hidden="true">
+                <button class="ws10-alt-button toolBarItem overlayKeyOff" id="clear-state" role="menuitem">Reset session</button>
+                <button class="ws10-secondary-button toolBarItem overlayKeyOff" id="addAuditInfo" role="menuitem">+ Add audit info</button>
+                <input type="file" id="load-file-input" style="display: none;">
+                <button id="save-data-button" role="menuitem">Daten speichern</button>
+                <button id="load-data-button" role="menuitem">Daten laden</button>
+              </div>
+        </div> -->
 
-    <!-- Schaltflächen zum Speichern und Laden der Daten -->
-    <button id="save-data-button">Daten speichern</button>
-    <button id="load-data-button">Daten laden</button>
+        <div class="toolBar">
+          <button id="toolBarDropdownButton" aria-haspopup="true" aria-expanded="false">Menü öffnen</button>
+          <div id="toolBarDropdownMenu" class="toolBarDropdown-content" role="menu" aria-hidden="true">
+              <button class="ws10-alt-button toolBarItem overlayKeyOff" id="clear-state" role="menuitem">Reset session</button>
+              <button class="ws10-secondary-button toolBarItem overlayKeyOff" id="addAuditInfo" role="menuitem">+ Add audit info</button>
+              <input type="file" id="load-file-input" style="display: none;">
+              <button id="save-data-button" role="menuitem">Daten speichern</button>
+              <button id="load-data-button" role="menuitem">Daten laden</button>
+          </div>
       </div>
+      
+      
+      
+
     </div>
     </div>
 </nav>

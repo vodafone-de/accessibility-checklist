@@ -1,7 +1,5 @@
 $(document).ready(function() {
 
-    
-
         function updateQueryString() {
         const selectedFilters = $('#filter-options input[type="checkbox"]:checked').map(function() {
             return $(this).data('filter_id');
@@ -52,12 +50,6 @@ $(document).ready(function() {
     }
     
 
-
-
-
-
-
-    
     function saveState() {
         const state = {
             selectedRadios: {},
@@ -183,6 +175,64 @@ $(document).ready(function() {
         }
     }
 
+   // Anpassung für Dropdown-Menü in der Toolbar
+  
+    const dropdownButton = document.getElementById('toolBarDropdownButton');
+    const dropdownMenu = document.getElementById('toolBarDropdownMenu');
+
+    dropdownButton.addEventListener('click', () => {
+        const isExpanded = dropdownButton.getAttribute('aria-expanded') === 'true';
+        dropdownButton.setAttribute('aria-expanded', !isExpanded);
+        dropdownMenu.style.display = isExpanded ? 'none' : 'block';
+        dropdownMenu.setAttribute('aria-hidden', isExpanded);
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+            closeDropdown();
+        }
+    });
+
+    document.addEventListener('click', (event) => {
+        if (!dropdownButton.contains(event.target) && !dropdownMenu.contains(event.target)) {
+            closeDropdown();
+        }
+    });
+
+    function closeDropdown() {
+        dropdownButton.setAttribute('aria-expanded', 'false');
+        dropdownMenu.style.display = 'none';
+        dropdownMenu.setAttribute('aria-hidden', 'true');
+    }
+
+    // Keyboard accessibility for dropdown items
+    const menuItems = dropdownMenu.querySelectorAll('button');
+    let currentIndex = -1;
+
+    dropdownButton.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowDown') {
+            event.preventDefault();
+            currentIndex = (currentIndex + 1) % menuItems.length;
+            menuItems[currentIndex].focus();
+        }
+    });
+
+    menuItems.forEach((item, index) => {
+        item.addEventListener('keydown', (event) => {
+            if (event.key === 'ArrowDown') {
+                event.preventDefault();
+                currentIndex = (index + 1) % menuItems.length;
+                menuItems[currentIndex].focus();
+            } else if (event.key === 'ArrowUp') {
+                event.preventDefault();
+                currentIndex = (index - 1 + menuItems.length) % menuItems.length;
+                menuItems[currentIndex].focus();
+            }
+        });
+    });
+
+    
+
     function createImageThumbnail(src, forComment = false) {
         if (forComment) {
             return `<div class="imageThumbnail"><img src="${src}" class="uploadedImageThumbnail" tabindex="0" aria-label="View image in lightbox"></div>`;
@@ -204,6 +254,10 @@ $(document).ready(function() {
         }
     }
     
+
+
+
+
 
     function adjustAccordionHeight(element) {
         const accordionContent = element.closest('.accordion-content');
@@ -768,8 +822,8 @@ class CommentOverlay {
 
     getButtonsTemplate() {
         return `
-            <div class="comment-buttons-container">
-                <button id="save-comment" class="ws10-secondary-button element50percentwidth">Save</button>
+            <div class="overlayButtonsContainer">
+                <button id="save-comment" class="ws10-secondary-button element50percentwidth">Save & Close</button>
                 <button id="cancel-comment" class="ws10-alt-button element50percentwidth">Cancel</button>
             </div>
         `;
@@ -1268,9 +1322,6 @@ function loadState() {
 $(document).ready(() => {
     new CommentOverlay();
 });
-
-
-
 
 
 

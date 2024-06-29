@@ -130,7 +130,7 @@ class AuditInfoOverlay {
 
     getButtonsTemplate() {
         return `
-            <div class="audit-buttons-container">
+            <div class="overlayButtonsContainer">
                 <button id="save-audit-info" class="ws10-secondary-button element50percentwidth">Save & Close</button>
                 <button id="cancel-audit-info" class="ws10-alt-button element50percentwidth">Cancel</button>
             </div>
