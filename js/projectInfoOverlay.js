@@ -13,6 +13,8 @@ class AuditInfoOverlay {
     bindEvents() {
         const events = [
             { selector: '#addAuditInfo', event: 'click', handler: this.showAddAuditOverlay },
+            { selector: '#editAuditInfo', event: 'click', handler: this.showAddAuditOverlay },
+            { selector: '#deleteAuditInfo', event: 'click', handler: this.deleteAuditInfo },
             { selector: '#save-audit-info', event: 'click', handler: this.saveAuditInfo },
             { selector: '#cancel-audit-info', event: 'click', handler: this.hideOverlay },
             { selector: '#audit-image-upload-area', event: 'click', handler: () => $('#audit-image-upload-input').click() },
@@ -200,16 +202,36 @@ class AuditInfoOverlay {
     displayAuditInfo(data) {
         const container = $('#audit-info-container');
         container.html(`
-            <div>
-                <h4>Audit Information</h4>
-                <p><strong>Audit name:</strong> ${data.auditName}</p>
-                <p><strong>Audited by:</strong> ${data.auditedBy}</p>
-                <p><strong>E-mail address:</strong> ${data.emailAddress}</p>
-                <p><strong>Audit object:</strong> ${data.auditObject}</p>
-                <p><strong>URL:</strong> <a href="${data.url}" target="_blank">${data.url}</a></p>
-                <p><strong>Further information:</strong> ${data.furtherInfo}</p>
-                <div class="audit-images">
+            <div class="projectInfo cardFlat">
+                <div class="infoContainer">
+                    <h4>Audit Information</h4>
+                    <p><strong>Audit name:</strong> ${data.auditName}</p>
+                    <p><strong>Audited by:</strong> ${data.auditedBy}</p>
+                    <p><strong>E-mail address:</strong> ${data.emailAddress}</p>
+                    <p><strong>Audit object:</strong> ${data.auditObject}</p>
+                    <p><strong>URL:</strong> <a href="${data.url}" target="_blank">${data.url}</a></p>
+                    <p><strong>Further information:</strong> ${data.furtherInfo}</p>
+                    <div class="audit-images">
                     ${data.images.map(src => `<img src="${src}" class="audit-image-thumbnail">`).join('')}
+                    </div>
+                </div>
+                <div class="infoTools">
+                <button id="editAuditInfo" class="overlayKeyOff commentFunctionsButtons">
+                <svg class="icon24" id="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+                    <polyline class="st0" points="147.38 70.11 121.57 44.02 36.49 129.1 27.77 164 62.67 155.27 147.38 70.11" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"></polyline>
+                    <path class="st0" d="M121.57,44l12.79-12.79a11,11,0,0,1,15.63,0l18,18.22L147.38,70.11" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"></path>
+                    <line class="st0" x1="39.55" y1="126.1" x2="65.73" y2="152.28" fill="none" stroke-miterlimit="10" stroke-width="8"></line>
+                </svg>
+            </button>
+            <button id="deleteAuditInfo" class="overlayKeyOff commentFunctionsButtons">
+                <svg id="icon" class="icon24" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+                    <line class="st0" x1="112.01" y1="144" x2="112.01" y2="72" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"></line>
+                    <line class="st0" x1="80.01" y1="144" x2="80.01" y2="72" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"></line>
+                    <line class="st0" x1="36" y1="44" x2="156" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"></line>
+                    <path class="st0" d="M120,44V36a16,16,0,0,0-16-16H88A16,16,0,0,0,72,36v8" fill="none" stroke-linejoin="round" stroke-width="8"></path>
+                    <path class="st0" d="M148,44V156a16,16,0,0,1-16,16H60a16,16,0,0,1-16-16V44" fill="none" stroke-linejoin="round" stroke-width="8"></path>
+                </svg>
+            </button>
                 </div>
             </div>
         `);
@@ -262,6 +284,17 @@ class AuditInfoOverlay {
         e.stopPropagation();
         $(e.currentTarget).closest('.image-thumbnail-container').remove();
     }
+
+    deleteAuditInfo(e) {
+        e.stopPropagation();
+        if (confirm('Are you sure you want to delete the Audit information?')) {
+            const AuditInfoItem = $(e.currentTarget).closest('.projectInfo');
+            AuditInfoItem.remove();
+            localStorage.removeItem('auditInfo');
+            $('#addAuditInfo').text('Add audit info');
+        }
+    }
+    
 
     openLightbox(e) {
         const src = $(e.currentTarget).attr('src');
