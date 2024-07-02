@@ -90,7 +90,7 @@ $(document).ready(function() {
             }
         });
 
-
+       
         localStorage.setItem('filterState', JSON.stringify(state));
 
     }
@@ -638,7 +638,6 @@ $(document).ready(function() {
     
 
     $('.slide-in-overlay-container').on('click', '.ws10-overlay__backdrop', function() {
-        console.log("Backdrop clicked"); // Debug-Ausgabe
         $('#slide-in-overlay').removeClass('ws10-in').css('display', 'none'); /*.css('transform', 'translateX(100%)') */
         $('.ws10-overlay__backdrop').css('transform', 'translateX(100%)').removeClass('ws10-in').css('display', 'none');
         $('body').removeAttr('aria-hidden', 'true').removeAttr("tabindex", -1).removeClass('ws10-no-scroll');
@@ -1328,7 +1327,10 @@ $(document).ready(() => {
 
     $.getJSON('https://vodafone-de.github.io/accessibility-checklist/data/data.json', function(jsonArray) {
         const groupedByCategory = {};
+        const groupedByCategorySummary = {};
         const taskCategories = new Set();
+
+        localStorage.setItem('jsonArray', JSON.stringify(jsonArray));
 
         jsonArray.forEach(item => {
             const category = item.category;
@@ -1732,6 +1734,113 @@ $(document).ready(() => {
             $('#content-wrapper').append(container);
         });
 
+
+        // SummaryOverlay (start)
+
+
+        function createSummaryOverlay() {
+            const overlay = $(`
+                <div class="slide-in-overlay-container">
+                    <div id="summary-overlay" class="ws10-overlay ws10-fade ws10-overlay--spacing ws10-overlay--align-left" style="display: none;">
+                        <div class="ws10-overlay__container">
+                            <div class="ws10-overlay__close">
+                                <button id="close-summary-overlay" aria-label="Close" class="ws10-button-icon-only ws10-button-icon-only--tertiary ws10-button-icon-only--floating ws10-button-icon-only--standard close">
+                                    <svg id="close-icon" class="ws10-button-icon-only__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+                                        <line class="st0" x1="44" y1="148" x2="148" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.67"></line>
+                                        <line class="st0" x1="148" y1="148" x2="44" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.67"></line>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div id="summaryOverlay-content" class="summary-overlay-content ws10-overlay__content"></div>
+                        </div>
+                    </div>
+                    <div class="ws10-overlay__backdrop-white ws10-fade ws10-in" style="display: none;"></div>
+                </div>
+            `);
+            
+            $('body').append(overlay);
+
+
+            Object.keys(groupedByCategory).forEach(category => {
+                const summaryOverlaycontainer = $('<div class="summary">');
+    
+                const sumCatTitle = $('<h4>').text(category).addClass('');
+    
+                summaryOverlaycontainer.append(sumCatTitle);
+    
+                groupedByCategory[category].forEach(item => {
+                    const innerDiv = $('<div>').attr('id', item.id).addClass('');
+                    innerDiv.append(`<span class="bitvnr">${item.bitv}</span>`);
+                    innerDiv.append(`<h5>${item.title}</h5>`).addClass('itemtitle');
+    
+                    if (item.dods) {
+                        const dodsDiv = $('<div>').addClass('dods');
+                        Object.keys(item.dods).forEach(taskType => {
+                            const tasks = item.dods[taskType];
+    
+                            let roletitle = '';
+                            if (tasks.length > 0 && tasks[0].roletitle) {
+                                roletitle = tasks[0].roletitle;
+                            }
+    
+                            if (roletitle) {
+                                const roletitleDiv = $('<div>').addClass('roletitle').text(roletitle);
+                                dodsDiv.append(roletitleDiv);
+                            }
+                            
+                            const ul = $('<ul>').addClass(taskType + 'tasks');
+                            tasks.forEach(task => {
+                                if (task.taskid) {
+                                    const li = $('<li>').attr('id', task.taskid).addClass('taskContainer');
+                                    li.append($('<div>').addClass('taskdesc').html(task.taskdesc));
+        
+                                    ul.append(li);
+                                }
+                                
+                            });
+                            
+                            dodsDiv.append(ul);
+                        });
+                        
+                        innerDiv.append(dodsDiv);
+                    }
+                    summaryOverlaycontainer.append(innerDiv);
+                });
+              
+    
+                $('#summaryOverlay-content').append(summaryOverlaycontainer);
+    
+                console.log("summaryOverlaycontainer: ", groupedByCategorySummary); // Debug-Ausgabe
+            });
+
+
+        }
+
+
+
+
+
+        function openSummaryOverlay() {
+    
+    
+                $('#summary-overlay').css('display', 'block').addClass('ws10-in');
+                $('.ws10-overlay__backdrop-white').css('display', 'block').addClass('ws10-in');
+                $('.ws10-overlay__container').css('transform', 'translateX(-50%) translateY(-50%)');
+                $('body').addClass('ws10-no-scroll');
+            
+        }
+
+        $(document).on('click', '#open-summary-overlay', function() {
+            openSummaryOverlay();
+        });
+
+
+        createSummaryOverlay();
+
+
+        // SummaryOverlay (end)
+
+
         $('#content-wrapper').append($('<div>').attr('id', 'counter'));
         updateCounter();
         adjustAccordionHeights();
@@ -1767,6 +1876,10 @@ $(document).ready(() => {
 
   
         
+
+
+
+    
      
         
 
