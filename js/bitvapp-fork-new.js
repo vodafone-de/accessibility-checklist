@@ -1737,7 +1737,6 @@ $(document).ready(() => {
 
         // SummaryOverlay (start)
 
-
         function createSummaryOverlay() {
             const overlay = $(`
                 <div class="slide-in-overlay-container">
@@ -1759,84 +1758,102 @@ $(document).ready(() => {
             `);
             
             $('body').append(overlay);
-
-
+        }
+        
+        function updateSummaryOverlay() {
+            const summaryOverlayContent = $('#summaryOverlay-content');
+            summaryOverlayContent.empty();
+            
+            const notReviewed = $('<div class="summary"><h4>Nicht bearbeitet:</h4><ul id="not-reviewed-list"></ul></div>');
+            const reviewed = $('<div class="summary"><h4>Geprüft:</h4><ul id="reviewed-list"></ul></div>');
+            const notApplicable = $('<div class="summary"><h4>Nicht anwendbar:</h4><ul id="not-applicable-list"></ul></div>');
+        
+            summaryOverlayContent.append(notReviewed).append(reviewed).append(notApplicable);
+        
             Object.keys(groupedByCategory).forEach(category => {
-                const summaryOverlaycontainer = $('<div class="summary">');
-    
-                const sumCatTitle = $('<h4>').text(category).addClass('');
-    
-                summaryOverlaycontainer.append(sumCatTitle);
-    
                 groupedByCategory[category].forEach(item => {
-                    const innerDiv = $('<div>').attr('id', item.id).addClass('');
-                    innerDiv.append(`<span class="bitvnr">${item.bitv}</span>`);
-                    innerDiv.append(`<h5>${item.title}</h5>`).addClass('itemtitle');
-    
                     if (item.dods) {
                         const dodsDiv = $('<div>').addClass('dods');
+
                         Object.keys(item.dods).forEach(taskType => {
                             const tasks = item.dods[taskType];
-    
-                            let roletitle = '';
+                            
+                            tasks.forEach(task => {
+                                const li = $('<li>').text(item.title);
+                                let roletitle = '';
                             if (tasks.length > 0 && tasks[0].roletitle) {
                                 roletitle = tasks[0].roletitle;
                             }
-    
-                            if (roletitle) {
-                                const roletitleDiv = $('<div>').addClass('roletitle').text(roletitle);
-                                dodsDiv.append(roletitleDiv);
-                            }
-                            
-                            const ul = $('<ul>').addClass(taskType + 'tasks');
-                            tasks.forEach(task => {
+
+                            const roletitleDiv = $('<div>').text(roletitle);
                                 if (task.taskid) {
-                                    const li = $('<li>').attr('id', task.taskid).addClass('taskContainer');
-                                    li.append($('<div>').addClass('taskdesc').html(task.taskdesc));
-        
-                                    ul.append(li);
+                                    li.attr('id', task.taskid);
+                                    const applicableCheckbox = $(`#applicable_${task.taskid}`);
+                                    if (!applicableCheckbox.is(':checked')) {
+                                        // Nicht anwendbar
+                                        li.append(roletitleDiv);
+                                        li.append(`<div>Task: ${task.taskdesc}</div>`);
+                                        $('#not-applicable-list').append(li);
+                                    } else {
+                                        const passRadio = $(`#pass_${task.taskid}`);
+                                        const failRadio = $(`#fail_${task.taskid}`);
+                                        if (passRadio.is(':checked')) {
+                                            // Geprüft: pass
+                                            li.append(': pass');
+                                            li.append(roletitleDiv);
+                                            li.append(`<div>Task: ${task.taskdesc}</div>`);
+                                            $('#reviewed-list').append(li);
+                                        } else if (failRadio.is(':checked')) {
+                                            // Geprüft: fail
+                                            li.append(': fail');
+                                            li.append(roletitleDiv);
+                                            li.append(`<div>Task: ${task.taskdesc}</div>`);
+                                            $('#reviewed-list').append(li);
+                                        } else {
+                                            // Nicht bearbeitet
+                                            li.append(roletitleDiv);
+                                            li.append(`<div>Task: ${task.taskdesc}</div>`);
+                                            $('#not-reviewed-list').append(li);
+                                        }
+                                    }
                                 }
-                                
                             });
-                            
-                            dodsDiv.append(ul);
                         });
-                        
-                        innerDiv.append(dodsDiv);
                     }
-                    summaryOverlaycontainer.append(innerDiv);
                 });
-              
-    
-                $('#summaryOverlay-content').append(summaryOverlaycontainer);
-    
-                console.log("summaryOverlaycontainer: ", groupedByCategorySummary); // Debug-Ausgabe
             });
-
-
         }
-
-
-
-
-
+        
         function openSummaryOverlay() {
-    
-    
-                $('#summary-overlay').css('display', 'block').addClass('ws10-in');
-                $('.ws10-overlay__backdrop-white').css('display', 'block').addClass('ws10-in');
-                $('.ws10-overlay__container').css('transform', 'translateX(-50%) translateY(-50%)');
-                $('body').addClass('ws10-no-scroll');
-            
+            updateSummaryOverlay();
+            $('#summary-overlay').css('display', 'block').addClass('ws10-in');
+            $('.ws10-overlay__backdrop-white').css('display', 'block').addClass('ws10-in');
+            $('.ws10-overlay__container').css('transform', 'translateX(-50%) translateY(-50%)');
+            $('body').addClass('ws10-no-scroll');
         }
-
+        
         $(document).on('click', '#open-summary-overlay', function() {
             openSummaryOverlay();
         });
-
-
+        
+        function closeSummaryOverlay() {
+            $('#summary-overlay').removeClass('ws10-in').css('display', 'none');
+            $('.ws10-overlay__backdrop-white').removeClass('ws10-in').css('display', 'none');
+            $('body').removeClass('ws10-no-scroll');
+            $('.ws10-overlay__container').css('transform', 'translateX(0) translateY(0)');
+        }
+        
+        $(document).on('click', '#close-summary-overlay', function() {
+            closeSummaryOverlay();
+        });
+        
+        $(document).on('click', '.ws10-overlay__backdrop-white', function() {
+            closeSummaryOverlay();
+        });
+        
         createSummaryOverlay();
-
+        
+        
 
         // SummaryOverlay (end)
 
