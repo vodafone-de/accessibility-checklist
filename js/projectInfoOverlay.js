@@ -13,6 +13,7 @@ class AuditInfoOverlay {
     bindEvents() {
         const events = [
             { selector: '#addAuditInfo', event: 'click', handler: this.showAddAuditOverlay },
+            { selector: '#startAudit', event: 'click', handler: this.showAddAuditOverlay },
             { selector: '#editAuditInfo', event: 'click', handler: this.showAddAuditOverlay },
             { selector: '#deleteAuditInfo', event: 'click', handler: this.deleteAuditInfo },
             { selector: '#save-audit-info', event: 'click', handler: this.saveAuditInfo },
@@ -194,10 +195,12 @@ class AuditInfoOverlay {
             images: this.getUploadedImages(),
         };
         $('#addAuditInfo').text('Edit audit info');
+        $('#startAudit').replaceWith('<div class="auditTitle">' + auditData.auditName + '</div>');
         localStorage.setItem('auditInfo', JSON.stringify(auditData));
         this.displayAuditInfo(auditData);
         this.hideOverlay();
     }
+    
 
     displayAuditInfo(data) {
         const container = $('#audit-info-container');
@@ -292,6 +295,7 @@ class AuditInfoOverlay {
             AuditInfoItem.remove();
             localStorage.removeItem('auditInfo');
             $('#addAuditInfo').text('Add audit info');
+            $('#startAudit').replaceWith('<button class="ws10-secondary-button overlayKeyOff" id="startAudit">Start new Audit</button>');
         }
     }
     
@@ -317,6 +321,7 @@ class AuditInfoOverlay {
         if (auditData) {
             this.displayAuditInfo(auditData);
             $('#addAuditInfo').text('Edit audit info');
+            $('#startAudit').replaceWith('<div class="auditTitle">' + auditData.auditName + '</div>');
         }
     }
 

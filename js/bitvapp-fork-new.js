@@ -90,7 +90,7 @@ $(document).ready(function() {
             }
         });
 
-
+       
         localStorage.setItem('filterState', JSON.stringify(state));
 
     }
@@ -638,7 +638,6 @@ $(document).ready(function() {
     
 
     $('.slide-in-overlay-container').on('click', '.ws10-overlay__backdrop', function() {
-        console.log("Backdrop clicked"); // Debug-Ausgabe
         $('#slide-in-overlay').removeClass('ws10-in').css('display', 'none'); /*.css('transform', 'translateX(100%)') */
         $('.ws10-overlay__backdrop').css('transform', 'translateX(100%)').removeClass('ws10-in').css('display', 'none');
         $('body').removeAttr('aria-hidden', 'true').removeAttr("tabindex", -1).removeClass('ws10-no-scroll');
@@ -1328,7 +1327,10 @@ $(document).ready(() => {
 
     $.getJSON('https://vodafone-de.github.io/accessibility-checklist/data/data.json', function(jsonArray) {
         const groupedByCategory = {};
+        const groupedByCategorySummary = {};
         const taskCategories = new Set();
+
+        localStorage.setItem('jsonArray', JSON.stringify(jsonArray));
 
         jsonArray.forEach(item => {
             const category = item.category;
@@ -1732,6 +1734,130 @@ $(document).ready(() => {
             $('#content-wrapper').append(container);
         });
 
+
+        // SummaryOverlay (start)
+
+        function createSummaryOverlay() {
+            const overlay = $(`
+                <div class="slide-in-overlay-container">
+                    <div id="summary-overlay" class="ws10-overlay ws10-fade ws10-overlay--spacing ws10-overlay--align-left" style="display: none;">
+                        <div class="ws10-overlay__container">
+                            <div class="ws10-overlay__close">
+                                <button id="close-summary-overlay" aria-label="Close" class="ws10-button-icon-only ws10-button-icon-only--tertiary ws10-button-icon-only--floating ws10-button-icon-only--standard close">
+                                    <svg id="close-icon" class="ws10-button-icon-only__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
+                                        <line class="st0" x1="44" y1="148" x2="148" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.67"></line>
+                                        <line class="st0" x1="148" y1="148" x2="44" y2="44" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8.67"></line>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div id="summaryOverlay-content" class="summary-overlay-content ws10-overlay__content"></div>
+                        </div>
+                    </div>
+                    <div class="ws10-overlay__backdrop-white ws10-fade ws10-in" style="display: none;"></div>
+                </div>
+            `);
+            
+            $('body').append(overlay);
+        }
+        
+        function updateSummaryOverlay() {
+            const summaryOverlayContent = $('#summaryOverlay-content');
+            summaryOverlayContent.empty();
+            
+            const notReviewed = $('<div class="summary"><h4>Nicht bearbeitet:</h4><ul id="not-reviewed-list"></ul></div>');
+            const reviewed = $('<div class="summary"><h4>Geprüft:</h4><ul id="reviewed-list"></ul></div>');
+            const notApplicable = $('<div class="summary"><h4>Nicht anwendbar:</h4><ul id="not-applicable-list"></ul></div>');
+        
+            summaryOverlayContent.append(notReviewed).append(reviewed).append(notApplicable);
+        
+            Object.keys(groupedByCategory).forEach(category => {
+                groupedByCategory[category].forEach(item => {
+                    if (item.dods) {
+                        const dodsDiv = $('<div>').addClass('dods');
+
+                        Object.keys(item.dods).forEach(taskType => {
+                            const tasks = item.dods[taskType];
+                            
+                            tasks.forEach(task => {
+                                const li = $('<li>').text(item.title);
+                                let roletitle = '';
+                            if (tasks.length > 0 && tasks[0].roletitle) {
+                                roletitle = tasks[0].roletitle;
+                            }
+
+                            const roletitleDiv = $('<div>').text(roletitle);
+                                if (task.taskid) {
+                                    li.attr('id', task.taskid);
+                                    const applicableCheckbox = $(`#applicable_${task.taskid}`);
+                                    if (!applicableCheckbox.is(':checked')) {
+                                        // Nicht anwendbar
+                                        li.append(roletitleDiv);
+                                        li.append(`<div>Task: ${task.taskdesc}</div>`);
+                                        $('#not-applicable-list').append(li);
+                                    } else {
+                                        const passRadio = $(`#pass_${task.taskid}`);
+                                        const failRadio = $(`#fail_${task.taskid}`);
+                                        if (passRadio.is(':checked')) {
+                                            // Geprüft: pass
+                                            li.append(': pass');
+                                            li.append(roletitleDiv);
+                                            li.append(`<div>Task: ${task.taskdesc}</div>`);
+                                            $('#reviewed-list').append(li);
+                                        } else if (failRadio.is(':checked')) {
+                                            // Geprüft: fail
+                                            li.append(': fail');
+                                            li.append(roletitleDiv);
+                                            li.append(`<div>Task: ${task.taskdesc}</div>`);
+                                            $('#reviewed-list').append(li);
+                                        } else {
+                                            // Nicht bearbeitet
+                                            li.append(roletitleDiv);
+                                            li.append(`<div>Task: ${task.taskdesc}</div>`);
+                                            $('#not-reviewed-list').append(li);
+                                        }
+                                    }
+                                }
+                            });
+                        });
+                    }
+                });
+            });
+        }
+        
+        function openSummaryOverlay() {
+            updateSummaryOverlay();
+            $('#summary-overlay').css('display', 'block').addClass('ws10-in');
+            $('.ws10-overlay__backdrop-white').css('display', 'block').addClass('ws10-in');
+            $('.ws10-overlay__container').css('transform', 'translateX(-50%) translateY(-50%)');
+            $('body').addClass('ws10-no-scroll');
+        }
+        
+        $(document).on('click', '#open-summary-overlay', function() {
+            openSummaryOverlay();
+        });
+        
+        function closeSummaryOverlay() {
+            $('#summary-overlay').removeClass('ws10-in').css('display', 'none');
+            $('.ws10-overlay__backdrop-white').removeClass('ws10-in').css('display', 'none');
+            $('body').removeClass('ws10-no-scroll');
+            $('.ws10-overlay__container').css('transform', 'translateX(0) translateY(0)');
+        }
+        
+        $(document).on('click', '#close-summary-overlay', function() {
+            closeSummaryOverlay();
+        });
+        
+        $(document).on('click', '.ws10-overlay__backdrop-white', function() {
+            closeSummaryOverlay();
+        });
+        
+        createSummaryOverlay();
+        
+        
+
+        // SummaryOverlay (end)
+
+
         $('#content-wrapper').append($('<div>').attr('id', 'counter'));
         updateCounter();
         adjustAccordionHeights();
@@ -1767,6 +1893,10 @@ $(document).ready(() => {
 
   
         
+
+
+
+    
      
         
 

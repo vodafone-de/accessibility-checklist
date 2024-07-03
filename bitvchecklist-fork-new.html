@@ -96,18 +96,9 @@
                 </ul>
                 
         </div>
-<!--         <div class="toolBar">
-            <button id="dropdownButton" aria-haspopup="true" aria-expanded="false">Menü öffnen</button>
-               <div id="dropdownMenu" class="dropdown-content" role="menu" aria-hidden="true">
-                <button class="ws10-alt-button toolBarItem overlayKeyOff" id="clear-state" role="menuitem">Reset session</button>
-                <button class="ws10-secondary-button toolBarItem overlayKeyOff" id="addAuditInfo" role="menuitem">+ Add audit info</button>
-                <input type="file" id="load-file-input" style="display: none;">
-                <button id="save-data-button" role="menuitem">Daten speichern</button>
-                <button id="load-data-button" role="menuitem">Daten laden</button>
-              </div>
-        </div> -->
 
         <div class="toolBar">
+          <button class="ws10-secondary-button overlayKeyOff" id="startAudit">Start new Audit</button>
           <button id="toolBarDropdownButton" class="ws10-alt-button overlayKeyOff" aria-haspopup="true" aria-expanded="false">Menu <svg class="menu-icon" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
             <line class="st0" x1="172" y1="148" x2="20" y2="148" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/>
             <line class="st0" x1="172" y1="96" x2="20" y2="96" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"/>
@@ -120,6 +111,7 @@
               <input type="file" id="load-file-input" style="display: none;">
               <button id="save-data-button" role="menuitem">Save data to file</button>
               <button id="load-data-button" role="menuitem">Load data from file</button>
+              <button id="open-summary-overlay" class="ws10-secondary-button">Summary Overview</button>
           </div>
       </div>
       
@@ -344,5 +336,6 @@
  
 </footer>
 <script src="js/saveDataToFile.js"></script>
+<!-- <script src="js/summaryOverlay.js"></script> -->
 </body>
 </html>

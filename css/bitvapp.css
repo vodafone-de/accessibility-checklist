@@ -428,7 +428,11 @@ stroke: #fff!important;
   transition: all 0.4s ease 0s;
 }
 
-
+.auditTitle {
+  align-self: center;
+  font-size: 16px;
+  font-weight: 700;
+}
 
  .changelog-versions { margin-top: 20px;
   margin-bottom: 8px; }
@@ -1015,7 +1019,47 @@ input {
   background-color: #ddd;
 }
 
+/* Styles for the summary overlay */
 
+#summaryOverlay {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  background-color: rgba(0,0,0,0.7);
+  overflow: hidden;
+  transition: height 0.5s ease;
+  z-index: 1;
+}
+
+.summaryOverlay-content {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: 20px;
+  background-color: #fff;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+height: 100%;
+margin-top: 10px;
+padding-top: 50px;
+  max-width: 1050px;
+}
+
+.close-button {
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  float: right;
+}
+
+
+  .ws10-fade.ws10-overlay--slide .ws10-overlay__Summarycontainer {
+      position: absolute;
+      transition: right .5s cubic-bezier(0.47, 0, 0.745, 0.715);
+      transform: none;
+  }
 
 
 
@@ -1715,9 +1759,9 @@ input {
   z-index: 1001;
   position: fixed;
   top: 0;
+  left: 0;
   right: 0;
   bottom: 0;
-  width: 419px;
   margin-left: auto; /* Aligns the container to the right */
   z-index: 1001; /* Soll über dem Backdrop liegen */
 }
@@ -1894,6 +1938,19 @@ input {
   background-color: rgba(0, 0, 0, 0.5); /* Optional: halbtransparenter Hintergrund */
   display: none; /* Start with display: none */
   z-index: 1000; /* Soll unter dem Overlay-Container liegen */
+}
+
+
+.ws10-overlay__backdrop-white {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  content: "";
+  background-color: rgb(255, 255, 255); 
+  display: none; 
+  z-index: 1000; 
 }
 
 
