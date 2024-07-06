@@ -281,6 +281,7 @@ $(document).ready(function() {
                 <div class="progress-bar pass" style="width: ${passPercentage}%;">${passPercentage}%</div>
                 <div class="progress-bar fail" style="width: ${failPercentage}%;">${failPercentage}%</div>
             </div>
+            <button id="open-summary-overlay" class="ws10-secondary-button">Summary Overview</button>
             <p>Pass checked: ${passCount} | Fail checked: ${failCount}</p>
         `);
     }
@@ -1736,7 +1737,6 @@ $(document).ready(() => {
 
 
         // SummaryOverlay (start)
-
         function createSummaryOverlay() {
             const overlay = $(`
                 <div class="slide-in-overlay-container">
@@ -1751,47 +1751,83 @@ $(document).ready(() => {
                                 </button>
                             </div>
                             <div id="summaryOverlay-content" class="summary-overlay-content ws10-overlay__content"></div>
+                            <button id="export-pdf" class="ws10-button ws10-button--primary">Export as PDF</button>
                         </div>
                     </div>
                     <div class="ws10-overlay__backdrop-white ws10-fade ws10-in" style="display: none;"></div>
                 </div>
             `);
-            
+        
             $('body').append(overlay);
         }
         
         function updateSummaryOverlay() {
             const summaryOverlayContent = $('#summaryOverlay-content');
             summaryOverlayContent.empty();
+        
+            // Laden der Audit-Informationen
+            const auditData = JSON.parse(localStorage.getItem('auditInfo'));
+            if (auditData) {
+                const summarySectionInfo = $(`<div class="summarySectionInfo"></div>`);
+                const auditInfoSection = $(`
+                    <div class="projectInfo cardFlat">
+                        <div class="infoContainer">
+                            <h4>Audit Information</h4>
+                            <p><strong>Audit name:</strong> ${auditData.auditName}</p>
+                            <p><strong>Audited by:</strong> ${auditData.auditedBy}</p>
+                            <p><strong>E-mail address:</strong> ${auditData.emailAddress}</p>
+                            <p><strong>Audit object:</strong> ${auditData.auditObject}</p>
+                            <p><strong>URL:</strong> <a href="${auditData.url}" target="_blank">${auditData.url}</a></p>
+                            <p><strong>Further information:</strong> ${auditData.furtherInfo}</p>
+                            <div class="audit-images">
+                            ${auditData.images.map(src => `<img src="${src}" class="audit-image-thumbnail">`).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `);
+                summarySectionInfo.append(auditInfoSection);
+                summaryOverlayContent.append(summarySectionInfo);
+            }
             
+            const summarySectionIssues = $(`<div class="summarySectionIssues"></div>`);
+            const summarySectionTasks = $(`<div class="summarySectionTasks"></div>`);
+
+            const violations = $('<div class="summary"><h5>Violation:</h5></div>');
+            const recommendations = $('<div class="summary"><h5>Recommendation:</h5></div>');
+            const infos = $('<div class="summary"><h5>Info:</h5></div>');
+        
+            summarySectionIssues.append(violations).append(recommendations).append(infos);
+            summaryOverlayContent.append(summarySectionIssues);
+        
+
+
             const notReviewed = $('<div class="summary"><h4>Nicht bearbeitet:</h4><ul id="not-reviewed-list"></ul></div>');
             const reviewed = $('<div class="summary"><h4>Geprüft:</h4><ul id="reviewed-list"></ul></div>');
             const notApplicable = $('<div class="summary"><h4>Nicht anwendbar:</h4><ul id="not-applicable-list"></ul></div>');
         
-            summaryOverlayContent.append(notReviewed).append(reviewed).append(notApplicable);
+            summarySectionTasks.append(reviewed).append(notApplicable).append(notReviewed);
+            summaryOverlayContent.append(summarySectionTasks);
+            
+        
+            const groupedComments = {
+                violation: {},
+                recommendation: {},
+                info: {}
+            };
         
             Object.keys(groupedByCategory).forEach(category => {
                 groupedByCategory[category].forEach(item => {
                     if (item.dods) {
-                        const dodsDiv = $('<div>').addClass('dods');
-
                         Object.keys(item.dods).forEach(taskType => {
                             const tasks = item.dods[taskType];
-                            
                             tasks.forEach(task => {
                                 const li = $('<li>').text(item.title);
-                                let roletitle = '';
-                            if (tasks.length > 0 && tasks[0].roletitle) {
-                                roletitle = tasks[0].roletitle;
-                            }
-
-                            const roletitleDiv = $('<div>').text(roletitle);
                                 if (task.taskid) {
                                     li.attr('id', task.taskid);
                                     const applicableCheckbox = $(`#applicable_${task.taskid}`);
                                     if (!applicableCheckbox.is(':checked')) {
                                         // Nicht anwendbar
-                                        li.append(roletitleDiv);
+                                        li.append(`<div>Role: ${task.roletitle}</div>`);
                                         li.append(`<div>Task: ${task.taskdesc}</div>`);
                                         $('#not-applicable-list').append(li);
                                     } else {
@@ -1800,20 +1836,38 @@ $(document).ready(() => {
                                         if (passRadio.is(':checked')) {
                                             // Geprüft: pass
                                             li.append(': pass');
-                                            li.append(roletitleDiv);
+                                            li.append(`<div>Role: ${task.roletitle}</div>`);
                                             li.append(`<div>Task: ${task.taskdesc}</div>`);
                                             $('#reviewed-list').append(li);
                                         } else if (failRadio.is(':checked')) {
                                             // Geprüft: fail
                                             li.append(': fail');
-                                            li.append(roletitleDiv);
+                                            li.append(`<div>Role: ${task.roletitle}</div>`);
                                             li.append(`<div>Task: ${task.taskdesc}</div>`);
                                             $('#reviewed-list').append(li);
                                         } else {
                                             // Nicht bearbeitet
-                                            li.append(roletitleDiv);
+                                            li.append(`<div>Role: ${task.roletitle}</div>`);
                                             li.append(`<div>Task: ${task.taskdesc}</div>`);
                                             $('#not-reviewed-list').append(li);
+        
+                                            // Kommentare hinzufügen
+                                            const comments = JSON.parse(localStorage.getItem('filterState')).comments[task.taskid] || [];
+                                            comments.forEach(comment => {
+                                                if (!groupedComments[comment.type][item.bitv + item.title]) {
+                                                    groupedComments[comment.type][item.bitv + item.title] = {
+                                                        bitv: item.bitv,
+                                                        title: item.title,
+                                                        comments: []
+                                                    };
+                                                }
+                                                groupedComments[comment.type][item.bitv + item.title].comments.push({
+                                                    title: comment.title,
+                                                    text: comment.text,
+                                                    type: comment.type,
+                                                    images: comment.images
+                                                });
+                                            });
                                         }
                                     }
                                 }
@@ -1822,6 +1876,53 @@ $(document).ready(() => {
                     }
                 });
             });
+        
+             // Anpassung der groupedComments für Anker und Links
+    Object.keys(groupedComments).forEach(commentType => {
+        Object.keys(groupedComments[commentType]).forEach(key => {
+            const group = groupedComments[commentType][key];
+            const header = $(`<div>${group.bitv} - ${group.title}</div>`);
+            const ul = $('<ul>');
+            group.comments.forEach(comment => {
+                const anchorId = `${group.bitv}-${comment.type}-${comment.title}`.replace(/\s+/g, '-');
+                ul.append($('<li>').append(`<a href="#${anchorId}">${comment.title}</a>`));
+            });
+            if (commentType === 'violation') {
+                violations.append(header).append(ul);
+            } else if (commentType === 'recommendation') {
+                recommendations.append(header).append(ul);
+            } else if (commentType === 'info') {
+                infos.append(header).append(ul);
+            }
+        });
+    });
+
+    // Detailed Comments Section
+    const detailedCommentsSection = $('<div class="summarySectionDetailed"><h4>Detailed Comments:</h4></div>');
+
+    Object.keys(groupedComments).forEach(commentType => {
+        Object.keys(groupedComments[commentType]).forEach(key => {
+            const group = groupedComments[commentType][key];
+            group.comments.forEach(comment => {
+                const anchorId = `${group.bitv}-${comment.type}-${comment.title}`.replace(/\s+/g, '-');
+                const commentBlock = $(`
+                    <div id="${anchorId}">
+                        <strong>${comment.title}</strong>
+                        <div>Prüfschritt: ${group.bitv} - ${group.title}</div>
+                        <div>Art des Issues: ${comment.type}</div>
+                        <div>${comment.text}</div>
+                        <div class="comment-images">${comment.images.map(src => `<img src="${src}" class="comment-image-thumbnail">`).join('')}</div>
+                    </div>
+                `);
+                detailedCommentsSection.append(commentBlock);
+            });
+        });
+    });
+
+
+            summarySectionIssues.append(detailedCommentsSection);
+           
+            
         }
         
         function openSummaryOverlay() {
@@ -1849,6 +1950,29 @@ $(document).ready(() => {
         
         $(document).on('click', '.ws10-overlay__backdrop-white', function() {
             closeSummaryOverlay();
+        });
+
+
+        function exportSummaryToPDF() {
+            const element = document.getElementById('summaryOverlay-content');
+            const opt = {
+                margin:       0.5,
+                filename:     'summary.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2 },
+                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+        
+            // Using html2pdf to generate the PDF
+            html2pdf().from(element).set(opt).toPdf().get('pdf').then(function (pdf) {
+                // Ensure text remains selectable and accessible
+                pdf.setFont('times', 'normal');
+                pdf.save('summary.pdf');
+            });
+        }
+        
+        $(document).on('click', '#export-pdf', function() {
+            exportSummaryToPDF();
         });
         
         createSummaryOverlay();
