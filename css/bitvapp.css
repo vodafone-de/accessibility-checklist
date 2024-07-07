@@ -1948,7 +1948,7 @@ padding-top: 50px;
   bottom: 0;
   right: 0;
   content: "";
-  background-color: rgb(255, 255, 255); 
+  background-color: #f4f4f4; 
   display: none; 
   z-index: 1000; 
 }

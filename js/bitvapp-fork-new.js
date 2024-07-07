@@ -1770,7 +1770,7 @@ $(document).ready(() => {
             if (auditData) {
                 const summarySectionInfo = $(`<div class="summarySectionInfo"></div>`);
                 const auditInfoSection = $(`
-                    <div class="projectInfo cardFlat">
+                    <div class="projectInfo">
                         <div class="infoContainer">
                             <h4>Audit Information</h4>
                             <p><strong>Audit name:</strong> ${auditData.auditName}</p>
@@ -1801,9 +1801,9 @@ $(document).ready(() => {
         
 
 
-            const notReviewed = $('<div class="summary"><h4>Nicht bearbeitet:</h4><ul id="not-reviewed-list"></ul></div>');
-            const reviewed = $('<div class="summary"><h4>Geprüft:</h4><ul id="reviewed-list"></ul></div>');
-            const notApplicable = $('<div class="summary"><h4>Nicht anwendbar:</h4><ul id="not-applicable-list"></ul></div>');
+            const notReviewed = $('<div class="summary"><h5>Nicht bearbeitet:</h5><ul id="not-reviewed-list"></ul></div>');
+            const reviewed = $('<div class="summary"><h5>Geprüft:</h5><ul id="reviewed-list"></ul></div>');
+            const notApplicable = $('<div class="summary"><h5>Nicht anwendbar:</h5><ul id="not-applicable-list"></ul></div>');
         
             summarySectionTasks.append(reviewed).append(notApplicable).append(notReviewed);
             summaryOverlayContent.append(summarySectionTasks);
