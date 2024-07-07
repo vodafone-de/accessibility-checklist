@@ -1951,31 +1951,32 @@ $(document).ready(() => {
         $(document).on('click', '.ws10-overlay__backdrop-white', function() {
             closeSummaryOverlay();
         });
+        
+        createSummaryOverlay();
 
 
         function exportSummaryToPDF() {
-            const element = document.getElementById('summaryOverlay-content');
-            const opt = {
-                margin:       0.5,
-                filename:     'summary.pdf',
-                image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { scale: 2 },
-                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-            };
-        
-            // Using html2pdf to generate the PDF
-            html2pdf().from(element).set(opt).toPdf().get('pdf').then(function (pdf) {
-                // Ensure text remains selectable and accessible
-                pdf.setFont('times', 'normal');
-                pdf.save('summary.pdf');
+            const summaryOverlayContent = $('#summaryOverlay-content').html();
+            $.ajax({
+                type: 'POST',
+                url: 'http://onlinedepartment.de/pdf/generate_pdf.php',
+                data: { html: summaryOverlayContent },
+                success: function(response, status, xhr) {
+                    const blob = new Blob([response], { type: 'application/pdf' });
+                    const link = document.createElement('a');
+                    link.href = window.URL.createObjectURL(blob);
+                    link.download = 'summary.pdf';
+                    link.click();
+                },
+                error: function(xhr, status, error) {
+                    console.error('PDF generation failed:', error);
+                }
             });
         }
         
         $(document).on('click', '#export-pdf', function() {
             exportSummaryToPDF();
         });
-        
-        createSummaryOverlay();
         
         
 
