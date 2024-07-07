@@ -1959,7 +1959,7 @@ $(document).ready(() => {
             const summaryOverlayContent = $('#summaryOverlay-content').html();
             $.ajax({
                 type: 'POST',
-                url: 'http://onlinedepartment.de/pdf/generate_pdf.php',
+                url: 'https://onlinedepartment.de/pdf/generate_pdf.php',
                 data: { html: summaryOverlayContent },
                 success: function(response, status, xhr) {
                     const blob = new Blob([response], { type: 'application/pdf' });
