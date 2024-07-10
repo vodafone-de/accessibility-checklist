@@ -833,7 +833,29 @@ input {
   box-shadow: none;
 }
 
+.summary {
+  margin-bottom: 24px;
+}
 
+.summaryCommentsHead {
+
+  margin-bottom: 24px;
+  border-bottom: 1px solid;
+
+}
+
+.summaryHead {
+
+  margin-bottom: 24px;
+
+}
+
+.summarySectionDetailed img {
+
+width: 70%;
+
+
+}
 
 
 .ws10-form-textarea {

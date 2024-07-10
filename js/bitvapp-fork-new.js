@@ -275,7 +275,7 @@ $(document).ready(function() {
         const totalSelected = passCount + failCount;
         const passPercentage = totalSelected > 0 ? (passCount / totalSelected * 100).toFixed(2) : 0;
         const failPercentage = totalSelected > 0 ? (failCount / totalSelected * 100).toFixed(2) : 0;
-        $('#counter').html(`
+        const counterContent = `
             <p>${selectedRadioCount} tasks done | ${Math.max(fieldsetCount, 0)} tasks left</p>
             <div class="progress">
                 <div class="progress-bar pass" style="width: ${passPercentage}%;">${passPercentage}%</div>
@@ -283,8 +283,14 @@ $(document).ready(function() {
             </div>
             <button id="open-summary-overlay" class="ws10-secondary-button">Summary Overview</button>
             <p>Pass checked: ${passCount} | Fail checked: ${failCount}</p>
-        `);
+        `;
+    
+        $('#counter').html(counterContent);
+       // Klone den Inhalt von #counter und füge ihn in #summaryOverlay-content ein
+    const clonedContent = $('#counter').clone();
+    $('#summaryOverlay-content').html(clonedContent.html());
     }
+    
 
     function updateFieldsetCountAfterFiltering() {
         const visibleFieldsets = $('.accordion-content .dods ul li:visible');
@@ -1751,7 +1757,6 @@ $(document).ready(() => {
                                 </button>
                             </div>
                             <div id="summaryOverlay-content" class="summary-overlay-content ws10-overlay__content"></div>
-                            <button id="export-pdf" class="ws10-button ws10-button--primary">Export as PDF</button>
                         </div>
                     </div>
                     <div class="ws10-overlay__backdrop-white ws10-fade ws10-in" style="display: none;"></div>
@@ -1764,13 +1769,16 @@ $(document).ready(() => {
         function updateSummaryOverlay() {
             const summaryOverlayContent = $('#summaryOverlay-content');
             summaryOverlayContent.empty();
+
+            const counterContent = $('#counter').clone();
+            
+
         
-            // Laden der Audit-Informationen
+            // Load Audit Information
             const auditData = JSON.parse(localStorage.getItem('auditInfo'));
             if (auditData) {
-                const summarySectionInfo = $(`<div class="summarySectionInfo"></div>`);
                 const auditInfoSection = $(`
-                    <div class="projectInfo">
+                    <div class="projectInfo cardFlat">
                         <div class="infoContainer">
                             <h4>Audit Information</h4>
                             <p><strong>Audit name:</strong> ${auditData.auditName}</p>
@@ -1785,29 +1793,28 @@ $(document).ready(() => {
                         </div>
                     </div>
                 `);
-                summarySectionInfo.append(auditInfoSection);
-                summaryOverlayContent.append(summarySectionInfo);
+                summaryOverlayContent.append(auditInfoSection);
             }
-            
-            const summarySectionIssues = $(`<div class="summarySectionIssues"></div>`);
-            const summarySectionTasks = $(`<div class="summarySectionTasks"></div>`);
-
+        
+            const summaryHead = $('<div class="summaryHead"><h2>Test results according to test criteria</h2></div>');
+            const summaryComments = $('<div class="summaryCommentsHead"><h5>Summary Comments</h5></div>');
+        
             const violations = $('<div class="summary"><h5>Violation:</h5></div>');
             const recommendations = $('<div class="summary"><h5>Recommendation:</h5></div>');
             const infos = $('<div class="summary"><h5>Info:</h5></div>');
         
-            summarySectionIssues.append(violations).append(recommendations).append(infos);
-            summaryOverlayContent.append(summarySectionIssues);
-        
+            summaryOverlayContent.append(summaryHead);
+            summaryComments.append(violations).append(recommendations).append(infos);
+            summaryOverlayContent.append(summaryComments);
 
 
-            const notReviewed = $('<div class="summary"><h5>Nicht bearbeitet:</h5><ul id="not-reviewed-list"></ul></div>');
-            const reviewed = $('<div class="summary"><h5>Geprüft:</h5><ul id="reviewed-list"></ul></div>');
-            const notApplicable = $('<div class="summary"><h5>Nicht anwendbar:</h5><ul id="not-applicable-list"></ul></div>');
+            summaryOverlayContent.append(counterContent.html());
         
-            summarySectionTasks.append(reviewed).append(notApplicable).append(notReviewed);
-            summaryOverlayContent.append(summarySectionTasks);
-            
+            const notReviewed = $('<div class="summary"><h4>Nicht bearbeitet:</h4><ul id="not-reviewed-list"></ul></div>');
+            const reviewed = $('<div class="summary"><h4>Geprüft:</h4><ul id="reviewed-list"></ul></div>');
+            const notApplicable = $('<div class="summary"><h4>Nicht anwendbar:</h4><ul id="not-applicable-list"></ul></div>');
+        
+            summaryOverlayContent.append(reviewed).append(notApplicable).append(notReviewed);
         
             const groupedComments = {
                 violation: {},
@@ -1850,25 +1857,25 @@ $(document).ready(() => {
                                             li.append(`<div>Role: ${task.roletitle}</div>`);
                                             li.append(`<div>Task: ${task.taskdesc}</div>`);
                                             $('#not-reviewed-list').append(li);
-        
-                                            // Kommentare hinzufügen
-                                            const comments = JSON.parse(localStorage.getItem('filterState')).comments[task.taskid] || [];
-                                            comments.forEach(comment => {
-                                                if (!groupedComments[comment.type][item.bitv + item.title]) {
-                                                    groupedComments[comment.type][item.bitv + item.title] = {
-                                                        bitv: item.bitv,
-                                                        title: item.title,
-                                                        comments: []
-                                                    };
-                                                }
-                                                groupedComments[comment.type][item.bitv + item.title].comments.push({
-                                                    title: comment.title,
-                                                    text: comment.text,
-                                                    type: comment.type,
-                                                    images: comment.images
-                                                });
-                                            });
                                         }
+                                        
+                                        // Kommentare hinzufügen, unabhängig vom Radio-Button-Status
+                                        const comments = JSON.parse(localStorage.getItem('filterState')).comments[task.taskid] || [];
+                                        comments.forEach(comment => {
+                                            if (!groupedComments[comment.type][item.bitv + item.title]) {
+                                                groupedComments[comment.type][item.bitv + item.title] = {
+                                                    bitv: item.bitv,
+                                                    title: item.title,
+                                                    comments: []
+                                                };
+                                            }
+                                            groupedComments[comment.type][item.bitv + item.title].comments.push({
+                                                title: comment.title,
+                                                text: comment.text,
+                                                type: comment.type,
+                                                images: comment.images
+                                            });
+                                        });
                                     }
                                 }
                             });
@@ -1877,51 +1884,50 @@ $(document).ready(() => {
                 });
             });
         
-             // Anpassung der groupedComments für Anker und Links
-    Object.keys(groupedComments).forEach(commentType => {
-        Object.keys(groupedComments[commentType]).forEach(key => {
-            const group = groupedComments[commentType][key];
-            const header = $(`<div>${group.bitv} - ${group.title}</div>`);
-            const ul = $('<ul>');
-            group.comments.forEach(comment => {
-                const anchorId = `${group.bitv}-${comment.type}-${comment.title}`.replace(/\s+/g, '-');
-                ul.append($('<li>').append(`<a href="#${anchorId}">${comment.title}</a>`));
+            // Anpassung der groupedComments für Anker und Links
+            Object.keys(groupedComments).forEach(commentType => {
+                Object.keys(groupedComments[commentType]).forEach(key => {
+                    const group = groupedComments[commentType][key];
+                    const header = $(`<div>${group.bitv} - ${group.title}</div>`);
+                    const ul = $('<ul>');
+                    group.comments.forEach(comment => {
+                        const anchorId = `${group.bitv}-${comment.type}-${comment.title}`.replace(/\s+/g, '-');
+                        ul.append($('<li>').append(`<a href="#${anchorId}">${comment.title}</a>`));
+                    });
+                    if (commentType === 'violation') {
+                        violations.append(header).append(ul);
+                    } else if (commentType === 'recommendation') {
+                        recommendations.append(header).append(ul);
+                    } else if (commentType === 'info') {
+                        infos.append(header).append(ul);
+                    }
+                });
             });
-            if (commentType === 'violation') {
-                violations.append(header).append(ul);
-            } else if (commentType === 'recommendation') {
-                recommendations.append(header).append(ul);
-            } else if (commentType === 'info') {
-                infos.append(header).append(ul);
-            }
-        });
-    });
-
-    // Detailed Comments Section
-    const detailedCommentsSection = $('<div class="summarySectionDetailed"><h4>Detailed Comments:</h4></div>');
-
-    Object.keys(groupedComments).forEach(commentType => {
-        Object.keys(groupedComments[commentType]).forEach(key => {
-            const group = groupedComments[commentType][key];
-            group.comments.forEach(comment => {
-                const anchorId = `${group.bitv}-${comment.type}-${comment.title}`.replace(/\s+/g, '-');
-                const commentBlock = $(`
-                    <div id="${anchorId}">
-                        <strong>${comment.title}</strong>
-                        <div>Prüfschritt: ${group.bitv} - ${group.title}</div>
-                        <div>Art des Issues: ${comment.type}</div>
-                        <div>${comment.text}</div>
-                        <div class="comment-images">${comment.images.map(src => `<img src="${src}" class="comment-image-thumbnail">`).join('')}</div>
-                    </div>
-                `);
-                detailedCommentsSection.append(commentBlock);
+        
+            // Detailed Comments Section
+            const detailedCommentsSection = $('<div class="summarySectionDetailed"><h4>Detailed Comments:</h4></div>');
+        
+            Object.keys(groupedComments).forEach(commentType => {
+                Object.keys(groupedComments[commentType]).forEach(key => {
+                    const group = groupedComments[commentType][key];
+                    group.comments.forEach(comment => {
+                        const anchorId = `${group.bitv}-${comment.type}-${comment.title}`.replace(/\s+/g, '-');
+                        const commentBlock = $(`
+                            <div id="${anchorId}">
+                                <strong>${comment.title}</strong>
+                                <div>Prüfschritt: ${group.bitv} - ${group.title}</div>
+                                <div>Art des Issues: ${comment.type}</div>
+                                <div>${comment.text}</div>
+                                <div class="comment-images">${comment.images.map(src => `<img src="${src}" class="comment-image-thumbnail">`).join('')}</div>
+                            </div>
+                        `);
+                        detailedCommentsSection.append(commentBlock);
+                    });
+                });
             });
-        });
-    });
-
-
-            summarySectionIssues.append(detailedCommentsSection);
-           
+        
+            summaryComments.append(detailedCommentsSection);
+            
             
         }
         
@@ -1953,9 +1959,6 @@ $(document).ready(() => {
         });
         
         createSummaryOverlay();
-
-
-       
         
         
 
@@ -1982,6 +1985,7 @@ $(document).ready(() => {
                 fieldset.data('isChecked', true);
             }
         });
+        
 
         $('input[type="checkbox"][id^="applicable_"]:not(:checked)').each(function() {
             const fieldset = $(this).closest('li').find('fieldset');
