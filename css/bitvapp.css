@@ -2604,6 +2604,17 @@ font-size:12px;
   justify-content: space-between;
 }
 
+.summaryCardFlat
+{
+  padding: 20px;
+  margin-bottom: 32px;
+  background: #f4f4f4;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+}
+
+
   .headlineWrapper
 
   {margin-top: 24px;

@@ -277,11 +277,11 @@ $(document).ready(function() {
         const failPercentage = totalSelected > 0 ? (failCount / totalSelected * 100).toFixed(2) : 0;
         const counterContent = `
             <p>${selectedRadioCount} tasks done | ${Math.max(fieldsetCount, 0)} tasks left</p>
+           
             <div class="progress">
                 <div class="progress-bar pass" style="width: ${passPercentage}%;">${passPercentage}%</div>
                 <div class="progress-bar fail" style="width: ${failPercentage}%;">${failPercentage}%</div>
             </div>
-            <button id="open-summary-overlay" class="ws10-secondary-button">Summary Overview</button>
             <p>Pass checked: ${passCount} | Fail checked: ${failCount}</p>
         `;
     
@@ -1771,14 +1771,15 @@ $(document).ready(() => {
             summaryOverlayContent.empty();
 
             const counterContent = $('#counter').clone();
-            
+            const summaryHead = $('<div class="summaryHead"><h2>Test results according to test criteria</h2></div>');
+            summaryOverlayContent.append(summaryHead);
 
         
             // Load Audit Information
             const auditData = JSON.parse(localStorage.getItem('auditInfo'));
             if (auditData) {
                 const auditInfoSection = $(`
-                    <div class="projectInfo cardFlat">
+                    <div class="projectInfo summaryCardFlat">
                         <div class="infoContainer">
                             <h4>Audit Information</h4>
                             <p><strong>Audit name:</strong> ${auditData.auditName}</p>
@@ -1796,25 +1797,20 @@ $(document).ready(() => {
                 summaryOverlayContent.append(auditInfoSection);
             }
         
-            const summaryHead = $('<div class="summaryHead"><h2>Test results according to test criteria</h2></div>');
-            const summaryComments = $('<div class="summaryCommentsHead"><h5>Summary Comments</h5></div>');
+            summaryOverlayContent.append(counterContent.html());
+            
+            const summaryComments = $('<div class="summaryCommentsHead"><h4>Comments/issues</h4></div>');
         
             const violations = $('<div class="summary"><h5>Violation:</h5></div>');
             const recommendations = $('<div class="summary"><h5>Recommendation:</h5></div>');
             const infos = $('<div class="summary"><h5>Info:</h5></div>');
         
-            summaryOverlayContent.append(summaryHead);
+           
             summaryComments.append(violations).append(recommendations).append(infos);
             summaryOverlayContent.append(summaryComments);
 
 
-            summaryOverlayContent.append(counterContent.html());
-        
-            const notReviewed = $('<div class="summary"><h4>Nicht bearbeitet:</h4><ul id="not-reviewed-list"></ul></div>');
-            const reviewed = $('<div class="summary"><h4>Geprüft:</h4><ul id="reviewed-list"></ul></div>');
-            const notApplicable = $('<div class="summary"><h4>Nicht anwendbar:</h4><ul id="not-applicable-list"></ul></div>');
-        
-            summaryOverlayContent.append(reviewed).append(notApplicable).append(notReviewed);
+            
         
             const groupedComments = {
                 violation: {},
@@ -1857,8 +1853,19 @@ $(document).ready(() => {
                                             li.append(`<div>Role: ${task.roletitle}</div>`);
                                             li.append(`<div>Task: ${task.taskdesc}</div>`);
                                             $('#not-reviewed-list').append(li);
+
+                                    
                                         }
                                         
+                                    
+                                    
+            const notReviewed = $('<div class="summary"><h4>Nicht bearbeitet:</h4><ul id="not-reviewed-list"></ul></div>');
+            const reviewed = $('<div class="summary"><h4>Geprüft:</h4><ul id="reviewed-list"></ul></div>');
+            const notApplicable = $('<div class="summary"><h4>Nicht anwendbar:</h4><ul id="not-applicable-list"></ul></div>');
+        
+            summaryOverlayContent.append(reviewed).append(notApplicable).append(notReviewed);
+        
+                                    
                                         // Kommentare hinzufügen, unabhängig vom Radio-Button-Status
                                         const comments = JSON.parse(localStorage.getItem('filterState')).comments[task.taskid] || [];
                                         comments.forEach(comment => {
