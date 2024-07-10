@@ -1809,7 +1809,11 @@ $(document).ready(() => {
             summaryComments.append(violations).append(recommendations).append(infos);
             summaryOverlayContent.append(summaryComments);
 
-
+            const notReviewed = $('<div class="summary"><h4>Nicht bearbeitet:</h4><ul id="not-reviewed-list"></ul></div>');
+            const reviewed = $('<div class="summary"><h4>Geprüft:</h4><ul id="reviewed-list"></ul></div>');
+            const notApplicable = $('<div class="summary"><h4>Nicht anwendbar:</h4><ul id="not-applicable-list"></ul></div>');
+        
+            summaryOverlayContent.append(reviewed).append(notApplicable).append(notReviewed);
             
         
             const groupedComments = {
@@ -1859,11 +1863,7 @@ $(document).ready(() => {
                                         
                                     
                                     
-            const notReviewed = $('<div class="summary"><h4>Nicht bearbeitet:</h4><ul id="not-reviewed-list"></ul></div>');
-            const reviewed = $('<div class="summary"><h4>Geprüft:</h4><ul id="reviewed-list"></ul></div>');
-            const notApplicable = $('<div class="summary"><h4>Nicht anwendbar:</h4><ul id="not-applicable-list"></ul></div>');
-        
-            summaryOverlayContent.append(reviewed).append(notApplicable).append(notReviewed);
+         
         
                                     
                                         // Kommentare hinzufügen, unabhängig vom Radio-Button-Status
