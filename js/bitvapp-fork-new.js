@@ -49,6 +49,7 @@ $(document).ready(function() {
         }
     }
     
+    
 
     function saveState() {
         const state = {
@@ -96,9 +97,7 @@ $(document).ready(function() {
     }
     
     function loadState() {
-        const auditInfo = JSON.parse(localStorage.getItem('auditInfo'));
         const state = JSON.parse(localStorage.getItem('filterState'));
-        const savedText = localStorage.getItem('comment-title');
     
         if (state) {
             for (const [key, value] of Object.entries(state.selectedRadios)) {
@@ -116,7 +115,7 @@ $(document).ready(function() {
                     const commentItem = $(`
                         <div class="comment-item" data-comment-text="${comment.text}" data-comment-type="${comment.type}" data-images='${JSON.stringify(comment.images)}'>
                             <div class="comment-title">${comment.title}</div>
-                            <span class="comment-type-display">${comment.type}</span>
+                            <span class="comment-type-display ${comment.type}">${comment.type}</span>
                             <button class="edit-comment-button overlayKeyOff commentFunctionsButtons">
                                 <svg class="icon24" id="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192">
                                     <polyline class="st0" points="147.38 70.11 121.57 44.02 36.49 129.1 27.77 164 62.67 155.27 147.38 70.11" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"/>
@@ -152,18 +151,15 @@ $(document).ready(function() {
                 }
             }
     
-            if (state.images && state.images.length > 0) {
-                state.images.forEach(src => {
-                    $('#image-thumbnails').append(createImageThumbnail(src));
-                });
-            }
-    
             // Restore the saved comment type
             if (state.commentType) {
                 $('#comment-type').val(state.commentType);
             }
         }
+    
+
     }
+    
           
     
 
@@ -303,6 +299,7 @@ $(document).ready(function() {
         const filters = $('#filter-options input[type="checkbox"]:checked').map(function() {
             return $(this).data('filter_id');
         }).get();
+    
     
         const taskCatFilters = $('#taskcat-dropdown input[type="checkbox"]:checked').map(function() {
             return $(this).val();
@@ -1218,6 +1215,12 @@ class CommentOverlay {
                 $('#comment-type').val(state.commentType);
             }
         }
+
+        $('.accordion-function input[type="checkbox"]').each(function() {
+            const allApplicableChecked = $(this).closest('.ws10-card').find('input[type="checkbox"][id^="applicable_"]').length === 
+                                         $(this).closest('.ws10-card').find('input[type="checkbox"][id^="applicable_"]:checked').length;
+            $(this).prop('checked', allApplicableChecked);
+        });
     }
 
     getCommentButtonsTemplate() {
@@ -1320,7 +1323,14 @@ function loadState() {
             $('#comment-type').val(state.commentType);
         }
     }
+    $('.accordion-function input[type="checkbox"]').each(function() {
+        const allApplicableChecked = $(this).closest('.ws10-card').find('input[type="checkbox"][id^="applicable_"]').length === 
+                                     $(this).closest('.ws10-card').find('input[type="checkbox"][id^="applicable_"]:checked').length;
+        $(this).prop('checked', allApplicableChecked);
+    });
+
 }
+
 
 
 
@@ -1513,14 +1523,42 @@ $(document).ready(() => {
             const container = $('<div>').addClass('ws10-card');
 
             const accordionHeader = $('<div>').addClass('accordion-header');
-            const accordionTitle = $('<h4>').text(category).addClass('accordion-title');
-
             const accordionToggle = $('<div>').addClass('accordion-toggle');
             const svg = $('<svg aria-hidden="true" class="ws10-accordion-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"></polyline></svg>');
             accordionToggle.append(svg);
 
+            
+
+            const selectAllSwitchWrapper = $('<div>'); // .addClass('switch');
+            const selectAllCheckbox = $('<input>').attr({ type: 'checkbox', id: 'select_all_applicable_' + category }).addClass('overlayKeyOff');
+            selectAllCheckbox.prop('checked', true); 
+            // const selectAllSlider = $('<span>').addClass('slider');
+            selectAllSwitchWrapper.append(selectAllCheckbox); // selectAllSwitchWrapper.append(selectAllCheckbox, selectAllSlider);
+            const accordionFunction = $('<div>').addClass('accordion-function');
+            accordionFunction.append(selectAllSwitchWrapper);
+            accordionHeader.append(accordionFunction);
+            
+
+
+            accordionHeader.append(accordionToggle); // Moved the accordionToggle append after accordionFunction
+            
+            // Event-Handler für die Checkbox hinzufügen
+            selectAllCheckbox.on('change', function() {
+                const isChecked = $(this).is(':checked');
+                $(this).closest('.ws10-card').find('input[type="checkbox"][id^="applicable_"]').prop('checked', isChecked).trigger('change');
+            });
+
+
+            const accordionTitle = $('<h4>').text(category).addClass('accordion-title');
+
+          
+
             accordionHeader.append(accordionTitle).append(accordionToggle);
             container.append(accordionHeader);
+            container.append(accordionFunction);
+
+
+            
 
             const accordionContent = $('<div>').addClass('accordion-content').css('max-height', '0');
             groupedByCategory[category].forEach(item => {

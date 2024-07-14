@@ -2247,6 +2247,7 @@ padding-top: 50px;
   background-color: #fff;
   backface-visibility: hidden;
   transform: translateZ(0) scale(1, 1);
+  padding: 16px;
 }
 
 .brix-gn__logo {
