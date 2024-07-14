@@ -44,7 +44,7 @@ class AuditInfoOverlay {
                             </button>
                         </div>
                         <div class="audit-overlay-content ws10-overlay__content">
-                            <h5>Add audit info</h5>
+                            <h5>Audit info</h5>
                             ${this.getAuditFormTemplate()}
                             ${this.getImageUploadTemplate()}
                         </div>
@@ -94,6 +94,7 @@ class AuditInfoOverlay {
                         <option value="app">App</option>
                         <option value="email">E-mail</option>
                     </select>
+                    <span class="ws10-form-select__notification_icon-container"><svg aria-hidden="true" class="ws10-form-select__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"></polyline></svg></span>
                 </div>
             </div>
             <div class="ws10-form-element-block ws10-form-element-block--text-input">
@@ -141,7 +142,7 @@ class AuditInfoOverlay {
     }
 
     getBackdropTemplate() {
-        return `<div class="ws10-overlay__backdrop ws10-fade ws10-in" style="display: none;"></div>`;
+        return `<div class="ws10-overlay__backdropAudit ws10-fade ws10-in"></div>`;
     }
 
     getLightboxTemplate() {
@@ -176,7 +177,7 @@ class AuditInfoOverlay {
             $('#audit-object').val('web-page');
             $('#url').val('');
             $('#further-info').val('');
-            $('#audit-image-upload-area').html('<span>add jpg/png</span>');
+            $('#audit-image-upload-area').html('<a class="imageUploadLink" href="#/"><div><svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="iconRed" d="M3.15753 14.6153C3.01548 14.8521 3.0923 15.1592 3.3291 15.3013C3.56591 15.4433 3.87303 15.3665 4.01508 15.1297L3.15753 14.6153ZM7.5288 8.29998L7.88236 7.94643C7.77348 7.83755 7.62051 7.78491 7.46768 7.80373C7.31486 7.82255 7.17923 7.91074 7.10003 8.04278L7.5288 8.29998ZM13.6763 14.4475L13.3227 14.801C13.518 14.9963 13.8346 14.9963 14.0299 14.801L13.6763 14.4475ZM15.9113 12.2125L16.2648 11.8589C16.0695 11.6637 15.753 11.6637 15.5577 11.8589L15.9113 12.2125ZM20.1465 17.1536C20.3418 17.3488 20.6584 17.3488 20.8537 17.1535C21.0489 16.9582 21.0488 16.6416 20.8536 16.4464L20.1465 17.1536ZM5.5 3.5V3V3.5ZM20.5 3.5H21C21 3.22386 20.7761 3 20.5 3V3.5ZM3.5 18.5H3H3.5ZM4.01508 15.1297L7.95758 8.55718L7.10003 8.04278L3.15753 14.6153L4.01508 15.1297ZM7.17525 8.65353L13.3227 14.801L14.0299 14.0939L7.88236 7.94643L7.17525 8.65353ZM14.0299 14.801L16.2649 12.566L15.5577 11.8589L13.3227 14.0939L14.0299 14.801ZM15.5578 12.5661L20.1465 17.1536L20.8536 16.4464L16.2648 11.8589L15.5578 12.5661ZM16.0625 8C16.0625 8.5868 15.5868 9.0625 15 9.0625V10.0625C16.1391 10.0625 17.0625 9.13909 17.0625 8H16.0625ZM15 9.0625C14.4132 9.0625 13.9375 8.5868 13.9375 8H12.9375C12.9375 9.13909 13.8609 10.0625 15 10.0625V9.0625ZM13.9375 8C13.9375 7.4132 14.4132 6.9375 15 6.9375V5.9375C13.8609 5.9375 12.9375 6.86091 12.9375 8H13.9375ZM15 6.9375C15.5868 6.9375 16.0625 7.4132 16.0625 8H17.0625C17.0625 6.86091 16.1391 5.9375 15 5.9375V6.9375ZM5.5 4H20.5V3H5.5V4ZM20 3.5V18.5H21V3.5H20ZM20 18.5C20 18.8978 19.842 19.2794 19.5607 19.5607L20.2678 20.2678C20.7366 19.7989 21 19.163 21 18.5H20ZM19.5607 19.5607C19.2794 19.842 18.8978 20 18.5 20V21C19.163 21 19.7989 20.7366 20.2678 20.2678L19.5607 19.5607ZM18.5 20H5.5V21H18.5V20ZM5.5 20C5.10218 20 4.72064 19.842 4.43934 19.5607L3.73223 20.2678C4.20107 20.7366 4.83696 21 5.5 21V20ZM4.43934 19.5607C4.15804 19.2794 4 18.8978 4 18.5H3C3 19.163 3.26339 19.7989 3.73223 20.2678L4.43934 19.5607ZM4 18.5V5.5H3V18.5H4ZM4 5.5C4 5.10218 4.15804 4.72064 4.43934 4.43934L3.73223 3.73223C3.26339 4.20107 3 4.83696 3 5.5H4ZM4.43934 4.43934C4.72064 4.15804 5.10218 4 5.5 4V3C4.83696 3 4.20107 3.26339 3.73223 3.73223L4.43934 4.43934Z" fill="#0D0D0D"/><circle class="iconRed" cx="20.5" cy="3.5" r="3.5" fill="#0D0D0D"/><path class="iconRed" d="M19 3.5H22M20.5 2V5" stroke="white" stroke-linecap="round" stroke-linejoin="round"/></svg></div>Browse to add jpg/png</a>');
             $('#audit-image-thumbnails').empty();
         }
         $('#audit-overlay').show();
@@ -312,7 +313,7 @@ class AuditInfoOverlay {
 
     toggleBackdrop(show) {
         const display = show ? 'block' : 'none';
-        $('.ws10-overlay__backdrop').css('display', display);
+        $('.ws10-overlay__backdropAudit').css('display', display);
         $('body').toggleClass('ws10-no-scroll', show);
     }
 

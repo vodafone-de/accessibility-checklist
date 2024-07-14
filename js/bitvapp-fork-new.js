@@ -597,7 +597,7 @@ $(document).ready(function() {
                 <div class="testingOverlay-content ws10-overlay__content"></div>
             </div>
         </div>
-        <div class="ws10-overlay__backdrop ws10-fade ws10-in" style="display: none;">
+        <div class="ws10-overlay__backdropTest ws10-fade ws10-in" style="display: none;">
     </div>`);
     
     $('body').append(overlay);
@@ -624,7 +624,7 @@ $(document).ready(function() {
                 </div>
             `);
             $('#slide-in-overlay').css('display', 'block').addClass('ws10-in'); /*.css('transform', 'translateX(0)')*/
-            $('.ws10-overlay__backdrop').css('display', 'block').addClass('ws10-in').css('transform', 'translateX(0)');
+            $('.ws10-overlay__backdropTest').css('display', 'block').addClass('ws10-in').css('transform', 'translateX(0)');
             $('body').attr('aria-hidden', 'true').attr("tabindex", -1).addClass('ws10-no-scroll');
             $('footer').css('display', 'none');
             $('#close-overlay').attr("tabindex", 1);
@@ -644,26 +644,26 @@ $(document).ready(function() {
     
     
 
-    $('.slide-in-overlay-container').on('click', '.ws10-overlay__backdrop', function() {
-        $('#slide-in-overlay').removeClass('ws10-in').css('display', 'none'); /*.css('transform', 'translateX(100%)') */
-        $('.ws10-overlay__backdrop').css('transform', 'translateX(100%)').removeClass('ws10-in').css('display', 'none');
+    $('.slide-in-overlay-container').on('click', '.ws10-overlay__backdropTest', function() {
+        $('#slide-in-overlay').removeClass('ws10-in').css('display', 'none');
+        $('.ws10-overlay__backdropTest').css('transform', 'translateX(100%)').removeClass('ws10-in').css('display', 'none');
         $('body').removeAttr('aria-hidden', 'true').removeAttr("tabindex", -1).removeClass('ws10-no-scroll');
         $('footer').css('display', 'flex');
         $('#close-overlay').removeAttr("tabindex", 1);
         $('.tabenable').removeAttr("tabindex", 1);
         $('.toolBarItem').removeAttr("tabindex", -1);
-            $('.action').removeAttr("tabindex", -1);
-            $('.dropdown-button').removeAttr("tabindex", -1);
-            $('.reset-button').removeAttr("tabindex", -1);
-            $('.open-overlay').removeAttr("tabindex", -1);
-            $('#reset-filters').removeAttr("tabindex", -1);
-            $('a').removeAttr("tabindex", -1);
-            $('input').removeAttr("tabindex", -1);
+        $('.action').removeAttr("tabindex", -1);
+        $('.dropdown-button').removeAttr("tabindex", -1);
+        $('.reset-button').removeAttr("tabindex", -1);
+        $('.open-overlay').removeAttr("tabindex", -1);
+        $('#reset-filters').removeAttr("tabindex", -1);
+        $('a').removeAttr("tabindex", -1);
+        $('input').removeAttr("tabindex", -1);
     });
     
     $('#slide-in-overlay').on('click', '#close-overlay', function() {
         $('#slide-in-overlay').removeClass('ws10-in').css('display', 'none');
-        $('.ws10-overlay__backdrop').css('transform', 'translateX(100%)').removeClass('ws10-in').css('display', 'none');
+        $('.ws10-overlay__backdropTest').css('transform', 'translateX(100%)').removeClass('ws10-in').css('display', 'none');
         $('body').removeAttr('aria-hidden', 'true').removeAttr("tabindex", -1).removeClass('ws10-no-scroll');
         $('footer').css('display', 'flex');
         $('#close-overlay').removeAttr("tabindex", 1);
@@ -680,21 +680,20 @@ $(document).ready(function() {
     
     $(document).on('keydown', function(e) {
         if (e.key === 'Escape') {
-            $('#slide-in-overlay').css('transform', 'translateX(100%)').removeClass('ws10-in').css('display', 'none');
-            $('.ws10-overlay__backdrop').css('transform', 'translateX(100%)').removeClass('ws10-in').css('display', 'none');
-            $('body').removeAttr('aria-hidden', 'true').removeAttr("tabindex", -1).removeClass('ws10-no-scroll');
-            $('footer').css('display', 'flex');
-            $('#close-overlay').removeAttr("tabindex", 1);
-            $('.tabenable').removeAttr("tabindex", 1);
-            $('.toolBarItem').removeAttr("tabindex", -1);
-            $('.action').removeAttr("tabindex", -1);
-            $('.dropdown-button').removeAttr("tabindex", -1);
-            $('.reset-button').removeAttr("tabindex", -1);
-            $('.open-overlay').removeAttr("tabindex", -1);
-            $('#reset-filters').removeAttr("tabindex", -1);
-            $('a').removeAttr("tabindex", -1);
-            $('input').removeAttr("tabindex", -1);
-            adjustAccordionHeights(); // Adjust heights after closing the overlay
+            $('#slide-in-overlay').removeClass('ws10-in').css('display', 'none');
+        $('.ws10-overlay__backdropTest').css('transform', 'translateX(100%)').removeClass('ws10-in').css('display', 'none');
+        $('body').removeAttr('aria-hidden', 'true').removeAttr("tabindex", -1).removeClass('ws10-no-scroll');
+        $('footer').css('display', 'flex');
+        $('#close-overlay').removeAttr("tabindex", 1);
+        $('.tabenable').removeAttr("tabindex", 1);
+        $('.toolBarItem').removeAttr("tabindex", -1);
+        $('.action').removeAttr("tabindex", -1);
+        $('.dropdown-button').removeAttr("tabindex", -1);
+        $('.reset-button').removeAttr("tabindex", -1);
+        $('.open-overlay').removeAttr("tabindex", -1);
+        $('#reset-filters').removeAttr("tabindex", -1);
+        $('a').removeAttr("tabindex", -1);
+        $('input').removeAttr("tabindex", -1);
         }
     });
 
@@ -837,7 +836,7 @@ class CommentOverlay {
 
     getBackdropTemplate() {
         return `
-            <div class="ws10-overlay__backdrop ws10-fade ws10-in" style="display: none;"></div>
+            <div class="ws10-overlay__backdropComment ws10-fade ws10-in" style="display: none;"></div>
         `;
     }
 
@@ -1246,7 +1245,7 @@ class CommentOverlay {
         const display = show ? 'block' : 'none';
         const transform = show ? 'translateX(0)' : 'translateX(100%)';
         const backdropClass = show ? 'addClass' : 'removeClass';
-        $('.ws10-overlay__backdrop').css('display', display).css('transform', transform)[backdropClass]('ws10-in');
+        $('.ws10-overlay__backdropComment').css('display', display).css('transform', transform)[backdropClass]('ws10-in');
         $('body').attr('aria-hidden', show).attr("tabindex", show ? -1 : null).toggleClass('ws10-no-scroll', show);
         $('footer').css('display', show ? 'none' : 'flex');
         $('.overlayKeyOn').attr("tabindex", show ? 1 : -1);
