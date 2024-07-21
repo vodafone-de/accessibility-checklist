@@ -1527,14 +1527,24 @@ $(document).ready(() => {
             const svg = $('<svg aria-hidden="true" class="ws10-accordion-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"></polyline></svg>');
             accordionToggle.append(svg);
 
-            
+        
+            const selectAllSwitchWrapper = $('<div>').addClass('selectAllSwitch');
 
-            const selectAllSwitchWrapper = $('<div>'); // .addClass('switch');
-            const selectAllCheckbox = $('<input>').attr({ type: 'checkbox', id: 'select_all_applicable_' + category }).addClass('overlayKeyOff');
+            const selectAllCheckbox = $('<input>').attr({ type: 'checkbox', id: 'select_all_applicable_' + category }).addClass('overlayKeyOff selectAllSwitch');
             selectAllCheckbox.prop('checked', true); 
-            // const selectAllSlider = $('<span>').addClass('slider');
-            selectAllSwitchWrapper.append(selectAllCheckbox); // selectAllSwitchWrapper.append(selectAllCheckbox, selectAllSlider);
+
+            const selectAllSlider = $('<span>').addClass('selectAllSlider');
+
+            selectAllSwitchWrapper.append(selectAllCheckbox, selectAllSlider); // selectAllSwitchWrapper.append(selectAllCheckbox, selectAllSlider);
+
+
+            selectAllSwitchWrapper.on('click', function() {
+                selectAllCheckbox.prop('checked', !selectAllCheckbox.prop('checked')).trigger('change');
+            });
+
+
             const accordionFunction = $('<div>').addClass('accordion-function');
+
             accordionFunction.append(selectAllSwitchWrapper);
             accordionHeader.append(accordionFunction);
             
