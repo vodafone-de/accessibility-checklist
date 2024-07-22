@@ -1517,13 +1517,14 @@ $(document).ready(() => {
         $('#clear-state').click(function() {
             clearState();
             adjustAccordionHeights();
-        });
+        }); 
 
         Object.keys(groupedByCategory).forEach(category => {
             const container = $('<div>').addClass('ws10-card');
+            const header = $('<div>').addClass('ws10-card__header');
 
-            const accordionHeader = $('<div>').addClass('accordion-header');
-            const accordionToggle = $('<div>').addClass('accordion-toggle');
+            const accordionHeader = $('<button>').addClass('accordion-header');
+            const accordionToggle = $('<button>').addClass('accordion-toggle');
             const svg = $('<svg aria-hidden="true" class="ws10-accordion-item__chevron" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 192"><polyline class="st0" points="164 62 96 130 28 62" fill="none" stroke-linecap="round" stroke-miterlimit="10" stroke-width="8"></polyline></svg>');
             accordionToggle.append(svg);
 
@@ -1548,9 +1549,13 @@ $(document).ready(() => {
             accordionFunction.append(selectAllSwitchWrapper);
             accordionHeader.append(accordionFunction);
             
+            
+          
 
+           // accordionHeader.append(accordionToggle);  Moved the accordionToggle append after accordionFunction
 
-            accordionHeader.append(accordionToggle); // Moved the accordionToggle append after accordionFunction
+           
+
             
             // Event-Handler für die Checkbox hinzufügen
             selectAllCheckbox.on('change', function() {
@@ -1563,10 +1568,13 @@ $(document).ready(() => {
 
           
 
-            accordionHeader.append(accordionTitle).append(accordionToggle);
-            container.append(accordionHeader);
-            container.append(accordionFunction);
+            accordionHeader.append(accordionTitle);
+            header.append(accordionHeader, accordionFunction, accordionToggle);
 
+            
+      /*       container.append(accordionHeader);
+            container.append(accordionFunction); */
+            container.append(header);
 
             
 
@@ -1772,9 +1780,9 @@ $(document).ready(() => {
                 accordionContent.append(innerDiv);
             });
             container.append(accordionContent);
-
+/* 
             accordionHeader.click(function() {
-                const chevron = $(this).find('.ws10-accordion-item__chevron');
+                const chevron = $('.accordion-toggle').find('.ws10-accordion-item__chevron');
                 chevron.toggleClass('rotate');
                 accordionContent.toggleClass('open');
 
@@ -1783,7 +1791,50 @@ $(document).ready(() => {
                 } else {
                     accordionContent.css('max-height', '0');
                 }
+            }); */
+
+            accordionHeader.click(function() {
+                // Finde das nächstgelegene ws10-card__header-Element, das das geklickte accordion-header-Element enthält
+                const cardHeader = $(this).closest('.ws10-card__header');
+                
+                // Finde das Chevron-Icon innerhalb dieses ws10-card__header-Elements
+                const chevron = cardHeader.find('.ws10-accordion-item__chevron');
+                
+                // Schalte die rotate-Klasse für das gefundene Chevron-Icon um
+                chevron.toggleClass('rotate');
+                
+                // Finde das entsprechende accordionContent (hier ist der Kontext nicht ganz klar, also anpassen wenn nötig)
+                const accordionContent = cardHeader.next('.accordion-content');
+                accordionContent.toggleClass('open');
+            
+                if (accordionContent.hasClass('open')) {
+                    accordionContent.css('max-height', accordionContent[0].scrollHeight + 'px');
+                } else {
+                    accordionContent.css('max-height', '0');
+                }
             });
+
+            accordionToggle.click(function() {
+                // Finde das nächstgelegene ws10-card__header-Element, das das geklickte accordion-header-Element enthält
+                const cardHeader = $(this).closest('.ws10-card__header');
+                
+                // Finde das Chevron-Icon innerhalb dieses ws10-card__header-Elements
+                const chevron = cardHeader.find('.ws10-accordion-item__chevron');
+                
+                // Schalte die rotate-Klasse für das gefundene Chevron-Icon um
+                chevron.toggleClass('rotate');
+                
+                // Finde das entsprechende accordionContent (hier ist der Kontext nicht ganz klar, also anpassen wenn nötig)
+                const accordionContent = cardHeader.next('.accordion-content');
+                accordionContent.toggleClass('open');
+            
+                if (accordionContent.hasClass('open')) {
+                    accordionContent.css('max-height', accordionContent[0].scrollHeight + 'px');
+                } else {
+                    accordionContent.css('max-height', '0');
+                }
+            });
+            
 
             $('#content-wrapper').append(container);
         });

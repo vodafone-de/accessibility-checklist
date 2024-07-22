@@ -2934,6 +2934,19 @@ font-size:12px;
     justify-content: space-between;
     align-items: center;
     cursor: pointer;
+    flex: 1;
+
+}
+
+button.accordion-header {
+  background-color: transparent;
+  border: 0;
+
+}
+
+button.accordion-toggle {
+  background-color: transparent;
+  border: 0;
 
 }
 
@@ -2953,7 +2966,12 @@ font-size:12px;
 
 
 
+.ws10-card__header {
 
+  display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
 
 
@@ -2967,6 +2985,7 @@ font-size:12px;
   align-self: start;
   margin-top: -8px;
   margin-left: 8px;
+  margin-right:16px;
 }
 
 .selectAllSwitch input {
@@ -3012,14 +3031,6 @@ input:checked + .selectAllSlider:before {
     box-shadow: 0 0 0 3px #005ea5;
 
 }
-
-
-
-
-
-
-
-
 
 
 
