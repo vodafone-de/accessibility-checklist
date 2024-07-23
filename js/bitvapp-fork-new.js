@@ -1,5 +1,11 @@
 $(document).ready(function() {
 
+    let fieldsetCount = 0;
+    let selectedRadioCount = 0;
+    let passCount = 0;
+    let failCount = 0;
+
+
         function updateQueryString() {
         const selectedFilters = $('#filter-options input[type="checkbox"]:checked').map(function() {
             return $(this).data('filter_id');
@@ -262,10 +268,7 @@ $(document).ready(function() {
         }
     }
 
-    let fieldsetCount = 0;
-    let selectedRadioCount = 0;
-    let passCount = 0;
-    let failCount = 0;
+
 
     function updateCounter() {
         const totalSelected = passCount + failCount;
@@ -295,15 +298,18 @@ $(document).ready(function() {
         updateCounter();
     }
 
+
+
     function applyFilters() {
         const filters = $('#filter-options input[type="checkbox"]:checked').map(function() {
             return $(this).data('filter_id');
         }).get();
     
-    
         const taskCatFilters = $('#taskcat-dropdown input[type="checkbox"]:checked').map(function() {
             return $(this).val();
         }).get();
+    
+        const bothFiltersSelected = filters.length > 0 && taskCatFilters.length > 0;
     
         $('.badgegroup span').removeClass("filteractive").show();
         $('.taglistitems').removeClass("categoryfilteractive").show();
@@ -312,9 +318,14 @@ $(document).ready(function() {
         $('.ws10-card').hide();
         $('div.roletitle').hide();
         $('div.roletitle + ul').hide();
-        $('.bitvcontainer').hide();  // Hide all bitvcontainer elements initially
-    
-        const bothFiltersSelected = filters.length > 0 && taskCatFilters.length > 0;
+        $('.bitvcontainer').hide();
+
+        $('.status-options input[type="checkbox"]').each(function() {
+
+            $(this).prop('checked', true);
+          
+        });
+        
     
         if (filters.length > 0 || taskCatFilters.length > 0) {
             filters.forEach(filter => {
@@ -336,7 +347,6 @@ $(document).ready(function() {
                 });
             });
     
-            // Show ws10-card elements based on combined filters
             $('.ws10-card').each(function() {
                 const card = $(this);
                 let showCard = true;
@@ -364,18 +374,21 @@ $(document).ready(function() {
                         }
                     });
                     if (bothFiltersSelected) {
-                        showCard = showCard && hasTaskCatFilter; // AND logic
+                        showCard = showCard && hasTaskCatFilter;
                     } else {
-                        showCard = hasTaskCatFilter; // OR logic if only taskCatFilters are selected
+                        showCard = hasTaskCatFilter;
                     }
                 }
     
                 if (showCard) {
                     card.show();
+                } else {
+                    card.find('.status-options input[type="checkbox"]').each(function() {
+                        $(this).prop('checked', false);
+                    });
                 }
             });
     
-            // Additional filtering for task containers inside cards
             $('li.taskContainer').each(function() {
                 const li = $(this);
                 let showLi = true;
@@ -401,9 +414,9 @@ $(document).ready(function() {
                         }
                     });
                     if (bothFiltersSelected) {
-                        showLi = showLi && hasTaskCatFilter; // AND logic
+                        showLi = showLi && hasTaskCatFilter;
                     } else {
-                        showLi = hasTaskCatFilter; // OR logic if only taskCatFilters are selected
+                        showLi = hasTaskCatFilter;
                     }
                 }
     
@@ -413,13 +426,21 @@ $(document).ready(function() {
                     li.closest('.dods').show();
                     li.closest('.ws10-card').show();
                     li.closest('ul').prev('div.roletitle').show();
-                    li.closest('.bitvcontainer').show(); // Show the bitvcontainer containing the li
+                    li.closest('.bitvcontainer').show();
+                    li.find('.status-options input[type="checkbox"]').each(function() {
+                        const originalCheckedState = $(this).data('original-checked-state');
+                        if (originalCheckedState !== undefined) {
+                            $(this).prop('checked', true);
+                        }
+                    });
                 } else {
                     li.hide();
+                    li.find('.status-options input[type="checkbox"]').each(function() {
+                        $(this).prop('checked', false);
+                    });
                 }
             });
     
-            // Ensure bitvcontainer visibility is updated based on filters and taskCatFilters
             $('.bitvcontainer').each(function() {
                 const container = $(this);
                 let showContainer = false;
@@ -449,9 +470,9 @@ $(document).ready(function() {
                             }
                         });
                         if (bothFiltersSelected) {
-                            showLi = showLi && hasTaskCatFilter; // AND logic
+                            showLi = showLi && hasTaskCatFilter;
                         } else {
-                            showLi = hasTaskCatFilter; // OR logic if only taskCatFilters are selected
+                            showLi = hasTaskCatFilter;
                         }
                     }
     
@@ -462,13 +483,25 @@ $(document).ready(function() {
     
                 if (showContainer) {
                     container.show();
+                    container.find('.status-options input[type="checkbox"]').each(function() {
+                        const originalCheckedState = $(this).data('original-checked-state');
+                        if (originalCheckedState !== undefined) {
+                            $(this).prop('checked', true);
+                        }
+                    });
                 } else {
                     container.hide();
+                    container.find('.status-options input[type="checkbox"]').each(function() {
+                        const originalCheckedState = $(this).data('original-checked-state');
+                        if (originalCheckedState !== undefined) {
+                            $(this).prop('checked', false);
+                        }
+                    });
                 }
             });
     
         } else {
-            // If no filters are selected, show all elements
+            // Rücksetzung der Ansicht
             $('.badgegroup span').removeClass("filteractive").show();
             $('.accordion-content .dods ul').show().find('li').show();
             $('.ws10-card').show();
@@ -476,10 +509,17 @@ $(document).ready(function() {
             $('div.roletitle + ul').show();
             $('.accordion-content').removeClass('open').css('max-height', '0');
             $('.accordion-header .ws10-accordion-item__chevron').removeClass('rotate');
-            $('.bitvcontainer').show();  // Show all bitvcontainer elements when no filters are selected
+            $('.bitvcontainer').show();
+    
+            // Rücksetzung der Checkboxen
+            $('.status-options input[type="checkbox"]').each(function() {
+                const originalCheckedState = $(this).data('original-checked-state');
+                if (originalCheckedState !== undefined) {
+                    $(this).prop('checked', true);
+                }
+            });
         }
     
-        // Additional functions to update UI
         updateFilterNumberBadge();
         updateFilterNumberBadgeRoles();
         adjustAccordionHeights();
@@ -487,8 +527,12 @@ $(document).ready(function() {
         updateFieldsetCountAfterFiltering();
         saveState();
         updateDisplayedFilters();
-        console.log("applyFilters " + selectedRadioCount);
+        console.log("applyFilters executed");
     }
+    
+
+    
+    
     
     /**Ende Filterlogik */
     
