@@ -471,6 +471,8 @@ font-weight: var(--ws10-font-weight-bold);
   align-items: center;
   border-bottom: 1px solid rgba(0, 0, 0, 0);
   padding-bottom: 2px;
+  padding-left:0;
+  padding-right:0;
   color: var(--color);
   text-decoration: none;
   transition: color .2s cubic-bezier(0.47, 0, 0.745, 0.715), border .2s cubic-bezier(0.47, 0, 0.745, 0.715);
@@ -521,7 +523,7 @@ font-weight: var(--ws10-font-weight-bold);
 .add-comment-button {
 
   grid-column-start: 2;
-  grid-row-start: 5;
+
 
 
 }
@@ -2897,9 +2899,10 @@ font-size:12px;
     margin: 0; /* Zurücksetzen der Standardmargen */
 }
 
-.rotate {
+/* .rotate {
   transform: rotate(180deg);
-}
+  transition: transform 0.3s ease;
+} */
 
 
 #counter{
@@ -2927,6 +2930,7 @@ font-size:12px;
 
 .ws10-accordion-item__chevron.rotate {
     transform: rotate(180deg);
+    transition: transform 0.3s ease;
 }
 
 .accordion-header {

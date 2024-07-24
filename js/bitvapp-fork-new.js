@@ -337,8 +337,10 @@ $(document).ready(function() {
                 $(`.accordion-content:has(.dods ul[class*="${filter}tasks"])`).each(function() {
                     const accordionContent = $(this);
                     const accordionHeader = accordionContent.prev('.accordion-header');
+                    const accordionToggle = accordionContent.prev('.ws10-card__header');
+
                     accordionContent.addClass('open').css('max-height', accordionContent[0].scrollHeight + 'px');
-                    accordionHeader.find('.ws10-accordion-item__chevron').addClass('rotate');
+                    accordionToggle.find('.ws10-accordion-item__chevron').addClass('rotate');
                 });
     
                 $(`div.roletitle + ul[class*="${filter}tasks"]`).each(function() {
@@ -383,7 +385,7 @@ $(document).ready(function() {
                 if (showCard) {
                     card.show();
                 } else {
-                    card.find('.status-options input[type="checkbox"]').each(function() {
+                    card.find('input[type="checkbox"]').each(function() {
                         $(this).prop('checked', false);
                     });
                 }
@@ -427,7 +429,7 @@ $(document).ready(function() {
                     li.closest('.ws10-card').show();
                     li.closest('ul').prev('div.roletitle').show();
                     li.closest('.bitvcontainer').show();
-                    li.find('.status-options input[type="checkbox"]').each(function() {
+                    li.find('input[type="checkbox"]').each(function() {
                         const originalCheckedState = $(this).data('original-checked-state');
                         if (originalCheckedState !== undefined) {
                             $(this).prop('checked', true);
@@ -435,7 +437,7 @@ $(document).ready(function() {
                     });
                 } else {
                     li.hide();
-                    li.find('.status-options input[type="checkbox"]').each(function() {
+                    li.find('input[type="checkbox"]').each(function() {
                         $(this).prop('checked', false);
                     });
                 }
@@ -483,7 +485,7 @@ $(document).ready(function() {
     
                 if (showContainer) {
                     container.show();
-                    container.find('.status-options input[type="checkbox"]').each(function() {
+                    container.find('input[type="checkbox"]').each(function() {
                         const originalCheckedState = $(this).data('original-checked-state');
                         if (originalCheckedState !== undefined) {
                             $(this).prop('checked', true);
@@ -491,7 +493,7 @@ $(document).ready(function() {
                     });
                 } else {
                     container.hide();
-                    container.find('.status-options input[type="checkbox"]').each(function() {
+                    container.find('input[type="checkbox"]').each(function() {
                         const originalCheckedState = $(this).data('original-checked-state');
                         if (originalCheckedState !== undefined) {
                             $(this).prop('checked', false);
@@ -508,11 +510,11 @@ $(document).ready(function() {
             $('div.roletitle').show();
             $('div.roletitle + ul').show();
             $('.accordion-content').removeClass('open').css('max-height', '0');
-            $('.accordion-header .ws10-accordion-item__chevron').removeClass('rotate');
+            $('.accordion-toggle .ws10-accordion-item__chevron').removeClass('rotate');
             $('.bitvcontainer').show();
     
             // Rücksetzung der Checkboxen
-            $('.status-options input[type="checkbox"]').each(function() {
+            $('input[type="checkbox"]').each(function() {
                 const originalCheckedState = $(this).data('original-checked-state');
                 if (originalCheckedState !== undefined) {
                     $(this).prop('checked', true);
@@ -1658,18 +1660,35 @@ $(document).ready(() => {
                         tasks.forEach(task => {
                             if (task.taskid) {
                                 const li = $('<li>').attr('id', task.taskid).addClass('taskContainer');
-                                li.append($('<div>').addClass('taskdesc').html(task.taskdesc));
-                                li.append($('<div><strong>Type:</strong></div>').addClass('tasktype-desc'));
-                                li.append($('<div>').addClass('tasktype').text(task.tasktype));
+
+                                if (task.taskdesc) {
+                                    li.append($('<div>').addClass('taskdesc').html(task.taskdesc));
+                                }
+                        
+                                if (task.tasktype) {
+                                    li.append($('<div><strong>Type:</strong></div>').addClass('tasktype-desc'));
+                                    li.append($('<div>').addClass('tasktype').text(task.tasktype));
+                                }
+
+
+                               
                                 const taskCatDiv = $('<div>').addClass('taskcat');
-                                taskCatDiv.append($('<div>').text('Tags:').addClass('filterTextCat'));
-                                if (task.taskcat) {
+                                
+                                if (task.taskcat && task.taskcat.length > 0) {
+                                    const taskCatDiv = $('<div>').addClass('taskcat');
+                                    taskCatDiv.append($('<div>').text('Tags:').addClass('filterTextCat'));
+                        
                                     task.taskcat.forEach(cat => {
                                         taskCatDiv.append($('<div>').text(cat).addClass('taglistitems'));
                                     });
+                        
+                                    li.append(taskCatDiv);
                                 }
+                                
                                 taskCatDiv.append($('<div style="clear:both"></div>'));
-                                li.append(taskCatDiv);
+                                
+
+                                
                                 li.append($('<div>').addClass('testtool').html(task.testtool).hide());
                                 li.append($('<div>').addClass('testmethod').html(task.testmethod).hide());
                                 li.append($('<div>').addClass('testtoollink').html(task.testtoollink).hide());
