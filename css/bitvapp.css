@@ -2915,6 +2915,7 @@ font-size:12px;
     border-radius: 6px;
     color: #f4f4f4;
      z-index: 2;
+     display:none;
 }
 
 .ws10-accordion-item__chevron {
