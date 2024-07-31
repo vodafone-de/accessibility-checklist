@@ -33,7 +33,7 @@
 				},
 				{
 					"taskid": "01-01-ux-01",
-					"taskdesc": "UX Task 1",
+					"taskdesc": "User Experience Lorem ipsum task 1",
 					"tasktype": "pattern",
 					"taskcat": [
 						"design",
